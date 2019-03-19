@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="Licitaciones" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="Licitaciones.aspx.cs" Inherits="Almacenes.Management.Licitaciones" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
@@ -12,7 +11,7 @@
                     <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
                 </div>
                 <div class="col-1">
-                    <button class="btn btn-primary" type="button" runat="server" id="AddLicitacionBtn"  onserverclick="AddLicitacionBtn_ServerClick">
+                    <button class="btn btn-primary" type="button" runat="server" id="AddLicitacionBtn" data-toggle="modal" data-target="#addModal">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -24,8 +23,7 @@
         <asp:ListView ID="LicitacionListView"
             runat="server"
             DataSourceID="LicitacionDS"
-            DataKeyNames="IdTipoLicitacion"
-            InsertItemPosition="FirstItem">
+            DataKeyNames="IdTipoLicitacion">
             <LayoutTemplate>
                 <div class="table responsive">
                     <table class="table table-striped" style="font-size: x-small; font-family: 'Segoe UI'">
@@ -156,45 +154,111 @@
         </asp:SqlDataSource>
     </div>
 
-    <div id="addModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div id="addModal" class="modal hide fade"  tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="addModalLabel">Add New Record</h3>
+            <h3 id="addModalLabel">Agregar nueva licitación.</h3>
         </div>
-       
-                <div class="modal-body">
-                    <table class="table table-bordered table-hover">
-                        <tr>
-                            <td>Name : </td>
-                            <td>
-                                <asp:TextBox ID="txtNameAdd" runat="server"></asp:TextBox></td>
-                        </tr>
-                        <tr>
-                            <td>EmailID :</td>
-                            <td>
-                                <asp:TextBox ID="txtEmailIDAdd" runat="server"></asp:TextBox></td>
 
-                        </tr>
-                        <tr>
-                            <td>Address:</td>
-                            <td>
-                                <asp:TextBox ID="txtAddressAdd" runat="server"></asp:TextBox></td>
-                        </tr>
-                        <tr>
-                            <td>Contact No:</td>
-                            <td>
-                                <asp:TextBox ID="txtContactAdd" runat="server"></asp:TextBox></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <asp:Button ID="btnAddRecord" runat="server" Text="Add" CssClass="btn btn-info" />
-                    <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
+        <div class="modal-body" role="document">
+            <asp:FormView ID="FormView1" runat="server" DataSourceID="LicitacionDS" CellPadding="4" DataKeyNames="IdLicitacion" ForeColor="#333333" >
+                <EditItemTemplate>
+                    IdLicitacion:
+                    <asp:Label ID="IdLicitacionLabel1" runat="server" Text='<%# Eval("IdLicitacion") %>' />
+                    <br />
+                    NroLicitacion:
+                    <asp:TextBox ID="NroLicitacionTextBox" runat="server" Text='<%# Bind("NroLicitacion") %>' />
+                    <br />
+                    FechaLicitacion:
+                    <asp:TextBox ID="FechaLicitacionTextBox" runat="server" Text='<%# Bind("FechaLicitacion") %>' />
+                    <br />
+                    IdTipoLicitacion:
+                    <asp:TextBox ID="IdTipoLicitacionTextBox" runat="server" Text='<%# Bind("IdTipoLicitacion") %>' />
+                    <br />
+                    UOCReferancia:
+                    <asp:TextBox ID="UOCReferanciaTextBox" runat="server" Text='<%# Bind("UOCReferancia") %>' />
+                    <br />
+                    UOCIdLicitacion:
+                    <asp:TextBox ID="UOCIdLicitacionTextBox" runat="server" Text='<%# Bind("UOCIdLicitacion") %>' />
+                    <br />
+                    Activo:
+                    <asp:TextBox ID="ActivoTextBox" runat="server" Text='<%# Bind("Activo") %>' />
+                    <br />
+                    FechaDesactivacion:
+                    <asp:TextBox ID="FechaDesactivacionTextBox" runat="server" Text='<%# Bind("FechaDesactivacion") %>' />
+                    <br />
+                    <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
+                    &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                </EditItemTemplate>
+                <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                <InsertItemTemplate>
+                    NroLicitacion:
+                    <asp:TextBox ID="NroLicitacionTextBox" runat="server" Text='<%# Bind("NroLicitacion") %>' />
+                    <br />
+                    FechaLicitacion:
+                    <asp:TextBox ID="FechaLicitacionTextBox" runat="server" Text='<%# Bind("FechaLicitacion") %>' />
+                    <br />
+                    IdTipoLicitacion:
+                    <asp:TextBox ID="IdTipoLicitacionTextBox" runat="server" Text='<%# Bind("IdTipoLicitacion") %>' />
+                    <br />
+                    UOCReferancia:
+                    <asp:TextBox ID="UOCReferanciaTextBox" runat="server" Text='<%# Bind("UOCReferancia") %>' />
+                    <br />
+                    UOCIdLicitacion:
+                    <asp:TextBox ID="UOCIdLicitacionTextBox" runat="server" Text='<%# Bind("UOCIdLicitacion") %>' />
+                    <br />
+                    Activo:
+                    <asp:TextBox ID="ActivoTextBox" runat="server" Text='<%# Bind("Activo") %>' />
+                    <br />
+                    FechaDesactivacion:
+                    <asp:TextBox ID="FechaDesactivacionTextBox" runat="server" Text='<%# Bind("FechaDesactivacion") %>' />
+                    <br />
+                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
+                    &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    IdLicitacion:
+                    <asp:Label ID="IdLicitacionLabel" runat="server" Text='<%# Eval("IdLicitacion") %>' />
+                    <br />
+                    NroLicitacion:
+                    <asp:Label ID="NroLicitacionLabel" runat="server" Text='<%# Bind("NroLicitacion") %>' />
+                    <br />
+                    FechaLicitacion:
+                    <asp:Label ID="FechaLicitacionLabel" runat="server" Text='<%# Bind("FechaLicitacion") %>' />
+                    <br />
+                    IdTipoLicitacion:
+                    <asp:Label ID="IdTipoLicitacionLabel" runat="server" Text='<%# Bind("IdTipoLicitacion") %>' />
+                    <br />
+                    UOCReferancia:
+                    <asp:Label ID="UOCReferanciaLabel" runat="server" Text='<%# Bind("UOCReferancia") %>' />
+                    <br />
+                    UOCIdLicitacion:
+                    <asp:Label ID="UOCIdLicitacionLabel" runat="server" Text='<%# Bind("UOCIdLicitacion") %>' />
+                    <br />
+                    Activo:
+                    <asp:Label ID="ActivoLabel" runat="server" Text='<%# Bind("Activo") %>' />
+                    <br />
+                    FechaDesactivacion:
+                    <asp:Label ID="FechaDesactivacionLabel" runat="server" Text='<%# Bind("FechaDesactivacion") %>' />
+                    <br />
+                    <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
+                    &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
+                    &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="New" />
+                </ItemTemplate>
+                <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
 
-                </div>
-           
-          
-       
+            </asp:FormView>
+        </div>
+        <div class="modal-footer">
+            <asp:Button ID="btnAddRecord" runat="server" Text="Add" CssClass="btn btn-info" />
+            <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
+
+        </div>
+
+
+
 
     </div>
 

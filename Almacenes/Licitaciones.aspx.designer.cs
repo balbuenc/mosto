@@ -49,40 +49,13 @@ namespace Almacenes.Management {
         protected global::System.Web.UI.WebControls.SqlDataSource LicitacionDS;
         
         /// <summary>
-        /// txtNameAdd control.
+        /// FormView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNameAdd;
-        
-        /// <summary>
-        /// txtEmailIDAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmailIDAdd;
-        
-        /// <summary>
-        /// txtAddressAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddressAdd;
-        
-        /// <summary>
-        /// txtContactAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContactAdd;
+        protected global::System.Web.UI.WebControls.FormView FormView1;
         
         /// <summary>
         /// btnAddRecord control.

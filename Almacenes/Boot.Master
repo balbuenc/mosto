@@ -15,7 +15,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
-    
+
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
@@ -28,17 +28,18 @@
 
     <link href="image/IconDinac.jpg" rel="shortcut icon" type="image/x-icon" />
 
-    
+
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
+            
             <div>
                 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
                     <a class="navbar-brand mr-1" href="/Default.aspx">Almacenes</a>
 
-                    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle"  >
+                    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle">
                         <i class="fas fa-bars"></i>
                     </button>
 
@@ -169,15 +170,14 @@
                     </div>
                 </div>
 
-             
+
 
                 <!-- Bootstrap core JavaScript-->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                <%--  <script src="vendor/jquery/jquery.min.js"></script>
+                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
 
-               <%-- <script src="Scripts/jquery-3.0.0.min.js"></script>
-              
-                <script src="Scripts/bootstrap.bundle.min.js"></script>--%>
+                <script src="Scripts/jquery-3.0.0.min.js"></script>
+                <script src="Scripts/bootstrap.bundle.min.js"></script>
 
                 <!-- Core plugin JavaScript-->
                 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>

@@ -13,5 +13,14 @@ namespace Almacenes.Management
         {
 
         }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append(@"<script type='text/javascript'>");
+            sb.Append("$('#addModal').modal('show');");
+            sb.Append(@"</script>");
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AddShowModalScript", sb.ToString(), false);
+        }
     }
 }

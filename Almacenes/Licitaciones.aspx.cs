@@ -13,5 +13,15 @@ namespace Almacenes.Management
         {
 
         }
+
+
+
+        protected void AddLicitacionBtn_ServerClick(object sender, EventArgs e)
+        {
+          
+
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "js_sendSMS", "$('#addModal').modal('toggle')", true);
+           
+        }
     }
 }

@@ -40,15 +40,6 @@ namespace Almacenes.Management {
         protected global::System.Web.UI.WebControls.ListView LicitacionListView;
         
         /// <summary>
-        /// LicitacionDS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource LicitacionDS;
-        
-        /// <summary>
         /// FormView1 control.
         /// </summary>
         /// <remarks>
@@ -65,5 +56,23 @@ namespace Almacenes.Management {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddRecord;
+        
+        /// <summary>
+        /// LicitacionDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource LicitacionDS;
+        
+        /// <summary>
+        /// TipoLicitacionDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource TipoLicitacionDS;
     }
 }

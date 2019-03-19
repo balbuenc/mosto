@@ -126,7 +126,7 @@
 
 
         <div id="addModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <b id="addModalLabel">Agregar nueva licitación.</b>
@@ -134,7 +134,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <asp:FormView ID="FormView1" runat="server" DataSourceID="LicitacionDS"
+                        <asp:FormView ID="FormView1" runat="server" DataSourceID="LicitacionDS" Width="100%"
                             CellPadding="4" DataKeyNames="IdLicitacion" ForeColor="#333333"
                             DefaultMode="Insert">
                             <EditItemTemplate>
@@ -142,25 +142,13 @@
                             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                             <InsertItemTemplate>
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-3">Nro. Licitación:</div>
-                                        <div class="col-9">
-                                            <asp:TextBox ID="NroLicitacionTextBox" runat="server" Text='<%# Bind("NroLicitacion") %>' CssClass="form-control" /></div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-3">Fecha:</div>
-                                        <div class="col-9">
-                                            <asp:TextBox ID="FechaLicitacionTextBox" runat="server" Text='<%# Bind("FechaLicitacion") %>' CssClass="form-control" /></div>
-                                    </div>
-
+                                <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-3">Tipo:</div>
                                         <div class="col-9">
                                             <asp:DropDownList ID="IdLicitacionDDL"
                                                 runat="server"
-                                                DataSourceID="TipoLicitacioDS"
+                                                DataSourceID="TipoLicitacionDS"
                                                 DataTextField="TipoLicitacion"
                                                 DataValueField="IdTipoLicitacion"
                                                 CssClass="form-control"
@@ -168,20 +156,65 @@
                                             </asp:DropDownList>
                                         </div>
                                     </div>
+
+                                    <div class="row">
+                                        <div class="col-3"><b>Nro. Licitacion</b></div>
+                                        <div class="col-9">
+                                            <asp:TextBox ID="txtNroLicitacion" runat="server" Text='<%# Bind("NroLicitacion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3"><b>Fecha</b></div>
+                                        <div class="col-9">
+
+
+                                            <div class="form-control">
+                                                <input type="text" placeholder="click to show datepicker" id="Demo">
+                                            </div>
+
+
+                                            <script type="text/javascript">
+                                                // When the document is ready
+                                                $(document).ready(function () {
+
+                                                    $('#Demo').datepicker({
+                                                        format: "dd/mm/yyyy"
+                                                    });
+
+                                                });
+                                            </script>
+                                            <%--<asp:Calendar ID="Calendar1" runat="server" SelectedDate='<%# Bind("FechaLicitacion") %>'    ></asp:Calendar>--%>
+                                            <%--<asp:TextBox ID="txtFechaLicitacion" runat="server" Text='<%# Bind("FechaLicitacion") %>' CssClass="form-control" Font-Size="X-Small" />--%>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-3"><b>Referencia (UOC)</b></div>
+                                        <div class="col-9">
+                                            <asp:TextBox ID="txtUOCReferancia" runat="server" Text='<%# Bind("UOCReferancia") %>' CssClass="form-control" Font-Size="X-Small" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3"><b>ID (UOC)</b></div>
+                                        <div class="col-9">
+                                            <asp:TextBox ID="txtUOCIdLicitacion" runat="server" Text='<%# Bind("UOCIdLicitacion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3"><b>Activo</b></div>
+                                        <div class="col-9">
+                                            <asp:DropDownList ID="ActivoDDL"
+                                                runat="server"
+                                                CssClass="form-control"
+                                                SelectedValue='<%# Bind("Activo") %>'>
+                                                <asp:ListItem>S</asp:ListItem>
+                                                <asp:ListItem>N</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+
                                 </div>
 
-                                <br />
-                                UOCReferancia:
-                    <asp:TextBox ID="UOCReferanciaTextBox" runat="server" Text='<%# Bind("UOCReferancia") %>' />
-                                <br />
-                                UOCIdLicitacion:
-                    <asp:TextBox ID="UOCIdLicitacionTextBox" runat="server" Text='<%# Bind("UOCIdLicitacion") %>' />
-                                <br />
-                                Activo:
-                    <asp:TextBox ID="ActivoTextBox" runat="server" Text='<%# Bind("Activo") %>' />
-                                <br />
-                                Fecha Desactivacion:
-                    <asp:TextBox ID="FechaDesactivacionTextBox" runat="server" Text='<%# Bind("FechaDesactivacion") %>' />
                                 <br />
                                 <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
                                 &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
@@ -189,7 +222,7 @@
                             <ItemTemplate>
                             </ItemTemplate>
                             <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-                            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+
 
                         </asp:FormView>
                     </div>
@@ -234,7 +267,7 @@
                 </UpdateParameters>
             </asp:SqlDataSource>
 
-            <asp:SqlDataSource ID="TipoLicitacioDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+            <asp:SqlDataSource ID="TipoLicitacionDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
                 SelectCommand="select IdTipoLicitacion, TipoLicitacion from management.TipoLicitacion order by 2" SelectCommandType="Text"></asp:SqlDataSource>
         </div>
 

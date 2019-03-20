@@ -13,5 +13,15 @@ namespace Almacenes.Management
         {
 
         }
+
+        protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
+        {
+            Response.Redirect("Licitaciones.aspx");
+        }
+
+        protected void InsertCancelButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Licitaciones.aspx");
+        }
     }
 }

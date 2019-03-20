@@ -33,7 +33,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            
+
             <div>
                 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -134,6 +134,7 @@
 
                     <div id="content-wrapper">
                         <div class="container-fluid">
+                            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                             </asp:ContentPlaceHolder>
@@ -173,11 +174,13 @@
 
 
                 <!-- Bootstrap core JavaScript-->
-                <%--  <script src="vendor/jquery/jquery.min.js"></script>
+                <%--    <script src="vendor/jquery/jquery.min.js"></script>
                 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
 
                 <script src="Scripts/jquery-3.0.0.min.js"></script>
+                <script src="Scripts/moment-with-locales.min.js"></script>
                 <script src="Scripts/bootstrap.bundle.min.js"></script>
+
 
                 <!-- Core plugin JavaScript-->
                 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -189,6 +192,8 @@
 
                 <!-- Custom scripts for all pages-->
                 <script src="js/sb-admin.min.js"></script>
+
+
 
 
             </div>

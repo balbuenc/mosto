@@ -2,6 +2,9 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+   
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
@@ -24,7 +27,8 @@
         <asp:ListView ID="LicitacionListView"
             runat="server"
             DataSourceID="LicitacionDS"
-            DataKeyNames="IdTipoLicitacion">
+            DataKeyNames="IdTipoLicitacion"
+            OnItemCommand="LicitacionListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
                     <table class="table table-striped" style="font-size: x-small; font-family: 'Segoe UI'">
@@ -47,39 +51,49 @@
                 </div>
             </LayoutTemplate>
             <ItemTemplate>
-                <tr>
-                    <td>
-                        <asp:Label ID="lblIdLicitacion" runat="server" Text='<%# Eval("IdLicitacion") %>' /></td>
-                    <td>
-                        <asp:Label ID="lblNroLicitacion" runat="server" Text='<%# Eval("NroLicitacion") %>' /></td>
-                    <td>
-                        <asp:Label ID="lblFechaLicitacion" runat="server" Text='<%# String.Format("{0:d}",Eval( "FechaLicitacion") ) %>' /></td>
-                    <td>
-                        <asp:Label ID="lblIdTipoLicitacion" runat="server" Text='<%# Eval("TipoLicitacion") %>' /></td>
-                    <td>
-                        <asp:Label ID="lblUOCReferancia" runat="server" Text='<%# Eval("UOCReferancia") %>' /></td>
-                    <td>
-                        <asp:Label ID="lblUOCIdLicitacion" runat="server" Text='<%# Eval("UOCIdLicitacion") %>' /></td>
-                    <td>
-                        <asp:Label ID="lblActivo" runat="server" Text='<%# Eval("Activo") %>' /></td>
-                    <td>
-                        <asp:Label ID="lblFechaDesactivacion" runat="server" Text='<%# Eval("FechaDesactivacion") %>' /></td>
 
-                    <td>
-                        <div class="col-1">
-                            <button class="btn btn-primary btn-sm" type="button" runat="server" id="EditLicitacionBtn" data-toggle="modal" data-target="#editModal">
-                                <i class="fas fa-highlighter"></i>
-                            </button>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-1">
-                            <button class="btn btn-primary btn-sm" type="button" runat="server" id="DeleteLicitacionBtn" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-window-close"></i>
-                            </button>
-                        </div>
-                    </td>
+                <tr>
+                    <th>
+                        <asp:Label ID="lblIdLicitacion" runat="server" Text='<%# Eval("IdLicitacion") %>' />
+                    </th>
+                    <th>
+                        <asp:Label ID="lblNroLicitacion" runat="server" Text='<%# Eval("NroLicitacion") %>' />
+                    </th>
+                    <th>
+                        <asp:Label ID="lblFechaLicitacion" runat="server" Text='<%# String.Format("{0:d}",Eval( "FechaLicitacion") ) %>' />
+                    </th>
+                    <th>
+                        <asp:Label ID="lblIdTipoLicitacion" runat="server" Text='<%# Eval("TipoLicitacion") %>' />
+                    </th>
+                    <th>
+                        <asp:Label ID="lblUOCReferancia" runat="server" Text='<%# Eval("UOCReferancia") %>' />
+                    </div>
+                        <th>
+                            <asp:Label ID="lblUOCIdLicitacion" runat="server" Text='<%# Eval("UOCIdLicitacion") %>' />
+                        </th>
+                    <th>
+                        <asp:Label ID="lblActivo" runat="server" Text='<%# Eval("Activo") %>' />
+                    </th>
+                    <th>
+                        <asp:Label ID="lblFechaDesactivacion" runat="server" Text='<%# Eval("FechaDesactivacion") %>' />
+                    </th>
+
+                    <th>
+                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditLicitacionBtn" CommandName="Editar" CommandArgument='<%# Eval("IdLicitacion")%>' ToolTip="Editar">
+                            <i class="fa fa-keyboard fa-sm"></i>
+                        </asp:LinkButton>
+                    </th>
+
+                    <th>
+
+                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteLicitacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdLicitacion")%>' ToolTip="Eliminar">
+                            <i class="fa  fa-eraser fa-sm"></i>
+                        </asp:LinkButton>
+
+                    </th>
+
                 </tr>
+
             </ItemTemplate>
             <EditItemTemplate>
             </EditItemTemplate>
@@ -200,15 +214,18 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <asp:FormView ID="EditFormView" runat="server" DataSourceID="LicitacionDS" Width="100%"
+                                <asp:FormView ID="EditFormView" runat="server" Width="100%"
                                     CellPadding="4" DataKeyNames="IdLicitacion" ForeColor="#333333"
-                                    DefaultMode="Edit">
+                                    DefaultMode="Edit"
+                                    OnModeChanging="EditFormView_ModeChanging" OnItemUpdating="EditFormView_ItemUpdating" OnItemUpdated="EditFormView_ItemUpdated">
                                     <EditItemTemplate>
-                                    </EditItemTemplate>
-                                    <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                    <InsertItemTemplate>
                                         <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-3"><b>ID</b></div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtIdLicitacion" runat="server" Text='<%# Eval("IdLicitacion") %>' CssClass="form-control" Font-Size="X-Small" Enabled="false" />
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-3"><b>Tipo</b></div>
                                                 <div class="col-9">
@@ -232,8 +249,15 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Fecha</b></div>
                                                 <div class="col-9">
-                                                    <asp:Calendar ID="Calendar1" runat="server" SelectedDate='<%# Bind("FechaLicitacion") %>'></asp:Calendar>
-
+                                                    <%--<asp:Calendar ID="calendarFechaLicitacion" runat="server" SelectedDate='<%# Bind("FechaLicitacion") %>'></asp:Calendar>--%>
+                                                   <%-- <asp:TextBox ID="calendarFechaLicitacion" runat="server" Text='<%# Bind("FechaLicitacion") %>' CssClass="form-control datepicker" Font-Size="X-Small" />--%>
+                                                  
+                                                    <div class="input-group date" data-provide="datepicker" >
+                                                        <input type="text" class="form-control"  value='<%#  String.Format("{0:d}",Eval( "FechaLicitacion") ) %>' runat="server" id="calendarFechaLicitacion" >
+                                                        <div class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-th"></span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -265,8 +289,12 @@
                                         </div>
 
 
-                                        <asp:LinkButton ID="AcceptButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Aceptar" CssClass="btn btn-success" />
-                                        <asp:LinkButton ID="CancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" />
+                                        <asp:LinkButton ID="AcceptButton" runat="server" CausesValidation="False" CommandName="Update" Text="Aceptar" CssClass="btn btn-success" />
+                                        <asp:LinkButton ID="CancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" CssClass="btn btn-danger" />
+                                    </EditItemTemplate>
+                                    <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                    <InsertItemTemplate>
                                     </InsertItemTemplate>
                                     <ItemTemplate>
                                     </ItemTemplate>
@@ -325,6 +353,8 @@
             SelectCommand="select IdTipoLicitacion, TipoLicitacion from management.TipoLicitacion order by 2" SelectCommandType="Text"></asp:SqlDataSource>
 
         <!-- #endregion -->
+
+
 
 
     </div>

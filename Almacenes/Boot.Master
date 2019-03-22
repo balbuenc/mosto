@@ -193,6 +193,8 @@
                 <!-- Custom scripts for all pages-->
                 <script src="js/sb-admin.min.js"></script>
 
+                <script src="Scripts/bootstrap-datepicker.js"></script>
+                <link href="Content/bootstrap-datepicker.css" rel="stylesheet" />
 
 
 

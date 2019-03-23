@@ -60,17 +60,23 @@ namespace Almacenes.Management
 
             cmd = new SqlCommand("[management].[sp_licitacion_delete]", con);
             cmd.Parameters.Add(new SqlParameter("@IdLicitacion", ID));
+
+            // Set Output Paramater
+            SqlParameter OutputParam = new SqlParameter("@Output", SqlDbType.VarChar);
+            OutputParam.Direction = ParameterDirection.Output;
+            OutputParam.Size = 512;
+            cmd.Parameters.Add(OutputParam);
+            
             cmd.CommandType = CommandType.StoredProcedure;
-
-
-
+            
             con.Open();
-
-
             cmd.ExecuteNonQuery();
+
+            ErrorLabel.Text = OutputParam.Value.ToString();
 
             con.Close();
         }
+        
 
         protected void LicitacionListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
@@ -86,15 +92,20 @@ namespace Almacenes.Management
             {
                 DeleteRecord(e.CommandArgument.ToString());
                 LicitacionListView.DataBind();
+
+                
+                ErrorLabel.Visible = true;
+                FadeOut(ErrorLabel.ClientID, 5000);
             }
-
-
-
         }
 
 
+        protected void FadeOut(string ClientID, int Time)
+        {
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "script", "window.setTimeout(function() { document.getElementById('" + ClientID + "').style.display = 'none' }," + Time.ToString() +");", true);
+        }
 
-
+        
 
         protected void EditFormView_ModeChanging(object sender, FormViewModeEventArgs e)
         {
@@ -106,7 +117,7 @@ namespace Almacenes.Management
             SqlCommand cmd = new SqlCommand();
             DataKey key = EditFormView.DataKey;
 
-            string format = "MM/dd/yyyy";
+            string format = "dd/MM/yyyy";
 
             try
             {
@@ -136,9 +147,20 @@ namespace Almacenes.Management
                 cmd.Parameters.AddWithValue("@UOCIdLicitacion", txtUOCIdLicitacion.Text);
                 cmd.Parameters.AddWithValue("@Activo", ActivoDDL.SelectedValue.ToString());
 
+                // Set Output Paramater
+                SqlParameter OutputParam = new SqlParameter("@Output", SqlDbType.VarChar);
+                OutputParam.Direction = ParameterDirection.Output;
+                OutputParam.Size = 512;
+                cmd.Parameters.Add(OutputParam);
+
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
+
+                ErrorLabel.Text = OutputParam.Value.ToString();
+
+             
+
                 conn.Close();
 
                 Response.Redirect("Licitaciones.aspx");
@@ -147,11 +169,10 @@ namespace Almacenes.Management
             {
                 ErrorLabel.Text = ex.Message;
                 ErrorLabel.Visible = true;
-
+                FadeOut(ErrorLabel.ClientID, 5000);
             }
         }
-
-
+        
 
         protected void EditFormView_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
         {

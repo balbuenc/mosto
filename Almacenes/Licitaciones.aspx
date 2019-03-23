@@ -2,23 +2,23 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-   
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
         <div class="alert alert-primary" role="alert">
             <div class="row">
-                <div class="col-11">
+                <div class="col-10">
                     <b><%: Page.Title %> </b>
-                    <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="msg-box bg-danger" />
+
                 </div>
-                <div class="col-1">
+                <div class="col-2">
                     <button class="btn btn-primary" type="button" runat="server" id="AddLicitacionBtn" data-toggle="modal" data-target="#addModal">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
+            </div>
+            <div class="row alert-info">
+                <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
             </div>
         </div>
     </div>
@@ -60,7 +60,7 @@
                         <asp:Label ID="lblNroLicitacion" runat="server" Text='<%# Eval("NroLicitacion") %>' />
                     </th>
                     <th>
-                        <asp:Label ID="lblFechaLicitacion" runat="server" Text='<%# String.Format("{0:d}",Eval( "FechaLicitacion") ) %>' />
+                        <asp:Label ID="lblFechaLicitacion" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval( "FechaLicitacion") ) %>' />
                     </th>
                     <th>
                         <asp:Label ID="lblIdTipoLicitacion" runat="server" Text='<%# Eval("TipoLicitacion") %>' />
@@ -102,11 +102,8 @@
         </asp:ListView>
 
         <!-- #region Modals -->
-
         <div id="addModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
-
-
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <div class="modal-content">
@@ -141,7 +138,7 @@
 
                                             <div class="row">
                                                 <div class="col-3"><b>Nro. Licitacion</b></div>
-                                                <div class="col-9">
+                                                <div class="col-6">
                                                     <asp:TextBox ID="txtNroLicitacion" runat="server" Text='<%# Bind("NroLicitacion") %>' CssClass="form-control" Font-Size="X-Small" />
                                                 </div>
                                             </div>
@@ -149,7 +146,6 @@
                                                 <div class="col-3"><b>Fecha</b></div>
                                                 <div class="col-9">
                                                     <asp:Calendar ID="Calendar1" runat="server" SelectedDate='<%# Bind("FechaLicitacion") %>'></asp:Calendar>
-                                                    <%--<asp:TextBox ID="txtFechaLicitacion" runat="server" Text='<%# Bind("FechaLicitacion") %>' CssClass="form-control" Font-Size="X-Small" />--%>
                                                 </div>
                                             </div>
 
@@ -249,11 +245,8 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Fecha</b></div>
                                                 <div class="col-9">
-                                                    <%--<asp:Calendar ID="calendarFechaLicitacion" runat="server" SelectedDate='<%# Bind("FechaLicitacion") %>'></asp:Calendar>--%>
-                                                   <%-- <asp:TextBox ID="calendarFechaLicitacion" runat="server" Text='<%# Bind("FechaLicitacion") %>' CssClass="form-control datepicker" Font-Size="X-Small" />--%>
-                                                  
-                                                    <div class="input-group date" data-provide="datepicker" >
-                                                        <input type="text" class="form-control"  value='<%#  String.Format("{0:d}",Eval( "FechaLicitacion") ) %>' runat="server" id="calendarFechaLicitacion" >
+                                                    <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
+                                                        <input type="text" class="form-control" value='<%#  String.Format("{0:dd/MM/yyyy}",Eval( "FechaLicitacion") ) %>' runat="server" id="calendarFechaLicitacion">
                                                         <div class="input-group-addon">
                                                             <span class="glyphicon glyphicon-th"></span>
                                                         </div>
@@ -327,10 +320,12 @@
             UpdateCommand="management.sp_licitacion_update" UpdateCommandType="StoredProcedure">
             <DeleteParameters>
                 <asp:Parameter Name="IdLicitacion" Type="Int64" />
+
             </DeleteParameters>
             <InsertParameters>
                 <asp:Parameter Name="NroLicitacion" Type="Int32" />
                 <asp:Parameter DbType="Date" Name="FechaLicitacion" />
+
                 <asp:Parameter Name="IdTipoLicitacion" Type="Int16" />
                 <asp:Parameter Name="UOCReferancia" Type="String" />
                 <asp:Parameter Name="UOCIdLicitacion" Type="String" />

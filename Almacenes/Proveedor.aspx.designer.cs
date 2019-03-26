@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Almacenes {
+namespace Almacenes.Management {
     
     
-    public partial class TipoLicitaciones {
+    public partial class Proveedores {
         
         /// <summary>
         /// AddLicitacionBtn control.
@@ -31,13 +31,13 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// TipoLicitacionListView control.
+        /// ProveedorListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView TipoLicitacionListView;
+        protected global::System.Web.UI.WebControls.ListView ProveedorListView;
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -76,12 +76,12 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.FormView EditFormView;
         
         /// <summary>
-        /// TipoLicitacionDS control.
+        /// ProveedorDS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource TipoLicitacionDS;
+        protected global::System.Web.UI.WebControls.SqlDataSource ProveedorDS;
     }
 }

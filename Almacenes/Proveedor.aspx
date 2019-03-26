@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Tipo de Licitaciones" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="TipoLicitaciones.aspx.cs" Inherits="Almacenes.TipoLicitaciones" %>
+﻿<%@ Page Title="Proveedores" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="Proveedor.aspx.cs" Inherits="Almacenes.Management.Proveedores" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -23,20 +23,22 @@
     </div>
 
     <div class="container-fluid">
-        <asp:ListView ID="TipoLicitacionListView"
+        <asp:ListView ID="ProveedorListView"
             runat="server"
-            DataSourceID="TipoLicitacionDS"
-            DataKeyNames="IdTipoLicitacion"
+            DataSourceID="ProveedorDS"
+            DataKeyNames="IdProveedor"
             OnItemCommand="ListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
                     <table class="table table-striped" style="font-size: x-small; font-family: 'Segoe UI'">
                         <thead>
                             <th>ID</th>
-                            <th>Tipo Licitación</th>
-                            <th>Descripcion</th>
-                            <th>Activo</th>
-                            <th>Código</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Razón Social</th>
+                            <th>RUC</th>
+                            <th>Fecha Registro</th>
+                            <th>Nro. Documento</th>
                             <th>...</th>
                             <th>...</th>
                         </thead>
@@ -50,26 +52,29 @@
 
                 <tr>
                     <td>
-                        <asp:Label ID="lblIdTipoLicitacion" runat="server" Text='<%# Eval("IdTipoLicitacion") %>' /></td>
+                        <asp:Label ID="lblIdProveedor" runat="server" Text='<%# Eval("IdProveedor") %>' /></td>
                     <td>
-                        <asp:Label ID="lblTipoLicitacion" runat="server" Text='<%# Eval("TipoLicitacion") %>' /></td>
+                        <asp:Label ID="lblNombres" runat="server" Text='<%# Eval("Nombres") %>' /></td>
                     <td>
-                        <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("Descripcion") %>' /></td>
+                        <asp:Label ID="lblApellidos" runat="server" Text='<%# Eval("Apellidos") %>' /></td>
                     <td>
-                        <asp:Label ID="lblActivo" runat="server" Text='<%# Eval("Activo") %>' /></td>
+                        <asp:Label ID="lblRazonSocial" runat="server" Text='<%# Eval("RazonSocial") %>' /></td>
                     <td>
-                        <asp:Label ID="lblCodigo" runat="server" Text='<%# Eval("Codigo") %>' /></td>
-
+                        <asp:Label ID="lblRUC" runat="server" Text='<%# Eval("RUC") %>' /></td>
+                    <td>
+                        <asp:Label ID="lblFechaRegistro" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval( "FechaRegistro") ) %>' /></td>
+                    <td>
+                        <asp:Label ID="lblNroDocumento" runat="server" Text='<%# Eval("NroDocumento") %>' /></td>
 
                     <th>
-                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditTipoLicitacionBtn" CommandName="Editar" CommandArgument='<%# Eval("IdTipoLicitacion")%>' ToolTip="Editar">
+                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditProveedorBtn" CommandName="Editar" CommandArgument='<%# Eval("IdProveedor")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </th>
 
                     <th>
 
-                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteTipoLicitacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdTipoLicitacion")%>' ToolTip="Eliminar">
+                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteProveedorBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdProveedor")%>' ToolTip="Eliminar">
                             <i class="fa  fa-eraser fa-sm"></i>
                         </asp:LinkButton>
 
@@ -91,12 +96,12 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="addModalLabel">Agregar nuevo TipoLicitacion.</b>
+                                <b id="addModalLabel">Agregar nuevo Proveedor.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <asp:FormView ID="InsertFormView" runat="server" DataSourceID="TipoLicitacionDS" Width="100%"
-                                    CellPadding="4" DataKeyNames="IdTipoLicitacion" ForeColor="#333333"
+                                <asp:FormView ID="InsertFormView" runat="server" DataSourceID="ProveedorDS" Width="100%"
+                                    CellPadding="4" DataKeyNames="IdProveedor" ForeColor="#333333"
                                     DefaultMode="Insert"
                                     OnItemInserted="FormView1_ItemInserted">
                                     <EditItemTemplate>
@@ -108,34 +113,45 @@
                                             <div class="row">
                                                 <div class="col-3">ID</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdTipoLicitacion" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdProveedor" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Tipo Licitación</div>
+                                                <div class="col-3">Nombres</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtTipoLicitacion" runat="server" Text='<%# Bind("TipoLicitacion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtNombres" runat="server" Text='<%# Bind("Nombres") %>' CssClass="form-control" Font-Size="X-Small" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Descripción</div>
+                                                <div class="col-3">Apellidos</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtApellidos" runat="server" Text='<%# Bind("Apellidos") %>' CssClass="form-control" Font-Size="X-Small" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Activo</div>
+                                                <div class="col-3">Razón Social</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtActivo" runat="server" Text='<%# Bind("Activo") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtRazonSocial" runat="server" Text='<%# Bind("RazonSocial") %>' CssClass="form-control" Font-Size="X-Small" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Código</div>
+                                                <div class="col-3">RUC</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtCodigo" runat="server" Text='<%# Bind("Codigo") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtRUC" runat="server" Text='<%# Bind("RUC") %>' CssClass="form-control" Font-Size="X-Small" />
                                                 </div>
                                             </div>
-
+                                            <div class="row">
+                                                <div class="col-3">Fecha Registro</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtFechaRegistro" runat="server" Text='<%# Eval("FechaRegistro") %>' CssClass="form-control" Font-Size="X-Small" Enabled="false" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Nro. Documento</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtNroDocumento" runat="server" Text='<%# Bind("NroDocumento") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                </div>
+                                            </div>
 
 
                                         </div>
@@ -170,12 +186,12 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="editModalLabel">Modificar TipoLicitacion.</b>
+                                <b id="editModalLabel">Modificar Proveedor.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
                                 <asp:FormView ID="EditFormView" runat="server" Width="100%"
-                                    CellPadding="4" DataKeyNames="IdTipoLicitacion" ForeColor="#333333"
+                                    CellPadding="4" DataKeyNames="IdProveedor" ForeColor="#333333"
                                     DefaultMode="Edit"
                                     OnModeChanging="EditFormView_ModeChanging" OnItemUpdating="EditFormView_ItemUpdating" OnItemUpdated="EditFormView_ItemUpdated">
                                     <EditItemTemplate>
@@ -183,31 +199,43 @@
                                             <div class="row">
                                                 <div class="col-3">ID</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdTipoLicitacion" runat="server" Text='<%# Bind("IdTipoLicitacion") %>' CssClass="form-control" Font-Size="X-Small" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdProveedor" runat="server" Text='<%# Bind("IdProveedor") %>' CssClass="form-control" Font-Size="X-Small" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Tipo Licitación</div>
+                                                <div class="col-3">Nombres</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtTipoLicitacion" runat="server" Text='<%# Bind("TipoLicitacion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtNombres" runat="server" Text='<%# Bind("Nombres") %>' CssClass="form-control" Font-Size="X-Small" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Descripción</div>
+                                                <div class="col-3">Apellidos</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtApellidos" runat="server" Text='<%# Bind("Apellidos") %>' CssClass="form-control" Font-Size="X-Small" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Activo</div>
+                                                <div class="col-3">Razón Social</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtActivo" runat="server" Text='<%# Bind("Activo") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtRazonSocial" runat="server" Text='<%# Bind("RazonSocial") %>' CssClass="form-control" Font-Size="X-Small" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Código</div>
+                                                <div class="col-3">RUC</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtCodigo" runat="server" Text='<%# Bind("Codigo") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtRUC" runat="server" Text='<%# Bind("RUC") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Fecha Registro</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtFechaRegistro" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval( "FechaRegistro") ) %>' CssClass="form-control" Font-Size="X-Small"  Enabled="false"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Nro. Documento</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtNroDocumento" runat="server" Text='<%# Bind("NroDocumento") %>' CssClass="form-control" Font-Size="X-Small" />
                                                 </div>
                                             </div>
 
@@ -247,18 +275,19 @@
 
 
         <!-- #region DataSources -->
-        <asp:SqlDataSource ID="TipoLicitacionDS"
+        <asp:SqlDataSource ID="ProveedorDS"
             runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-            InsertCommand="management.sp_TipoLicitacion_insert" InsertCommandType="StoredProcedure"
-            SelectCommand="management.sp_TipoLicitacion_get_all" SelectCommandType="StoredProcedure">
+            InsertCommand="management.sp_Proveedor_insert" InsertCommandType="StoredProcedure"
+            SelectCommand="management.sp_Proveedor_get_all" SelectCommandType="StoredProcedure">
             <DeleteParameters>
             </DeleteParameters>
             <InsertParameters>
-
-                <asp:Parameter Name="TipoLicitacion" Type="String" />
-                <asp:Parameter Name="Descripcion" Type="String" />
-                <asp:Parameter Name="Activo" Type="String" />
-                <asp:Parameter Name="Codigo" Type="String" />
+                <asp:Parameter Name="Nombres" Type="String" />
+                <asp:Parameter Name="Apellidos" Type="String" />
+                <asp:Parameter Name="RazonSocial" Type="String" />
+                <asp:Parameter Name="RUC" Type="String" />
+                
+                <asp:Parameter Name="NroDocumento" Type="String" />
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>

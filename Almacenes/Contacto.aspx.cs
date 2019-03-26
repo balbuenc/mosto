@@ -9,30 +9,31 @@ using System.Web.UI.WebControls;
 
 namespace Almacenes
 {
-    public partial class TipoLicitaciones : System.Web.UI.Page
+    public partial class Contacto : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
+
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
-            Response.Redirect("TipoLicitaciones.aspx");
+            Response.Redirect("Contacto.aspx");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("TipoLicitaciones.aspx");
+            Response.Redirect("Contacto.aspx");
         }
 
         protected void GetRecordToUpdate(String ID)
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(TipoLicitacionDS.ConnectionString);
+            SqlConnection con = new SqlConnection(ContactoDS.ConnectionString);
 
-            cmd = new SqlCommand("management.[sp_TipoLicitacion_get_TipoLicitacion]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdTipoLicitacion", ID));
+            cmd = new SqlCommand("management.[sp_Contacto_get_Contacto]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdContacto", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter adp = new SqlDataAdapter();
@@ -54,10 +55,10 @@ namespace Almacenes
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(TipoLicitacionDS.ConnectionString);
+            SqlConnection con = new SqlConnection(ContactoDS.ConnectionString);
 
-            cmd = new SqlCommand("management.[sp_TipoLicitacion_delete]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdTipoLicitacion", ID));
+            cmd = new SqlCommand("management.[sp_Contacto_delete]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdContacto", ID));
 
 
 
@@ -87,7 +88,7 @@ namespace Almacenes
             else if (e.CommandName == "Eliminar")
             {
                 DeleteRecord(e.CommandArgument.ToString());
-                TipoLicitacionListView.DataBind();
+                ContactoListView.DataBind();
 
                 ErrorLabel.Text = "El Registro se eliminó correctamente.";
                 ErrorLabel.Visible = true;
@@ -118,27 +119,21 @@ namespace Almacenes
             try
             {
                 //Obtengo los valores de los campos a editar
-                TextBox txtIdTipoLicitacion = (TextBox)EditFormView.FindControl("txtIdTipoLicitacion");
-                TextBox txtTipoLicitacion = (TextBox)EditFormView.FindControl("txtTipoLicitacion");
-                TextBox txtDescripcion = (TextBox)EditFormView.FindControl("txtDescripcion");
-                TextBox txtActivo = (TextBox)EditFormView.FindControl("txtActivo");
-                TextBox txtCodigo = (TextBox)EditFormView.FindControl("txtCodigo");
+                TextBox txtIdContacto = (TextBox)EditFormView.FindControl("txtIdContacto");
+                TextBox txtContacto = (TextBox)EditFormView.FindControl("txtContacto");
 
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
-                SqlConnection conn = new SqlConnection(TipoLicitacionDS.ConnectionString);
+                SqlConnection conn = new SqlConnection(ContactoDS.ConnectionString);
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "management.sp_TipoLicitacion_update";
+                cmd.CommandText = "management.sp_Contacto_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@IdTipoLicitacion", txtIdTipoLicitacion.Text);
-                cmd.Parameters.AddWithValue("@TipoLicitacion", txtTipoLicitacion.Text);
-                cmd.Parameters.AddWithValue("@Descripcion", txtDescripcion.Text);
-                cmd.Parameters.AddWithValue("@Activo", txtActivo.Text);
-                cmd.Parameters.AddWithValue("@Codigo", txtCodigo.Text);
+                cmd.Parameters.AddWithValue("@IdContacto", txtIdContacto.Text);
+                cmd.Parameters.AddWithValue("@Contacto", txtContacto.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -148,7 +143,7 @@ namespace Almacenes
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#editModal').modal('hide');", true);
 
-                Response.Redirect("TipoLicitaciones.aspx");
+                Response.Redirect("Contacto.aspx");
 
 
             }
@@ -167,9 +162,8 @@ namespace Almacenes
             ErrorLabel.Text = "El Registro de actualizò correctamente";
             ErrorLabel.Visible = true;
             FadeOut(ErrorLabel.ClientID, 5000);
-            TipoLicitacionListView.DataBind();
+            ContactoListView.DataBind();
 
         }
-
     }
 }

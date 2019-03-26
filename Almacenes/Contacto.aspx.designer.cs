@@ -10,7 +10,7 @@
 namespace Almacenes {
     
     
-    public partial class TipoLicitaciones {
+    public partial class Contacto {
         
         /// <summary>
         /// AddLicitacionBtn control.
@@ -31,13 +31,13 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// TipoLicitacionListView control.
+        /// ContactoListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView TipoLicitacionListView;
+        protected global::System.Web.UI.WebControls.ListView ContactoListView;
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -76,12 +76,12 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.FormView EditFormView;
         
         /// <summary>
-        /// TipoLicitacionDS control.
+        /// ContactoDS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource TipoLicitacionDS;
+        protected global::System.Web.UI.WebControls.SqlDataSource ContactoDS;
     }
 }

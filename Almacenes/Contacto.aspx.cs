@@ -119,8 +119,12 @@ namespace Almacenes
             try
             {
                 //Obtengo los valores de los campos a editar
+                TextBox txtIdProveedor = (TextBox)EditFormView.FindControl("txtIdProveedor");
+                TextBox txtIdTipoContacto = (TextBox)EditFormView.FindControl("txtIdTipoContacto");
+                TextBox txtDescripcion = (TextBox)EditFormView.FindControl("txtDescripcion");
+                TextBox txtDatoContacto = (TextBox)EditFormView.FindControl("txtDatoContacto");
+                TextBox txtActivo = (TextBox)EditFormView.FindControl("txtActivo");
                 TextBox txtIdContacto = (TextBox)EditFormView.FindControl("txtIdContacto");
-                TextBox txtContacto = (TextBox)EditFormView.FindControl("txtContacto");
 
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
@@ -132,8 +136,12 @@ namespace Almacenes
                 cmd.CommandText = "management.sp_Contacto_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
+                cmd.Parameters.AddWithValue("@IdProveedor", txtIdProveedor.Text);
+                cmd.Parameters.AddWithValue("@IdTipoContacto", txtIdTipoContacto.Text);
+                cmd.Parameters.AddWithValue("@Descripcion", txtDescripcion.Text);
+                cmd.Parameters.AddWithValue("@DatoContacto", txtDatoContacto.Text);
+                cmd.Parameters.AddWithValue("@Activo", txtActivo.Text);
                 cmd.Parameters.AddWithValue("@IdContacto", txtIdContacto.Text);
-                cmd.Parameters.AddWithValue("@Contacto", txtContacto.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();

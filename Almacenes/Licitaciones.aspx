@@ -31,7 +31,7 @@
             OnItemCommand="LicitacionListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
-                    <table class="table table-striped" style="font-size: x-small; font-family: 'Segoe UI'">
+                    <table class="table table-striped" style="font-size: small; font-family: 'Segoe UI'">
                         <thead>
                             <th>ID</th>
                             <th>Número</th>
@@ -53,44 +53,44 @@
             <ItemTemplate>
 
                 <tr>
-                    <th>
+                    <td>
                         <asp:Label ID="lblIdLicitacion" runat="server" Text='<%# Eval("IdLicitacion") %>' />
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         <asp:Label ID="lblNroLicitacion" runat="server" Text='<%# Eval("NroLicitacion") %>' />
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         <asp:Label ID="lblFechaLicitacion" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval( "FechaLicitacion") ) %>' />
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         <asp:Label ID="lblIdTipoLicitacion" runat="server" Text='<%# Eval("TipoLicitacion") %>' />
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         <asp:Label ID="lblUOCReferancia" runat="server" Text='<%# Eval("UOCReferancia") %>' />
-                    </div>
-                        <th>
-                            <asp:Label ID="lblUOCIdLicitacion" runat="server" Text='<%# Eval("UOCIdLicitacion") %>' />
-                        </th>
-                    <th>
+                    </td>
+                    <td>
+                        <asp:Label ID="lblUOCIdLicitacion" runat="server" Text='<%# Eval("UOCIdLicitacion") %>' />
+                    </td>
+                    <td>
                         <asp:Label ID="lblActivo" runat="server" Text='<%# Eval("Activo") %>' />
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         <asp:Label ID="lblFechaDesactivacion" runat="server" Text='<%# Eval("FechaDesactivacion") %>' />
-                    </th>
+                    </td>
 
-                    <th>
+                    <td>
                         <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditLicitacionBtn" CommandName="Editar" CommandArgument='<%# Eval("IdLicitacion")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
-                    </th>
+                    </td>
 
-                    <th>
+                    <td>
 
                         <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteLicitacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdLicitacion")%>' ToolTip="Eliminar">
                             <i class="fa  fa-eraser fa-sm"></i>
                         </asp:LinkButton>
 
-                    </th>
+                    </td>
 
                 </tr>
 
@@ -139,7 +139,7 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Nro. Licitacion</b></div>
                                                 <div class="col-6">
-                                                    <asp:TextBox ID="txtNroLicitacion" runat="server" Text='<%# Bind("NroLicitacion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtNroLicitacion" runat="server" Text='<%# Bind("NroLicitacion") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -152,13 +152,13 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Referencia (UOC)</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtUOCReferancia" runat="server" Text='<%# Bind("UOCReferancia") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtUOCReferancia" runat="server" Text='<%# Bind("UOCReferancia") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>ID (UOC)</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtUOCIdLicitacion" runat="server" Text='<%# Bind("UOCIdLicitacion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtUOCIdLicitacion" runat="server" Text='<%# Bind("UOCIdLicitacion") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -219,7 +219,7 @@
                                             <div class="row">
                                                 <div class="col-3"><b>ID</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdLicitacion" runat="server" Text='<%# Eval("IdLicitacion") %>' CssClass="form-control" Font-Size="X-Small" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdLicitacion" runat="server" Text='<%# Eval("IdLicitacion") %>' CssClass="form-control" Font-Size="Medium" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -239,7 +239,7 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Nro. Licitacion</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtNroLicitacion" runat="server" Text='<%# Bind("NroLicitacion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtNroLicitacion" runat="server" Text='<%# Bind("NroLicitacion") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -257,13 +257,13 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Referencia (UOC)</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtUOCReferancia" runat="server" Text='<%# Bind("UOCReferancia") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtUOCReferancia" runat="server" Text='<%# Bind("UOCReferancia") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>ID (UOC)</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtUOCIdLicitacion" runat="server" Text='<%# Bind("UOCIdLicitacion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtUOCIdLicitacion" runat="server" Text='<%# Bind("UOCIdLicitacion") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">

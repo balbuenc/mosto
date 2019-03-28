@@ -30,7 +30,7 @@
             OnItemCommand="ListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
-                    <table class="table table-striped" style="font-size: x-small; font-family: 'Segoe UI'">
+                    <table class="table table-striped" style="font-size: small; font-family: 'Segoe UI'">
                         <thead>
                             <th>ID</th>
                             <th>Nombres</th>
@@ -113,43 +113,43 @@
                                             <div class="row">
                                                 <div class="col-3">ID</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdProveedor" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdProveedor" runat="server" Text="" CssClass="form-control" Font-Size="Medium" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Nombres</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtNombres" runat="server" Text='<%# Bind("Nombres") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtNombres" runat="server" Text='<%# Bind("Nombres") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Apellidos</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtApellidos" runat="server" Text='<%# Bind("Apellidos") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtApellidos" runat="server" Text='<%# Bind("Apellidos") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Razón Social</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtRazonSocial" runat="server" Text='<%# Bind("RazonSocial") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtRazonSocial" runat="server" Text='<%# Bind("RazonSocial") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">RUC</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtRUC" runat="server" Text='<%# Bind("RUC") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtRUC" runat="server" Text='<%# Bind("RUC") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Fecha Registro</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtFechaRegistro" runat="server" Text='<%# Eval("FechaRegistro") %>' CssClass="form-control" Font-Size="X-Small" Enabled="false" />
+                                                    <asp:TextBox ID="txtFechaRegistro" runat="server" Text='<%# Eval("FechaRegistro") %>' CssClass="form-control" Font-Size="Medium" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Nro. Documento</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtNroDocumento" runat="server" Text='<%# Bind("NroDocumento") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtNroDocumento" runat="server" Text='<%# Bind("NroDocumento") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
 
@@ -199,43 +199,43 @@
                                             <div class="row">
                                                 <div class="col-3">ID</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdProveedor" runat="server" Text='<%# Bind("IdProveedor") %>' CssClass="form-control" Font-Size="X-Small" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdProveedor" runat="server" Text='<%# Bind("IdProveedor") %>' CssClass="form-control" Font-Size="Medium" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Nombres</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtNombres" runat="server" Text='<%# Bind("Nombres") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtNombres" runat="server" Text='<%# Bind("Nombres") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Apellidos</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtApellidos" runat="server" Text='<%# Bind("Apellidos") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtApellidos" runat="server" Text='<%# Bind("Apellidos") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Razón Social</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtRazonSocial" runat="server" Text='<%# Bind("RazonSocial") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtRazonSocial" runat="server" Text='<%# Bind("RazonSocial") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">RUC</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtRUC" runat="server" Text='<%# Bind("RUC") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtRUC" runat="server" Text='<%# Bind("RUC") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Fecha Registro</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtFechaRegistro" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval( "FechaRegistro") ) %>' CssClass="form-control" Font-Size="X-Small"  Enabled="false"/>
+                                                    <asp:TextBox ID="txtFechaRegistro" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval( "FechaRegistro") ) %>' CssClass="form-control" Font-Size="Medium"  Enabled="false"/>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Nro. Documento</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtNroDocumento" runat="server" Text='<%# Bind("NroDocumento") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtNroDocumento" runat="server" Text='<%# Bind("NroDocumento") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
 

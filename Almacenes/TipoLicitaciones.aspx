@@ -30,7 +30,7 @@
             OnItemCommand="ListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
-                    <table class="table table-striped" style="font-size: x-small; font-family: 'Segoe UI'">
+                    <table class="table table-striped" style="font-size: small; font-family: 'Segoe UI'">
                         <thead>
                             <th>ID</th>
                             <th>Tipo Licitación</th>
@@ -91,7 +91,7 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="addModalLabel">Agregar nuevo TipoLicitacion.</b>
+                                <b id="addModalLabel">Agregar Tipo de Licitación.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
@@ -106,33 +106,39 @@
                                     <InsertItemTemplate>
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <div class="col-3">ID</div>
+                                                <div class="col-3"><b>ID</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdTipoLicitacion" runat="server" Text="" CssClass="form-control" Font-Size="X-Small" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdTipoLicitacion" runat="server" Text="" CssClass="form-control" Font-Size="Medium" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Tipo Licitación</div>
+                                                <div class="col-3"><b>Tipo Licitación</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtTipoLicitacion" runat="server" Text='<%# Bind("TipoLicitacion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtTipoLicitacion" runat="server" Text='<%# Bind("TipoLicitacion") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Descripción</div>
+                                                <div class="col-3"><b>Descripción</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Activo</div>
+                                                <div class="col-3"><b>Activo</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtActivo" runat="server" Text='<%# Bind("Activo") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:DropDownList ID="ActivoDDL"
+                                                        runat="server"
+                                                        CssClass="form-control"
+                                                        SelectedValue='<%# Bind("Activo") %>'>
+                                                        <asp:ListItem>S</asp:ListItem>
+                                                        <asp:ListItem>N</asp:ListItem>
+                                                    </asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Código</div>
+                                                <div class="col-3"><b>Código</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtCodigo" runat="server" Text='<%# Bind("Codigo") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtCodigo" runat="server" Text='<%# Bind("Codigo") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
 
@@ -170,7 +176,7 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="editModalLabel">Modificar TipoLicitacion.</b>
+                                <b id="editModalLabel">Modificar Tipo de Licitación.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
@@ -181,33 +187,39 @@
                                     <EditItemTemplate>
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <div class="col-3">ID</div>
+                                                <div class="col-3"><b>ID</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdTipoLicitacion" runat="server" Text='<%# Bind("IdTipoLicitacion") %>' CssClass="form-control" Font-Size="X-Small" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdTipoLicitacion" runat="server" Text='<%# Bind("IdTipoLicitacion") %>' CssClass="form-control" Font-Size="Medium" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Tipo Licitación</div>
+                                                <div class="col-3"><b>Tipo Licitación</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtTipoLicitacion" runat="server" Text='<%# Bind("TipoLicitacion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtTipoLicitacion" runat="server" Text='<%# Bind("TipoLicitacion") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Descripción</div>
+                                                <div class="col-3"><b>Descripción</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Activo</div>
+                                                <div class="col-3"><b>Activo</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtActivo" runat="server" Text='<%# Bind("Activo") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:DropDownList ID="ActivoDDL"
+                                                        runat="server"
+                                                        CssClass="form-control"
+                                                        SelectedValue='<%# Bind("Activo") %>'>
+                                                        <asp:ListItem>S</asp:ListItem>
+                                                        <asp:ListItem>N</asp:ListItem>
+                                                    </asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Código</div>
+                                                <div class="col-3"><b>Código</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtCodigo" runat="server" Text='<%# Bind("Codigo") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                    <asp:TextBox ID="txtCodigo" runat="server" Text='<%# Bind("Codigo") %>' CssClass="form-control" Font-Size="Medium" />
                                                 </div>
                                             </div>
 

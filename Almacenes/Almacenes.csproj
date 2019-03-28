@@ -319,6 +319,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="TipoContacto.aspx" />
     <Content Include="TipoLicitaciones.aspx" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
@@ -2084,6 +2085,13 @@
       <DependentUpon>Proveedor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoContacto.aspx.cs">
+      <DependentUpon>TipoContacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TipoContacto.aspx.designer.cs">
+      <DependentUpon>TipoContacto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TipoLicitaciones.aspx.cs">
       <DependentUpon>TipoLicitaciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

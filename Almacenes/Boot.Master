@@ -114,6 +114,7 @@
                                 <a class="dropdown-item" href="/Licitaciones.aspx">Licitaciones</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/Proveedor.aspx">Proveedores</a>
+                                <a class="dropdown-item" href="/TipoContacto.aspx">Tipo de Contactos</a>
                                 <a class="dropdown-item" href="/Contacto.aspx">Contactos</a>
                                 <div class="dropdown-divider"></div>
 

@@ -1,13 +1,14 @@
 ﻿<%@ Page Title="Contacto" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="Contacto.aspx.cs" Inherits="Almacenes.Contacto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="css/Enigma.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
-        <div class="alert alert-primary" role="alert">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-10">
-                    <b><%: Page.Title %> </b>
+                    <div class="col-form-label-lg azul"><%: Page.Title %> </div>
 
                 </div>
                 <div class="col-2">
@@ -16,7 +17,7 @@
                     </button>
                 </div>
             </div>
-            <div class="row alert-info">
+            <div class="row">
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
             </div>
         </div>
@@ -30,7 +31,7 @@
             OnItemCommand="ListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
-                    <table class="table table-striped" style="font-size: small; font-family: 'Segoe UI'">
+                    <table class="table table-striped table-condensed">
                         <thead>
                             <th>Proveedor</th>
                             <th>Tipo</th>
@@ -50,11 +51,12 @@
 
                 <tr>
                     <td>
+                        <asp:Label ID="lblIdContacto" runat="server" Text='<%# Eval("IdContacto") %>' Visible="false" />
                         <asp:Label ID="lblIdProveedor" runat="server" Text='<%# Eval("IdProveedor") %>' Visible="false" />
-                        <asp:Label ID="lblProveedor" runat="server" Text='<%# Eval("Proveedor") %>'  /></td>
+                        <asp:Label ID="lblProveedor" runat="server" Text='<%# Eval("Proveedor") %>' /></td>
                     <td>
-                        <asp:Label ID="lblIdTipoContacto" runat="server" Text='<%# Eval("IdTipoContacto") %>'  Visible="false" />
-                        <asp:Label ID="lblTipoContacto" runat="server" Text='<%# Eval("TipoContacto") %>'   />
+                        <asp:Label ID="lblIdTipoContacto" runat="server" Text='<%# Eval("IdTipoContacto") %>' Visible="false" />
+                        <asp:Label ID="lblTipoContacto" runat="server" Text='<%# Eval("TipoContacto") %>' />
 
                     </td>
                     <td>
@@ -109,27 +111,42 @@
                                     <InsertItemTemplate>
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <div class="col-3"><b>ID</b></div>
+                                                <div class="col-3"><b>Proveedor</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdProveedor" runat="server" Text="" CssClass="form-control" Font-Size="Medium" Enabled="false" />
+                                                    <asp:DropDownList ID="IdProveedorDDL"
+                                                        runat="server"
+                                                        DataSourceID="ProveedorDS"
+                                                        DataTextField="Razonsocial"
+                                                        DataValueField="IdProveedor"
+                                                        CssClass="form-control"
+                                                        SelectedValue='<%# Bind("IdProveedor") %>'>
+                                                    </asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>Tipo</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdTipoContacto" runat="server" Text='<%# Bind("IdTipoContacto") %>' CssClass="form-control" Font-Size="Medium" />
+
+                                                    <asp:DropDownList ID="IdTipoContactoDDL"
+                                                        runat="server"
+                                                        DataSourceID="TipoContactoDS"
+                                                        DataTextField="TipoContacto"
+                                                        DataValueField="IdTipoContacto"
+                                                        CssClass="form-control"
+                                                        SelectedValue='<%# Bind("IdTipoContacto") %>'>
+                                                    </asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>Descripción</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>Información</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtDatoContacto" runat="server" Text='<%# Bind("DatoContacto") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtDatoContacto" runat="server" Text='<%# Bind("DatoContacto") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -137,7 +154,7 @@
                                                 <div class="col-9">
                                                     <asp:DropDownList ID="ActivoDDL"
                                                         runat="server"
-                                                        CssClass="form-control"
+                                                        CssClass="form-control mitad"
                                                         SelectedValue='<%# Bind("Activo") %>'>
                                                         <asp:ListItem>S</asp:ListItem>
                                                         <asp:ListItem>N</asp:ListItem>
@@ -190,25 +207,45 @@
                                             <div class="row">
                                                 <div class="col-3"><b>ID</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdProveedor" runat="server" Text='<%# Bind("IdProveedor") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtIdContacto" runat="server" Text='<%# Bind("IdContacto") %>' CssClass="form-control mitad" Enabled="false" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3"><b>Proveedor</b></div>
+                                                <div class="col-9">
+                                                    <asp:DropDownList ID="IdProveedorDDL"
+                                                        runat="server"
+                                                        DataSourceID="ProveedorDS"
+                                                        DataTextField="Razonsocial"
+                                                        DataValueField="IdProveedor"
+                                                        CssClass="form-control"
+                                                        SelectedValue='<%# Bind("IdProveedor") %>'>
+                                                    </asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>Tipo</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdTipoContacto" runat="server" Text='<%# Bind("IdTipoContacto") %>' CssClass="form-control" Font-Size="Medium" />
+                                                     <asp:DropDownList ID="IdTipoContactoDDL"
+                                                        runat="server"
+                                                        DataSourceID="TipoContactoDS"
+                                                        DataTextField="TipoContacto"
+                                                        DataValueField="IdTipoContacto"
+                                                        CssClass="form-control"
+                                                        SelectedValue='<%# Bind("IdTipoContacto") %>'>
+                                                    </asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>Descripción</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>Información</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtDatoContacto" runat="server" Text='<%# Bind("DatoContacto") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtDatoContacto" runat="server" Text='<%# Bind("DatoContacto") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -216,7 +253,7 @@
                                                 <div class="col-9">
                                                     <asp:DropDownList ID="ActivoDDL"
                                                         runat="server"
-                                                        CssClass="form-control"
+                                                        CssClass="form-control mitad"
                                                         SelectedValue='<%# Bind("Activo") %>'>
                                                         <asp:ListItem>S</asp:ListItem>
                                                         <asp:ListItem>N</asp:ListItem>
@@ -266,17 +303,22 @@
             <DeleteParameters>
             </DeleteParameters>
             <InsertParameters>
-
-
+                <asp:Parameter Name="IdProveedor" Type="Int32" />
                 <asp:Parameter Name="IdTipoContacto" Type="Int32" />
                 <asp:Parameter Name="Descripcion" Type="String" />
                 <asp:Parameter Name="DatoContacto" Type="String" />
                 <asp:Parameter Name="Activo" Type="String" />
+
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>
         </asp:SqlDataSource>
 
+        <asp:SqlDataSource ID="ProveedorDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+            SelectCommand="select IdProveedor, RazonSocial from management.Proveedor  order by 2" SelectCommandType="Text"></asp:SqlDataSource>
+
+        <asp:SqlDataSource ID="TipoContactoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+            SelectCommand="select IdTipoContacto, TipoContacto from management.TipoContacto order by 2" SelectCommandType="Text"></asp:SqlDataSource>
 
         <!-- #endregion -->
 

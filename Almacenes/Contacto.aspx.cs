@@ -119,11 +119,11 @@ namespace Almacenes
             try
             {
                 //Obtengo los valores de los campos a editar
-                TextBox txtIdProveedor = (TextBox)EditFormView.FindControl("txtIdProveedor");
-                TextBox txtIdTipoContacto = (TextBox)EditFormView.FindControl("txtIdTipoContacto");
+                DropDownList txtIdProveedor = (DropDownList)EditFormView.FindControl("IdProveedorDDL");
+                DropDownList txtIdTipoContacto = (DropDownList)EditFormView.FindControl("IdTipoContactoDDL");
                 TextBox txtDescripcion = (TextBox)EditFormView.FindControl("txtDescripcion");
                 TextBox txtDatoContacto = (TextBox)EditFormView.FindControl("txtDatoContacto");
-                TextBox txtActivo = (TextBox)EditFormView.FindControl("txtActivo");
+                DropDownList txtActivo = (DropDownList)EditFormView.FindControl("ActivoDDL");
                 TextBox txtIdContacto = (TextBox)EditFormView.FindControl("txtIdContacto");
 
 
@@ -136,11 +136,11 @@ namespace Almacenes
                 cmd.CommandText = "management.sp_Contacto_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@IdProveedor", txtIdProveedor.Text);
-                cmd.Parameters.AddWithValue("@IdTipoContacto", txtIdTipoContacto.Text);
+                cmd.Parameters.AddWithValue("@IdProveedor", txtIdProveedor.SelectedValue);
+                cmd.Parameters.AddWithValue("@IdTipoContacto", txtIdTipoContacto.SelectedValue);
                 cmd.Parameters.AddWithValue("@Descripcion", txtDescripcion.Text);
                 cmd.Parameters.AddWithValue("@DatoContacto", txtDatoContacto.Text);
-                cmd.Parameters.AddWithValue("@Activo", txtActivo.Text);
+                cmd.Parameters.AddWithValue("@Activo", txtActivo.SelectedValue);
                 cmd.Parameters.AddWithValue("@IdContacto", txtIdContacto.Text);
 
                 conn.Open();

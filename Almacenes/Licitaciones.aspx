@@ -5,11 +5,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
-        <div class="alert alert-primary" role="alert">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-10">
-                    <b><%: Page.Title %> </b>
-
+                    <div class="col-form-label-lg azul"><%: Page.Title %> </div>
                 </div>
                 <div class="col-2">
                     <button class="btn btn-primary" type="button" runat="server" id="AddLicitacionBtn" data-toggle="modal" data-target="#addModal">
@@ -17,7 +16,7 @@
                     </button>
                 </div>
             </div>
-            <div class="row alert-info">
+            <div class="row">
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
             </div>
         </div>
@@ -31,7 +30,7 @@
             OnItemCommand="LicitacionListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
-                    <table class="table table-striped" style="font-size: small; font-family: 'Segoe UI'">
+                    <table class="table table-striped table-condensed" >
                         <thead>
                             <th>ID</th>
                             <th>Número</th>
@@ -130,7 +129,7 @@
                                                         DataSourceID="TipoLicitacionDS"
                                                         DataTextField="TipoLicitacion"
                                                         DataValueField="IdTipoLicitacion"
-                                                        CssClass="form-control"
+                                                        CssClass="form-control spacing"
                                                         SelectedValue='<%# Bind("IdTipoLicitacion") %>'>
                                                     </asp:DropDownList>
                                                 </div>
@@ -139,7 +138,7 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Nro. Licitacion</b></div>
                                                 <div class="col-6">
-                                                    <asp:TextBox ID="txtNroLicitacion" runat="server" Text='<%# Bind("NroLicitacion") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtNroLicitacion" runat="server" Text='<%# Bind("NroLicitacion") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -152,13 +151,13 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Referencia (UOC)</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtUOCReferancia" runat="server" Text='<%# Bind("UOCReferancia") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtUOCReferancia" runat="server" Text='<%# Bind("UOCReferancia") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>ID (UOC)</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtUOCIdLicitacion" runat="server" Text='<%# Bind("UOCIdLicitacion") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtUOCIdLicitacion" runat="server" Text='<%# Bind("UOCIdLicitacion") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -176,7 +175,7 @@
 
                                         </div>
 
-
+                                        <hr />
                                         <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Aceptar" CssClass="btn btn-success" />
                                         <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" OnClick="InsertCancelButton_Click" />
                                     </InsertItemTemplate>
@@ -219,7 +218,7 @@
                                             <div class="row">
                                                 <div class="col-3"><b>ID</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdLicitacion" runat="server" Text='<%# Eval("IdLicitacion") %>' CssClass="form-control" Font-Size="Medium" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdLicitacion" runat="server" Text='<%# Eval("IdLicitacion") %>' CssClass="form-control mitad" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -239,7 +238,7 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Nro. Licitacion</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtNroLicitacion" runat="server" Text='<%# Bind("NroLicitacion") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtNroLicitacion" runat="server" Text='<%# Bind("NroLicitacion") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -257,13 +256,13 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Referencia (UOC)</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtUOCReferancia" runat="server" Text='<%# Bind("UOCReferancia") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtUOCReferancia" runat="server" Text='<%# Bind("UOCReferancia") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>ID (UOC)</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtUOCIdLicitacion" runat="server" Text='<%# Bind("UOCIdLicitacion") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtUOCIdLicitacion" runat="server" Text='<%# Bind("UOCIdLicitacion") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -281,6 +280,7 @@
 
                                         </div>
 
+                                        <hr />
 
                                         <asp:LinkButton ID="AcceptButton" runat="server" CausesValidation="False" CommandName="Update" Text="Aceptar" CssClass="btn btn-success" />
                                         <asp:LinkButton ID="CancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" CssClass="btn btn-danger" />

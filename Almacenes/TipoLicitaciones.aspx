@@ -4,10 +4,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
-        <div class="alert alert-primary" role="alert">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-10">
-                    <b><%: Page.Title %> </b>
+                    <div class="col-form-label-lg azul"><%: Page.Title %> </div>
 
                 </div>
                 <div class="col-2">
@@ -16,7 +16,7 @@
                     </button>
                 </div>
             </div>
-            <div class="row alert-info">
+            <div class="row">
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
             </div>
         </div>
@@ -30,7 +30,7 @@
             OnItemCommand="ListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
-                    <table class="table table-striped" style="font-size: small; font-family: 'Segoe UI'">
+                    <table class="table table-striped table-condensed" >
                         <thead>
                             <th>ID</th>
                             <th>Tipo Licitación</th>
@@ -108,19 +108,19 @@
                                             <div class="row">
                                                 <div class="col-3"><b>ID</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdTipoLicitacion" runat="server" Text="" CssClass="form-control" Font-Size="Medium" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdTipoLicitacion" runat="server" Text="" CssClass="form-control mitad" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>Tipo Licitación</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtTipoLicitacion" runat="server" Text='<%# Bind("TipoLicitacion") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtTipoLicitacion" runat="server" Text='<%# Bind("TipoLicitacion") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>Descripción</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -138,14 +138,14 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Código</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtCodigo" runat="server" Text='<%# Bind("Codigo") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtCodigo" runat="server" Text='<%# Bind("Codigo") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
 
 
 
                                         </div>
-
+                                        <hr />
 
                                         <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Aceptar" CssClass="btn btn-success" />
                                         <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" OnClick="CancelButton_Click" />
@@ -189,19 +189,19 @@
                                             <div class="row">
                                                 <div class="col-3"><b>ID</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdTipoLicitacion" runat="server" Text='<%# Bind("IdTipoLicitacion") %>' CssClass="form-control" Font-Size="Medium" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdTipoLicitacion" runat="server" Text='<%# Bind("IdTipoLicitacion") %>' CssClass="form-control mitad" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>Tipo Licitación</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtTipoLicitacion" runat="server" Text='<%# Bind("TipoLicitacion") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtTipoLicitacion" runat="server" Text='<%# Bind("TipoLicitacion") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>Descripción</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -219,7 +219,7 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Código</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtCodigo" runat="server" Text='<%# Bind("Codigo") %>' CssClass="form-control" Font-Size="Medium" />
+                                                    <asp:TextBox ID="txtCodigo" runat="server" Text='<%# Bind("Codigo") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
 
@@ -227,7 +227,7 @@
 
                                         </div>
 
-
+                                        <hr />
 
                                         <asp:LinkButton ID="AcceptButton" runat="server" CausesValidation="False" CommandName="Update" Text="Aceptar" CssClass="btn btn-success" />
                                         <asp:LinkButton ID="CancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" OnClick="CancelButton_Click" />

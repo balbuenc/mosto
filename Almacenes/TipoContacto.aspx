@@ -4,10 +4,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
-        <div class="alert alert-primary" role="alert">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-10">
-                    <b><%: Page.Title %> </b>
+                    <div class="col-form-label-lg azul"><%: Page.Title %> </div>
 
                 </div>
                 <div class="col-2">
@@ -16,7 +16,7 @@
                     </button>
                 </div>
             </div>
-            <div class="row alert-info">
+            <div class="row">
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
             </div>
         </div>
@@ -30,7 +30,7 @@
             OnItemCommand="ListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
-                    <table class="table table-striped" style="font-size: small; font-family: 'Segoe UI'">
+                    <table class="table table-striped table-condensed" >
                         <thead>
                             <th>ID</th>
                             <th>Tipo de Contacto</th>
@@ -98,12 +98,12 @@
                                             <div class="row">
                                                 <div class="col-3"><b>ID</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdTipoContacto" runat="server" Text="" CssClass="form-control" Font-Size="Medium" Enabled="false" /></div>
+                                                    <asp:TextBox ID="txtIdTipoContacto" runat="server" Text="" CssClass="form-control mitad" Enabled="false" /></div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>Tipo de Contacto</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtTipoContacto" runat="server" Text='<%# Bind("TipoContacto") %>' CssClass="form-control" Font-Size="Medium" /></div>
+                                                    <asp:TextBox ID="txtTipoContacto" runat="server" Text='<%# Bind("TipoContacto") %>' CssClass="form-control" /></div>
                                             </div>
 
 
@@ -152,12 +152,12 @@
                                            <div class="row">
                                                 <div class="col-3"><b>ID</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdTipoContacto" runat="server" Text='<%# Bind("IdTipoContacto") %>' CssClass="form-control" Font-Size="Medium" Enabled="false" /></div>
+                                                    <asp:TextBox ID="txtIdTipoContacto" runat="server" Text='<%# Bind("IdTipoContacto") %>' CssClass="form-control mitad" Enabled="false" /></div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>Tipo de Contacto</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtTipoContacto" runat="server" Text='<%# Bind("TipoContacto") %>' CssClass="form-control" Font-Size="Medium" /></div>
+                                                    <asp:TextBox ID="txtTipoContacto" runat="server" Text='<%# Bind("TipoContacto") %>' CssClass="form-control" /></div>
                                             </div>
                                         </div>
 

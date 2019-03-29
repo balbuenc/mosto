@@ -28,6 +28,7 @@
 
     <link href="image/IconDinac.jpg" rel="shortcut icon" type="image/x-icon" />
 
+     <link href="css/Enigma.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -197,7 +198,7 @@
                 <link href="Content/bootstrap-datepicker.css" rel="stylesheet" />
 
              
-
+               
                
             </div>
         </div>

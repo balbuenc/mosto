@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace Almacenes
 {
-    public partial class Contacto : System.Web.UI.Page
+    public partial class Deposito : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,22 +18,22 @@ namespace Almacenes
 
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
-            Response.Redirect("Contacto.aspx");
+            Response.Redirect("Deposito.aspx");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Contacto.aspx");
+            Response.Redirect("Deposito.aspx");
         }
 
         protected void GetRecordToUpdate(String ID)
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(ContactoDS.ConnectionString);
+            SqlConnection con = new SqlConnection(DepositoDS.ConnectionString);
 
-            cmd = new SqlCommand("management.[sp_Contacto_get_Contacto]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdContacto", ID));
+            cmd = new SqlCommand("warehouse.[sp_Deposito_get_Deposito]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdDeposito", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter adp = new SqlDataAdapter();
@@ -55,10 +55,10 @@ namespace Almacenes
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(ContactoDS.ConnectionString);
+            SqlConnection con = new SqlConnection(DepositoDS.ConnectionString);
 
-            cmd = new SqlCommand("management.[sp_Contacto_delete]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdContacto", ID));
+            cmd = new SqlCommand("warehouse.[sp_Deposito_delete]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdDeposito", ID));
 
 
 
@@ -88,7 +88,7 @@ namespace Almacenes
             else if (e.CommandName == "Eliminar")
             {
                 DeleteRecord(e.CommandArgument.ToString());
-                ContactoListView.DataBind();
+                DepositoListView.DataBind();
 
                 ErrorLabel.Text = "El Registro se eliminó correctamente.";
                 ErrorLabel.Visible = true;
@@ -119,29 +119,29 @@ namespace Almacenes
             try
             {
                 //Obtengo los valores de los campos a editar
-                DropDownList txtIdDeposito = (DropDownList)EditFormView.FindControl("IdDepositoDDL");
-                DropDownList txtIdTipoContacto = (DropDownList)EditFormView.FindControl("IdTipoContactoDDL");
+                TextBox txtIdDeposito = (TextBox)EditFormView.FindControl("txtIdDeposito");
+                TextBox txtDeposito = (TextBox)EditFormView.FindControl("txtDeposito");
                 TextBox txtDescripcion = (TextBox)EditFormView.FindControl("txtDescripcion");
-                TextBox txtDatoContacto = (TextBox)EditFormView.FindControl("txtDatoContacto");
+                TextBox txtUbicacion = (TextBox)EditFormView.FindControl("txtUbicacion");
+                TextBox txtContenido = (TextBox)EditFormView.FindControl("txtContenido");
                 DropDownList txtActivo = (DropDownList)EditFormView.FindControl("ActivoDDL");
-                TextBox txtIdContacto = (TextBox)EditFormView.FindControl("txtIdContacto");
 
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
-                SqlConnection conn = new SqlConnection(ContactoDS.ConnectionString);
+                SqlConnection conn = new SqlConnection(DepositoDS.ConnectionString);
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "management.sp_Contacto_update";
+                cmd.CommandText = "warehouse.sp_Deposito_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@IdDeposito", txtIdDeposito.SelectedValue);
-                cmd.Parameters.AddWithValue("@IdTipoContacto", txtIdTipoContacto.SelectedValue);
+                cmd.Parameters.AddWithValue("@IdDeposito", txtIdDeposito.Text);
+                cmd.Parameters.AddWithValue("@Deposito", txtDeposito.Text);
                 cmd.Parameters.AddWithValue("@Descripcion", txtDescripcion.Text);
-                cmd.Parameters.AddWithValue("@DatoContacto", txtDatoContacto.Text);
+                cmd.Parameters.AddWithValue("@Ubicacion", txtUbicacion.Text);
+                cmd.Parameters.AddWithValue("@Contenido", txtContenido.Text);
                 cmd.Parameters.AddWithValue("@Activo", txtActivo.SelectedValue);
-                cmd.Parameters.AddWithValue("@IdContacto", txtIdContacto.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -151,7 +151,7 @@ namespace Almacenes
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#editModal').modal('hide');", true);
 
-                Response.Redirect("Contacto.aspx");
+                Response.Redirect("Deposito.aspx");
 
 
             }
@@ -170,7 +170,7 @@ namespace Almacenes
             ErrorLabel.Text = "El Registro de actualizò correctamente";
             ErrorLabel.Visible = true;
             FadeOut(ErrorLabel.ClientID, 5000);
-            ContactoListView.DataBind();
+            DepositoListView.DataBind();
 
         }
     }

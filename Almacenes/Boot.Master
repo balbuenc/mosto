@@ -28,7 +28,7 @@
 
     <link href="image/IconDinac.jpg" rel="shortcut icon" type="image/x-icon" />
 
-     <link href="css/Enigma.css" rel="stylesheet" />
+    <link href="css/Enigma.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -64,7 +64,7 @@
                                 <span class="badge badge-danger">0</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-                                <a class="dropdown-item" href="#">Alertas</a>                                
+                                <a class="dropdown-item" href="#">Alertas</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown no-arrow mx-1">
@@ -74,7 +74,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
                                 <a class="dropdown-item" href="#">Mensajes</a>
-                                
+
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Nuevo Mensaje</a>
                             </div>
@@ -85,7 +85,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">Configuraciòn</a>
-                                
+
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
                             </div>
@@ -107,7 +107,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-fw fa-folder"></i>
-                                <span>Maestros</span>
+                                <span>Admin.</span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                                 <h6 class="dropdown-header">Administración:</h6>
@@ -118,7 +118,18 @@
                                 <a class="dropdown-item" href="/TipoContacto.aspx">Tipo de Contactos</a>
                                 <a class="dropdown-item" href="/Contacto.aspx">Contactos</a>
                                 <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Contrato.aspx">Contratos</a>
 
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownAlmacenes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                                
+                                <i class="fas fa-warehouse"></i>
+                                <span>Almacén</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="pagesDropdownAlmacenes">
+                                <h6 class="dropdown-header">Almacenes:</h6>
+                                <a class="dropdown-item" href="/Deposito.aspx">Depositos</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -197,9 +208,9 @@
                 <script src="Scripts/bootstrap-datepicker.js"></script>
                 <link href="Content/bootstrap-datepicker.css" rel="stylesheet" />
 
-             
-               
-               
+
+
+
             </div>
         </div>
     </form>

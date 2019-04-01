@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Almacenes.Management {
+namespace Almacenes {
     
     
-    public partial class Proveedores {
+    public partial class Dependencia {
         
         /// <summary>
         /// Control AddLicitacionBtn.
@@ -31,13 +31,13 @@ namespace Almacenes.Management {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// Control ProveedorListView.
+        /// Control DependenciaListView.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ProveedorListView;
+        protected global::System.Web.UI.WebControls.ListView DependenciaListView;
         
         /// <summary>
         /// Control UpdatePanel1.
@@ -76,12 +76,12 @@ namespace Almacenes.Management {
         protected global::System.Web.UI.WebControls.FormView EditFormView;
         
         /// <summary>
-        /// Control ProveedorDS.
+        /// Control DependenciaDS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ProveedorDS;
+        protected global::System.Web.UI.WebControls.SqlDataSource DependenciaDS;
     }
 }

@@ -10,7 +10,7 @@
 namespace Almacenes {
     
     
-    public partial class UnidadMedida {
+    public partial class Lote {
         
         /// <summary>
         /// Control AddLicitacionBtn.
@@ -31,13 +31,13 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// Control UnidadMedidaListView.
+        /// Control LoteListView.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView UnidadMedidaListView;
+        protected global::System.Web.UI.WebControls.ListView LoteListView;
         
         /// <summary>
         /// Control UpdatePanel1.
@@ -76,12 +76,21 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.FormView EditFormView;
         
         /// <summary>
-        /// Control UnidadMedidaDS.
+        /// Control LoteDS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource UnidadMedidaDS;
+        protected global::System.Web.UI.WebControls.SqlDataSource LoteDS;
+        
+        /// <summary>
+        /// Control ArticuloDS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ArticuloDS;
     }
 }

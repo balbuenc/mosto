@@ -10,7 +10,7 @@
 namespace Almacenes {
     
     
-    public partial class UnidadMedida {
+    public partial class Articulo {
         
         /// <summary>
         /// Control AddLicitacionBtn.
@@ -31,13 +31,13 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// Control UnidadMedidaListView.
+        /// Control ArticuloListView.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView UnidadMedidaListView;
+        protected global::System.Web.UI.WebControls.ListView ArticuloListView;
         
         /// <summary>
         /// Control UpdatePanel1.
@@ -76,6 +76,24 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.FormView EditFormView;
         
         /// <summary>
+        /// Control ArticuloDS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ArticuloDS;
+        
+        /// <summary>
+        /// Control ProveedorDS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ProveedorDS;
+        
+        /// <summary>
         /// Control UnidadMedidaDS.
         /// </summary>
         /// <remarks>
@@ -83,5 +101,14 @@ namespace Almacenes {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource UnidadMedidaDS;
+        
+        /// <summary>
+        /// Control ContratoDS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ContratoDS;
     }
 }

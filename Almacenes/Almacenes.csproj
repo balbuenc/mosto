@@ -129,6 +129,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Articulo.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
@@ -168,6 +169,7 @@
     <Content Include="js\sb-admin.js" />
     <Content Include="js\sb-admin.min.js" />
     <Content Include="Licitaciones.aspx" />
+    <Content Include="Lote.aspx" />
     <Content Include="Proveedor.aspx" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
@@ -2052,6 +2054,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Articulo.aspx.cs">
+      <DependentUpon>Articulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Articulo.aspx.designer.cs">
+      <DependentUpon>Articulo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Boot.Master.cs">
       <DependentUpon>Boot.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2103,6 +2112,13 @@
     </Compile>
     <Compile Include="Licitaciones.aspx.designer.cs">
       <DependentUpon>Licitaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Lote.aspx.cs">
+      <DependentUpon>Lote.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Lote.aspx.designer.cs">
+      <DependentUpon>Lote.aspx</DependentUpon>
     </Compile>
     <Compile Include="Proveedor.aspx.cs">
       <DependentUpon>Proveedor.aspx</DependentUpon>

@@ -81,7 +81,7 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="addModalLabel">Agregar nuevo Tipo de Contacto.</b>
+                                <b id="addModalLabel">Agregar nueva Unidad de Medida.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
@@ -137,7 +137,7 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="editModalLabel">Modificar Tipo de Contacto.</b>
+                                <b id="editModalLabel">Modificar Unidad de Medida.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">

@@ -105,7 +105,7 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                                
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user-shield"></i>
                                 <span>Admin.</span>
                             </a>
@@ -118,14 +118,12 @@
                                 <a class="dropdown-item" href="/TipoContacto.aspx">Tipo de Contactos</a>
                                 <a class="dropdown-item" href="/Contacto.aspx">Contactos</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/AsignacionLicitacion.aspx">Asignacion Licitación</a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/Contrato.aspx">Contratos</a>
 
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownAlmacenes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                                
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownAlmacenes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-warehouse"></i>
                                 <span>Almacén</span>
                             </a>
@@ -140,6 +138,18 @@
                                 <a class="dropdown-item" href="/Lote.aspx">Lotes</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/UnidadMedida.aspx">Unidad de Medida</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownProcesos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-code-branch"></i>
+                                <span>Procesos</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="pagesDropdownAlmacenes">
+                                 <h6 class="dropdown-header">Asignaciones:</h6>
+                                <a class="dropdown-item" href="/AsignacionLoteDependencia.aspx">Lote-Dependencia</a>
+                                <a class="dropdown-item" href="/AsignacionLicitacion.aspx">Proveedor-Licitación</a>
+                                <a class="dropdown-item" href="/AsignacionLoteDeposito.aspx">Lote-Depósito</a>
                             </div>
                         </li>
                         <li class="nav-item">

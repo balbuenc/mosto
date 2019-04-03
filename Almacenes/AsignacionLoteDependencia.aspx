@@ -1,5 +1,4 @@
-﻿<%@ Page Title="Asignación Proveedor-Licitación" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="AsignacionLicitacion.aspx.cs" Inherits="Almacenes.AsignacionLicitacion" %>
-
+﻿<%@ Page Title="Asignación Lote-Dependencia" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="AsignacionLoteDependencia.aspx.cs" Inherits="Almacenes.AsignacionLoteDependencia" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -23,18 +22,18 @@
     </div>
 
     <div class="container-fluid">
-        <asp:ListView ID="AsignacionLicitacionListView"
+        <asp:ListView ID="AsignacionLoteDependenciaListView"
             runat="server"
-            DataSourceID="AsignacionLicitacionDS"
-            DataKeyNames="IdAsignacionLicitacion"
+            DataSourceID="AsignacionLoteDependenciaDS"
+            DataKeyNames="IdAsignacionLoteDependencia"
             OnItemCommand="ListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
                     <table class="table table-striped table-condensed">
                         <thead>
                             <th>ID</th>
-                            <th>Proveedor</th>
-                            <th>Licitación</th>
+                            <th>Lote</th>
+                            <th>Dependencia</th>
                             <th>Fecha</th>
                             <th>...</th>
                             <th>...</th>
@@ -49,27 +48,27 @@
 
                 <tr>
                     <td>
-                        <asp:Label ID="lblIdAsignacionLicitacion" runat="server" Text='<%# Eval("IdAsignacionLicitacion") %>' /></td>
+                        <asp:Label ID="lblIdAsignacionLoteDependencia" runat="server" Text='<%# Eval("IdAsignacionLoteDependencia") %>' /></td>
                     <td>
-                        <asp:Label ID="lblIdProveedor" runat="server" Text='<%# Eval("IdProveedor") %>' Visible="false" />
-                        <asp:Label ID="lblProveedor" runat="server" Text='<%# Eval("Proveedor") %>' /></td>
+                        <asp:Label ID="lblIdLote" runat="server" Text='<%# Eval("IdLote") %>' Visible="false" />
+                        <asp:Label ID="lblLote" runat="server" Text='<%# Eval("Lote") %>' /></td>
                     <td>
-                        <asp:Label ID="lblIdLicitacion" runat="server" Text='<%# Eval("IdLicitacion") %>' Visible="false" />
-                        <asp:Label ID="lblLicitacion" runat="server" Text='<%# Eval("Licitacion") %>' />
+                        <asp:Label ID="lblIdDependencia" runat="server" Text='<%# Eval("IdDependencia") %>' Visible="false" />
+                        <asp:Label ID="lblDependencia" runat="server" Text='<%# Eval("Dependencia") %>' />
                     </td>
 
                     <td>
                         <asp:Label ID="lblFechaAsignacion" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval("FechaAsignacion")) %>' /></td>
 
                     <td>
-                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditAsignacionLicitacionBtn" CommandName="Editar" CommandArgument='<%# Eval("IdAsignacionLicitacion")%>' ToolTip="Editar">
+                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditAsignacionLoteDependenciaBtn" CommandName="Editar" CommandArgument='<%# Eval("IdAsignacionLoteDependencia")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteAsignacionLicitacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdAsignacionLicitacion")%>' ToolTip="Eliminar">
+                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteAsignacionLoteDependenciaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdAsignacionLoteDependencia")%>' ToolTip="Eliminar">
                             <i class="fa  fa-eraser fa-sm"></i>
                         </asp:LinkButton>
 
@@ -91,12 +90,12 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="addModalLabel">Nuevo Proveedor-Licitación.</b>
+                                <b id="addModalLabel">Nuevo Lote-Dependencia.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <asp:FormView ID="InsertFormView" runat="server" DataSourceID="AsignacionLicitacionDS" Width="100%"
-                                    CellPadding="4" DataKeyNames="IdAsignacionLicitacion" ForeColor="#333333"
+                                <asp:FormView ID="InsertFormView" runat="server" DataSourceID="AsignacionLoteDependenciaDS" Width="100%"
+                                    CellPadding="4" DataKeyNames="IdAsignacionLoteDependencia" ForeColor="#333333"
                                     DefaultMode="Insert"
                                     OnItemInserted="FormView1_ItemInserted">
                                     <EditItemTemplate>
@@ -109,32 +108,32 @@
                                             <div class="row">
                                                 <div class="col-3"><b>ID</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdAsignacionLicitacion" runat="server" Text="" CssClass="form-control" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdAsignacionLoteDependencia" runat="server" Text="" CssClass="form-control" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3"><b>Proveedor</b></div>
+                                                <div class="col-3"><b>Lote</b></div>
                                                 <div class="col-9">
-                                                    <asp:DropDownList ID="IdProveedorDDL"
+                                                    <asp:DropDownList ID="IdLoteDDL"
                                                         runat="server"
-                                                        DataSourceID="ProveedorDS"
-                                                        DataTextField="Razonsocial"
-                                                        DataValueField="IdProveedor"
+                                                        DataSourceID="LoteDS"
+                                                        DataTextField="Lote"
+                                                        DataValueField="IdLote"
                                                         CssClass="form-control"
-                                                        SelectedValue='<%# Bind("IdProveedor") %>'>
+                                                        SelectedValue='<%# Bind("IdLote") %>'>
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3"><b>Licitación</b></div>
+                                                <div class="col-3"><b>Dependencia</b></div>
                                                 <div class="col-9">
-                                                    <asp:DropDownList ID="IdLicitacionDDL"
+                                                    <asp:DropDownList ID="IdDependenciaDDL"
                                                         runat="server"
-                                                        DataSourceID="LicitacionDS"
-                                                        DataTextField="NroLicitacion"
-                                                        DataValueField="IdLicitacion"
+                                                        DataSourceID="DependenciaDS"
+                                                        DataTextField="Dependencia"
+                                                        DataValueField="IdDependencia"
                                                         CssClass="form-control"
-                                                        SelectedValue='<%# Bind("IdLicitacion") %>'>
+                                                        SelectedValue='<%# Bind("IdDependencia") %>'>
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
@@ -172,12 +171,12 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="editModalLabel">Modificar Proveedor-Licitación.</b>
+                                <b id="editModalLabel">Modificar Lote-Dependencia</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
                                 <asp:FormView ID="EditFormView" runat="server" Width="100%"
-                                    CellPadding="4" DataKeyNames="IdAsignacionLicitacion" ForeColor="#333333"
+                                    CellPadding="4" DataKeyNames="IdAsignacionLoteDependencia" ForeColor="#333333"
                                     DefaultMode="Edit"
                                     OnModeChanging="EditFormView_ModeChanging" OnItemUpdating="EditFormView_ItemUpdating" OnItemUpdated="EditFormView_ItemUpdated">
                                     <EditItemTemplate>
@@ -186,32 +185,32 @@
                                             <div class="row">
                                                 <div class="col-3"><b>ID</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdAsignacionLicitacion" runat="server" Text='<%# Bind("IdAsignacionLicitacion") %>' CssClass="form-control" Enabled="false" />
+                                                    <asp:TextBox ID="txtIdAsignacionLoteDependencia" runat="server" Text='<%# Bind("IdAsignacionLoteDependencia") %>' CssClass="form-control" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3"><b>Proveedor</b></div>
+                                                <div class="col-3"><b>Lote</b></div>
                                                 <div class="col-9">
-                                                    <asp:DropDownList ID="IdProveedorDDL"
+                                                    <asp:DropDownList ID="IdLoteDDL"
                                                         runat="server"
-                                                        DataSourceID="ProveedorDS"
-                                                        DataTextField="Razonsocial"
-                                                        DataValueField="IdProveedor"
+                                                        DataSourceID="LoteDS"
+                                                        DataTextField="Lote"
+                                                        DataValueField="IdLote"
                                                         CssClass="form-control"
-                                                        SelectedValue='<%# Bind("IdProveedor") %>'>
+                                                        SelectedValue='<%# Bind("IdLote") %>'>
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3"><b>Licitación</b></div>
+                                                <div class="col-3"><b>Dependencia</b></div>
                                                 <div class="col-9">
-                                                    <asp:DropDownList ID="IdLicitacionDDL"
+                                                    <asp:DropDownList ID="IdDependenciaDDL"
                                                         runat="server"
-                                                        DataSourceID="LicitacionDS"
-                                                        DataTextField="NroLicitacion"
-                                                        DataValueField="IdLicitacion"
+                                                        DataSourceID="DependenciaDS"
+                                                        DataTextField="Dependencia"
+                                                        DataValueField="IdDependencia"
                                                         CssClass="form-control"
-                                                        SelectedValue='<%# Bind("IdLicitacion") %>'>
+                                                        SelectedValue='<%# Bind("IdDependencia") %>'>
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
@@ -251,16 +250,16 @@
 
 
         <!-- #region DataSources -->
-        <asp:SqlDataSource ID="AsignacionLicitacionDS"
+        <asp:SqlDataSource ID="AsignacionLoteDependenciaDS"
             runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-            InsertCommand="management.sp_AsignacionLicitacion_insert" InsertCommandType="StoredProcedure"
-            SelectCommand="management.sp_AsignacionLicitacion_get_all" SelectCommandType="StoredProcedure">
+            InsertCommand="warehouse.sp_AsignacionLoteDependencia_insert" InsertCommandType="StoredProcedure"
+            SelectCommand="warehouse.sp_AsignacionLoteDependencia_get_all" SelectCommandType="StoredProcedure">
             <DeleteParameters>
             </DeleteParameters>
             <InsertParameters>
 
-                <asp:Parameter Name="IdProveedor" Type="Int32" />
-                <asp:Parameter Name="IdLicitacion" Type="Int32" />
+                <asp:Parameter Name="IdLote" Type="Int32" />
+                <asp:Parameter Name="IdDependencia" Type="Int32" />
 
             </InsertParameters>
             <UpdateParameters>
@@ -268,14 +267,14 @@
         </asp:SqlDataSource>
 
 
-        <asp:SqlDataSource ID="ProveedorDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-            SelectCommand="select IdProveedor, upper(RazonSocial) as RazonSocial from management.Proveedor  order by 2" SelectCommandType="Text"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="LoteDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+            SelectCommand="select IdLote,'#'+cast(NroLote as varchar(10))+' ('+a.Descripcion+')' as Lote  from warehouse.Lote l 
+            left outer join warehouse.Articulo a on l.IdArticulo = a.IdArticulo
+            order by 2" SelectCommandType="Text"></asp:SqlDataSource>
 
-        <asp:SqlDataSource ID="LicitacionDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-            SelectCommand="select IdLicitacion, cast(l.NroLicitacion as varchar(10))+' ('+tl.TipoLicitacion+')' as NroLicitacion 
-            from management.Licitacion l 
-            left outer join management.TipoLicitacion tl on l.IdTipoLicitacion= tl.IdTipoLicitacion
-            order by 2"
+        <asp:SqlDataSource ID="DependenciaDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+            SelectCommand="select IdDependencia,Dependencia from warehouse.Dependencia d 
+order by 2"
             SelectCommandType="Text"></asp:SqlDataSource>
 
         <!-- #endregion -->

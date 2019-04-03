@@ -131,6 +131,8 @@
   <ItemGroup>
     <Content Include="Articulo.aspx" />
     <Content Include="AsignacionLicitacion.aspx" />
+    <Content Include="AsignacionLoteDependencia.aspx" />
+    <Content Include="AsignacionLoteDeposito.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
@@ -2068,6 +2070,20 @@
     </Compile>
     <Compile Include="AsignacionLicitacion.aspx.designer.cs">
       <DependentUpon>AsignacionLicitacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsignacionLoteDependencia.aspx.cs">
+      <DependentUpon>AsignacionLoteDependencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignacionLoteDependencia.aspx.designer.cs">
+      <DependentUpon>AsignacionLoteDependencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsignacionLoteDeposito.aspx.cs">
+      <DependentUpon>AsignacionLoteDeposito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignacionLoteDeposito.aspx.designer.cs">
+      <DependentUpon>AsignacionLoteDeposito.aspx</DependentUpon>
     </Compile>
     <Compile Include="Boot.Master.cs">
       <DependentUpon>Boot.Master</DependentUpon>

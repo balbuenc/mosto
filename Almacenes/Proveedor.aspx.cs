@@ -114,7 +114,7 @@ namespace Almacenes.Management
             SqlCommand cmd = new SqlCommand();
             DataKey key = EditFormView.DataKey;
 
-            string format = "dd/MM/yyyy";
+        
 
             try
             {

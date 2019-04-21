@@ -114,7 +114,7 @@ namespace Almacenes
             SqlCommand cmd = new SqlCommand();
             DataKey key = EditFormView.DataKey;
 
-            string format = "dd/MM/yyyy";
+        
 
             try
             {
@@ -125,7 +125,7 @@ namespace Almacenes
                 DropDownList IdLicitacionDDL = (DropDownList)EditFormView.FindControl("IdLicitacionDDL");
 
 
-                //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
+              
 
                 SqlConnection conn = new SqlConnection(AsignacionLicitacionDS.ConnectionString);
 

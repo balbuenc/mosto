@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,30 +10,31 @@ using System.Web.UI.WebControls;
 
 namespace Almacenes
 {
-    public partial class UnidadMedida : System.Web.UI.Page
+    public partial class User : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
+
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
-            Response.Redirect("UnidadMedida.aspx");
+            Response.Redirect("User.aspx");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("UnidadMedida.aspx");
+            Response.Redirect("User.aspx");
         }
 
         protected void GetRecordToUpdate(String ID)
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(UnidadMedidaDS.ConnectionString);
+            SqlConnection con = new SqlConnection(UserDS.ConnectionString);
 
-            cmd = new SqlCommand("warehouse.[sp_UnidadMedida_get_UnidadMedida]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdUnidadMedida", ID));
+            cmd = new SqlCommand("secure.[sp_User_get_User]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdUser", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter adp = new SqlDataAdapter();
@@ -54,10 +56,10 @@ namespace Almacenes
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(UnidadMedidaDS.ConnectionString);
+            SqlConnection con = new SqlConnection(UserDS.ConnectionString);
 
-            cmd = new SqlCommand("warehouse.[sp_UnidadMedida_delete]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdUnidadMedida", ID));
+            cmd = new SqlCommand("secure.[sp_User_delete]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdUser", ID));
 
 
 
@@ -87,7 +89,7 @@ namespace Almacenes
             else if (e.CommandName == "Eliminar")
             {
                 DeleteRecord(e.CommandArgument.ToString());
-                UnidadMedidaListView.DataBind();
+                UserListView.DataBind();
 
                 ErrorLabel.Text = "El Registro se eliminó correctamente.";
                 ErrorLabel.Visible = true;
@@ -108,32 +110,46 @@ namespace Almacenes
             EditFormView.ChangeMode(e.NewMode);
         }
 
+
+       
+
         protected void EditFormView_ItemUpdating(object sender, FormViewUpdateEventArgs e)
         {
             SqlCommand cmd = new SqlCommand();
             DataKey key = EditFormView.DataKey;
 
           
-
             try
             {
                 //Obtengo los valores de los campos a editar
-                TextBox txtIdUnidadMedida = (TextBox)EditFormView.FindControl("txtIdUnidadMedida");
-                TextBox txtUnidadMedida = (TextBox)EditFormView.FindControl("txtUnidadMedida");
-
-
-
-                //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
-
-                SqlConnection conn = new SqlConnection(UnidadMedidaDS.ConnectionString);
+                TextBox txtIdUser = (TextBox)EditFormView.FindControl("txtIdUser");
+                TextBox txtUserName = (TextBox)EditFormView.FindControl("txtUserName");
+                TextBox txtPasswordHash = (TextBox)EditFormView.FindControl("txtPasswordHash");
+                
+                TextBox txtFirstName = (TextBox)EditFormView.FindControl("txtFirstName");
+                TextBox txtLastName = (TextBox)EditFormView.FindControl("txtLastName");
+                TextBox txtEmail = (TextBox)EditFormView.FindControl("txtEmail");
+                TextBox txtPhone = (TextBox)EditFormView.FindControl("txtPhone");
+                TextBox txtDiscriminator = (TextBox)EditFormView.FindControl("txtDiscriminator");
+                TextBox txtDocumentNumber = (TextBox)EditFormView.FindControl("txtDocumentNumber");
+               
+                SqlConnection conn = new SqlConnection(UserDS.ConnectionString);
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "warehouse.sp_UnidadMedida_update";
+                cmd.CommandText = "secure.sp_User_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@IdUnidadMedida", txtIdUnidadMedida.Text);
-                cmd.Parameters.AddWithValue("@UnidadMedida", txtUnidadMedida.Text);
+                cmd.Parameters.AddWithValue("@IdUser", txtIdUser.Text);
+                cmd.Parameters.AddWithValue("@UserName", txtUserName.Text);
+                cmd.Parameters.AddWithValue("@PasswordHash", txtPasswordHash.Text);
+                
+                cmd.Parameters.AddWithValue("@FirstName", txtFirstName.Text);
+                cmd.Parameters.AddWithValue("@LastName", txtLastName.Text);
+                cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
+                cmd.Parameters.AddWithValue("@Phone", txtPhone.Text);
+                cmd.Parameters.AddWithValue("@Discriminator", txtDiscriminator.Text);
+                cmd.Parameters.AddWithValue("@DocumentNumber", txtDocumentNumber.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -143,7 +159,7 @@ namespace Almacenes
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#editModal').modal('hide');", true);
 
-                Response.Redirect("UnidadMedida.aspx");
+                Response.Redirect("User.aspx");
 
 
             }
@@ -159,12 +175,11 @@ namespace Almacenes
         protected void EditFormView_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
         {
             EditFormView.ChangeMode(FormViewMode.ReadOnly);
-            ErrorLabel.Text = "El Registro de actualizò correctamente";
+            ErrorLabel.Text = "El Registro de actualizó correctamente";
             ErrorLabel.Visible = true;
             FadeOut(ErrorLabel.ClientID, 5000);
-            UnidadMedidaListView.DataBind();
+            UserListView.DataBind();
 
         }
-
     }
 }

@@ -32,7 +32,7 @@ namespace Almacenes
             SqlCommand cmd = new SqlCommand();
             SqlConnection con = new SqlConnection(ContactoDS.ConnectionString);
 
-            cmd = new SqlCommand("warehouse.[sp_Contacto_get_Contacto]", con);
+            cmd = new SqlCommand("secure.[sp_Contacto_get_Contacto]", con);
             cmd.Parameters.Add(new SqlParameter("@IdContacto", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -57,7 +57,7 @@ namespace Almacenes
             SqlCommand cmd = new SqlCommand();
             SqlConnection con = new SqlConnection(ContactoDS.ConnectionString);
 
-            cmd = new SqlCommand("warehouse.[sp_Contacto_delete]", con);
+            cmd = new SqlCommand("secure.[sp_Contacto_delete]", con);
             cmd.Parameters.Add(new SqlParameter("@IdContacto", ID));
 
 
@@ -114,7 +114,7 @@ namespace Almacenes
             SqlCommand cmd = new SqlCommand();
             DataKey key = EditFormView.DataKey;
 
-            string format = "dd/MM/yyyy";
+     
 
             try
             {
@@ -133,7 +133,7 @@ namespace Almacenes
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "warehouse.sp_Contacto_update";
+                cmd.CommandText = "secure.sp_Contacto_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@IdDeposito", txtIdDeposito.SelectedValue);

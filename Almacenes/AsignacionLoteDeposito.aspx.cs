@@ -113,8 +113,7 @@ namespace Almacenes
             SqlCommand cmd = new SqlCommand();
             DataKey key = EditFormView.DataKey;
 
-            string format = "dd/MM/yyyy";
-
+        
             try
             {
                 //Obtengo los valores de los campos a editar

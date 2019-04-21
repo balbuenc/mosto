@@ -35,11 +35,10 @@
                             <th>ID</th>
                             <th>UserName</th>
                             <th>Password</th>
-                            <th>FirstName</th>
-                            <th>LastName</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
                             <th>Email</th>
-                            <th>Phone</th>
-                           
+                            <th>Teléfono</th>
                             <th>Nro. Doc.</th>
                             <th>...</th>
                             <th>...</th>
@@ -295,12 +294,12 @@
              
                 <asp:Parameter Name="UserName" Type="String" />
                 <asp:Parameter Name="PasswordHash" Type="String" />
-                <asp:Parameter Name="FirstName" Type="String" />
-                <asp:Parameter Name="LastName" Type="String" />
-                <asp:Parameter Name="Email" Type="String" />
-                <asp:Parameter Name="Phone" Type="String" />
-                <asp:Parameter Name="Discriminator" Type="String" />
-                <asp:Parameter Name="DocumentNumber" Type="String" />
+                <asp:Parameter Name="FirstName" Type="String" DefaultValue="ND" />
+                <asp:Parameter Name="LastName" Type="String" DefaultValue="ND" />
+                <asp:Parameter Name="Email" Type="String" DefaultValue="ND" />
+                <asp:Parameter Name="Phone" Type="String" DefaultValue="ND" />
+                <asp:Parameter Name="Discriminator" Type="String"  DefaultValue="ND"/>
+                <asp:Parameter Name="DocumentNumber" Type="String" DefaultValue="ND" />
 
             </InsertParameters>
             <UpdateParameters>

@@ -51,6 +51,55 @@ namespace Almacenes
             con.Close();
         }
 
+        protected void GetUserToUpdatePassword(String ID)
+        {
+
+            SqlCommand cmd = new SqlCommand();
+            SqlConnection con = new SqlConnection(UserDS.ConnectionString);
+
+            cmd = new SqlCommand("secure.[sp_User_get_User]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdUser", ID));
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter adp = new SqlDataAdapter();
+
+            con.Open();
+
+            adp.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            adp.Fill(ds);
+
+            setPasswordFormView.DataSource = ds;
+            setPasswordFormView.DataBind();
+
+            con.Close();
+        }
+
+
+        protected void GetUserToUpdateRole(String ID)
+        {
+
+            SqlCommand cmd = new SqlCommand();
+            SqlConnection con = new SqlConnection(UserDS.ConnectionString);
+
+            cmd = new SqlCommand("secure.[sp_User_get_User]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdUser", ID));
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter adp = new SqlDataAdapter();
+
+            con.Open();
+
+            adp.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            adp.Fill(ds);
+
+            setUserRoleFormView.DataSource = ds;
+            setUserRoleFormView.DataBind();
+
+            con.Close();
+        }
+
 
         protected void DeleteRecord(String ID)
         {
@@ -95,6 +144,19 @@ namespace Almacenes
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 3000);
             }
+            else if (e.CommandName == "SetPassword")
+            {
+                GetUserToUpdatePassword(e.CommandArgument.ToString());
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "",
+               "$('#setUserPasswordModal').modal('show');", true);
+            }
+            else if (e.CommandName == "SetRole")
+            {
+                GetUserToUpdateRole(e.CommandArgument.ToString());
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "",
+               "$('#setUserRoleModal').modal('show');", true);
+            }
         }
 
 
@@ -111,28 +173,28 @@ namespace Almacenes
         }
 
 
-       
+
 
         protected void EditFormView_ItemUpdating(object sender, FormViewUpdateEventArgs e)
         {
             SqlCommand cmd = new SqlCommand();
             DataKey key = EditFormView.DataKey;
 
-          
+
             try
             {
                 //Obtengo los valores de los campos a editar
                 TextBox txtIdUser = (TextBox)EditFormView.FindControl("txtIdUser");
                 TextBox txtUserName = (TextBox)EditFormView.FindControl("txtUserName");
-                TextBox txtPasswordHash = (TextBox)EditFormView.FindControl("txtPasswordHash");
-                
+
+
                 TextBox txtFirstName = (TextBox)EditFormView.FindControl("txtFirstName");
                 TextBox txtLastName = (TextBox)EditFormView.FindControl("txtLastName");
                 TextBox txtEmail = (TextBox)EditFormView.FindControl("txtEmail");
                 TextBox txtPhone = (TextBox)EditFormView.FindControl("txtPhone");
                 TextBox txtDiscriminator = (TextBox)EditFormView.FindControl("txtDiscriminator");
                 TextBox txtDocumentNumber = (TextBox)EditFormView.FindControl("txtDocumentNumber");
-               
+
                 SqlConnection conn = new SqlConnection(UserDS.ConnectionString);
 
                 cmd.Connection = conn;
@@ -142,8 +204,8 @@ namespace Almacenes
 
                 cmd.Parameters.AddWithValue("@IdUser", txtIdUser.Text);
                 cmd.Parameters.AddWithValue("@UserName", txtUserName.Text);
-                cmd.Parameters.AddWithValue("@PasswordHash", txtPasswordHash.Text);
-                
+
+
                 cmd.Parameters.AddWithValue("@FirstName", txtFirstName.Text);
                 cmd.Parameters.AddWithValue("@LastName", txtLastName.Text);
                 cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
@@ -180,6 +242,90 @@ namespace Almacenes
             FadeOut(ErrorLabel.ClientID, 5000);
             UserListView.DataBind();
 
+        }
+
+        protected void setPasswordFormView_ItemUpdating(object sender, FormViewUpdateEventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand();
+            DataKey key = EditFormView.DataKey;
+
+
+            try
+            {
+                //Obtengo los valores de los campos a editar
+                TextBox txtIdUser = (TextBox)setPasswordFormView.FindControl("txtIdUser");
+                TextBox txtPasswordHash = (TextBox)setPasswordFormView.FindControl("txtPasswordHash");
+
+                SqlConnection conn = new SqlConnection(UserDS.ConnectionString);
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = "secure.sp_User_SetPassword";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@IdUser", txtIdUser.Text);
+                cmd.Parameters.AddWithValue("@PasswordHash", txtPasswordHash.Text);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "",
+                "$('#setUserPasswordModal').modal('hide');", true);
+
+                Response.Redirect("User.aspx");
+
+
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Text = ex.Message;
+                ErrorLabel.Visible = true;
+                FadeOut(ErrorLabel.ClientID, 5000);
+            }
+        }
+
+        protected void setUserRoleFormView_ItemUpdating(object sender, FormViewUpdateEventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand();
+            DataKey key = EditFormView.DataKey;
+
+
+            try
+            {
+                //Obtengo los valores de los campos a editar
+                TextBox txtIdUser = (TextBox)setUserRoleFormView.FindControl("txtIdUser");
+                DropDownList ddlIdUserRole = (DropDownList)setUserRoleFormView.FindControl("ddlIdUserRole");
+
+                SqlConnection conn = new SqlConnection(UserDS.ConnectionString);
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = "secure.sp_User_SetRole";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@IdUser", txtIdUser.Text);
+                cmd.Parameters.AddWithValue("@IdRole", ddlIdUserRole.SelectedValue);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "",
+                "$('#setUserRoleModal').modal('hide');", true);
+
+                Response.Redirect("User.aspx");
+
+
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Text = ex.Message;
+                ErrorLabel.Visible = true;
+                FadeOut(ErrorLabel.ClientID, 5000);
+            }
         }
     }
 }

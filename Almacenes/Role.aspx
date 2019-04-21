@@ -64,7 +64,7 @@
                     <td>
 
                         <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteRoleBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdRole")%>' ToolTip="Eliminar">
-                            <i class="fa  fa-eraser fa-sm"></i>
+                            <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 
                     </td>

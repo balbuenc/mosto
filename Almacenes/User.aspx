@@ -34,7 +34,7 @@
                         <thead>
                             <th>ID</th>
                             <th>UserName</th>
-                            <th>Password</th>
+
                             <th>Nombres</th>
                             <th>Apellidos</th>
                             <th>Email</th>
@@ -56,8 +56,7 @@
                         <asp:Label ID="lblIdUser" runat="server" Text='<%# Eval("IdUser") %>' /></td>
                     <td>
                         <asp:Label ID="lblUserName" runat="server" Text='<%# Eval("UserName") %>' /></td>
-                    <td>
-                        <asp:Label ID="lblPasswordHash" runat="server" Text="*****"  /></td>
+
                     <td>
                         <asp:Label ID="lblFirstName" runat="server" Text='<%# Eval("FirstName") %>' /></td>
                     <td>
@@ -66,24 +65,44 @@
                         <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("Email") %>' /></td>
                     <td>
                         <asp:Label ID="lblPhone" runat="server" Text='<%# Eval("Phone") %>' /></td>
-                   
+
                     <td>
                         <asp:Label ID="lblDocumentNumber" runat="server" Text='<%# Eval("DocumentNumber") %>' /></td>
 
                     <td>
-                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditUserBtn" CommandName="Editar" CommandArgument='<%# Eval("IdUser")%>' ToolTip="Editar">
+                        <asp:LinkButton  runat="server" ID="EditUserBtn" CommandName="Editar" CommandArgument='<%# Eval("IdUser")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteUserBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdUser")%>' ToolTip="Eliminar">
-                            <i class="fa  fa-eraser fa-sm"></i>
+                        <asp:LinkButton runat="server" ID="DeleteUserBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdUser")%>' ToolTip="Eliminar">
+                            <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 
                     </td>
 
+                </tr>
+                <tr>
+                    
+                    <td>
+                        <asp:LinkButton  runat="server" ID="ResetUserPasswordBtn" CommandName="SetPassword" CommandArgument='<%# Eval("IdUser")%>' ToolTip="Resetear Contraseña">
+                            <i class="fa fa-key fa-sm" aria-hidden="true"></i>
+                        </asp:LinkButton>
+                    </td>
+
+                    <td>
+                        
+                        <asp:LinkButton  runat="server" ID="SetUserRolBtn" CommandName="SetRole" CommandArgument='<%# Eval("IdUser")%>' ToolTip="Asignar Rol">
+                            <i class="fa fa-user-plus fa-sm" aria-hidden="true"></i>
+                        </asp:LinkButton>
+                        
+
+                    </td>
+                    <td>
+                        <asp:Label ID="lblUserRole" runat="server" Text='<%#Eval("UserRole") %>'  ForeColor="#0066cc" Font-Italic="true" Font-Names="Verdana"></asp:Label>
+                    </td>
                 </tr>
 
             </ItemTemplate>
@@ -117,50 +136,59 @@
                                             <div class="row">
                                                 <div class="col-3">ID</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdUser" runat="server" Text="" CssClass="form-control mitad"  Enabled="false"/></div>
+                                                    <asp:TextBox ID="txtIdUser" runat="server" Text="" CssClass="form-control mitad" Enabled="false" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">UserName</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtUserName" runat="server" Text='<%# Bind("UserName") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtUserName" runat="server" Text='<%# Bind("UserName") %>' CssClass="form-control" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Password</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtPasswordHash" runat="server" Text='<%# Bind("PasswordHash") %>' CssClass="form-control" TextMode="Password" /></div>
+                                                    <asp:TextBox ID="txtPasswordHash" runat="server" Text='<%# Bind("PasswordHash") %>' CssClass="form-control" TextMode="Password" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Nombres</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtFirstName" runat="server" Text='<%# Bind("FirstName") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtFirstName" runat="server" Text='<%# Bind("FirstName") %>' CssClass="form-control" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Apellidos</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtLastName" runat="server" Text='<%# Bind("LastName") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtLastName" runat="server" Text='<%# Bind("LastName") %>' CssClass="form-control" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Correo</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtEmail" runat="server" Text='<%# Bind("Email") %>' CssClass="form-control" TextMode="Email" /></div>
+                                                    <asp:TextBox ID="txtEmail" runat="server" Text='<%# Bind("Email") %>' CssClass="form-control" TextMode="Email" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Teléfono</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtPhone" runat="server" Text='<%# Bind("Phone") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtPhone" runat="server" Text='<%# Bind("Phone") %>' CssClass="form-control" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Descripción</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtDiscriminator" runat="server" Text='<%# Bind("Discriminator") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtDiscriminator" runat="server" Text='<%# Bind("Discriminator") %>' CssClass="form-control" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Nro. Documento</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtDocumentNumber" runat="server" Text='<%# Bind("DocumentNumber") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtDocumentNumber" runat="server" Text='<%# Bind("DocumentNumber") %>' CssClass="form-control" />
+                                                </div>
                                             </div>
 
-                                           
+
                                         </div>
 
                                         <hr />
@@ -206,47 +234,51 @@
                                             <div class="row">
                                                 <div class="col-3">ID</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdUser" runat="server" Text='<%# Bind("IdUser") %>' CssClass="form-control mitad" Enabled="false" /></div>
+                                                    <asp:TextBox ID="txtIdUser" runat="server" Text='<%# Bind("IdUser") %>' CssClass="form-control mitad" Enabled="false" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">UserName</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtUserName" runat="server" Text='<%# Bind("UserName") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtUserName" runat="server" Text='<%# Bind("UserName") %>' CssClass="form-control" />
+                                                </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-3">Password</div>
-                                                <div class="col-9">
-                                                    <asp:TextBox ID="txtPasswordHash" runat="server" Text='<%# Bind("PasswordHash") %>' CssClass="form-control" TextMode="Password" /></div>
-                                            </div>
+
                                             <div class="row">
                                                 <div class="col-3">Nombres</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtFirstName" runat="server" Text='<%# Bind("FirstName") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtFirstName" runat="server" Text='<%# Bind("FirstName") %>' CssClass="form-control" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Apellidos</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtLastName" runat="server" Text='<%# Bind("LastName") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtLastName" runat="server" Text='<%# Bind("LastName") %>' CssClass="form-control" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Email</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtEmail" runat="server" Text='<%# Bind("Email") %>' CssClass="form-control" TextMode="Email" /></div>
+                                                    <asp:TextBox ID="txtEmail" runat="server" Text='<%# Bind("Email") %>' CssClass="form-control" TextMode="Email" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Teléfono</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtPhone" runat="server" Text='<%# Bind("Phone") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtPhone" runat="server" Text='<%# Bind("Phone") %>' CssClass="form-control" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Descripción</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtDiscriminator" runat="server" Text='<%# Bind("Discriminator") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtDiscriminator" runat="server" Text='<%# Bind("Discriminator") %>' CssClass="form-control" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">Nro. Documento</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtDocumentNumber" runat="server" Text='<%# Bind("DocumentNumber") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtDocumentNumber" runat="server" Text='<%# Bind("DocumentNumber") %>' CssClass="form-control" />
+                                                </div>
                                             </div>
 
 
@@ -256,6 +288,155 @@
 
                                         <asp:LinkButton ID="AcceptButton" runat="server" CausesValidation="False" CommandName="Update" Text="Aceptar" CssClass="btn btn-success" />
                                         <asp:LinkButton ID="CancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" OnClick="CancelButton_Click" />
+                                    </EditItemTemplate>
+                                    <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                    <InsertItemTemplate>
+                                    </InsertItemTemplate>
+                                    <ItemTemplate>
+                                    </ItemTemplate>
+
+
+
+                                </asp:FormView>
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+
+
+        </div>
+
+
+
+        <div id="setUserPasswordModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="setUserPasswordModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                    <ContentTemplate>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <b id="setUserPasswordModalLabel">Resetear contraseña de usuario.</b>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <asp:FormView ID="setPasswordFormView"
+                                    runat="server"
+                                    Width="100%"
+                                    CellPadding="4"
+                                    DataKeyNames="IdUser"
+                                    ForeColor="#333333"
+                                    DefaultMode="Edit"
+                                    OnItemUpdating="setPasswordFormView_ItemUpdating">
+                                    <EditItemTemplate>
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-3">ID</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtIdUser" runat="server" Text='<%# Bind("IdUser") %>' CssClass="form-control mitad" Enabled="false" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">UserName</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtuserName" runat="server" Text='<%# Bind("Username") %>' CssClass="form-control mitad" Enabled="false" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Password</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtPasswordHash" runat="server" Text='<%# Bind("PasswordHash") %>' CssClass="form-control" TextMode="Password" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <hr />
+
+                                        <asp:LinkButton ID="AcceptButton" runat="server" CausesValidation="False" CommandName="Update" Text="Aceptar" CssClass="btn btn-success" />
+                                        <asp:LinkButton ID="CancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" OnClick="CancelButton_Click" />
+
+                                    </EditItemTemplate>
+                                    <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                                    <InsertItemTemplate>
+                                    </InsertItemTemplate>
+                                    <ItemTemplate>
+                                    </ItemTemplate>
+
+
+
+                                </asp:FormView>
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+
+
+        </div>
+
+
+        <div id="setUserRoleModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="setUserRolesModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                    <ContentTemplate>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <b id="setUserRoleModalLabel">Asignar Rol de usuario.</b>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <asp:FormView ID="setUserRoleFormView"
+                                    runat="server"
+                                    Width="100%"
+                                    CellPadding="4"
+                                    DataKeyNames="IdUser"
+                                    ForeColor="#333333"
+                                    DefaultMode="Edit"
+                                    OnItemUpdating="setUserRoleFormView_ItemUpdating">
+                                    <EditItemTemplate>
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-3">ID</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtIdUser" runat="server" Text='<%# Bind("IdUser") %>' CssClass="form-control mitad" Enabled="false" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">UserName</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtuserName" runat="server" Text='<%# Bind("Username") %>' CssClass="form-control mitad" Enabled="false" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Rol actual</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtUserRole" runat="server" Text='<%# Bind("UserRole") %>' CssClass="form-control" Enabled="false"  />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Nuevo Rol</div>
+                                                <div class="col-9">
+                                                    <asp:DropDownList ID="ddlIdUserRole"
+                                                        runat="server"
+                                                        DataSourceID="RoleDS"
+                                                        DataTextField="Role"
+                                                        DataValueField="IdRole"
+                                                        CssClass="form-control spacing">
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <hr />
+
+                                        <asp:LinkButton ID="AcceptButton" runat="server" CausesValidation="False" CommandName="Update" Text="Aceptar" CssClass="btn btn-success" />
+                                        <asp:LinkButton ID="CancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" OnClick="CancelButton_Click" />
+
                                     </EditItemTemplate>
                                     <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                                     <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -291,14 +472,14 @@
             <DeleteParameters>
             </DeleteParameters>
             <InsertParameters>
-             
+
                 <asp:Parameter Name="UserName" Type="String" />
                 <asp:Parameter Name="PasswordHash" Type="String" />
                 <asp:Parameter Name="FirstName" Type="String" DefaultValue="ND" />
                 <asp:Parameter Name="LastName" Type="String" DefaultValue="ND" />
                 <asp:Parameter Name="Email" Type="String" DefaultValue="ND" />
                 <asp:Parameter Name="Phone" Type="String" DefaultValue="ND" />
-                <asp:Parameter Name="Discriminator" Type="String"  DefaultValue="ND"/>
+                <asp:Parameter Name="Discriminator" Type="String" DefaultValue="ND" />
                 <asp:Parameter Name="DocumentNumber" Type="String" DefaultValue="ND" />
 
             </InsertParameters>
@@ -306,8 +487,18 @@
             </UpdateParameters>
         </asp:SqlDataSource>
 
+        <asp:SqlDataSource ID="RoleDS"
+            runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+            SelectCommand="select IdRole , Role from secure.Role order by Role" SelectCommandType="Text">
+            <DeleteParameters>
+            </DeleteParameters>
+            <InsertParameters>
+            </InsertParameters>
+            <UpdateParameters>
+            </UpdateParameters>
+        </asp:SqlDataSource>
 
-      
+
 
         <!-- #endregion -->
 

@@ -70,7 +70,7 @@
                     <th>
 
                         <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteTipoLicitacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdTipoLicitacion")%>' ToolTip="Eliminar">
-                            <i class="fa  fa-eraser fa-sm"></i>
+                            <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 
                     </th>

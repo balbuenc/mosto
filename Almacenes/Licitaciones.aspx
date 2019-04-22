@@ -78,14 +78,14 @@
                     </td>
 
                     <td>
-                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditLicitacionBtn" CommandName="Editar" CommandArgument='<%# Eval("IdLicitacion")%>' ToolTip="Editar">
+                        <asp:LinkButton  runat="server" ID="EditLicitacionBtn" CommandName="Editar" CommandArgument='<%# Eval("IdLicitacion")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteLicitacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdLicitacion")%>' ToolTip="Eliminar">
+                        <asp:LinkButton  runat="server" ID="DeleteLicitacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdLicitacion")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 

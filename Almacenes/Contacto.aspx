@@ -36,7 +36,7 @@
                             <th>Proveedor</th>
                             <th>Tipo</th>
                             <th>Descripción</th>
-                            <th>Informaciíon</th>
+                            <th>Informacíon</th>
                             <th>Activo</th>
                             <th>...</th>
                             <th>...</th>
@@ -67,14 +67,14 @@
                         <asp:Label ID="lblActivo" runat="server" Text='<%# Eval("Activo") %>' /></td>
 
                     <td>
-                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditContactoBtn" CommandName="Editar" CommandArgument='<%# Eval("IdContacto")%>' ToolTip="Editar">
+                        <asp:LinkButton  runat="server" ID="EditContactoBtn" CommandName="Editar" CommandArgument='<%# Eval("IdContacto")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteContactoBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdContacto")%>' ToolTip="Eliminar">
+                        <asp:LinkButton  runat="server" ID="DeleteContactoBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdContacto")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 

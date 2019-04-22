@@ -82,14 +82,14 @@
                         <asp:Label ID="lblIdContrato" runat="server" Text='<%# Eval("IdContrato") %>' Visible="false"/>
                         <asp:Label ID="lblContrato" runat="server" Text='<%# Eval("Contrato") %>' /></td>
                     <td>
-                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditArticuloBtn" CommandName="Editar" CommandArgument='<%# Eval("IdArticulo")%>' ToolTip="Editar">
+                        <asp:LinkButton  runat="server" ID="EditArticuloBtn" CommandName="Editar" CommandArgument='<%# Eval("IdArticulo")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteArticuloBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdArticulo")%>' ToolTip="Eliminar">
+                        <asp:LinkButton  runat="server" ID="DeleteArticuloBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdArticulo")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 

@@ -62,14 +62,14 @@
                         <asp:Label ID="lblFechaAsignacion" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval("FechaAsignacion")) %>' /></td>
 
                     <td>
-                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditAsignacionLicitacionBtn" CommandName="Editar" CommandArgument='<%# Eval("IdAsignacionLicitacion")%>' ToolTip="Editar">
+                        <asp:LinkButton  runat="server" ID="EditAsignacionLicitacionBtn" CommandName="Editar" CommandArgument='<%# Eval("IdAsignacionLicitacion")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteAsignacionLicitacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdAsignacionLicitacion")%>' ToolTip="Eliminar">
+                        <asp:LinkButton  runat="server" ID="DeleteAsignacionLicitacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdAsignacionLicitacion")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 

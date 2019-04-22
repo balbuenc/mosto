@@ -56,14 +56,14 @@
                         <asp:Label ID="lblDescription" runat="server" Text='<%# Eval("Description") %>' /></td>
 
                     <td>
-                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditRoleBtn" CommandName="Editar" CommandArgument='<%# Eval("IdRole")%>' ToolTip="Editar">
+                        <asp:LinkButton  runat="server" ID="EditRoleBtn" CommandName="Editar" CommandArgument='<%# Eval("IdRole")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteRoleBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdRole")%>' ToolTip="Eliminar">
+                        <asp:LinkButton  runat="server" ID="DeleteRoleBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdRole")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 

@@ -69,12 +69,12 @@
 
 
                     <td>
-                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditContratoBtn" CommandName="Editar" CommandArgument='<%# Eval("IdContrato")%>' ToolTip="Editar">
+                        <asp:LinkButton  runat="server" ID="EditContratoBtn" CommandName="Editar" CommandArgument='<%# Eval("IdContrato")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
                     <td>
-                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteContratoBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdContrato")%>' ToolTip="Eliminar">
+                        <asp:LinkButton  runat="server" ID="DeleteContratoBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdContrato")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
                     </td>

@@ -196,6 +196,7 @@
     <Content Include="js\sb-admin.js" />
     <Content Include="js\sb-admin.min.js" />
     <Content Include="Licitaciones.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="Lote.aspx" />
     <Content Include="Proveedor.aspx" />
     <Content Include="Role.aspx" />
@@ -2162,6 +2163,13 @@
     </Compile>
     <Compile Include="Licitaciones.aspx.designer.cs">
       <DependentUpon>Licitaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Lote.aspx.cs">
       <DependentUpon>Lote.aspx</DependentUpon>

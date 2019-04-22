@@ -52,14 +52,14 @@
                         <asp:Label ID="lblUnidadMedida" runat="server" Text='<%# Eval("UnidadMedida") %>' /></td>
 
                     <td>
-                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditUnidadMedidaBtn" CommandName="Editar" CommandArgument='<%# Eval("IdUnidadMedida")%>' ToolTip="Editar">
+                        <asp:LinkButton  runat="server" ID="EditUnidadMedidaBtn" CommandName="Editar" CommandArgument='<%# Eval("IdUnidadMedida")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteUnidadMedidaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdUnidadMedida")%>' ToolTip="Eliminar">
+                        <asp:LinkButton  runat="server" ID="DeleteUnidadMedidaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdUnidadMedida")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 

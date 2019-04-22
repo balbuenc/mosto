@@ -59,14 +59,14 @@
                         <asp:Label ID="lblActivo" runat="server" Text='<%# Eval("Activo") %>' /></td>
 
                     <td>
-                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditDependenciaBtn" CommandName="Editar" CommandArgument='<%# Eval("IdDependencia")%>' ToolTip="Editar">
+                        <asp:LinkButton  runat="server" ID="EditDependenciaBtn" CommandName="Editar" CommandArgument='<%# Eval("IdDependencia")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteDependenciaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdDependencia")%>' ToolTip="Eliminar">
+                        <asp:LinkButton  runat="server" ID="DeleteDependenciaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdDependencia")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 

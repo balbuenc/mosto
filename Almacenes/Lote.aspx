@@ -63,14 +63,14 @@
                         <asp:Label ID="lblCantidad" runat="server" Text='<%# Eval("Cantidad") %>' /></td>
 
                     <td>
-                        <asp:LinkButton CssClass="btn btn-info" runat="server" ID="EditLoteBtn" CommandName="Editar" CommandArgument='<%# Eval("IdLote")%>' ToolTip="Editar">
+                        <asp:LinkButton  runat="server" ID="EditLoteBtn" CommandName="Editar" CommandArgument='<%# Eval("IdLote")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton CssClass="btn btn-danger" runat="server" ID="DeleteLoteBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdLote")%>' ToolTip="Eliminar">
+                        <asp:LinkButton  runat="server" ID="DeleteLoteBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdLote")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 

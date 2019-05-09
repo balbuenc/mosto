@@ -2,6 +2,73 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/Enigma.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.0.0.js"></script>
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("[id$=txtSearchArticulo]").autocomplete(
+                {
+                    source: "SearchArticulo.ashx",
+                    // note minlength, triggers the Handler call only once 3 characters entered
+                    appendTo: "#addModal",
+                    minLength: 1,
+                    focus: function (event, ui) {
+                        $("[id$=txtSearchArticulo]").val(ui.item.label);
+                        return false;
+                    },
+                    select: function (event, ui) {
+                        if (ui.item) {
+                            $("[id$=txtSearchArticulo]").val(ui.item.Client);
+                            console.log($("[id$=btnSearch]"));
+                            $("[id$=btnSearch]").click();
+                            return false;
+                        }
+
+                    }
+                })
+                .autocomplete("instance")._renderItem = function (ul, item) {
+                    //console.log(item.Client);
+                    return $("<li>")
+                        .append("<div class='style=background:black'>" + item.Client + "</div>")
+                        .appendTo(ul);
+                };
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("[id$=txtSearchProveedor]").autocomplete(
+                {
+                    source: "SearchProveedor.ashx",
+                    appendTo: "#addModal",
+                    // note minlength, triggers the Handler call only once 3 characters entered
+                    minLength: 1,
+                    focus: function (event, ui) {
+                        $("[id$=txtSearchProveedor]").val(ui.item.label);
+                        return false;
+                    },
+                    select: function (event, ui) {
+                        if (ui.item) {
+                            $("[id$=txtSearchProveedor]").val(ui.item.Client);
+                            console.log($("[id$=btnSearch]"));
+                            $("[id$=btnSearch]").click();
+                            return false;
+                        }
+
+                    }
+                })
+                .autocomplete("instance")._renderItem = function (ul, item) {
+                    //console.log(item.Client);
+                    return $("<li>")
+                        .append("<div>" + item.Client + "</div>")
+                        .appendTo(ul);
+                };
+        });
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
@@ -24,6 +91,7 @@
     </div>
 
     <div class="container-fluid">
+
         <asp:ListView ID="ContratoListView"
             runat="server"
             DataSourceID="ContratoDS"
@@ -69,12 +137,12 @@
 
 
                     <td>
-                        <asp:LinkButton  runat="server" ID="EditContratoBtn" CommandName="Editar" CommandArgument='<%# Eval("IdContrato")%>' ToolTip="Editar">
+                        <asp:LinkButton runat="server" ID="EditContratoBtn" CommandName="Editar" CommandArgument='<%# Eval("NroContrato")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
                     <td>
-                        <asp:LinkButton  runat="server" ID="DeleteContratoBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdContrato")%>' ToolTip="Eliminar">
+                        <asp:LinkButton runat="server" ID="DeleteContratoBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdContrato")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
                     </td>
@@ -90,89 +158,126 @@
 
         <!-- #region Modals -->
         <div id="addModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog" style="max-width: 1148px; width: 95%" role="document">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="addModalLabel">Agregar nuevo Contrato.</b>
+                                <b id="addModalLabel">Detalle de Contrato.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                                <asp:FormView ID="InsertFormView" runat="server" DataSourceID="ContratoDS" Width="100%"
-                                    CellPadding="4" DataKeyNames="IdContrato" ForeColor="#333333"
-                                    DefaultMode="Insert"
-                                    OnItemInserted="FormView1_ItemInserted">
-                                    <EditItemTemplate>
-                                    </EditItemTemplate>
-                                    <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                    <InsertItemTemplate>
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <div class="col-3"><b>ID</b></div>
-                                                <div class="col-9">
-                                                    <asp:TextBox ID="txtIdContrato" runat="server" Text="" CssClass="form-control mitad" Enabled="false" />
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3"><b>Proveedor</b></div>
-                                                <div class="col-9">
-                                                    <asp:DropDownList ID="IdProveedorDDL"
-                                                        runat="server"
-                                                        DataSourceID="ProveedorDS"
-                                                        DataTextField="Razonsocial"
-                                                        DataValueField="IdProveedor"
-                                                        CssClass="form-control"
-                                                        SelectedValue='<%# Bind("IdProveedor") %>'>
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3"><b>Inicio</b></div>
-                                                <div class="col-9">
-                                                    <asp:Calendar ID="txtFechaInicioContrato" runat="server" SelectedDate='<%# Bind("FechaInicioContrato") %>' />
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3"><b>Fin</b></div>
-                                                <div class="col-9">
-                                                    <asp:Calendar ID="txtFechaFinContrato" runat="server" SelectedDate='<%# Bind("FechaFinContrato") %>' />
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3"><b>Nro. de Contrato</b></div>
-                                                <div class="col-9">
-                                                    <asp:TextBox ID="txtNroContrato" runat="server" Text='<%# Bind("NroContrato") %>' CssClass="form-control" />
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3"><b>Licitación</b></div>
-                                                <div class="col-9">
-                                                    <asp:DropDownList ID="IdLicitacionDDL"
-                                                        runat="server"
-                                                        DataSourceID="LicitacionDS"
-                                                        DataTextField="Licitacion"
-                                                        DataValueField="IdLicitacion"
-                                                        CssClass="form-control"
-                                                        SelectedValue='<%# Bind("IdLicitacion") %>'>
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div class="form-row">
+                                    <div class="col-2">
+                                        <div class="col-form-label"><b>Nro. Contrato</b></div>
+                                    </div>
+                                    <div class="col-3">
+                                        <asp:TextBox ID="txtNroContrato" runat="server" Text="" CssClass="form-control form-control-sm" TextMode="Number" />
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-4">
+                                        <div class="col-form-label">Proveedor</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="col-form-label">Inicio</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="col-form-label">Fin</div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="col-form-label">Licitación</div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-4">
+                                        <input id="txtSearchProveedor" class="form-control form-control-sm" runat="server" placeholder="Proveedor" />
+                                    </div>
+                                    <div class="col">
+                                        <asp:TextBox ID="txtFechaInicioContrato" runat="server" Text="" CssClass="form-control form-control-sm" TextMode="Date" />
+                                    </div>
+                                    <div class="col">
+                                        <asp:TextBox ID="txtFechaFinContrato" runat="server" Text="" CssClass="form-control form-control-sm" TextMode="Date" />
+                                    </div>
 
-                                        <hr />
-                                        <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Aceptar" CssClass="btn btn-success" />
-                                        <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" OnClick="CancelButton_Click" />
-                                    </InsertItemTemplate>
-                                    <ItemTemplate>
-                                    </ItemTemplate>
+                                    <div class="col-4">
+                                        <asp:DropDownList ID="IdLicitacionDDL"
+                                            runat="server"
+                                            DataSourceID="LicitacionDS"
+                                            DataTextField="Licitacion"
+                                            DataValueField="IdLicitacion"
+                                            CssClass="form-control form-control-sm">
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-row">
+                                    <div class="col-12">
+                                        <div class="col-form-label">Datos del Artículo</div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-4">
+                                        <input id="txtSearchArticulo" runat="server" placeholder="Articulo" class="form-control form-control-sm">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control form-control-sm" id="txtArticuloCantidad" runat="server" placeholder="Cantidad del Artículo">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control form-control-sm" id="txtArticuloPrecio" runat="server" placeholder="Precio">
+                                    </div>
+                                    <div class="col-">
+                                        <asp:DropDownList ID="IdImpuestoDDL"
+                                            runat="server"
+                                            DataSourceID="ImpuestoDS"
+                                            DataTextField="Impuesto"
+                                            DataValueField="IdImpuesto"
+                                            CssClass="form-control form-control-sm">
+                                        </asp:DropDownList>
 
+                                    </div>
+                                    <div class="col-1 text-center">
+                                        <asp:LinkButton runat="server" ID="AgregarAriculoBtn" ToolTip="Agregar Artículo" OnClick="AgregarAriculoBtn_Click">
+                                            <i class="fas fa-plus-circle"></i>
+                                        </asp:LinkButton>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-row">
+                                    <div class="col-12">
+                                        <div class="col-form-label"><b>Artículos del contrato</b></div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <asp:GridView ID="ArticuloContratoGridView" runat="server" Width="100%" DataSourceID="ArticuloContratoDS" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="IdArticulo" Font-Names="Segoe UI" Font-Size="Smaller" ForeColor="#333333" GridLines="None">
+                                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                        <Columns>
+                                            <asp:BoundField DataField="Articulo" HeaderText="Artículo" SortExpression="Articulo" />
+                                            <asp:BoundField DataField="CantidadTotal" HeaderText="Cantidad" SortExpression="CantidadTotal" />
+                                            <asp:BoundField DataField="Precio" HeaderText="Precio" SortExpression="Precio" />
+                                            
+                                        </Columns>
+                                        <EditRowStyle BackColor="#999999" />
+                                        <EmptyDataTemplate>
+                                            <div class="alert-danger align-content-center" style="text-align: center">El contrato no tiene asignado Artículos.</div>
+                                        </EmptyDataTemplate>
+                                        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                        <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                                        <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                                        <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                                        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                                    </asp:GridView>
+                                </div>
 
+                                <div class="modal-footer">
+                                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Aceptar" CssClass="btn btn-success btn-sm" />
+                                    <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger btn-sm" OnClick="CancelButton_Click" />
+                                </div>
 
-                                </asp:FormView>
-                            </div>
-                            <div class="modal-footer">
                             </div>
                         </div>
                     </ContentTemplate>
@@ -183,115 +288,6 @@
         </div>
 
 
-        <div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-
-
-                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                    <ContentTemplate>
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <b id="editModalLabel">Modificar Contrato.</b>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            </div>
-                            <div class="modal-body">
-                                <asp:FormView ID="EditFormView" runat="server" Width="100%"
-                                    CellPadding="4" DataKeyNames="IdContrato" ForeColor="#333333"
-                                    DefaultMode="Edit"
-                                    OnModeChanging="EditFormView_ModeChanging" OnItemUpdating="EditFormView_ItemUpdating" OnItemUpdated="EditFormView_ItemUpdated">
-                                    <EditItemTemplate>
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <div class="col-3"><b>ID</b></div>
-                                                <div class="col-9">
-                                                    <asp:TextBox ID="txtIdContrato" runat="server" Text='<%# Bind("IdContrato") %>' CssClass="form-control mitad" Enabled="false" />
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3"><b>Proveedor</b></div>
-                                                <div class="col-9">
-                                                    <asp:DropDownList ID="IdProveedorDDL"
-                                                        runat="server"
-                                                        DataSourceID="ProveedorDS"
-                                                        DataTextField="Razonsocial"
-                                                        DataValueField="IdProveedor"
-                                                        CssClass="form-control"
-                                                        SelectedValue='<%# Bind("IdProveedor") %>'>
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3"><b>Inicio</b></div>
-
-                                                <div class="col-9">
-                                                    <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
-                                                        <input type="text" class="form-control" value='<%#  String.Format("{0:dd/MM/yyyy}",Eval( "FechaInicioContrato") ) %>' runat="server" id="calendarFechaInicioContrato">
-                                                        <div class="input-group-addon">
-                                                            <span class="glyphicon glyphicon-th"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3"><b>Fin</b></div>
-                                                
-                                                 <div class="col-9">
-                                                    <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
-                                                        <input type="text" class="form-control" value='<%#  String.Format("{0:dd/MM/yyyy}",Eval( "FechaFinContrato") ) %>' runat="server" id="calendarFechaFinContrato">
-                                                        <div class="input-group-addon">
-                                                            <span class="glyphicon glyphicon-th"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3"><b>Nro. de Contrato</b></div>
-                                                <div class="col-9">
-                                                    <asp:TextBox ID="txtNroContrato" runat="server" Text='<%# Bind("NroContrato") %>' CssClass="form-control" />
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3"><b>Licitación</b></div>
-                                                <div class="col-9">
-                                                    <asp:DropDownList ID="IdLicitacionDDL"
-                                                        runat="server"
-                                                        DataSourceID="LicitacionDS"
-                                                        DataTextField="Licitacion"
-                                                        DataValueField="IdLicitacion"
-                                                        CssClass="form-control"
-                                                        SelectedValue='<%# Bind("IdLicitacion") %>'>
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        </div>
-
-                                        <hr />
-
-                                        <asp:LinkButton ID="AcceptButton" runat="server" CausesValidation="False" CommandName="Update" Text="Aceptar" CssClass="btn btn-success" />
-                                        <asp:LinkButton ID="CancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" OnClick="CancelButton_Click" />
-                                    </EditItemTemplate>
-                                    <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                    <InsertItemTemplate>
-                                    </InsertItemTemplate>
-                                    <ItemTemplate>
-                                    </ItemTemplate>
-
-
-
-                                </asp:FormView>
-                            </div>
-                            <div class="modal-footer">
-                            </div>
-                        </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
-
-
-        </div>
 
         <!-- #endregion -->
 
@@ -322,10 +318,20 @@
             SelectCommand="select IdProveedor, RazonSocial from management.Proveedor  order by 2" SelectCommandType="Text"></asp:SqlDataSource>
 
         <asp:SqlDataSource ID="LicitacionDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-            SelectCommand="select l.IdLicitacion,  cast(l.NroLicitacion as varchar(20)) + ' ('+ tl.TipoLicitacion + ')' as Licitacion
-                            from management.licitacion l
-                            left outer join management.TipoLicitacion tl on l.IdTipoLicitacion = tl.IdTipoLicitacion"
+            SelectCommand="select l.IdLicitacion, upper(l.llamado) + ' | Nro. [' + cast(l.NroLicitacion as varchar(50)) + ']'  as Licitacion
+                            from management.licitacion l;"
             SelectCommandType="Text"></asp:SqlDataSource>
+
+        <asp:SqlDataSource ID="ImpuestoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+            SelectCommand="select IdImpuesto, Impuesto from management.Impuesto  order by 2" SelectCommandType="Text"></asp:SqlDataSource>
+
+        <asp:SqlDataSource ID="ArticuloContratoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+            SelectCommand="warehouse.sp_GetArticuloContrato_By_NroContrato" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+
+                <asp:ControlParameter ControlID="txtNroContrato" Name="NroContrato" PropertyName="Text" />
+            </SelectParameters>
+        </asp:SqlDataSource>
 
         <!-- #endregion -->
 

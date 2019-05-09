@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace Almacenes
 {
-    public partial class Articulo : System.Web.UI.Page
+    public partial class ArticuloMaestro : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,22 +19,22 @@ namespace Almacenes
         }
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
-            Response.Redirect("Articulo.aspx");
+            Response.Redirect("ArticuloMaestro.aspx");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Articulo.aspx");
+            Response.Redirect("ArticuloMaestro.aspx");
         }
 
         protected void GetRecordToUpdate(String ID)
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(ArticuloDS.ConnectionString);
+            SqlConnection con = new SqlConnection(ArticuloMaestroDS.ConnectionString);
 
-            cmd = new SqlCommand("warehouse.[sp_Articulo_get_Articulo]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdArticulo", ID));
+            cmd = new SqlCommand("warehouse.[sp_ArticuloMaestro_get_ArticuloMaestro]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdArticuloMaestro", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter adp = new SqlDataAdapter();
@@ -56,10 +56,10 @@ namespace Almacenes
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(ArticuloDS.ConnectionString);
+            SqlConnection con = new SqlConnection(ArticuloMaestroDS.ConnectionString);
 
-            cmd = new SqlCommand("warehouse.[sp_Articulo_delete]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdArticulo", ID));
+            cmd = new SqlCommand("warehouse.[sp_ArticuloMaestro_delete]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdArticuloMaestro", ID));
 
 
 
@@ -89,7 +89,7 @@ namespace Almacenes
             else if (e.CommandName == "Eliminar")
             {
                 DeleteRecord(e.CommandArgument.ToString());
-                ArticuloListView.DataBind();
+                ArticuloMaestroListView.DataBind();
 
                 ErrorLabel.Text = "El Registro se eliminó correctamente.";
                 ErrorLabel.Visible = true;
@@ -110,87 +110,34 @@ namespace Almacenes
             EditFormView.ChangeMode(e.NewMode);
         }
 
-        private double ConvertToDouble(string s)
-        {
-            char systemSeparator = Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator[0];
-            double result = 0;
-            try
-            {
-                s = s.Replace(".", "");
-                if (s != null)
-                    if (!s.Contains(","))
-                        result = double.Parse(s, CultureInfo.InvariantCulture);
-                    else
-                        result = Convert.ToDouble(s.Replace(".", systemSeparator.ToString()).Replace(",", systemSeparator.ToString()));
-            }
-            catch (Exception e)
-            {
-                try
-                {
-                    result = Convert.ToDouble(s);
-                }
-                catch
-                {
-                    try
-                    {
-                        result = Convert.ToDouble(s.Replace(",", ";").Replace(".", ",").Replace(";", "."));
-                    }
-                    catch
-                    {
-                        throw new Exception("Wrong string-to-double format");
-                    }
-                }
-            }
-            return result;
-        }
 
         protected void EditFormView_ItemUpdating(object sender, FormViewUpdateEventArgs e)
         {
             SqlCommand cmd = new SqlCommand();
             DataKey key = EditFormView.DataKey;
 
-            string format = "dd/MM/yyyy";
-            double cant = 0;
 
             try
             {
                 //Obtengo los valores de los campos a editar
-                TextBox txtIdArticulo = (TextBox)EditFormView.FindControl("txtIdArticulo");
+                TextBox txtIdArticuloMaestro = (TextBox)EditFormView.FindControl("txtIdArticuloMaestro");
                 TextBox txtDescripcion = (TextBox)EditFormView.FindControl("txtDescripcion");
-                DropDownList IdProveedorDDL = (DropDownList)EditFormView.FindControl("IdProveedorDDL");
+               
                 TextBox txtCodigoDeBarra = (TextBox)EditFormView.FindControl("txtCodigoDeBarra");
                 DropDownList IdUnidadMedidaDDL = (DropDownList)EditFormView.FindControl("IdUnidadMedidaDDL");
-                TextBox txtCantidadTotal = (TextBox)EditFormView.FindControl("txtCantidadTotal");
-                TextBox txtCantidadPendiente = (TextBox)EditFormView.FindControl("txtCantidadPendiente");
-                TextBox txtCantidadExistente = (TextBox)EditFormView.FindControl("txtCantidadExistente");
-                DropDownList IdContratoDDL = (DropDownList)EditFormView.FindControl("IdContratoDDL");
 
-                System.Web.UI.HtmlControls.HtmlInputText calendarFechaEntregaArticulo = (System.Web.UI.HtmlControls.HtmlInputText)EditFormView.FindControl("calendarFechaEntregaArticulo");
-                System.Web.UI.HtmlControls.HtmlInputText calendarFechaVencimientoArticulo = (System.Web.UI.HtmlControls.HtmlInputText)EditFormView.FindControl("calendarFechaVencimientoArticulo");
 
-                //Convertir cantidad total a decimal para el ingreso a la BD
-                cant = ConvertToDouble(txtCantidadTotal.Text.ToString());
-
-                //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
-                DateTime isoDateTimeEntrega = DateTime.ParseExact(calendarFechaEntregaArticulo.Value, format, CultureInfo.InvariantCulture);
-                DateTime isoDateTimeVencimiento = DateTime.ParseExact(calendarFechaVencimientoArticulo.Value, format, CultureInfo.InvariantCulture);
-
-                SqlConnection conn = new SqlConnection(ArticuloDS.ConnectionString);
+                SqlConnection conn = new SqlConnection(ArticuloMaestroDS.ConnectionString);
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "warehouse.sp_Articulo_update";
+                cmd.CommandText = "warehouse.sp_ArticuloMaestro_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@IdArticulo", txtIdArticulo.Text);
+                cmd.Parameters.AddWithValue("@IdArticuloMaestro", txtIdArticuloMaestro.Text);
                 cmd.Parameters.AddWithValue("@Descripcion", txtDescripcion.Text);
-                cmd.Parameters.AddWithValue("@IdProveedor", IdProveedorDDL.SelectedValue);
-                cmd.Parameters.AddWithValue("@FechaEntrega", isoDateTimeEntrega);
-                cmd.Parameters.AddWithValue("@FechaVencimiento", isoDateTimeVencimiento);
                 cmd.Parameters.AddWithValue("@CodigoDeBarra", txtCodigoDeBarra.Text);
                 cmd.Parameters.AddWithValue("@IdUnidadMedida", IdUnidadMedidaDDL.SelectedValue);
-                cmd.Parameters.AddWithValue("@CantidadTotal", cant);
-                cmd.Parameters.AddWithValue("@IdContrato", IdContratoDDL.SelectedValue);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -200,7 +147,7 @@ namespace Almacenes
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#editModal').modal('hide');", true);
 
-                Response.Redirect("Articulo.aspx");
+                Response.Redirect("ArticuloMaestro.aspx");
 
 
             }
@@ -219,7 +166,7 @@ namespace Almacenes
             ErrorLabel.Text = "El Registro de actualizó correctamente";
             ErrorLabel.Visible = true;
             FadeOut(ErrorLabel.ClientID, 5000);
-            ArticuloListView.DataBind();
+            ArticuloMaestroListView.DataBind();
 
         }
     }

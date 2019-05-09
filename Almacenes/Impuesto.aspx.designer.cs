@@ -10,7 +10,7 @@
 namespace Almacenes {
     
     
-    public partial class Articulo {
+    public partial class Impueto {
         
         /// <summary>
         /// AddLicitacionBtn control.
@@ -31,13 +31,13 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// ArticuloListView control.
+        /// ImpuestoListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ArticuloListView;
+        protected global::System.Web.UI.WebControls.ListView ImpuestoListView;
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -76,39 +76,12 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.FormView EditFormView;
         
         /// <summary>
-        /// ArticuloDS control.
+        /// ImpuestoDS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ArticuloDS;
-        
-        /// <summary>
-        /// ProveedorDS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ProveedorDS;
-        
-        /// <summary>
-        /// UnidadMedidaDS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource UnidadMedidaDS;
-        
-        /// <summary>
-        /// ContratoDS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ContratoDS;
+        protected global::System.Web.UI.WebControls.SqlDataSource ImpuestoDS;
     }
 }

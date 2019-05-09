@@ -66,9 +66,9 @@ namespace Almacenes.Management
             OutputParam.Direction = ParameterDirection.Output;
             OutputParam.Size = 512;
             cmd.Parameters.Add(OutputParam);
-            
+
             cmd.CommandType = CommandType.StoredProcedure;
-            
+
             con.Open();
             cmd.ExecuteNonQuery();
 
@@ -76,7 +76,7 @@ namespace Almacenes.Management
 
             con.Close();
         }
-        
+
 
         protected void LicitacionListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
@@ -93,7 +93,7 @@ namespace Almacenes.Management
                 DeleteRecord(e.CommandArgument.ToString());
                 LicitacionListView.DataBind();
 
-                
+
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
@@ -102,10 +102,10 @@ namespace Almacenes.Management
 
         protected void FadeOut(string ClientID, int Time)
         {
-            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "script", "window.setTimeout(function() { document.getElementById('" + ClientID + "').style.display = 'none' }," + Time.ToString() +");", true);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "script", "window.setTimeout(function() { document.getElementById('" + ClientID + "').style.display = 'none' }," + Time.ToString() + ");", true);
         }
 
-        
+
 
         protected void EditFormView_ModeChanging(object sender, FormViewModeEventArgs e)
         {
@@ -117,20 +117,18 @@ namespace Almacenes.Management
             SqlCommand cmd = new SqlCommand();
             DataKey key = EditFormView.DataKey;
 
-            string format = "dd/MM/yyyy";
-
             try
             {
                 //Obtengo los valores de los campos a editar
                 TextBox txtIdLicitacion = (TextBox)EditFormView.FindControl("txtIdLicitacion");
                 DropDownList IdLicitacionDDL = (DropDownList)EditFormView.FindControl("IdLicitacionDDL");
                 TextBox txtNroLicitacion = (TextBox)EditFormView.FindControl("txtNroLicitacion");
-                System.Web.UI.HtmlControls.HtmlInputText txtCalendar = (System.Web.UI.HtmlControls.HtmlInputText)EditFormView.FindControl("calendarFechaLicitacion");
+                TextBox txtFechaLicitacion = (TextBox)EditFormView.FindControl("txtFechaLicitacion");
                 TextBox txtUOCReferancia = (TextBox)EditFormView.FindControl("txtUOCReferancia");
                 TextBox txtUOCIdLicitacion = (TextBox)EditFormView.FindControl("txtUOCIdLicitacion");
                 DropDownList ActivoDDL = (DropDownList)EditFormView.FindControl("ActivoDDL");
+                TextBox txtLlamado = (TextBox)EditFormView.FindControl("txtLlamado");
 
-                DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
                 SqlConnection conn = new SqlConnection(LicitacionDS.ConnectionString);
 
@@ -142,10 +140,11 @@ namespace Almacenes.Management
                 cmd.Parameters.AddWithValue("@IdLicitacion", txtIdLicitacion.Text);
                 cmd.Parameters.AddWithValue("@IdTipoLicitacion", IdLicitacionDDL.SelectedValue.ToString());
                 cmd.Parameters.AddWithValue("@NroLicitacion", txtNroLicitacion.Text);
-                cmd.Parameters.AddWithValue("@FechaLicitacion",isoDateTime );
+                cmd.Parameters.AddWithValue("@FechaLicitacion", txtFechaLicitacion.Text);
                 cmd.Parameters.AddWithValue("@UOCReferancia", txtUOCReferancia.Text);
                 cmd.Parameters.AddWithValue("@UOCIdLicitacion", txtUOCIdLicitacion.Text);
                 cmd.Parameters.AddWithValue("@Activo", ActivoDDL.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@Llamado", txtLlamado.Text);
 
                 // Set Output Paramater
                 SqlParameter OutputParam = new SqlParameter("@Output", SqlDbType.VarChar);
@@ -156,10 +155,6 @@ namespace Almacenes.Management
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
-
-                ErrorLabel.Text = OutputParam.Value.ToString();
-
-             
 
                 conn.Close();
 
@@ -172,11 +167,13 @@ namespace Almacenes.Management
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
         }
-        
+
 
         protected void EditFormView_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
         {
             EditFormView.ChangeMode(FormViewMode.ReadOnly);
         }
+
+       
     }
 }

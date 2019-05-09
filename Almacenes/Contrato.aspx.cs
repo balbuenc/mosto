@@ -14,7 +14,7 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            EnableControls();
         }
 
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
@@ -27,30 +27,7 @@ namespace Almacenes
             Response.Redirect("Contrato.aspx");
         }
 
-        protected void GetRecordToUpdate(String ID)
-        {
-
-            SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(ContratoDS.ConnectionString);
-
-            cmd = new SqlCommand("management.[sp_Contrato_get_Contrato]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdContrato", ID));
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            SqlDataAdapter adp = new SqlDataAdapter();
-
-            con.Open();
-
-            adp.SelectCommand = cmd;
-            DataSet ds = new DataSet();
-            adp.Fill(ds);
-
-            EditFormView.DataSource = ds;
-            EditFormView.DataBind();
-
-            con.Close();
-        }
-
+      
 
         protected void DeleteRecord(String ID)
         {
@@ -78,10 +55,14 @@ namespace Almacenes
         {
             if (e.CommandName == "Editar")
             {
-                GetRecordToUpdate(e.CommandArgument.ToString());
+                txtNroContrato.Text = e.CommandArgument.ToString();
+
+                DisableControls();
+
+                ArticuloContratoGridView.DataBind();
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
-               "$('#editModal').modal('show');", true);
+               "$('#addModal').modal('show');", true);
 
 
 
@@ -103,62 +84,69 @@ namespace Almacenes
             ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "script", "window.setTimeout(function() { document.getElementById('" + ClientID + "').style.display = 'none' }," + Time.ToString() + ");", true);
         }
 
-
-
-        protected void EditFormView_ModeChanging(object sender, FormViewModeEventArgs e)
+        void DisableControls()
         {
-            EditFormView.ChangeMode(e.NewMode);
+            txtNroContrato.Enabled = false;
+            txtSearchProveedor.Disabled = true;
+            txtFechaInicioContrato.Enabled = false;
+            txtFechaFinContrato.Enabled = false;
+            IdLicitacionDDL.Enabled = false;
         }
 
-        protected void EditFormView_ItemUpdating(object sender, FormViewUpdateEventArgs e)
+        void EnableControls()
+        {
+            txtNroContrato.Enabled = true;
+            txtSearchProveedor.Disabled = false;
+            txtFechaInicioContrato.Enabled = true;
+            txtFechaFinContrato.Enabled = true;
+            IdLicitacionDDL.Enabled = true;
+        }
+
+        void LimpiarArticulo()
+        {
+            txtSearchArticulo.Value = "";
+            txtArticuloCantidad.Value = "";
+            txtArticuloPrecio.Value = "";
+        }
+
+
+        protected void AgregarAriculoBtn_Click(object sender, EventArgs e)
         {
             SqlCommand cmd = new SqlCommand();
-            DataKey key = EditFormView.DataKey;
-
-            string format = "dd/MM/yyyy";
-
             try
             {
-                //Obtengo los valores de los campos a editar
-                DropDownList txtIdProveedor = (DropDownList)EditFormView.FindControl("IdProveedorDDL");
-                DropDownList txtIdLicitacion= (DropDownList)EditFormView.FindControl("IdLicitacionDDL");
-                TextBox txtIdContrato = (TextBox)EditFormView.FindControl("txtIdContrato");
-                
-                
-                System.Web.UI.HtmlControls.HtmlInputText calendarFechaInicioContrato = (System.Web.UI.HtmlControls.HtmlInputText)EditFormView.FindControl("calendarFechaInicioContrato");
-                System.Web.UI.HtmlControls.HtmlInputText calendarFechaFinConrtrato = (System.Web.UI.HtmlControls.HtmlInputText)EditFormView.FindControl("calendarFechaFinContrato");
-
-                
-                TextBox txtNroContrato = (TextBox)EditFormView.FindControl("txtNroContrato");
-                
-
-
-                DateTime isoDateTimeInicio = DateTime.ParseExact(calendarFechaInicioContrato.Value, format, CultureInfo.InvariantCulture);
-                DateTime isoDateTimeFin = DateTime.ParseExact(calendarFechaFinConrtrato.Value, format, CultureInfo.InvariantCulture);
-
                 SqlConnection conn = new SqlConnection(ContratoDS.ConnectionString);
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "management.sp_Contrato_update";
+                cmd.CommandText = "management.sp_AddArticuloContrato";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@IdContrato", txtIdContrato.Text);
-                cmd.Parameters.AddWithValue("@IdProveedor", txtIdProveedor.SelectedValue);
-                cmd.Parameters.AddWithValue("@FechaInicioContrato", isoDateTimeInicio);
-                cmd.Parameters.AddWithValue("@FechaFinContrato", isoDateTimeFin);
+
+                cmd.Parameters.AddWithValue("@Proveedor", txtSearchProveedor.Value);
+                cmd.Parameters.AddWithValue("@FechaInicioContrato", txtFechaInicioContrato.Text);
+                cmd.Parameters.AddWithValue("@FechaFinContrato", txtFechaFinContrato.Text);
                 cmd.Parameters.AddWithValue("@NroContrato", txtNroContrato.Text);
-                cmd.Parameters.AddWithValue("@IdLicitacion", txtIdLicitacion.SelectedValue);
+                cmd.Parameters.AddWithValue("@IdLicitacion", IdLicitacionDDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@ArticuloMaestro", txtSearchArticulo.Value);
+                cmd.Parameters.AddWithValue("@CantidadArticulo", txtArticuloCantidad.Value);
+                cmd.Parameters.AddWithValue("@Precio", txtArticuloPrecio.Value);
+                cmd.Parameters.AddWithValue("@IdImpuesto", IdImpuestoDDL.SelectedValue);
+
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
 
                 conn.Close();
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "",
-                "$('#editModal').modal('hide');", true);
+                DisableControls();
 
-                Response.Redirect("Contrato.aspx");
+                ArticuloContratoGridView.DataBind();
+
+                LimpiarArticulo();
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "",
+              "$('#addModal').modal('show');", true);
 
 
             }
@@ -168,17 +156,6 @@ namespace Almacenes
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
-        }
-
-
-        protected void EditFormView_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
-        {
-            EditFormView.ChangeMode(FormViewMode.ReadOnly);
-            ErrorLabel.Text = "El Registro de actualizó correctamente";
-            ErrorLabel.Visible = true;
-            FadeOut(ErrorLabel.ClientID, 5000);
-            ContratoListView.DataBind();
-
         }
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,20 +13,8 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            EnableControls();
-        }
 
-        protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
-        {
-            Response.Redirect("Contrato.aspx");
         }
-
-        protected void CancelButton_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Contrato.aspx");
-        }
-
-      
 
         protected void DeleteRecord(String ID)
         {
@@ -55,24 +42,14 @@ namespace Almacenes
         {
             if (e.CommandName == "Editar")
             {
-                txtNroContrato.Text = e.CommandArgument.ToString();
-
-                DisableControls();
-
-                ArticuloContratoGridView.DataBind();
-
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "",
-               "$('#addModal').modal('show');", true);
-
-
-
+                Response.Redirect("ContratoDetalle.aspx?IdContrato=" + e.CommandArgument.ToString());
             }
             else if (e.CommandName == "Eliminar")
             {
                 DeleteRecord(e.CommandArgument.ToString());
                 ContratoListView.DataBind();
 
-                ErrorLabel.Text = "El Registro se eliminó correctamente.";
+                ErrorLabel.Text = "El registro se eliminó correctamente.";
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 3000);
             }
@@ -84,78 +61,13 @@ namespace Almacenes
             ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "script", "window.setTimeout(function() { document.getElementById('" + ClientID + "').style.display = 'none' }," + Time.ToString() + ");", true);
         }
 
-        void DisableControls()
+
+
+       
+
+        protected void AddLicitacionBtn_ServerClick(object sender, EventArgs e)
         {
-            txtNroContrato.Enabled = false;
-            txtSearchProveedor.Disabled = true;
-            txtFechaInicioContrato.Enabled = false;
-            txtFechaFinContrato.Enabled = false;
-            IdLicitacionDDL.Enabled = false;
-        }
-
-        void EnableControls()
-        {
-            txtNroContrato.Enabled = true;
-            txtSearchProveedor.Disabled = false;
-            txtFechaInicioContrato.Enabled = true;
-            txtFechaFinContrato.Enabled = true;
-            IdLicitacionDDL.Enabled = true;
-        }
-
-        void LimpiarArticulo()
-        {
-            txtSearchArticulo.Value = "";
-            txtArticuloCantidad.Value = "";
-            txtArticuloPrecio.Value = "";
-        }
-
-
-        protected void AgregarAriculoBtn_Click(object sender, EventArgs e)
-        {
-            SqlCommand cmd = new SqlCommand();
-            try
-            {
-                SqlConnection conn = new SqlConnection(ContratoDS.ConnectionString);
-
-                cmd.Connection = conn;
-
-                cmd.CommandText = "management.sp_AddArticuloContrato";
-                cmd.CommandType = CommandType.StoredProcedure;
-
-
-                cmd.Parameters.AddWithValue("@Proveedor", txtSearchProveedor.Value);
-                cmd.Parameters.AddWithValue("@FechaInicioContrato", txtFechaInicioContrato.Text);
-                cmd.Parameters.AddWithValue("@FechaFinContrato", txtFechaFinContrato.Text);
-                cmd.Parameters.AddWithValue("@NroContrato", txtNroContrato.Text);
-                cmd.Parameters.AddWithValue("@IdLicitacion", IdLicitacionDDL.SelectedValue);
-                cmd.Parameters.AddWithValue("@ArticuloMaestro", txtSearchArticulo.Value);
-                cmd.Parameters.AddWithValue("@CantidadArticulo", txtArticuloCantidad.Value);
-                cmd.Parameters.AddWithValue("@Precio", txtArticuloPrecio.Value);
-                cmd.Parameters.AddWithValue("@IdImpuesto", IdImpuestoDDL.SelectedValue);
-
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-
-                conn.Close();
-
-                DisableControls();
-
-                ArticuloContratoGridView.DataBind();
-
-                LimpiarArticulo();
-
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "",
-              "$('#addModal').modal('show');", true);
-
-
-            }
-            catch (Exception ex)
-            {
-                ErrorLabel.Text = ex.Message;
-                ErrorLabel.Visible = true;
-                FadeOut(ErrorLabel.ClientID, 5000);
-            }
+            Response.Redirect("ContratoDetalle.aspx");
         }
     }
 }

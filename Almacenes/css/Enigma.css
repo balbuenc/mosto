@@ -49,3 +49,10 @@ body {
     margin: 30px auto;
 }
 
+.div.Region {
+    font-weight:bolder;
+    border-bottom:solid;
+    border-bottom-width:1px
+}
+
+

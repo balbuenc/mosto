@@ -217,13 +217,13 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Contrato.aspx" />
+    <Content Include="ContratoDetalle.aspx" />
     <Content Include="css\Enigma.css" />
     <Content Include="css\sb-admin.css" />
     <Content Include="css\sb-admin.min.css" />
     <Content Include="Default.aspx" />
     <Content Include="Dependencia.aspx" />
     <Content Include="Deposito.aspx" />
-    <Content Include="Entrada.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -2177,6 +2177,13 @@
     <Compile Include="Contrato.aspx.designer.cs">
       <DependentUpon>Contrato.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ContratoDetalle.aspx.cs">
+      <DependentUpon>ContratoDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContratoDetalle.aspx.designer.cs">
+      <DependentUpon>ContratoDetalle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2197,13 +2204,6 @@
     </Compile>
     <Compile Include="Deposito.aspx.designer.cs">
       <DependentUpon>Deposito.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Entrada.aspx.cs">
-      <DependentUpon>Entrada.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Entrada.aspx.designer.cs">
-      <DependentUpon>Entrada.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

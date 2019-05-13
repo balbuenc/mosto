@@ -10,7 +10,7 @@
 namespace Almacenes {
     
     
-    public partial class ContratoDetalle {
+    public partial class EntradaLote {
         
         /// <summary>
         /// ErrorLabel control.
@@ -22,6 +22,33 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
+        /// SeleccionarContratoPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel SeleccionarContratoPanel;
+        
+        /// <summary>
+        /// txtSearchContrato control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSearchContrato;
+        
+        /// <summary>
+        /// SearchContratoBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SearchContratoBtn;
+        
+        /// <summary>
         /// txtNroContrato control.
         /// </summary>
         /// <remarks>
@@ -31,40 +58,76 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.TextBox txtNroContrato;
         
         /// <summary>
-        /// txtSearchProveedor control.
+        /// txtProveedor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSearchProveedor;
+        protected global::System.Web.UI.WebControls.TextBox txtProveedor;
         
         /// <summary>
-        /// txtFechaInicioContrato control.
+        /// txtLicitacion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaInicioContrato;
+        protected global::System.Web.UI.WebControls.TextBox txtLicitacion;
         
         /// <summary>
-        /// txtFechaFinContrato control.
+        /// ArticuloContratoUP control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaFinContrato;
+        protected global::System.Web.UI.UpdatePanel ArticuloContratoUP;
         
         /// <summary>
-        /// IdLicitacionDDL control.
+        /// IdArticuloDDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList IdLicitacionDDL;
+        protected global::System.Web.UI.WebControls.DropDownList IdArticuloDDL;
+        
+        /// <summary>
+        /// txtPrecio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPrecio;
+        
+        /// <summary>
+        /// txtImpuesto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtImpuesto;
+        
+        /// <summary>
+        /// txtCantidadTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCantidadTotal;
+        
+        /// <summary>
+        /// txtExistente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtExistente;
         
         /// <summary>
         /// ArticuloPanel control.
@@ -76,40 +139,31 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.Panel ArticuloPanel;
         
         /// <summary>
-        /// txtSearchArticulo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSearchArticulo;
-        
-        /// <summary>
         /// txtArticuloCantidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtArticuloCantidad;
+        protected global::System.Web.UI.WebControls.TextBox txtArticuloCantidad;
         
         /// <summary>
-        /// txtArticuloPrecio control.
+        /// IdDependendciaDDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtArticuloPrecio;
+        protected global::System.Web.UI.WebControls.DropDownList IdDependendciaDDL;
         
         /// <summary>
-        /// IdImpuestoDDL control.
+        /// IdDepositoDDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList IdImpuestoDDL;
+        protected global::System.Web.UI.WebControls.DropDownList IdDepositoDDL;
         
         /// <summary>
         /// AgregarArticuloBtn control.
@@ -121,49 +175,40 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.Button AgregarArticuloBtn;
         
         /// <summary>
-        /// ArticuloContratoDataPager control.
+        /// LoteContratoDataPager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataPager ArticuloContratoDataPager;
+        protected global::System.Web.UI.WebControls.DataPager LoteContratoDataPager;
         
         /// <summary>
-        /// ArticuloContratoListView control.
+        /// LoteContratoListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ArticuloContratoListView;
+        protected global::System.Web.UI.WebControls.ListView LoteContratoListView;
         
         /// <summary>
-        /// ProveedorDS control.
+        /// DependenciaDS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ProveedorDS;
+        protected global::System.Web.UI.WebControls.SqlDataSource DependenciaDS;
         
         /// <summary>
-        /// LicitacionDS control.
+        /// DepositoDS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource LicitacionDS;
-        
-        /// <summary>
-        /// ImpuestoDS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ImpuestoDS;
+        protected global::System.Web.UI.WebControls.SqlDataSource DepositoDS;
         
         /// <summary>
         /// ArticuloContratoDS control.
@@ -173,5 +218,14 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource ArticuloContratoDS;
+        
+        /// <summary>
+        /// LoteContratoDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource LoteContratoDS;
     }
 }

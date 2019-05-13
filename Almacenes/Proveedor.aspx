@@ -23,6 +23,13 @@
     </div>
 
     <div class="container-fluid">
+        <asp:DataPager ID="ProveedorDataPager" runat="server" PagedControlID="ProveedorListView" PageSize="10">
+            <Fields>
+                <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
+                <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
+                <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
+            </Fields>
+        </asp:DataPager>
         <asp:ListView ID="ProveedorListView"
             runat="server"
             DataSourceID="ProveedorDS"
@@ -30,7 +37,7 @@
             OnItemCommand="ListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
-                    <table class="table table-striped table-condensed" >
+                    <table class="table table-striped table-condensed">
                         <thead>
                             <th>ID</th>
                             <th>Nombres</th>
@@ -67,14 +74,14 @@
                         <asp:Label ID="lblNroDocumento" runat="server" Text='<%# Eval("NroDocumento") %>' /></td>
 
                     <td>
-                        <asp:LinkButton  runat="server" ID="EditProveedorBtn" CommandName="Editar" CommandArgument='<%# Eval("IdProveedor")%>' ToolTip="Editar">
+                        <asp:LinkButton runat="server" ID="EditProveedorBtn" CommandName="Editar" CommandArgument='<%# Eval("IdProveedor")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton  runat="server" ID="DeleteProveedorBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdProveedor")%>' ToolTip="Eliminar">
+                        <asp:LinkButton runat="server" ID="DeleteProveedorBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdProveedor")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 
@@ -230,7 +237,7 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Fecha Registro</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtFechaRegistro" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval( "FechaRegistro") ) %>' CssClass="form-control"  Enabled="false"/>
+                                                    <asp:TextBox ID="txtFechaRegistro" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval( "FechaRegistro") ) %>' CssClass="form-control" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -287,7 +294,7 @@
                 <asp:Parameter Name="Apellidos" Type="String" />
                 <asp:Parameter Name="RazonSocial" Type="String" />
                 <asp:Parameter Name="RUC" Type="String" />
-                
+
                 <asp:Parameter Name="NroDocumento" Type="String" />
             </InsertParameters>
             <UpdateParameters>

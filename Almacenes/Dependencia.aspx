@@ -24,6 +24,13 @@
     </div>
 
     <div class="container-fluid">
+        <asp:DataPager ID="DependenciaDataPager" runat="server" PagedControlID="DependenciaListView" PageSize="10">
+            <Fields>
+                <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
+                <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
+                <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
+            </Fields>
+        </asp:DataPager>
         <asp:ListView ID="DependenciaListView"
             runat="server"
             DataSourceID="DependenciaDS"
@@ -59,14 +66,14 @@
                         <asp:Label ID="lblActivo" runat="server" Text='<%# Eval("Activo") %>' /></td>
 
                     <td>
-                        <asp:LinkButton  runat="server" ID="EditDependenciaBtn" CommandName="Editar" CommandArgument='<%# Eval("IdDependencia")%>' ToolTip="Editar">
+                        <asp:LinkButton runat="server" ID="EditDependenciaBtn" CommandName="Editar" CommandArgument='<%# Eval("IdDependencia")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton  runat="server" ID="DeleteDependenciaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdDependencia")%>' ToolTip="Eliminar">
+                        <asp:LinkButton runat="server" ID="DeleteDependenciaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdDependencia")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 
@@ -180,7 +187,7 @@
                                             <div class="row">
                                                 <div class="col-3"><b>ID</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdDependencia" runat="server" Text='<%# Bind("IdDependencia") %>' CssClass="form-control mitad" Enabled="false"/>
+                                                    <asp:TextBox ID="txtIdDependencia" runat="server" Text='<%# Bind("IdDependencia") %>' CssClass="form-control mitad" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -196,7 +203,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                               <div class="col-3"><b>Activo</b></div>
+                                                <div class="col-3"><b>Activo</b></div>
                                                 <div class="col-9">
                                                     <asp:DropDownList ID="ActivoDDL"
                                                         runat="server"

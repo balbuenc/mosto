@@ -21,16 +21,13 @@
                     <div class="form-group">
                         <div class="form-label-group">
                             Usuario:
-                                <asp:TextBox ID="UsernameTextbox" CssClass="form-control" runat="server" />
-
+                                <asp:TextBox ID="UsernameTextbox" CssClass="form-control" runat="server" Style="padding: 4px 4px 4px 4px" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-label-group">
                             Contraseña:
-                               
-                            <asp:TextBox ID="PasswordTextbox" runat="server" TextMode="Password" CssClass="form-control" />
-
+                            <asp:TextBox ID="PasswordTextbox" runat="server" TextMode="Password" CssClass="form-control" Style="padding: 4px 4px 4px 4px" />
                         </div>
                     </div>
                     <asp:Button ID="LoginButton" Text="Login" OnClick="Login_OnClick" runat="server" CssClass="btn btn-primary btn-block" />
@@ -39,6 +36,7 @@
                         <asp:Label ID="Msg" runat="server"></asp:Label>
                     </div>
                 </div>
+
             </div>
         </div>
     </form>

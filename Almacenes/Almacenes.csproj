@@ -154,9 +154,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ArticuloMaestro.aspx" />
-    <Content Include="AsignacionLicitacion.aspx" />
-    <Content Include="AsignacionLoteDependencia.aspx" />
-    <Content Include="AsignacionLoteDeposito.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
@@ -224,6 +221,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Dependencia.aspx" />
     <Content Include="Deposito.aspx" />
+    <Content Include="EntradaLote.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -242,6 +240,7 @@
     <Content Include="Login.aspx" />
     <Content Include="Proveedor.aspx" />
     <Content Include="Role.aspx" />
+    <Content Include="SalidaLote.aspx" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
@@ -2135,27 +2134,6 @@
     <Compile Include="ArticuloMaestro.aspx.designer.cs">
       <DependentUpon>ArticuloMaestro.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AsignacionLicitacion.aspx.cs">
-      <DependentUpon>AsignacionLicitacion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AsignacionLicitacion.aspx.designer.cs">
-      <DependentUpon>AsignacionLicitacion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AsignacionLoteDependencia.aspx.cs">
-      <DependentUpon>AsignacionLoteDependencia.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AsignacionLoteDependencia.aspx.designer.cs">
-      <DependentUpon>AsignacionLoteDependencia.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AsignacionLoteDeposito.aspx.cs">
-      <DependentUpon>AsignacionLoteDeposito.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AsignacionLoteDeposito.aspx.designer.cs">
-      <DependentUpon>AsignacionLoteDeposito.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Boot.Master.cs">
       <DependentUpon>Boot.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2205,6 +2183,13 @@
     <Compile Include="Deposito.aspx.designer.cs">
       <DependentUpon>Deposito.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EntradaLote.aspx.cs">
+      <DependentUpon>EntradaLote.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntradaLote.aspx.designer.cs">
+      <DependentUpon>EntradaLote.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2245,8 +2230,18 @@
     <Compile Include="Role.aspx.designer.cs">
       <DependentUpon>Role.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SalidaLote.aspx.cs">
+      <DependentUpon>SalidaLote.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalidaLote.aspx.designer.cs">
+      <DependentUpon>SalidaLote.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SearchArticulo.ashx.cs">
       <DependentUpon>SearchArticulo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchContrato.ashx.cs">
+      <DependentUpon>SearchContrato.ashx</DependentUpon>
     </Compile>
     <Compile Include="SearchProveedor.ashx.cs">
       <DependentUpon>SearchProveedor.ashx</DependentUpon>
@@ -2297,6 +2292,7 @@
     <Content Include="Scripts\jquery-3.0.0.min.map" />
     <Content Include="SearchProveedor.ashx" />
     <Content Include="SearchArticulo.ashx" />
+    <Content Include="SearchContrato.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

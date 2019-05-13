@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Contrato Detalle" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="ContratoDetalle.aspx.cs" Inherits="Almacenes.ContratoDetalle" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
     <link href="css/Enigma.css" rel="stylesheet" />
@@ -178,12 +179,19 @@
             <div class="col-12">
                 <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold">Artículos del contrato</div>
             </div>
-
         </div>
         <br />
         <div class="form-row">
             <div class="col-12">
-
+                <div class="col-10">
+                    <asp:DataPager ID="ArticuloContratoDataPager" runat="server" PagedControlID="ArticuloContratoListView" PageSize="10">
+                        <Fields>
+                            <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
+                            <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
+                            <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
+                        </Fields>
+                    </asp:DataPager>
+                </div>
                 <asp:ListView ID="ArticuloContratoListView"
                     runat="server"
                     DataSourceID="ArticuloContratoDS"
@@ -200,7 +208,7 @@
                                     <th>Monto Impuesto</th>
                                     <th>Total</th>
                                     <th>...</th>
-                                    
+                                    <th>...</th>
                                 </thead>
                                 <tbody>
                                     <tr runat="server" id="itemPlaceholder" />
@@ -209,58 +217,98 @@
                         </div>
                     </LayoutTemplate>
                     <ItemTemplate>
-
-                        <tr>
+                        <tr style="min-height: 5px; height: 5px; font-size: x-small">
                             <td>
                                 <asp:Label ID="lblIdArticulo" runat="server" Text='<%# Eval("IdArticulo") %>' />
                             </td>
                             <td>
                                 <asp:Label ID="lbArticulo" runat="server" Text='<%# Eval("Articulo") %>' />
                             </td>
-                             <td>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("CantidadTotal") %>' />
+                            <td>
+                                <asp:Label ID="Label1" runat="server" Text='<%#:string.Format("{0:N0}", Eval("CantidadTotal")) %>' />
                             </td>
                             <td>
-                                <asp:Label ID="lblPrecio" runat="server" Text='<%#:string.Format("{0:n2}",Eval("Precio")) %>'  />
-                                
+                                <asp:Label ID="lblPrecio" runat="server" Text='<%#:string.Format("{0:N0}",Eval("Precio")) %>' />
+
                             </td>
                             <td>
                                 <asp:Label ID="lblImpuesto" runat="server" Text='<%# Eval("Impuesto") %>' />
                             </td>
                             <td>
-                                <asp:Label ID="lblPrecioImpuesto" runat="server" Text='<%#:string.Format("{0:n2}", Eval("PrecioImpuesto")) %>' />
-                            </td>
-                             <td>
-                                <asp:Label ID="lblTotal" runat="server" Text='<%#:string.Format("{0:n2}", Eval("PrecioTotal")) %>' />
+                                <asp:Label ID="lblPrecioImpuesto" runat="server" Text='<%#:string.Format("{0:N0}", Eval("PrecioImpuesto")) %>' />
                             </td>
                             <td>
-
+                                <asp:Label ID="lblTotal" runat="server" Text='<%#:string.Format("{0:N0}", Eval("PrecioTotal")) %>' />
+                            </td>
+                            <td>
                                 <asp:LinkButton runat="server" ID="DeleteArticuloBtn" CommandName="Delete" CommandArgument='<%# Eval("IdArticulo")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                                 </asp:LinkButton>
 
                             </td>
+                            <td>
+                                <asp:LinkButton runat="server" ID="EditArticuloBtn" CommandName="Edit" CommandArgument='<%# Eval("IdArticulo")%>' ToolTip="Editar">
+                            <i class="fas fa-edit"></i>
+                                </asp:LinkButton>
 
+                            </td>
                         </tr>
-
                     </ItemTemplate>
                     <EditItemTemplate>
+                        <td>
+                            <asp:Label ID="lblIdArticulo" runat="server" Text='<%# Bind("IdArticulo"  ) %>' />
+                        </td>
+                        <td>
+                            <asp:Label ID="lbArticulo" runat="server" Text='<%# Eval("Articulo") %>' />
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtCantidadTotal" runat="server" Text='<%# Bind("CantidadTotal","{0:0}") %>' TextMode="Number" />
+                        </td>
+                        <td>
+                            <asp:TextBox ID="lblPrecio" runat="server" Text='<%# Bind("Precio","{0:0}") %>' TextMode="Number" />
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="IdImpuestoDDL"
+                                runat="server"
+                                DataSourceID="ImpuestoDS"
+                                DataTextField="Impuesto"
+                                DataValueField="IdImpuesto"
+                                CssClass="form-control form-control-sm"
+                                SelectedValue='<%# Bind("IdImpuesto") %>'>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:Label ID="lblPrecioImpuesto" runat="server" Text="" />
+                        </td>
+                        <td>
+                            <asp:Label ID="lblTotal" runat="server" Text="" />
+                        </td>
+                        <td>
+
+                            <asp:LinkButton runat="server" ID="btnEdit" CommandName="Update" ToolTip="Aceptar">
+                            <i class="fas fa-check"></i>
+                            </asp:LinkButton>
+                        </td>
+                        <td>
+                            <asp:LinkButton runat="server" ID="btnCancel" CommandName="Cancel" ToolTip="Cancelar">
+                            <i class="fas fa-times"></i>
+                            </asp:LinkButton>
+                        </td>
                     </EditItemTemplate>
                     <InsertItemTemplate>
                     </InsertItemTemplate>
 
                 </asp:ListView>
 
+
+
             </div>
         </div>
-
     </div>
 
 
-  
-    <!-- #region DataSources -->
-  
 
+    <!-- #region DataSources -->
     <asp:SqlDataSource ID="ProveedorDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
         SelectCommand="select IdProveedor, RazonSocial from management.Proveedor  order by 2" SelectCommandType="Text"></asp:SqlDataSource>
 
@@ -274,14 +322,20 @@
 
     <asp:SqlDataSource ID="ArticuloContratoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
         SelectCommand="warehouse.sp_GetArticuloContrato_By_NroContrato" SelectCommandType="StoredProcedure"
-        DeleteCommand="warehouse.sp_ArticuloContrato_delete" DeleteCommandType="StoredProcedure">
+        DeleteCommand="warehouse.sp_ArticuloContrato_delete" DeleteCommandType="StoredProcedure"
+        UpdateCommand="warehouse.sp_ArticuloContrato_update" UpdateCommandType="StoredProcedure">
         <SelectParameters>
-
             <asp:ControlParameter ControlID="txtNroContrato" Name="NroContrato" PropertyName="Text" />
         </SelectParameters>
         <DeleteParameters>
             <asp:Parameter Name="IdArticulo" DbType="Int32" />
         </DeleteParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="IdArticulo" DbType="Int32" />
+            <asp:Parameter Name="CantidadTotal" DbType="Int32" />
+            <asp:Parameter Name="Precio" DbType="Int32" />
+            <asp:Parameter Name="IdImpuesto" DbType="Int32" />
+        </UpdateParameters>
     </asp:SqlDataSource>
 
     <!-- #endregion -->

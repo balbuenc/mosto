@@ -24,6 +24,13 @@
     </div>
 
     <div class="container-fluid">
+        <asp:DataPager ID="DepositoDataPager" runat="server" PagedControlID="DepositoListView" PageSize="10">
+            <Fields>
+                <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
+                <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
+                <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
+            </Fields>
+        </asp:DataPager>
         <asp:ListView ID="DepositoListView"
             runat="server"
             DataSourceID="DepositoDS"
@@ -65,14 +72,14 @@
                         <asp:Label ID="lblActivo" runat="server" Text='<%# Eval("Activo") %>' /></td>
 
                     <td>
-                        <asp:LinkButton  runat="server" ID="EditDepositoBtn" CommandName="Editar" CommandArgument='<%# Eval("IdDeposito")%>' ToolTip="Editar">
+                        <asp:LinkButton runat="server" ID="EditDepositoBtn" CommandName="Editar" CommandArgument='<%# Eval("IdDeposito")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton  runat="server" ID="DeleteDepositoBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdDeposito")%>' ToolTip="Eliminar">
+                        <asp:LinkButton runat="server" ID="DeleteDepositoBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdDeposito")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 

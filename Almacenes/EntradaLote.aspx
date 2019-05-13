@@ -58,15 +58,15 @@
                 <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold"><b>Datos del Contrato</b></div>
             </div>
         </div>
-        <br />
+
         <asp:Panel runat="server" ID="SeleccionarContratoPanel" DefaultButton="SearchContratoBtn">
-            <div class="form-row">
+            <div class="form-row" style="padding-top: 5px">
 
                 <div class="col-2">
                     <div class="col-form-label" style="vertical-align: central; text-align: left"><b>Contrato / Licitación</b></div>
                 </div>
                 <div class="col-8">
-                    <input id="txtSearchContrato" runat="server" cssclass="form-control" placeholder="Llamado, Proveedor, Nro. Contrato" style="width: 100%; height: 100%" />
+                    <input id="txtSearchContrato" runat="server" cssclass="form-control" placeholder="Llamado, Proveedor, Nro. Contrato" style="width: 100%; height: 80%" />
                 </div>
                 <div class="col-2">
                     <asp:Button ID="SearchContratoBtn" runat="server" Text="Seleccionar" CssClass="form-control" OnClick="SearchContratoBtn_Click" />
@@ -74,7 +74,7 @@
 
             </div>
         </asp:Panel>
-        <br />
+
         <div class="form-row">
             <div class="col-2">
                 <div class="col-form-label">Nro. Contrato</div>
@@ -200,7 +200,8 @@
                 <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold">Lotes del contrato</div>
             </div>
         </div>
-        <br />
+
+
         <div class="form-row">
             <div class="col-12">
                 <div class="col-10">
@@ -284,6 +285,7 @@
 
             </div>
         </div>
+
     </div>
     <!-- #region DataSources -->
 

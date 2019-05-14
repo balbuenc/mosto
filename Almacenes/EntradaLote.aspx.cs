@@ -162,5 +162,11 @@ namespace Almacenes
         {
             InsertarArticuloLote();
         }
+
+        protected void ReporteBtn_Click(object sender, EventArgs e)
+        {
+            string url = "http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fAlmacenesSSRS%2fLotesEntrada&rs:Command=Render&NroContrato=" + txtNroContrato.Text;
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('"+ url+ "','_blank')", true);
+        }
     }
 }

@@ -77,7 +77,11 @@
 
         <div class="form-row">
             <div class="col-2">
-                <div class="col-form-label">Nro. Contrato</div>
+                <div class="col-form-label" style="width:80%">Nro. Contrato</div>
+
+                <asp:LinkButton runat="server" ID="ReporteBtn" ToolTip="Ver Reporte" OnClick="ReporteBtn_Click">
+                            <i class="fas fa-info-circle"></i>
+                </asp:LinkButton>
             </div>
             <div class="col-4">
                 <div class="col-form-label">Proveedor</div>

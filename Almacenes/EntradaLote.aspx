@@ -22,8 +22,8 @@
                     select: function (event, ui) {
                         if (ui.item) {
                             $("[id$=txtSearchContrato]").val(ui.item.Client);
-                            console.log($("[id$=btnSearch]"));
-                            $("[id$=btnSearch]").click();
+                            console.log($("[id$=SearchContratoBtn]"));
+                            $("[id$=SearchContratoBtn]").click();
                             return false;
                         }
 
@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <asp:Panel runat="server" ID="SeleccionarContratoPanel" DefaultButton="SearchContratoBtn">
+        <asp:Panel runat="server" ID="SeleccionarContratoPanel" >
             <div class="form-row" style="padding-top: 5px">
 
                 <div class="col-2">
@@ -68,8 +68,10 @@
                 <div class="col-8">
                     <input id="txtSearchContrato" runat="server" cssclass="form-control" placeholder="Llamado, Proveedor, Nro. Contrato" style="width: 100%; height: 80%" />
                 </div>
-                <div class="col-2">
-                    <asp:Button ID="SearchContratoBtn" runat="server" Text="Seleccionar" CssClass="form-control" OnClick="SearchContratoBtn_Click" />
+                <div class="col-2">                    
+                    <button id="SearchContratoBtn" runat="server" class="btn btn-default" onserverclick="SearchContratoBtn_Click">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
 
             </div>
@@ -77,11 +79,7 @@
 
         <div class="form-row">
             <div class="col-2">
-                <div class="col-form-label" style="width:80%">Nro. Contrato</div>
-
-                <asp:LinkButton runat="server" ID="ReporteBtn" ToolTip="Ver Reporte" OnClick="ReporteBtn_Click">
-                            <i class="fas fa-info-circle"></i>
-                </asp:LinkButton>
+                <div class="col-form-label">Nro. Contrato</div>
             </div>
             <div class="col-4">
                 <div class="col-form-label">Proveedor</div>
@@ -101,31 +99,75 @@
                 <asp:TextBox ID="txtLicitacion" runat="server" Text="" CssClass="form-control form-control-sm" Enabled="false" />
             </div>
         </div>
-        <div class="form-row">
-            <div class="col-12">
-                <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold"><b>Artículos del Contrato</b></div>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-5">
-                <div class="col-form-label">Artículo</div>
-            </div>
-            <div class="col">
-                <div class="col-form-label">Precio</div>
-            </div>
-            <div class="col">
-                <div class="col-form-label">Impuesto</div>
-            </div>
-            <div class="col">
-                <div class="col-form-label">Cant. total</div>
-            </div>
-            <div class="col">
-                <div class="col-form-label">Existente</div>
-            </div>
-        </div>
 
         <asp:UpdatePanel ID="ArticuloContratoUP" runat="server">
             <ContentTemplate>
+                <div class="form-row">
+                    <div class="col-12">
+                        <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold"><b>Operación de Entrada</b></div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-1">
+                        <div class="col-form-label">Transacción N°</div>
+                    </div>
+                    <div class="col-1">
+                    </div>
+                    <div class="col">
+                        <div class="col-form-label">Definición</div>
+                    </div>
+                    <div class="col-1">
+                        <div class="col-form-label">Factura N°</div>
+                    </div>
+                    <div class="col-1">
+                        <div class="col-form-label">Fecha</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-1">
+                        <asp:TextBox CssClass="form-control form-control-sm" ID="txtNroTransaccion" runat="server" Enabled="false" />
+                    </div>
+                    <div class="col-1">
+                        <asp:LinkButton runat="server" ID="NewTransactionBtn" ToolTip="Nueva transacción" OnClick="NewTransactionBtn_Click">
+                    <i class="fas fa-plus-circle"></i>
+                        </asp:LinkButton>
+                        <asp:LinkButton runat="server" ID="SeacrhTransactionBtn" ToolTip="Buscar transaccipon">
+                    <i class="fas fa-search-plus"></i>
+                        </asp:LinkButton>
+                        <asp:LinkButton runat="server" ID="ReporteBtn" ToolTip="Ver Reporte" OnClick="ReporteBtn_Click">
+                    <i class="fas fa-book-reader"></i>
+                        </asp:LinkButton>
+                    </div>
+                    <div class="col">
+                        <asp:TextBox CssClass="form-control form-control-sm" ID="txtDefincion" runat="server" />
+                    </div>
+                    <div class="col-1">
+                        <asp:TextBox CssClass="form-control form-control-sm" ID="txtNroFactura" runat="server" />
+                    </div>
+                    <div class="col-1">
+                        <asp:TextBox CssClass="form-control form-control-sm" ID="txtFecha" runat="server" Enabled="false" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-5">
+                        <div class="col-form-label">Artículo</div>
+                    </div>
+                    <div class="col">
+                        <div class="col-form-label">Precio</div>
+                    </div>
+                    <div class="col">
+                        <div class="col-form-label">Impuesto</div>
+                    </div>
+                    <div class="col">
+                        <div class="col-form-label">Cant. total</div>
+                    </div>
+                    <div class="col">
+                        <div class="col-form-label">Existente</div>
+                    </div>
+                </div>
+
+
                 <div class="form-row">
 
                     <div class="col-5">
@@ -157,19 +199,20 @@
             </ContentTemplate>
         </asp:UpdatePanel>
 
-        <div class="form-row">
-            <div class="col-2">
-                <div class="col-form-label">Cantidad</div>
-            </div>
-            <div class="col-4">
-                <div class="col-form-label">Dependencia</div>
-            </div>
-            <div class="col-4">
-                <div class="col-form-label">Depósito</div>
-            </div>
-            <div class="col-2"></div>
-        </div>
+
         <asp:Panel ID="ArticuloPanel" runat="server" DefaultButton="AgregarArticuloBtn">
+            <div class="form-row">
+                <div class="col-2">
+                    <div class="col-form-label">Cantidad</div>
+                </div>
+                <div class="col-4">
+                    <div class="col-form-label">Dependencia</div>
+                </div>
+                <div class="col-4">
+                    <div class="col-form-label">Depósito</div>
+                </div>
+                <div class="col-2"></div>
+            </div>
             <div class="form-row">
                 <div class="col-2">
                     <asp:TextBox CssClass="form-control form-control-sm" ID="txtArticuloCantidad" runat="server" TextMode="Number" />
@@ -271,9 +314,8 @@
 
                             <td>
                                 <asp:LinkButton runat="server" ID="DeleteArticuloBtn" CommandName="Delete" CommandArgument='<%# Eval("IdArticulo")%>' ToolTip="Eliminar">
-                            <i class="fas fa-trash-alt"></i>
+                                           <i class="fas fa-trash-alt"></i>
                                 </asp:LinkButton>
-
                             </td>
 
                         </tr>

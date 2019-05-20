@@ -14,12 +14,12 @@
       <Query>
         <DataSourceName>AlmacenesDS</DataSourceName>
         <QueryParameters>
-          <QueryParameter Name="@NroTransaccion">
-            <Value>=Parameters!NroTransaccion.Value</Value>
+          <QueryParameter Name="@IdTransaccion">
+            <Value>=Parameters!IdTransaccion.Value</Value>
           </QueryParameter>
         </QueryParameters>
         <CommandType>StoredProcedure</CommandType>
-        <CommandText>warehouse.sp_Lote_get_Lote_By_NroTransaccion</CommandText>
+        <CommandText>warehouse.sp_Lote_get_Lote_By_IdTransaccion</CommandText>
       </Query>
       <Fields>
         <Field Name="Idtransaccion">
@@ -88,6 +88,14 @@
         </Field>
         <Field Name="Llamado">
           <DataField>Llamado</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NroFactura">
+          <DataField>NroFactura</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NroContrato">
+          <DataField>NroContrato</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -222,7 +230,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Articulo</Value>
+                                  <Value>Artículo</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -357,7 +365,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Deposito</Value>
+                                  <Value>Depósito</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -842,6 +850,52 @@
                     </TablixCell>
                   </TablixCells>
                 </TablixRow>
+                <TablixRow>
+                  <Height>1.2062cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox18">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>="TOTAL EN LETRAS : SON " + code.obj.conviertecifra(round(Sum(Fields!PrecioLote.Value),0)) + " GUARANÍES."</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox18</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>6</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
               </TablixRows>
             </TablixBody>
             <TablixColumnHierarchy>
@@ -865,12 +919,15 @@
                 <TablixMember>
                   <KeepWithGroup>Before</KeepWithGroup>
                 </TablixMember>
+                <TablixMember>
+                  <KeepWithGroup>Before</KeepWithGroup>
+                </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
             <Top>0.34078cm</Top>
             <Left>0.47307cm</Left>
-            <Height>1.8cm</Height>
+            <Height>3.0062cm</Height>
             <Width>18.33563cm</Width>
             <Style>
               <Border>
@@ -879,10 +936,10 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>5.08cm</Height>
+        <Height>3.74385cm</Height>
         <Style />
       </Body>
-      <Width>20cm</Width>
+      <Width>19.28562cm</Width>
       <Page>
         <PageHeader>
           <Height>4.2037cm</Height>
@@ -972,10 +1029,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>1.32698cm</Top>
-              <Left>15.71307cm</Left>
-              <Height>0.43443cm</Height>
-              <Width>3.51896cm</Width>
+              <Top>0.55245cm</Top>
+              <Left>13.2789cm</Left>
+              <Height>0.49417cm</Height>
+              <Width>3.41313cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -991,7 +1048,7 @@
               <Top>4.12433cm</Top>
               <Left>0.47307cm</Left>
               <Height>0cm</Height>
-              <Width>18.75897cm</Width>
+              <Width>18.33563cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -1015,15 +1072,15 @@
                     </TextRun>
                   </TextRuns>
                   <Style>
-                    <TextAlign>Center</TextAlign>
+                    <TextAlign>Right</TextAlign>
                   </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>1.92601cm</Top>
-              <Left>15.71307cm</Left>
-              <Height>0.46971cm</Height>
-              <Width>3.51897cm</Width>
+              <Top>0.55245cm</Top>
+              <Left>16.9566cm</Left>
+              <Height>0.49417cm</Height>
+              <Width>1.8521cm</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -1042,14 +1099,16 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!Definicion.Value, "DataSet1")</Value>
+                      <Value>="Lote: " + First(Fields!Definicion.Value, "DataSet1")</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Definicion</rd:DefaultName>
@@ -1075,14 +1134,16 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!Proveedor.Value, "DataSet1")</Value>
+                      <Value>="Proveedor:" + First(Fields!Proveedor.Value, "DataSet1")</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Definicion</rd:DefaultName>
@@ -1108,19 +1169,21 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!RUC.Value, "DataSet1")</Value>
+                      <Value>="R.U.C.: " +First(Fields!RUC.Value, "DataSet1")</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Definicion</rd:DefaultName>
               <Top>2.91407cm</Top>
-              <Left>11.20385cm</Left>
+              <Left>14.37885cm</Left>
               <Height>0.49417cm</Height>
               <Width>4.31272cm</Width>
               <ZIndex>7</ZIndex>
@@ -1141,7 +1204,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!Llamado.Value, "DataSet1")</Value>
+                      <Value>="Llamado: " +First(Fields!Llamado.Value, "DataSet1")</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -1155,8 +1218,113 @@
               <Top>3.63016cm</Top>
               <Left>0.47307cm</Left>
               <Height>0.49417cm</Height>
-              <Width>18.33563cm</Width>
+              <Width>13.33501cm</Width>
               <ZIndex>8</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="NroTransaccion">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="Nº " + First(Fields!NroTransaccion.Value, "DataSet1")</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>NroTransaccion</rd:DefaultName>
+              <Top>1.16327cm</Top>
+              <Left>16.9566cm</Left>
+              <Height>0.49417cm</Height>
+              <Width>1.8521cm</Width>
+              <ZIndex>9</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="NroTransaccion2">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=FormatDateTime(Globals!ExecutionTime,DateFormat.GeneralDate)</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>NroTransaccion</rd:DefaultName>
+              <Top>1.88464cm</Top>
+              <Left>13.2789cm</Left>
+              <Height>0.49417cm</Height>
+              <Width>5.5298cm</Width>
+              <ZIndex>10</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Definicion5">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="Factura Nº: " + First(Fields!NroFactura.Value, "DataSet1")</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Definicion</rd:DefaultName>
+              <Top>3.56842cm</Top>
+              <Left>14.37885cm</Left>
+              <Height>0.49417cm</Height>
+              <Width>4.31272cm</Width>
+              <ZIndex>11</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1175,9 +1343,139 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>2.54cm</Height>
+          <Height>2.93275cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Definicion6">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="Contrato Nº: " + First(Fields!NroContrato.Value, "DataSet1")</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Definicion</rd:DefaultName>
+              <Top>2.0151cm</Top>
+              <Left>0.47307cm</Left>
+              <Height>0.49417cm</Height>
+              <Width>4.31272cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Line Name="Line2">
+              <Top>1.94469cm</Top>
+              <Left>0.475cm</Left>
+              <Height>0cm</Height>
+              <Width>18.33563cm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
+            <Textbox Name="Definicion7">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!OverallPageNumber</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Definicion</rd:DefaultName>
+              <Top>2.12108cm</Top>
+              <Left>14.37885cm</Left>
+              <Height>0.49417cm</Height>
+              <Width>4.31272cm</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Line Name="Line3">
+              <Top>1.01865cm</Top>
+              <Left>13.83453cm</Left>
+              <Height>0cm</Height>
+              <Width>4.85704cm</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
+            <Textbox Name="Definicion8">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Vo. B. JEFE DE ALMACENES</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Definicion</rd:DefaultName>
+              <Top>1.21929cm</Top>
+              <Left>13.83453cm</Left>
+              <Height>0.49417cm</Height>
+              <Width>4.85704cm</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1196,20 +1494,20 @@
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="NroTransaccion">
-      <DataType>String</DataType>
-      <Prompt>Nro Transaccion</Prompt>
+    <ReportParameter Name="IdTransaccion">
+      <DataType>Integer</DataType>
+      <Prompt>Id Transaccion</Prompt>
     </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
+      <NumberOfRows>1</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
+          <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>NroTransaccion</ParameterName>
+          <ParameterName>IdTransaccion</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
@@ -1305,6 +1603,15 @@ JlHdlDEnq73dQo4YZXuaCAuAAdj/APvr/9k=</ImageData>
     </EmbeddedImage>
   </EmbeddedImages>
   <Language>es-PY</Language>
+  <CodeModules>
+    <CodeModule>alternativo_class, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</CodeModule>
+  </CodeModules>
+  <Classes>
+    <Class>
+      <ClassName>alternativo_class.conversiones</ClassName>
+      <InstanceName>obj</InstanceName>
+    </Class>
+  </Classes>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>3911894f-54cb-4aba-bb1b-74f93e354092</rd:ReportID>
 </Report>

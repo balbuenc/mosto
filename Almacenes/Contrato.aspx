@@ -103,12 +103,12 @@
                     <td>
                         <asp:Label ID="lblIdProveedor" runat="server" Text='<%# Eval("Proveedor") %>' /></td>
                     <td>
-                        <asp:TextBox ID="lblFechaInicioContrato" runat="server" Text='<%# Bind("FechaInicioContrato") %>'  />
-                        <asp:CompareValidator ID="cvFechaInicioContrato"  runat="server" Type="Date" Operator="DataTypeCheck" ControlToValidate="lblFechaInicioContrato" ErrorMessage="Fecha inválida."></asp:CompareValidator>
+                        <asp:TextBox ID="lblFechaInicioContrato" runat="server" Text='<%# Bind("FechaInicioContrato") %>' />
+                        <asp:CompareValidator ID="cvFechaInicioContrato" runat="server" Type="Date" Operator="DataTypeCheck" ControlToValidate="lblFechaInicioContrato" ErrorMessage="Fecha inválida."></asp:CompareValidator>
                     </td>
                     <td>
-                        <asp:TextBox ID="lblFechaFinContrato" runat="server" Text='<%# Bind("FechaFinContrato")  %>'  />
-                        <asp:CompareValidator ID="cvFechaFinContrato"  runat="server" Type="Date" Operator="DataTypeCheck" ControlToValidate="lblFechaFinContrato" ErrorMessage="Fecha inválida."></asp:CompareValidator>
+                        <asp:TextBox ID="lblFechaFinContrato" runat="server" Text='<%# Bind("FechaFinContrato")  %>' />
+                        <asp:CompareValidator ID="cvFechaFinContrato" runat="server" Type="Date" Operator="DataTypeCheck" ControlToValidate="lblFechaFinContrato" ErrorMessage="Fecha inválida."></asp:CompareValidator>
                     </td>
                     <td>
                         <asp:TextBox ID="lblNroContrato" runat="server" Text='<%# Bind("NroContrato") %>' /></td>
@@ -134,6 +134,7 @@
                             <i class="fas fa-times"></i>
                         </asp:LinkButton>
                     </td>
+                </tr>
             </EditItemTemplate>
             <InsertItemTemplate>
             </InsertItemTemplate>

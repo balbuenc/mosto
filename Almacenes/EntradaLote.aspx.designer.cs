@@ -85,42 +85,6 @@ namespace Almacenes {
         protected global::System.Web.UI.UpdatePanel ArticuloContratoUP;
         
         /// <summary>
-        /// txtNroTransaccion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNroTransaccion;
-        
-        /// <summary>
-        /// NewTransactionBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton NewTransactionBtn;
-        
-        /// <summary>
-        /// SeacrhTransactionBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton SeacrhTransactionBtn;
-        
-        /// <summary>
-        /// ReporteBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton ReporteBtn;
-        
-        /// <summary>
         /// txtDefincion control.
         /// </summary>
         /// <remarks>
@@ -137,6 +101,15 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNroFactura;
+        
+        /// <summary>
+        /// txtNroTransaccion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNroTransaccion;
         
         /// <summary>
         /// txtFecha control.

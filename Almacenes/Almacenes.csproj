@@ -400,6 +400,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="TipoContacto.aspx" />
     <Content Include="TipoLicitaciones.aspx" />
+    <Content Include="Transaccion.aspx" />
     <Content Include="UnidadMedida.aspx" />
     <Content Include="User.aspx" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
@@ -2259,6 +2260,13 @@
     </Compile>
     <Compile Include="TipoLicitaciones.aspx.designer.cs">
       <DependentUpon>TipoLicitaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transaccion.aspx.cs">
+      <DependentUpon>Transaccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transaccion.aspx.designer.cs">
+      <DependentUpon>Transaccion.aspx</DependentUpon>
     </Compile>
     <Compile Include="UnidadMedida.aspx.cs">
       <DependentUpon>UnidadMedida.aspx</DependentUpon>

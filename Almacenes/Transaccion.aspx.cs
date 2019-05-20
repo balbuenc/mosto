@@ -1,0 +1,91 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Almacenes
+{
+    public partial class Transaccion : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void DeleteRecord(String ID)
+        {
+
+            SqlCommand cmd = new SqlCommand();
+            SqlConnection con = new SqlConnection(TransaccionDS.ConnectionString);
+
+            cmd = new SqlCommand("warehouse.[sp_Transaccion_delete]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdTransaccion", ID));
+
+
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+
+
+
+            con.Close();
+        }
+
+
+        protected void ListView_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Editar")
+            {
+                Response.Redirect("EntradaLote.aspx?mode=edit&IdTransaccion=" + e.CommandArgument.ToString());
+            }
+            else if (e.CommandName == "Eliminar")
+            {
+                DeleteRecord(e.CommandArgument.ToString());
+                TransaccionListView.DataBind();
+
+                ErrorLabel.Text = "El registro se eliminó correctamente.";
+                ErrorLabel.Visible = true;
+                FadeOut(ErrorLabel.ClientID, 3000);
+            }
+            else if (e.CommandName == "ViewReport")
+            {
+                string url = "http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fAlmacenesSSRS%2fLotesEntrada&rs:Command=Render&IdTransaccion=" + e.CommandArgument.ToString();
+                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('" + url + "','_blank')", true);
+            }
+        }
+
+
+        protected void FadeOut(string ClientID, int Time)
+        {
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "script", "window.setTimeout(function() { document.getElementById('" + ClientID + "').style.display = 'none' }," + Time.ToString() + ");", true);
+        }
+
+
+        protected void CancelButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("transaccion.aspx");
+        }
+
+
+        protected void AddLicitacionBtn_ServerClick(object sender, EventArgs e)
+        {
+            Response.Redirect("TransaccionDetalle.aspx");
+        }
+
+        protected void InsertButton_Click(object sender, EventArgs e)
+        {
+            
+            this.Session["DefinicionTransaccion"] = txtDefinicion.Text;
+            this.Session["IdContratoTransaccion"] = IdContratoDDL.SelectedValue;
+            this.Session["NroFactura"] = txtNroFactura.Text;
+
+            Response.Redirect("EntradaLote.aspx?mode=insert");
+        }
+    }
+}

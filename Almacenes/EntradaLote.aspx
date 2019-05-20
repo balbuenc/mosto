@@ -12,8 +12,6 @@
             $("[id$=txtSearchContrato]").autocomplete(
                 {
                     source: "SearchContrato.ashx",
-                    // note minlength, triggers the Handler call only once 3 characters entered
-
                     minLength: 3,
                     focus: function (event, ui) {
                         $("[id$=txtSearchContrato]").val(ui.item.label);
@@ -30,7 +28,7 @@
                     }
                 })
                 .autocomplete("instance")._renderItem = function (ul, item) {
-                    //console.log(item.Client);
+                 
                     return $("<li>")
                         .append("<div class='style=background:black'>" + item.Client + "</div>")
                         .appendTo(ul);
@@ -59,16 +57,16 @@
             </div>
         </div>
 
-        <asp:Panel runat="server" ID="SeleccionarContratoPanel" >
+        <asp:Panel runat="server" ID="SeleccionarContratoPanel">
             <div class="form-row" style="padding-top: 5px">
 
                 <div class="col-2">
-                    <div class="col-form-label" style="vertical-align: central; text-align: left"><b>Contrato / Licitación</b></div>
+                    <div class="col-form-label" style="vertical-align: central; text-align: left"><b>Contrato - Licitación</b></div>
                 </div>
                 <div class="col-8">
                     <input id="txtSearchContrato" runat="server" cssclass="form-control" placeholder="Llamado, Proveedor, Nro. Contrato" style="width: 100%; height: 80%" />
                 </div>
-                <div class="col-2">                    
+                <div class="col-2">
                     <button id="SearchContratoBtn" runat="server" class="btn btn-default" onserverclick="SearchContratoBtn_Click">
                         <i class="fas fa-search"></i>
                     </button>
@@ -108,42 +106,44 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="col-1">
-                        <div class="col-form-label">Transacción N°</div>
-                    </div>
-                    <div class="col-1">
-                    </div>
+
                     <div class="col">
                         <div class="col-form-label">Definición</div>
                     </div>
                     <div class="col-1">
-                        <div class="col-form-label">Factura N°</div>
+                        <div class="col-form-label">#Factura</div>
                     </div>
+                    <div class="col-1">
+                        <div class="col-form-label">#Transacción</div>
+                    </div>
+                    
                     <div class="col-1">
                         <div class="col-form-label">Fecha</div>
                     </div>
+
                 </div>
                 <div class="form-row">
-                    <div class="col-1">
-                        <asp:TextBox CssClass="form-control form-control-sm" ID="txtNroTransaccion" runat="server" Enabled="false" />
-                    </div>
-                    <div class="col-1">
-                        <asp:LinkButton runat="server" ID="NewTransactionBtn" ToolTip="Nueva transacción" OnClick="NewTransactionBtn_Click">
-                    <i class="fas fa-plus-circle"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton runat="server" ID="SeacrhTransactionBtn" ToolTip="Buscar transaccipon">
-                    <i class="fas fa-search-plus"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton runat="server" ID="ReporteBtn" ToolTip="Ver Reporte" OnClick="ReporteBtn_Click">
-                    <i class="fas fa-book-reader"></i>
-                        </asp:LinkButton>
-                    </div>
+
                     <div class="col">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtDefincion" runat="server" />
                     </div>
                     <div class="col-1">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtNroFactura" runat="server" />
                     </div>
+                    <div class="col-1">
+                        <asp:TextBox CssClass="form-control form-control-sm" ID="txtNroTransaccion" runat="server" Enabled="false" />
+                    </div>
+                    <%--<div class="col-1">
+                        <asp:LinkButton runat="server" ID="NewTransactionBtn" ToolTip="Nueva transacción" OnClick="NewTransactionBtn_Click">
+                    <i class="fas fa-plus-circle"></i>
+                        </asp:LinkButton>
+                        <%-- <asp:LinkButton runat="server" ID="SeacrhTransactionBtn" ToolTip="Buscar transaccipon">
+                    <i class="fas fa-search-plus"></i>
+                        </asp:LinkButton>
+                        <asp:LinkButton runat="server" ID="ReporteBtn" ToolTip="Ver Reporte" OnClick="ReporteBtn_Click">
+                    <i class="fas fa-book-reader"></i>
+                        </asp:LinkButton>
+                    </div>--%>
                     <div class="col-1">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtFecha" runat="server" Enabled="false" />
                     </div>
@@ -196,142 +196,148 @@
                     </div>
 
                 </div>
+
+
+
+                <asp:Panel ID="ArticuloPanel" runat="server" DefaultButton="AgregarArticuloBtn">
+                    <div class="form-row">
+                        <div class="col-2">
+                            <div class="col-form-label">Cantidad</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="col-form-label">Dependencia</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="col-form-label">Depósito</div>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-2">
+                            <asp:TextBox CssClass="form-control form-control-sm" ID="txtArticuloCantidad" runat="server" TextMode="Number" />
+                        </div>
+                        <div class="col-4">
+                            <asp:DropDownList ID="IdDependendciaDDL"
+                                runat="server"
+                                DataSourceID="DependenciaDS"
+                                DataTextField="Dependencia"
+                                DataValueField="IdDependencia"
+                                CssClass="form-control form-control-sm">
+                            </asp:DropDownList>
+                        </div>
+                        <div class="col-4">
+                            <asp:DropDownList ID="IdDepositoDDL"
+                                runat="server"
+                                DataSourceID="DepositoDS"
+                                DataTextField="Deposito"
+                                DataValueField="IdDeposito"
+                                CssClass="form-control form-control-sm">
+                            </asp:DropDownList>
+                        </div>
+                        <div class="col-2">
+                            <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Agregar al Lote" CausesValidation="false" CssClass="form-control" OnClick="AgregarArticuloBtn_Click" />
+                        </div>
+
+                    </div>
+                </asp:Panel>
+
+                <div class="form-row">
+                    <div class="col-12">
+                        <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold">Artículos del Lote</div>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="col-12">
+                        <div class="col-10">
+                            <asp:DataPager ID="LoteContratoDataPager" runat="server" PagedControlID="LoteContratoListView" PageSize="10">
+                                <Fields>
+                                    <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
+                                    <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
+                                    <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
+                                </Fields>
+                            </asp:DataPager>
+                        </div>
+                        <asp:ListView ID="LoteContratoListView"
+                            runat="server"
+                            DataSourceID="LoteContratoDS"
+                            DataKeyNames="IdLote">
+                            <LayoutTemplate>
+                                <div class="table responsive">
+                                    <table class="table table-striped table-condensed">
+                                        <thead>
+                                            <th>ID</th>
+                                            <th>Artículo</th>
+                                            <th>Cantidad</th>
+                                            <th>Precio Unitario</th>
+                                            <th>Monto Impuesto</th>
+                                            <th>Total</th>
+                                            <th>Dependencia</th>
+                                            <th>Depósito</th>
+                                            <th>...</th>
+
+                                        </thead>
+                                        <tbody>
+                                            <tr runat="server" id="itemPlaceholder" />
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <tr style="min-height: 5px; height: 5px; font-size: x-small">
+                                    <td>
+                                        <asp:Label ID="lblIdLote" runat="server" Text='<%# Eval("IdLote") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbArticulo" runat="server" Text='<%# Eval("Articulo") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblCantidad" runat="server" Text='<%#:string.Format("{0:N0}", Eval("Cantidad")) %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblPrecio" runat="server" Text='<%#:string.Format("{0:N0}",Eval("Precio")) %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblPrecioImpuesto" runat="server" Text='<%#:string.Format("{0:N0}", Eval("PrecioImpuesto")) %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblTotal" runat="server" Text='<%#:string.Format("{0:N0}", Eval("PrecioLote")) %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblDependencia" runat="server" Text='<%# Eval("Dependencia") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblDeposito" runat="server" Text='<%# Eval("Deposito") %>' />
+                                    </td>
+
+                                    <td>
+                                        <asp:LinkButton runat="server" ID="DeleteArticuloBtn" CommandName="Delete" CommandArgument='<%# Eval("IdArticulo")%>' ToolTip="Eliminar">
+                                           <i class="fas fa-trash-alt"></i>
+                                        </asp:LinkButton>
+                                    </td>
+
+                                </tr>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                            </EditItemTemplate>
+                            <InsertItemTemplate>
+                            </InsertItemTemplate>
+                            <EmptyDataTemplate>
+                                <div class="container">
+                                    <div class="alert-info" style="text-align: center">No se registran Artículos en la transacción actual.</div>
+                                </div>
+                            </EmptyDataTemplate>
+
+                        </asp:ListView>
+
+
+
+                    </div>
+                </div>
+
             </ContentTemplate>
         </asp:UpdatePanel>
-
-
-        <asp:Panel ID="ArticuloPanel" runat="server" DefaultButton="AgregarArticuloBtn">
-            <div class="form-row">
-                <div class="col-2">
-                    <div class="col-form-label">Cantidad</div>
-                </div>
-                <div class="col-4">
-                    <div class="col-form-label">Dependencia</div>
-                </div>
-                <div class="col-4">
-                    <div class="col-form-label">Depósito</div>
-                </div>
-                <div class="col-2"></div>
-            </div>
-            <div class="form-row">
-                <div class="col-2">
-                    <asp:TextBox CssClass="form-control form-control-sm" ID="txtArticuloCantidad" runat="server" TextMode="Number" />
-                </div>
-                <div class="col-4">
-                    <asp:DropDownList ID="IdDependendciaDDL"
-                        runat="server"
-                        DataSourceID="DependenciaDS"
-                        DataTextField="Dependencia"
-                        DataValueField="IdDependencia"
-                        CssClass="form-control form-control-sm">
-                    </asp:DropDownList>
-                </div>
-                <div class="col-4">
-                    <asp:DropDownList ID="IdDepositoDDL"
-                        runat="server"
-                        DataSourceID="DepositoDS"
-                        DataTextField="Deposito"
-                        DataValueField="IdDeposito"
-                        CssClass="form-control form-control-sm">
-                    </asp:DropDownList>
-                </div>
-                <div class="col-2">
-                    <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Agregar al Lote" CausesValidation="false" CssClass="form-control" OnClick="AgregarArticuloBtn_Click" />
-                </div>
-
-            </div>
-        </asp:Panel>
-
-        <div class="form-row">
-            <div class="col-12">
-                <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold">Lotes del contrato</div>
-            </div>
-        </div>
-
-
-        <div class="form-row">
-            <div class="col-12">
-                <div class="col-10">
-                    <asp:DataPager ID="LoteContratoDataPager" runat="server" PagedControlID="LoteContratoListView" PageSize="10">
-                        <Fields>
-                            <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
-                            <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
-                            <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
-                        </Fields>
-                    </asp:DataPager>
-                </div>
-                <asp:ListView ID="LoteContratoListView"
-                    runat="server"
-                    DataSourceID="LoteContratoDS"
-                    DataKeyNames="IdLote">
-                    <LayoutTemplate>
-                        <div class="table responsive">
-                            <table class="table table-striped table-condensed">
-                                <thead>
-                                    <th>ID</th>
-                                    <th>Artículo</th>
-                                    <th>Cantidad</th>
-                                    <th>Precio Unitario</th>
-                                    <th>Monto Impuesto</th>
-                                    <th>Total</th>
-                                    <th>Dependencia</th>
-                                    <th>Depósito</th>
-                                    <th>...</th>
-
-                                </thead>
-                                <tbody>
-                                    <tr runat="server" id="itemPlaceholder" />
-                                </tbody>
-                            </table>
-                        </div>
-                    </LayoutTemplate>
-                    <ItemTemplate>
-                        <tr style="min-height: 5px; height: 5px; font-size: x-small">
-                            <td>
-                                <asp:Label ID="lblIdLote" runat="server" Text='<%# Eval("IdLote") %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lbArticulo" runat="server" Text='<%# Eval("Articulo") %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lblCantidad" runat="server" Text='<%#:string.Format("{0:N0}", Eval("Cantidad")) %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lblPrecio" runat="server" Text='<%#:string.Format("{0:N0}",Eval("Precio")) %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lblPrecioImpuesto" runat="server" Text='<%#:string.Format("{0:N0}", Eval("PrecioImpuesto")) %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lblTotal" runat="server" Text='<%#:string.Format("{0:N0}", Eval("PrecioLote")) %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lblDependencia" runat="server" Text='<%# Eval("Dependencia") %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lblDeposito" runat="server" Text='<%# Eval("Deposito") %>' />
-                            </td>
-
-                            <td>
-                                <asp:LinkButton runat="server" ID="DeleteArticuloBtn" CommandName="Delete" CommandArgument='<%# Eval("IdArticulo")%>' ToolTip="Eliminar">
-                                           <i class="fas fa-trash-alt"></i>
-                                </asp:LinkButton>
-                            </td>
-
-                        </tr>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                    </EditItemTemplate>
-                    <InsertItemTemplate>
-                    </InsertItemTemplate>
-
-                </asp:ListView>
-
-
-
-            </div>
-        </div>
-
     </div>
     <!-- #region DataSources -->
 
@@ -353,10 +359,10 @@
     </asp:SqlDataSource>
 
     <asp:SqlDataSource ID="LoteContratoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-        SelectCommand="[warehouse].[sp_Lote_get_Lote_By_NroContrato]" SelectCommandType="StoredProcedure"
+        SelectCommand="[warehouse].[sp_Lote_get_Lote_By_NroTransaccion]" SelectCommandType="StoredProcedure"
         DeleteCommand="[warehouse].[sp_Lote_delete]" DeleteCommandType="StoredProcedure">
         <SelectParameters>
-            <asp:ControlParameter ControlID="txtNroContrato" Name="NroContrato" PropertyName="Text" />
+            <asp:ControlParameter ControlID="txtNroTransaccion" Name="NroTransaccion" PropertyName="Text" />
         </SelectParameters>
         <DeleteParameters>
             <asp:Parameter Name="IdLote" DbType="Int32" />

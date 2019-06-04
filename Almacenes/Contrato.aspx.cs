@@ -16,6 +16,11 @@ namespace Almacenes
 
         }
 
+        protected void SearchBtn_ServerClick(object sender, EventArgs e)
+        {
+            ContratoListView.DataBind();
+        }
+
         protected void DeleteRecord(String ID)
         {
 

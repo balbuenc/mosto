@@ -6,11 +6,24 @@
     <div class="page-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-10">
+                <div class="col-2">
                     <div class="col-form-label-lg azul"><%: Page.Title %> </div>
-
+                </div>
+                <div class="col-4">
+                    <asp:TextBox ID="txtSearchKey" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-2">
+                    <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
+                        <asp:ListItem Text="Unidad Medida" Value="UNIDAD"></asp:ListItem>
+                    </asp:DropDownList>
+
+                </div>
+                <div class="col-1">
+                    <button class="btn btn-primary" type="button" runat="server" id="SearchBtn" onserverclick="SearchBtn_ServerClick">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+                <div class="col-1">
                     <button class="btn btn-primary" type="button" runat="server" id="AddLicitacionBtn" data-toggle="modal" data-target="#addModal">
                         <i class="fas fa-plus"></i>
                     </button>
@@ -52,14 +65,14 @@
                         <asp:Label ID="lblUnidadMedida" runat="server" Text='<%# Eval("UnidadMedida") %>' /></td>
 
                     <td>
-                        <asp:LinkButton  runat="server" ID="EditUnidadMedidaBtn" CommandName="Editar" CommandArgument='<%# Eval("IdUnidadMedida")%>' ToolTip="Editar">
+                        <asp:LinkButton runat="server" ID="EditUnidadMedidaBtn" CommandName="Editar" CommandArgument='<%# Eval("IdUnidadMedida")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton  runat="server" ID="DeleteUnidadMedidaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdUnidadMedida")%>' ToolTip="Eliminar">
+                        <asp:LinkButton runat="server" ID="DeleteUnidadMedidaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdUnidadMedida")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 
@@ -98,12 +111,14 @@
                                             <div class="row">
                                                 <div class="col-3"><b>ID</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdUnidadMedida" runat="server" Text="" CssClass="form-control mitad" Enabled="false" /></div>
+                                                    <asp:TextBox ID="txtIdUnidadMedida" runat="server" Text="" CssClass="form-control mitad" Enabled="false" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>Unidad de Medida</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtUnidadMedida" runat="server" Text='<%# Bind("UnidadMedida") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtUnidadMedida" runat="server" Text='<%# Bind("UnidadMedida") %>' CssClass="form-control" />
+                                                </div>
                                             </div>
                                         </div>
 
@@ -147,15 +162,17 @@
                                     OnModeChanging="EditFormView_ModeChanging" OnItemUpdating="EditFormView_ItemUpdating" OnItemUpdated="EditFormView_ItemUpdated">
                                     <EditItemTemplate>
                                         <div class="container-fluid">
-                                           <div class="row">
+                                            <div class="row">
                                                 <div class="col-3"><b>ID</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtIdUnidadMedida" runat="server" Text='<%# Bind("IdUnidadMedida") %>' CssClass="form-control mitad" Enabled="false" /></div>
+                                                    <asp:TextBox ID="txtIdUnidadMedida" runat="server" Text='<%# Bind("IdUnidadMedida") %>' CssClass="form-control mitad" Enabled="false" />
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><b>Unidad de Medida</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtUnidadMedida" runat="server" Text='<%# Bind("UnidadMedida") %>' CssClass="form-control" /></div>
+                                                    <asp:TextBox ID="txtUnidadMedida" runat="server" Text='<%# Bind("UnidadMedida") %>' CssClass="form-control" />
+                                                </div>
                                             </div>
                                         </div>
 
@@ -203,6 +220,10 @@
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
+                <asp:ControlParameter ControlID="searchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
+            </SelectParameters>
         </asp:SqlDataSource>
 
 

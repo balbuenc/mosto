@@ -6,11 +6,25 @@
     <div class="page-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-10">
+                <div class="col-2">
                     <div class="col-form-label-lg azul"><%: Page.Title %> </div>
-
+                </div>
+                <div class="col-4">
+                    <asp:TextBox ID="txtSearchKey" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-2">
+                    <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
+                        <asp:ListItem Text="Rol" Value="ROL"></asp:ListItem>
+                        <asp:ListItem Text="Descripción" Value="DESCRIPCION"></asp:ListItem>
+                    </asp:DropDownList>
+
+                </div>
+                <div class="col-1">
+                    <button class="btn btn-primary" type="button" runat="server" id="SearchBtn" onserverclick="SearchBtn_ServerClick">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+                <div class="col-1">
                     <button class="btn btn-primary" type="button" runat="server" id="AddRoleBtn" data-toggle="modal" data-target="#addModal">
                         <i class="fas fa-plus"></i>
                     </button>
@@ -56,14 +70,14 @@
                         <asp:Label ID="lblDescription" runat="server" Text='<%# Eval("Description") %>' /></td>
 
                     <td>
-                        <asp:LinkButton  runat="server" ID="EditRoleBtn" CommandName="Editar" CommandArgument='<%# Eval("IdRole")%>' ToolTip="Editar">
+                        <asp:LinkButton runat="server" ID="EditRoleBtn" CommandName="Editar" CommandArgument='<%# Eval("IdRole")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
 
-                        <asp:LinkButton  runat="server" ID="DeleteRoleBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdRole")%>' ToolTip="Eliminar">
+                        <asp:LinkButton runat="server" ID="DeleteRoleBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdRole")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 
@@ -99,9 +113,24 @@
                                     <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                                     <InsertItemTemplate>
                                         <div class="container-fluid">
-                                            <div class="row"><div class="col-3">ID</div><div class="col-9"><asp:TextBox ID="txtIdRole" runat="server" Text="" CssClass="form-control mitad"  Enabled="false" /></div></div>
-                                            <div class="row"><div class="col-3">Rol</div><div class="col-9"><asp:TextBox ID="txtRole" runat="server" Text='<%# Bind("Role") %>' CssClass="form-control"  /></div></div>
-                                            <div class="row"><div class="col-3">Descripción</div><div class="col-9"><asp:TextBox ID="txtDescription" runat="server" Text='<%# Bind("Description") %>' CssClass="form-control"  /></div></div>
+                                            <div class="row">
+                                                <div class="col-3">ID</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtIdRole" runat="server" Text="" CssClass="form-control mitad" Enabled="false" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Rol</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtRole" runat="server" Text='<%# Bind("Role") %>' CssClass="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Descripción</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtDescription" runat="server" Text='<%# Bind("Description") %>' CssClass="form-control" />
+                                                </div>
+                                            </div>
 
 
                                         </div>
@@ -146,9 +175,24 @@
                                     OnModeChanging="EditFormView_ModeChanging" OnItemUpdating="EditFormView_ItemUpdating" OnItemUpdated="EditFormView_ItemUpdated">
                                     <EditItemTemplate>
                                         <div class="container-fluid">
-                                           <div class="row"><div class="col-3">ID</div><div class="col-9"><asp:TextBox ID="txtIdRole" runat="server" Text='<%# Bind("IdRole") %>' CssClass="form-control mitad"  Enabled="false" /></div></div>
-                                            <div class="row"><div class="col-3">Rol</div><div class="col-9"><asp:TextBox ID="txtRole" runat="server" Text='<%# Bind("Role") %>' CssClass="form-control"  /></div></div>
-                                            <div class="row"><div class="col-3">Descripción</div><div class="col-9"><asp:TextBox ID="txtDescription" runat="server" Text='<%# Bind("Description") %>' CssClass="form-control"  /></div></div>
+                                            <div class="row">
+                                                <div class="col-3">ID</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtIdRole" runat="server" Text='<%# Bind("IdRole") %>' CssClass="form-control mitad" Enabled="false" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Rol</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtRole" runat="server" Text='<%# Bind("Role") %>' CssClass="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">Descripción</div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtDescription" runat="server" Text='<%# Bind("Description") %>' CssClass="form-control" />
+                                                </div>
+                                            </div>
 
 
 
@@ -194,13 +238,17 @@
             </DeleteParameters>
             <InsertParameters>
 
-           
-            <asp:Parameter Name="Role" Type="String" />
-            <asp:Parameter Name="Description" Type="String" />
+
+                <asp:Parameter Name="Role" Type="String" />
+                <asp:Parameter Name="Description" Type="String" />
 
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
+                <asp:ControlParameter ControlID="searchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
+            </SelectParameters>
         </asp:SqlDataSource>
 
 

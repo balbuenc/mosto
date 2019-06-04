@@ -13,8 +13,24 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            divTitle.InnerText = Request.QueryString["Tipo"];
+            if (Request.QueryString["Tipo"] == "Entrada")
+            {
+                AddTransaccionBtn.Visible = true;
+                AddtransaccionSalidaBtn.Visible = false;
+            }
+            else
+            {
+                AddtransaccionSalidaBtn.Visible = true;
+                AddTransaccionBtn.Visible = false;
+            }
         }
+
+        protected void SearchBtn_ServerClick(object sender, EventArgs e)
+        {
+            TransaccionListView.DataBind();
+        }
+
 
         protected void DeleteRecord(String ID)
         {
@@ -42,7 +58,14 @@ namespace Almacenes
         {
             if (e.CommandName == "Editar")
             {
-                Response.Redirect("EntradaLote.aspx?mode=edit&IdTransaccion=" + e.CommandArgument.ToString());
+                if (Request.QueryString["Tipo"] == "Entrada")
+                {
+                    Response.Redirect("EntradaLote.aspx?mode=edit&IdTransaccion=" + e.CommandArgument.ToString());
+                }
+                else
+                {
+                    Response.Redirect("SalidaLote.aspx?mode=edit&IdTransaccion=" + e.CommandArgument.ToString());
+                }
             }
             else if (e.CommandName == "Eliminar")
             {
@@ -69,23 +92,33 @@ namespace Almacenes
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("transaccion.aspx");
+            Response.Redirect("transaccion.aspx?Tipo=" + Request.QueryString["Tipo"]);
         }
 
 
         protected void AddLicitacionBtn_ServerClick(object sender, EventArgs e)
         {
-            Response.Redirect("TransaccionDetalle.aspx");
+            Response.Redirect("TransaccionDetalle.aspx?Tipo=" + Request.QueryString["Tipo"]);
         }
 
         protected void InsertButton_Click(object sender, EventArgs e)
         {
-            
+
             this.Session["DefinicionTransaccion"] = txtDefinicion.Text;
             this.Session["IdContratoTransaccion"] = IdContratoDDL.SelectedValue;
             this.Session["NroFactura"] = txtNroFactura.Text;
 
             Response.Redirect("EntradaLote.aspx?mode=insert");
+        }
+
+        protected void InsertSalidaBtn_Click(object sender, EventArgs e)
+        {
+
+            this.Session["DefinicionTransaccion"] =  txtDefinicionSalida.Text;
+            this.Session["IdDependencia"] = DependenciaDDL.SelectedValue;
+           
+
+            Response.Redirect("SalidaLote.aspx?mode=insert");
         }
     }
 }

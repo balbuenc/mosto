@@ -7,11 +7,24 @@
     <div class="page-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-10">
+                <div class="col-2">
                     <div class="col-form-label-lg azul"><%: Page.Title %> </div>
-
+                </div>
+                <div class="col-4">
+                    <asp:TextBox ID="txtSearchKey" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-2">
+                    <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
+                        <asp:ListItem Text="Dependencia" Value="DEPENDENCIA"></asp:ListItem>
+                        <asp:ListItem Text="Descripción" Value="DESCRIPCION"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="col-1">
+                    <button class="btn btn-primary" type="button" runat="server" id="SearchBtn" onserverclick="SearchBtn_ServerClick">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+                <div class="col-1">
                     <button class="btn btn-primary" type="button" runat="server" id="AddLicitacionBtn" data-toggle="modal" data-target="#addModal">
                         <i class="fas fa-plus"></i>
                     </button>
@@ -262,6 +275,10 @@
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
+                <asp:ControlParameter ControlID="searchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
+            </SelectParameters>
         </asp:SqlDataSource>
 
 

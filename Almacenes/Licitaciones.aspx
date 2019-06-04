@@ -7,10 +7,27 @@
     <div class="page-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-10">
+                <div class="col-2">
                     <div class="col-form-label-lg azul"><%: Page.Title %> </div>
                 </div>
+                <div class="col-4">
+                    <asp:TextBox ID="txtSearchKey" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
                 <div class="col-2">
+                    <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
+                        <asp:ListItem Text="Llamado" Value="LLAMADO"></asp:ListItem>
+                        <asp:ListItem Text="Número" Value="NUMERO"></asp:ListItem>
+                        <asp:ListItem Text="Referencia" Value="UOCREFERENCIA"></asp:ListItem>
+                        <asp:ListItem Text="ID" Value="UOCIDLICITACION"></asp:ListItem>
+                    </asp:DropDownList>
+
+                </div>
+                <div class="col-1">
+                    <button class="btn btn-primary" type="button" runat="server" id="SearchBtn" onserverclick="SearchBtn_ServerClick">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+                <div class="col-1">
                     <button class="btn btn-primary" type="button" runat="server" id="AddLicitacionBtn" data-toggle="modal" data-target="#addModal">
                         <i class="fas fa-plus"></i>
                     </button>
@@ -23,7 +40,7 @@
     </div>
 
     <div class="container-fluid">
-         <asp:DataPager ID="LicitacionDataPager" runat="server" PagedControlID="LicitacionListView" PageSize="10">
+        <asp:DataPager ID="LicitacionDataPager" runat="server" PagedControlID="LicitacionListView" PageSize="10">
             <Fields>
                 <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
                 <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
@@ -161,7 +178,7 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Fecha</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtFechaLicitacion" runat="server" Text='<%# Bind("FechaLicitacion") %>' CssClass="form-control" TextMode="Date"  />
+                                                    <asp:TextBox ID="txtFechaLicitacion" runat="server" Text='<%# Bind("FechaLicitacion") %>' CssClass="form-control" TextMode="Date" />
                                                 </div>
                                             </div>
 
@@ -267,7 +284,7 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Fecha</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtFechaLicitacion" runat="server" Text='<%#  Bind( "FechaLicitacion" , "0:dd-MM-yyyy")  %>' CssClass="form-control"  TextMode="Date" />
+                                                    <asp:TextBox ID="txtFechaLicitacion" runat="server" Text='<%#  Bind( "FechaLicitacion" , "0:dd-MM-yyyy")  %>' CssClass="form-control" TextMode="Date" />
                                                 </div>
                                             </div>
 
@@ -349,6 +366,10 @@
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
+                <asp:ControlParameter ControlID="searchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
+            </SelectParameters>
         </asp:SqlDataSource>
 
         <asp:SqlDataSource ID="TipoLicitacionDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"

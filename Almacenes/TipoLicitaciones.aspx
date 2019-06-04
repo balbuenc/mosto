@@ -6,11 +6,25 @@
     <div class="page-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-10">
+                <div class="col-2">
                     <div class="col-form-label-lg azul"><%: Page.Title %> </div>
-
+                </div>
+                <div class="col-4">
+                    <asp:TextBox ID="txtSearchKey" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-2">
+                    <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
+                        <asp:ListItem Text="Tipo" Value="TIPO"></asp:ListItem>
+                        <asp:ListItem Text="Descripción" Value="DESCRIPCION"></asp:ListItem>
+                        <asp:ListItem Text="Código" Value="CODIGO"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="col-1">
+                    <button class="btn btn-primary" type="button" runat="server" id="SearchBtn" onserverclick="SearchBtn_ServerClick">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+                <div class="col-1">
                     <button class="btn btn-primary" type="button" runat="server" id="AddLicitacionBtn" data-toggle="modal" data-target="#addModal">
                         <i class="fas fa-plus"></i>
                     </button>
@@ -30,7 +44,7 @@
             OnItemCommand="ListView_ItemCommand">
             <LayoutTemplate>
                 <div class="table responsive">
-                    <table class="table table-striped table-condensed" >
+                    <table class="table table-striped table-condensed">
                         <thead>
                             <th>ID</th>
                             <th>Tipo Licitación</th>
@@ -62,14 +76,14 @@
 
 
                     <th>
-                        <asp:LinkButton  runat="server" ID="EditTipoLicitacionBtn" CommandName="Editar" CommandArgument='<%# Eval("IdTipoLicitacion")%>' ToolTip="Editar">
+                        <asp:LinkButton runat="server" ID="EditTipoLicitacionBtn" CommandName="Editar" CommandArgument='<%# Eval("IdTipoLicitacion")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </th>
 
                     <th>
 
-                        <asp:LinkButton  runat="server" ID="DeleteTipoLicitacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdTipoLicitacion")%>' ToolTip="Eliminar">
+                        <asp:LinkButton runat="server" ID="DeleteTipoLicitacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdTipoLicitacion")%>' ToolTip="Eliminar">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 
@@ -274,6 +288,10 @@
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
+                <asp:ControlParameter ControlID="searchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
+            </SelectParameters>
         </asp:SqlDataSource>
 
 

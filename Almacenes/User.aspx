@@ -6,11 +6,28 @@
     <div class="page-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-10">
+                <div class="col-2">
                     <div class="col-form-label-lg azul"><%: Page.Title %> </div>
-
+                </div>
+                <div class="col-4">
+                    <asp:TextBox ID="txtSearchKey" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-2">
+                    <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
+                        <asp:ListItem Text="Usuario" Value="USUARIO"></asp:ListItem>
+                        <asp:ListItem Text="Nombres" Value="NOMBRE"></asp:ListItem>
+                        <asp:ListItem Text="Apellidos" Value="APELLIDO"></asp:ListItem>
+                        <asp:ListItem Text="Email" Value="CORREO"></asp:ListItem>
+                        <asp:ListItem Text="Nro. Documento" Value="DOCUMENTO"></asp:ListItem>
+                        <asp:ListItem Text="Rol" Value="ROL"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="col-1">
+                    <button class="btn btn-primary" type="button" runat="server" id="SearchBtn" onserverclick="SearchBtn_ServerClick">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+                <div class="col-1">
                     <button class="btn btn-primary" type="button" runat="server" id="AddLicitacionBtn" data-toggle="modal" data-target="#addModal">
                         <i class="fas fa-plus"></i>
                     </button>
@@ -70,7 +87,7 @@
                         <asp:Label ID="lblDocumentNumber" runat="server" Text='<%# Eval("DocumentNumber") %>' /></td>
 
                     <td>
-                        <asp:LinkButton  runat="server" ID="EditUserBtn" CommandName="Editar" CommandArgument='<%# Eval("IdUser")%>' ToolTip="Editar">
+                        <asp:LinkButton runat="server" ID="EditUserBtn" CommandName="Editar" CommandArgument='<%# Eval("IdUser")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
                         </asp:LinkButton>
                     </td>
@@ -85,23 +102,23 @@
 
                 </tr>
                 <tr>
-                    
+
                     <td>
-                        <asp:LinkButton  runat="server" ID="ResetUserPasswordBtn" CommandName="SetPassword" CommandArgument='<%# Eval("IdUser")%>' ToolTip="Resetear Contraseña">
+                        <asp:LinkButton runat="server" ID="ResetUserPasswordBtn" CommandName="SetPassword" CommandArgument='<%# Eval("IdUser")%>' ToolTip="Resetear Contraseña">
                             <i class="fa fa-key fa-sm" aria-hidden="true"></i>
                         </asp:LinkButton>
                     </td>
 
                     <td>
-                        
-                        <asp:LinkButton  runat="server" ID="SetUserRolBtn" CommandName="SetRole" CommandArgument='<%# Eval("IdUser")%>' ToolTip="Asignar Rol">
+
+                        <asp:LinkButton runat="server" ID="SetUserRolBtn" CommandName="SetRole" CommandArgument='<%# Eval("IdUser")%>' ToolTip="Asignar Rol">
                             <i class="fa fa-user-plus fa-sm" aria-hidden="true"></i>
                         </asp:LinkButton>
-                        
+
 
                     </td>
                     <td>
-                        <asp:Label ID="lblUserRole" runat="server" Text='<%#Eval("UserRole") %>'  ForeColor="#0066cc" Font-Italic="true" Font-Names="Verdana"></asp:Label>
+                        <asp:Label ID="lblUserRole" runat="server" Text='<%#Eval("UserRole") %>' ForeColor="#0066cc" Font-Italic="true" Font-Names="Verdana"></asp:Label>
                     </td>
                 </tr>
 
@@ -415,7 +432,7 @@
                                             <div class="row">
                                                 <div class="col-3">Rol actual</div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtUserRole" runat="server" Text='<%# Bind("UserRole") %>' CssClass="form-control" Enabled="false"  />
+                                                    <asp:TextBox ID="txtUserRole" runat="server" Text='<%# Bind("UserRole") %>' CssClass="form-control" Enabled="false" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -485,6 +502,10 @@
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
+                <asp:ControlParameter ControlID="searchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
+            </SelectParameters>
         </asp:SqlDataSource>
 
         <asp:SqlDataSource ID="RoleDS"

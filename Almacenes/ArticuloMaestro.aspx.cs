@@ -27,6 +27,11 @@ namespace Almacenes
             Response.Redirect("ArticuloMaestro.aspx");
         }
 
+        protected void SearchBtn_ServerClick(object sender, EventArgs e)
+        {
+            ArticuloMaestroListView.DataBind();
+        }
+
         protected void GetRecordToUpdate(String ID)
         {
 

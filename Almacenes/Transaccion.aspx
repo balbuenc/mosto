@@ -6,13 +6,33 @@
     <div class="page-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-10">
-                    <div class="col-form-label-lg azul"><%: Page.Title %> </div>
-
+                <div class="col-2">
+                    <div class="col-form-label-lg azul" runat="server" id="divTitle">Transacciones</div>
+                </div>
+                <div class="col-4">
+                    <asp:TextBox ID="txtSearchKey" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-2">
-                    <button class="btn btn-primary" type="button" runat="server" id="AddTransaccionBtn" data-toggle="modal" data-target="#addModal">
-                        <i class="fas fa-plus"></i>
+                    <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
+                        <asp:ListItem Text="Nro. transacción" Value="NROTRANSACCION"></asp:ListItem>
+                        <asp:ListItem Text="Definición" Value="DEFINICION"></asp:ListItem>
+                        <asp:ListItem Text="Nro. factura" Value="NROFACTURA"></asp:ListItem>
+                        <asp:ListItem Text="Nro. contrato" Value="NROCONTRATO"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="col-1">
+                    <button class="btn btn-primary" type="button" runat="server" id="SearchBtn" onserverclick="SearchBtn_ServerClick">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+                <div class="col-1">
+                    <button class="btn btn-primary" type="button" runat="server" id="AddTransaccionBtn" data-toggle="modal" data-target="#addModal" >
+                        <i class="fas fa-sign-in-alt"></i>
+                    </button>
+                </div>
+                 <div class="col-1">
+                    <button class="btn btn-primary" type="button" runat="server" id="AddtransaccionSalidaBtn" data-toggle="modal" data-target="#addModalSalida">
+                        <i class="fas fa-sign-out-alt"></i>
                     </button>
                 </div>
             </div>
@@ -114,40 +134,42 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
-                               
-                                        <div class="container-fluid">
-                                            
-                                            <div class="row">
-                                                <div class="col-3">Definición</div>
-                                                <div class="col-9">
-                                                    <asp:TextBox ID="txtDefinicion" runat="server" Text='<%# Bind("Definicion") %>' CssClass="form-control" /></div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3">Nro. Factura</div>
-                                              <div class="col-9">
-                                                    <asp:TextBox ID="txtNroFactura" runat="server" Text='<%# Bind("NroFactura") %>' CssClass="form-control" /></div>
-                                            </div>
 
+                                <div class="container-fluid">
 
-                                            <div class="row">
-                                                <div class="col-3">Contrato</div>
-                                                <div class="col-9">
-                                                    <asp:DropDownList ID="IdContratoDDL"
-                                                        runat="server"
-                                                        DataSourceID="ContratoDS"
-                                                        DataTextField="NroContrato"
-                                                        DataValueField="IdContrato"
-                                                        CssClass="form-control form-control-sm">
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-3">Definición</div>
+                                        <div class="col-9">
+                                            <asp:TextBox ID="txtDefinicion" runat="server" Text='<%# Bind("Definicion") %>' CssClass="form-control" />
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">Nro. Factura</div>
+                                        <div class="col-9">
+                                            <asp:TextBox ID="txtNroFactura" runat="server" Text='<%# Bind("NroFactura") %>' CssClass="form-control" />
+                                        </div>
+                                    </div>
 
-                                        <hr />
 
-                                        <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Aceptar" CssClass="btn btn-success" OnClick="InsertButton_Click" />
-                                        <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" OnClick="CancelButton_Click" />
-                                  
+                                    <div class="row">
+                                        <div class="col-3">Contrato</div>
+                                        <div class="col-9">
+                                            <asp:DropDownList ID="IdContratoDDL"
+                                                runat="server"
+                                                DataSourceID="ContratoDS"
+                                                DataTextField="NroContrato"
+                                                DataValueField="IdContrato"
+                                                CssClass="form-control form-control-sm">
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr />
+
+                                <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Aceptar" CssClass="btn btn-success" OnClick="InsertButton_Click" />
+                                <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" OnClick="CancelButton_Click" />
+
                             </div>
                             <div class="modal-footer">
                             </div>
@@ -160,6 +182,52 @@
         </div>
 
 
+        <div id="addModalSalida" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addModalSalidaLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <b id="addModalSalidaLabel">Agregar Salida.</b>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="container-fluid">
+
+                                    <div class="row">
+                                        <div class="col-3">Definición</div>
+                                        <div class="col-9">
+                                            <asp:TextBox ID="txtDefinicionSalida" runat="server" Text='<%# Bind("Definicion") %>' CssClass="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">Dependencia</div>
+                                        <div class="col-9">
+                                            <asp:DropDownList ID="DependenciaDDL"
+                                                runat="server"
+                                                DataSourceID="DependenciaDS"
+                                                DataTextField="Dependencia"
+                                                DataValueField="IdDependencia"
+                                                CssClass="form-control form-control-sm">
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+
+                                <hr />
+                                <asp:LinkButton ID="InsertSalidaBtn" runat="server" CausesValidation="True" CommandName="Insert" Text="Aceptar" CssClass="btn btn-success" OnClick="InsertSalidaBtn_Click" />
+                                <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" OnClick="CancelButton_Click" />
+
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+        </div>
 
         <!-- #region DataSources -->
         <asp:SqlDataSource ID="TransaccionDS"
@@ -171,10 +239,19 @@
             </InsertParameters>
             <UpdateParameters>
             </UpdateParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
+                <asp:ControlParameter ControlID="searchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
+                <asp:QueryStringParameter Name="tipo_transaccion" Type="String" DefaultValue="Entrada" QueryStringField="Tipo" />
+             </SelectParameters>
         </asp:SqlDataSource>
 
-         <asp:SqlDataSource ID="ContratoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+        <asp:SqlDataSource ID="ContratoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
             SelectCommand="select IdContrato, NroContrato from management.Contrato order by 2 ;"
+            SelectCommandType="Text"></asp:SqlDataSource>
+
+         <asp:SqlDataSource ID="DependenciaDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+            SelectCommand="select IdDependencia, Dependencia from warehouse.Dependencia where Activo = 'S' order by 2 asc"
             SelectCommandType="Text"></asp:SqlDataSource>
         <!-- #endregion -->
 

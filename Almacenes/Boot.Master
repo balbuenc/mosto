@@ -130,8 +130,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="pagesDropdownAlmacenes">
                                 <h6 class="dropdown-header">Lotes:</h6>
-                                <a class="dropdown-item" href="/Transaccion.aspx">Ingreso</a>
-                                <a class="dropdown-item" href="/SalidaLote.aspx">Salida</a>
+                                <a class="dropdown-item" href="/Transaccion.aspx?Tipo=Entrada">Ingreso</a>
+                                <a class="dropdown-item" href="/Transaccion.aspx?Tipo=Salida">Salida</a>
                                 
                                 <div class="dropdown-divider"></div>
                                 

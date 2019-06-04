@@ -17,6 +17,11 @@ namespace Almacenes
 
         }
 
+        protected void SearchBtn_ServerClick(object sender, EventArgs e)
+        {
+            UserListView.DataBind();
+        }
+
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
             Response.Redirect("User.aspx");

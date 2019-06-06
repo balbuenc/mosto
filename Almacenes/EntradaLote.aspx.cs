@@ -241,6 +241,7 @@ namespace Almacenes
                 cmd.Parameters.AddWithValue("@Login", Context.User.Identity.Name);
                 cmd.Parameters.AddWithValue("@TipoTransaccion", "Entrada");
                 cmd.Parameters.AddWithValue("@IdContrato", (int)Session["IdContrato"]);
+                cmd.Parameters.AddWithValue("@Solicitante", DBNull.Value);
 
                 // Set Output Paramater
                 SqlParameter OutputParam = new SqlParameter("@NroTransaccion", SqlDbType.VarChar);

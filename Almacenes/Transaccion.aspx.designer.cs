@@ -175,6 +175,15 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.DropDownList DependenciaDDL;
         
         /// <summary>
+        /// txtSolicitanteSalida control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSolicitanteSalida;
+        
+        /// <summary>
         /// InsertSalidaBtn control.
         /// </summary>
         /// <remarks>

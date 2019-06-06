@@ -67,6 +67,7 @@
                             <th>Nro. Factura</th>
                             <th>Usuario</th>
                             <th>NroContrato</th>
+                            <th>Solicitante</th>
                             <th>...</th>
                             <th>...</th>
                             <th>...</th>
@@ -94,6 +95,8 @@
                         <asp:Label ID="lblUser" runat="server" Text='<%# Eval("UserName") %>' /></td>
                     <td>
                         <asp:Label ID="lblNroContrato" runat="server" Text='<%# Eval("NroContrato") %>' /></td>
+                    <td>
+                        <asp:Label ID="lblSolicitante" runat="server" Text='<%# Eval("Solicitante") %>' /></td>
 
                     <td>
                         <asp:LinkButton runat="server" ID="ReportTransaccionBtn" CommandName="ViewReport" CommandArgument='<%# Eval("IdTransaccion")%>' ToolTip="Ver reporte">
@@ -211,6 +214,12 @@
                                                 DataValueField="IdDependencia"
                                                 CssClass="form-control form-control-sm">
                                             </asp:DropDownList>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">Solicitante</div>
+                                        <div class="col-9">
+                                            <asp:TextBox ID="txtSolicitanteSalida" runat="server" Text="" CssClass="form-control" />
                                         </div>
                                     </div>
                                    

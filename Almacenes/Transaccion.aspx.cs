@@ -116,6 +116,8 @@ namespace Almacenes
 
             this.Session["DefinicionTransaccion"] =  txtDefinicionSalida.Text;
             this.Session["IdDependencia"] = DependenciaDDL.SelectedValue;
+            this.Session["Dependencia"] = DependenciaDDL.SelectedItem.Text;
+            this.Session["Solicitante"] = txtSolicitanteSalida.Text;
            
 
             Response.Redirect("SalidaLote.aspx?mode=insert");

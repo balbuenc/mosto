@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -20,7 +21,9 @@ namespace Almacenes
                     txtDefincion.Text = this.Session["DefinicionTransaccion"].ToString();
                     txtSolicitante.Text = this.Session["Solicitante"].ToString();
                     txtDependencia.Text = this.Session["Dependencia"].ToString();
+                    txtContrato.Text = this.Session["ContratoExistencia"].ToString();
                     NuevaTransaccion();
+                    SalidaLoteListView.DataBind();
                 }
                 else if (Request.QueryString["mode"] == "edit")
                 {
@@ -124,9 +127,120 @@ namespace Almacenes
             }
         }
 
+
+        private void ShowPopUpMsg(string msg)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("alert('");
+            sb.Append(msg.Replace("\n", "\\n").Replace("\r", "").Replace("'", "\\'"));
+            sb.Append("');");
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "showalert", sb.ToString(), true);
+        }
+
+
+
+
+        //Procedimiento que Agrega un Articulo al lote de la transacción Actual
+        private void InsertarArticuloSalidaLote()
+        {
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                if (txtNroTransaccion.Text == "")
+                {
+                    ShowPopUpMsg("No se ha seleccionado una transacción.");
+                    return;
+                }
+
+                SqlConnection conn = new SqlConnection(ArticuloLoteDS.ConnectionString);
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = "[warehouse].[sp_SalidaLote_insert]";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+              
+
+                cmd.Parameters.AddWithValue("@IdLote", IdArticuloDDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@CantidadSalida", txtArticuloCantidad.Text);
+                cmd.Parameters.AddWithValue("@IdDependencia", this.Session["IdDependencia"].ToString());
+     
+                cmd.Parameters.AddWithValue("@Nrotransaccion", txtNroTransaccion.Text);
+
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+                SalidaLoteListView.DataBind();
+
+                txtArticuloCantidad.Text = "";
+
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Text = ex.Message;
+                ErrorLabel.Visible = true;
+                FadeOut(ErrorLabel.ClientID, 5000);
+            }
+        }
+
+        //Procedimiento que obtienen los datos del Articulo Contrato |  precio, impuesto, Cantidad total
+        private void ObtenerDatosArticuloLote(Int32 IdLote)
+        {
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                SqlConnection conn = new SqlConnection(ArticuloLoteDS.ConnectionString);
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = "warehouse.sp_ArticuloLote_get_ArticuloLote";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.AddWithValue("@IdLote", IdLote);
+
+
+                conn.Open();
+
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        txtPrecio.Text = string.Format("{0:N0}", dr["Precio"]);
+                        txtImpuesto.Text = string.Format("{0:N0}", dr["PrecioImpuesto"]);
+                      
+                        txtExistente.Text = string.Format("{0:N0}", dr["Cantidad"]);
+                    }
+                }
+
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Text = ex.Message;
+                ErrorLabel.Visible = true;
+                FadeOut(ErrorLabel.ClientID, 5000);
+            }
+        }
+
+        protected void IdArticuloDDL_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ObtenerDatosArticuloLote(Convert.ToInt32(((DropDownList)sender).SelectedValue));
+        }
+
+        protected void IdArticuloDDL_DataBound(object sender, EventArgs e)
+        {
+            if (((DropDownList)sender).SelectedValue != "")
+                ObtenerDatosArticuloLote(Convert.ToInt32(((DropDownList)sender).SelectedValue));
+        }
+
         protected void AgregarArticuloBtn_Click(object sender, EventArgs e)
         {
-
+            InsertarArticuloSalidaLote();
         }
     }
 }

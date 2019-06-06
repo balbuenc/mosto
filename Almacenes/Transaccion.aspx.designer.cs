@@ -175,6 +175,15 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.DropDownList DependenciaDDL;
         
         /// <summary>
+        /// ContratoExistenciaDDL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ContratoExistenciaDDL;
+        
+        /// <summary>
         /// txtSolicitanteSalida control.
         /// </summary>
         /// <remarks>
@@ -218,6 +227,15 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource ContratoDS;
+        
+        /// <summary>
+        /// ContratoExistenciaDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ContratoExistenciaDS;
         
         /// <summary>
         /// DependenciaDS control.

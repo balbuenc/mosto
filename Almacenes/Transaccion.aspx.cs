@@ -118,7 +118,9 @@ namespace Almacenes
             this.Session["IdDependencia"] = DependenciaDDL.SelectedValue;
             this.Session["Dependencia"] = DependenciaDDL.SelectedItem.Text;
             this.Session["Solicitante"] = txtSolicitanteSalida.Text;
-           
+            this.Session["idContratoExistencia"] = ContratoExistenciaDDL.SelectedValue;
+            this.Session["ContratoExistencia"] = ContratoExistenciaDDL.SelectedItem.Text;
+
 
             Response.Redirect("SalidaLote.aspx?mode=insert");
         }

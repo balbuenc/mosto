@@ -217,6 +217,18 @@
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div class="col-3">Contrato</div>
+                                        <div class="col-9">
+                                            <asp:DropDownList ID="ContratoExistenciaDDL"
+                                                runat="server"
+                                                DataSourceID="ContratoExistenciaDS"
+                                                DataTextField="Contrato"
+                                                DataValueField="IdContrato"
+                                                CssClass="form-control form-control-sm">
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-3">Solicitante</div>
                                         <div class="col-9">
                                             <asp:TextBox ID="txtSolicitanteSalida" runat="server" Text="" CssClass="form-control" />
@@ -258,6 +270,10 @@
         <asp:SqlDataSource ID="ContratoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
             SelectCommand="select IdContrato, NroContrato from management.Contrato order by 2 ;"
             SelectCommandType="Text"></asp:SqlDataSource>
+
+        <asp:SqlDataSource ID="ContratoExistenciaDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+            SelectCommand="management.sp_get_Contrato_ExistenciaDDL"
+            SelectCommandType="StoredProcedure"></asp:SqlDataSource>
 
          <asp:SqlDataSource ID="DependenciaDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
             SelectCommand="select IdDependencia, Dependencia from warehouse.Dependencia where Activo = 'S' order by 2 asc"

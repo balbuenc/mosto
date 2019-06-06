@@ -76,6 +76,15 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.TextBox txtSolicitante;
         
         /// <summary>
+        /// txtContrato control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContrato;
+        
+        /// <summary>
         /// IdArticuloDDL control.
         /// </summary>
         /// <remarks>
@@ -139,22 +148,22 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.Button AgregarArticuloBtn;
         
         /// <summary>
-        /// LoteContratoDataPager control.
+        /// SalidaLoteDataPager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataPager LoteContratoDataPager;
+        protected global::System.Web.UI.WebControls.DataPager SalidaLoteDataPager;
         
         /// <summary>
-        /// LoteContratoListView control.
+        /// SalidaLoteListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView LoteContratoListView;
+        protected global::System.Web.UI.WebControls.ListView SalidaLoteListView;
         
         /// <summary>
         /// ArticuloLoteDS control.

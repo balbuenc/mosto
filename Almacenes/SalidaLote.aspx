@@ -1,40 +1,9 @@
 ﻿<%@ Page Title="Salida de Lotes" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="SalidaLote.aspx.cs" Inherits="Almacenes.SalidaLote" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
     <link href="css/Enigma.css" rel="stylesheet" />
     <script src="Scripts/jquery-3.0.0.js"></script>
-
-
-
-    <script type="text/javascript">
-        $(function () {
-            $("[id$=txtSearchContrato]").autocomplete(
-                {
-                    source: "SearchContrato.ashx",
-                    minLength: 3,
-                    focus: function (event, ui) {
-                        $("[id$=txtSearchContrato]").val(ui.item.label);
-                        return false;
-                    },
-                    select: function (event, ui) {
-                        if (ui.item) {
-                            $("[id$=txtSearchContrato]").val(ui.item.Client);
-                            console.log($("[id$=SearchContratoBtn]"));
-                            $("[id$=SearchContratoBtn]").click();
-                            return false;
-                        }
-
-                    }
-                })
-                .autocomplete("instance")._renderItem = function (ul, item) {
-                 
-                    return $("<li>")
-                        .append("<div class='style=background:black'>" + item.Client + "</div>")
-                        .appendTo(ul);
-                };
-        });
-
-    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
@@ -65,16 +34,19 @@
                     <div class="col-3">
                         <div class="col-form-label">Dependencia</div>
                     </div>
-                   
+
                     <div class="col-1">
                         <div class="col-form-label">#Transacción</div>
                     </div>
-                    
+
                     <div class="col-1">
                         <div class="col-form-label">Fecha</div>
                     </div>
                     <div class="col-2">
                         <div class="col-form-label">Solicitante</div>
+                    </div>
+                     <div class="col-2">
+                        <div class="col-form-label">Contrato</div>
                     </div>
 
                 </div>
@@ -89,12 +61,15 @@
                     <div class="col-1">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtNroTransaccion" runat="server" Enabled="false" />
                     </div>
-                   
+
                     <div class="col-1">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtFecha" runat="server" Enabled="false" />
                     </div>
-                     <div class="col-2">
+                    <div class="col-2">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtSolicitante" runat="server" Enabled="false" />
+                    </div>
+                    <div class="col-2">
+                        <asp:TextBox CssClass="form-control form-control-sm" ID="txtContrato" runat="server" Enabled="false" />
                     </div>
                 </div>
 
@@ -108,7 +83,7 @@
                     <div class="col">
                         <div class="col-form-label">Impuesto</div>
                     </div>
-                   
+
                     <div class="col">
                         <div class="col-form-label">Existente</div>
                     </div>
@@ -124,7 +99,8 @@
                             DataTextField="Articulo"
                             DataValueField="IdLote"
                             CssClass="form-control form-control-sm"
-                          
+                            OnDataBound="IdArticuloDDL_DataBound"
+                            OnSelectedIndexChanged="IdArticuloDDL_SelectedIndexChanged"
                             AutoPostBack="true">
                         </asp:DropDownList>
                     </div>
@@ -134,7 +110,7 @@
                     <div class="col">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtImpuesto" runat="server" Enabled="false" />
                     </div>
-                    
+
                     <div class="col">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtExistente" runat="server" Enabled="false" />
                     </div>
@@ -148,16 +124,16 @@
                         <div class="col-2">
                             <div class="col-form-label">Cantidad</div>
                         </div>
-                        
+
                         <div class="col-2"></div>
                     </div>
                     <div class="form-row">
                         <div class="col-2">
                             <asp:TextBox CssClass="form-control form-control-sm" ID="txtArticuloCantidad" runat="server" TextMode="Number" />
                         </div>
-                       
+
                         <div class="col-2">
-                            <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Agregar al Lote" CausesValidation="false" CssClass="form-control"  OnClick="AgregarArticuloBtn_Click" />
+                            <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Agregar al Lote" CausesValidation="false" CssClass="form-control" OnClick="AgregarArticuloBtn_Click" />
                         </div>
 
                     </div>
@@ -165,7 +141,7 @@
 
                 <div class="form-row">
                     <div class="col-12">
-                        <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold">Artículos del Lote</div>
+                        <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold">Artículos de Salida</div>
                     </div>
                 </div>
 
@@ -173,7 +149,7 @@
                 <div class="form-row">
                     <div class="col-12">
                         <div class="col-10">
-                            <asp:DataPager ID="LoteContratoDataPager" runat="server" PagedControlID="LoteContratoListView" PageSize="10">
+                            <asp:DataPager ID="SalidaLoteDataPager" runat="server" PagedControlID="SalidaLoteListView" PageSize="10">
                                 <Fields>
                                     <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
                                     <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
@@ -181,10 +157,10 @@
                                 </Fields>
                             </asp:DataPager>
                         </div>
-                        <asp:ListView ID="LoteContratoListView"
+                        <asp:ListView ID="SalidaLoteListView"
                             runat="server"
                             DataSourceID="LoteContratoDS"
-                            DataKeyNames="IdLote">
+                            DataKeyNames="IdSalidaLote">
                             <LayoutTemplate>
                                 <div class="table responsive">
                                     <table class="table table-striped table-condensed">
@@ -195,8 +171,7 @@
                                             <th>Precio Unitario</th>
                                             <th>Monto Impuesto</th>
                                             <th>Total</th>
-                                            <th>Dependencia</th>
-                                            <th>Depósito</th>
+                                          
                                             <th>...</th>
 
                                         </thead>
@@ -209,7 +184,7 @@
                             <ItemTemplate>
                                 <tr style="min-height: 5px; height: 5px; font-size: x-small">
                                     <td>
-                                        <asp:Label ID="lblIdLote" runat="server" Text='<%# Eval("IdLote") %>' />
+                                        <asp:Label ID="lblIdLote" runat="server" Text='<%# Eval("IdSalidaLote") %>' />
                                     </td>
                                     <td>
                                         <asp:Label ID="lbArticulo" runat="server" Text='<%# Eval("Articulo") %>' />
@@ -226,15 +201,11 @@
                                     <td>
                                         <asp:Label ID="lblTotal" runat="server" Text='<%#:string.Format("{0:N0}", Eval("PrecioLote")) %>' />
                                     </td>
-                                    <td>
-                                        <asp:Label ID="lblDependencia" runat="server" Text='<%# Eval("Dependencia") %>' />
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lblDeposito" runat="server" Text='<%# Eval("Deposito") %>' />
-                                    </td>
+                                  
+                                    
 
                                     <td>
-                                        <asp:LinkButton runat="server" ID="DeleteArticuloBtn" CommandName="Delete" CommandArgument='<%# Eval("IdArticulo")%>' ToolTip="Eliminar">
+                                        <asp:LinkButton runat="server" ID="DeleteArticuloBtn" CommandName="Delete" CommandArgument='<%# Eval("IdSalidaLote")%>' ToolTip="Eliminar">
                                            <i class="fas fa-trash-alt"></i>
                                         </asp:LinkButton>
                                     </td>
@@ -265,19 +236,19 @@
     <asp:SqlDataSource ID="ArticuloLoteDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
         SelectCommand="[warehouse].[sp_GetLoteArticuloExistente_DDL]" SelectCommandType="StoredProcedure">
         <SelectParameters>
-            <asp:SessionParameter SessionField="IdDependencia" Name="IdDependencia" DbType="Int32" />
+            <asp:SessionParameter SessionField="idContratoExistencia" Name="IdContrato" DbType="Int32" />
         </SelectParameters>
 
     </asp:SqlDataSource>
 
     <asp:SqlDataSource ID="LoteContratoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-        SelectCommand="[warehouse].[sp_Lote_get_Lote_By_NroTransaccion]" SelectCommandType="StoredProcedure"
+        SelectCommand="[warehouse].[sp_SalidaLote_get_SalidaLote_By_NroTransaccion]" SelectCommandType="StoredProcedure"
         DeleteCommand="[warehouse].[sp_Lote_delete]" DeleteCommandType="StoredProcedure">
         <SelectParameters>
-            <asp:Parameter Name="NroTransaccion" Type="String" />
+            <asp:ControlParameter ControlID="txtNroTransaccion" Name="NroTransaccion" PropertyName="Text" />
         </SelectParameters>
         <DeleteParameters>
-            <asp:Parameter Name="IdLote" DbType="Int32" />
+            <asp:Parameter Name="IdSalidaLote" DbType="Int32" />
         </DeleteParameters>
 
     </asp:SqlDataSource>

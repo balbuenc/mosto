@@ -28,6 +28,8 @@ namespace Almacenes
                 else if (Request.QueryString["mode"] == "edit")
                 {
                     ObtenerTransaccion(Convert.ToInt32(Request.QueryString["IdTransaccion"].ToString()));
+                    ArticuloLoteDS.DataBind();
+                    LoteContratoDS.DataBind();
                 }
             }
         }
@@ -63,10 +65,14 @@ namespace Almacenes
                         txtFecha.Text = dr["Fecha"].ToString();
                         txtDefincion.Text = dr["Definicion"].ToString();
                         txtSolicitante.Text = dr["Solicitante"].ToString();
+                        txtContrato.Text = dr["Contrato"].ToString();
+                        this.Session["IdContratoExistencia"] = dr["IdContrato"].ToString();
                     }
                 }
 
                 conn.Close();
+
+                
 
             
             }
@@ -96,7 +102,7 @@ namespace Almacenes
                 cmd.Parameters.AddWithValue("@NroFactura", DBNull.Value);
                 cmd.Parameters.AddWithValue("@Login", Context.User.Identity.Name);
                 cmd.Parameters.AddWithValue("@TipoTransaccion", "Salida");
-                cmd.Parameters.AddWithValue("@IdContrato", DBNull.Value);
+                cmd.Parameters.AddWithValue("@IdContrato", this.Session["IdContratoExistencia"].ToString());
                 cmd.Parameters.AddWithValue("@Solicitante", txtSolicitante.Text);
 
 

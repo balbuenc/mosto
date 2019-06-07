@@ -111,17 +111,19 @@ namespace Almacenes
             Response.Redirect("EntradaLote.aspx?mode=insert");
         }
 
-        protected void InsertSalidaBtn_Click(object sender, EventArgs e)
+        void SetSessionVariables()
         {
-
-            this.Session["DefinicionTransaccion"] =  txtDefinicionSalida.Text;
+            this.Session["DefinicionTransaccion"] = txtDefinicionSalida.Text;
             this.Session["IdDependencia"] = DependenciaDDL.SelectedValue;
             this.Session["Dependencia"] = DependenciaDDL.SelectedItem.Text;
             this.Session["Solicitante"] = txtSolicitanteSalida.Text;
             this.Session["idContratoExistencia"] = ContratoExistenciaDDL.SelectedValue;
             this.Session["ContratoExistencia"] = ContratoExistenciaDDL.SelectedItem.Text;
+        }
 
-
+        protected void InsertSalidaBtn_Click(object sender, EventArgs e)
+        {
+            SetSessionVariables();
             Response.Redirect("SalidaLote.aspx?mode=insert");
         }
     }

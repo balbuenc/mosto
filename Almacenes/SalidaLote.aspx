@@ -243,7 +243,7 @@
 
     <asp:SqlDataSource ID="LoteContratoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
         SelectCommand="[warehouse].[sp_SalidaLote_get_SalidaLote_By_NroTransaccion]" SelectCommandType="StoredProcedure"
-        DeleteCommand="[warehouse].[sp_Lote_delete]" DeleteCommandType="StoredProcedure">
+        DeleteCommand="warehouse.sp_SalidaLote_delete" DeleteCommandType="StoredProcedure">
         <SelectParameters>
             <asp:ControlParameter ControlID="txtNroTransaccion" Name="NroTransaccion" PropertyName="Text" />
         </SelectParameters>

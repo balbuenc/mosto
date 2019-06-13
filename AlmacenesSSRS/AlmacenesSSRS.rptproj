@@ -13,6 +13,10 @@
       <Name>LotesEntrada.rdl</Name>
       <FullPath>LotesEntrada.rdl</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>LotesSalida.rdl</Name>
+      <FullPath>LotesSalida.rdl</FullPath>
+    </ProjectItem>
   </Reports>
   <Configurations>
     <Configuration>

@@ -78,7 +78,18 @@ namespace Almacenes
             }
             else if (e.CommandName == "ViewReport")
             {
-                string url = "http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fAlmacenesSSRS%2fLotesEntrada&rs:Command=Render&IdTransaccion=" + e.CommandArgument.ToString();
+                string url;
+
+                if (Request.QueryString["Tipo"] == "Entrada")
+                {
+                    url = "http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fAlmacenesSSRS%2fLotesEntrada&rs:Command=Render&IdTransaccion=" + e.CommandArgument.ToString();
+                }
+                else
+                {
+                    url = "http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fAlmacenesSSRS%2fLotesSalida&rs:Command=Render&IdTransaccion=" + e.CommandArgument.ToString();
+                }
+
+             
                 ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('" + url + "','_blank')", true);
             }
         }

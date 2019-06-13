@@ -45,7 +45,7 @@
                     <div class="col-2">
                         <div class="col-form-label">Solicitante</div>
                     </div>
-                     <div class="col-2">
+                    <div class="col-2">
                         <div class="col-form-label">Contrato</div>
                     </div>
 
@@ -160,7 +160,10 @@
                         <asp:ListView ID="SalidaLoteListView"
                             runat="server"
                             DataSourceID="LoteContratoDS"
-                            DataKeyNames="IdSalidaLote">
+                            DataKeyNames="IdSalidaLote"
+                            
+                             OnItemDataBound="SalidaLoteListView_ItemDataBound"
+                             OnItemDeleted="SalidaLoteListView_ItemDeleted">
                             <LayoutTemplate>
                                 <div class="table responsive">
                                     <table class="table table-striped table-condensed">
@@ -171,7 +174,7 @@
                                             <th>Precio Unitario</th>
                                             <th>Monto Impuesto</th>
                                             <th>Total</th>
-                                          
+
                                             <th>...</th>
 
                                         </thead>
@@ -201,8 +204,13 @@
                                     <td>
                                         <asp:Label ID="lblTotal" runat="server" Text='<%#:string.Format("{0:N0}", Eval("PrecioLote")) %>' />
                                     </td>
-                                  
-                                    
+                                    <td hidden="hidden">
+                                        <asp:Label ID="lblDependencia" runat="server" Text='<%# Eval("Dependencia") %>' Visible="false" />
+                                    </td>
+                                     <td hidden="hidden">
+                                        <asp:Label ID="lblIdDependencia" runat="server" Text='<%# Eval("IdDependencia") %>' Visible="false" />
+                                    </td>
+
 
                                     <td>
                                         <asp:LinkButton runat="server" ID="DeleteArticuloBtn" CommandName="Delete" CommandArgument='<%# Eval("IdSalidaLote")%>' ToolTip="Eliminar">

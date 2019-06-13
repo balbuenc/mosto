@@ -30,6 +30,8 @@ namespace Almacenes
                     ObtenerTransaccion(Convert.ToInt32(Request.QueryString["IdTransaccion"].ToString()));
                     ArticuloLoteDS.DataBind();
                     LoteContratoDS.DataBind();
+
+
                 }
             }
         }
@@ -72,9 +74,9 @@ namespace Almacenes
 
                 conn.Close();
 
-                
 
-            
+
+
             }
             catch (Exception ex)
             {
@@ -150,6 +152,8 @@ namespace Almacenes
         private void InsertarArticuloSalidaLote()
         {
             SqlCommand cmd = new SqlCommand();
+           
+
             try
             {
                 if (txtNroTransaccion.Text == "")
@@ -158,6 +162,22 @@ namespace Almacenes
                     return;
                 }
 
+                if (Convert.ToInt32(txtExistente.Text) < Convert.ToInt32(txtArticuloCantidad.Text))
+                {
+                    ShowPopUpMsg("La cantidad solicitada supera la existencia del artículo.");
+                    return;
+                }
+
+                if (txtArticuloCantidad.Text == "")
+                {
+
+                    ShowPopUpMsg("La cantidad solicitada no es válida.");
+                    return;
+
+
+                }
+
+
                 SqlConnection conn = new SqlConnection(ArticuloLoteDS.ConnectionString);
 
                 cmd.Connection = conn;
@@ -165,12 +185,12 @@ namespace Almacenes
                 cmd.CommandText = "[warehouse].[sp_SalidaLote_insert]";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-              
+
 
                 cmd.Parameters.AddWithValue("@IdLote", IdArticuloDDL.SelectedValue);
                 cmd.Parameters.AddWithValue("@CantidadSalida", txtArticuloCantidad.Text);
                 cmd.Parameters.AddWithValue("@IdDependencia", this.Session["IdDependencia"].ToString());
-     
+
                 cmd.Parameters.AddWithValue("@Nrotransaccion", txtNroTransaccion.Text);
 
 
@@ -185,9 +205,8 @@ namespace Almacenes
             }
             catch (Exception ex)
             {
-                ErrorLabel.Text = ex.Message;
-                ErrorLabel.Visible = true;
-                FadeOut(ErrorLabel.ClientID, 5000);
+                ShowPopUpMsg("La cantidad solicitada no es válida.");
+                return;
             }
         }
 
@@ -217,7 +236,7 @@ namespace Almacenes
                     {
                         txtPrecio.Text = string.Format("{0:N0}", dr["Precio"]);
                         txtImpuesto.Text = string.Format("{0:N0}", dr["PrecioImpuesto"]);
-                      
+
                         txtExistente.Text = string.Format("{0:N0}", dr["Cantidad"]);
                     }
                 }
@@ -247,6 +266,27 @@ namespace Almacenes
         protected void AgregarArticuloBtn_Click(object sender, EventArgs e)
         {
             InsertarArticuloSalidaLote();
+            IdArticuloDDL.DataBind();
+        }
+
+
+
+        protected void SalidaLoteListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+
+                Label lblDependencia = (Label)e.Item.FindControl("lblDependencia");
+                this.Session["idDependencia"] = ((Label)e.Item.FindControl("lblIdDependencia")).Text;
+
+                txtDependencia.Text = lblDependencia.Text;
+
+            }
+        }
+
+        protected void SalidaLoteListView_ItemDeleted(object sender, ListViewDeletedEventArgs e)
+        {
+            IdArticuloDDL.DataBind();
         }
     }
 }

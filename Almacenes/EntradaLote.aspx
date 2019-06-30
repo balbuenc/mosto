@@ -40,24 +40,24 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
         <div class="container-fluid">
-            <div class="row">
+            <%--<div class="row">
                 <div class="col-12">
                     <div class="col-form-label-lg azul"><%: Page.Title %> </div>
                 </div>
-            </div>
+            </div>--%>
             <div class="row">
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
             </div>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid" style="background-color:white">
         <div class="form-row">
             <div class="col-12">
                 <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold"><b>Datos del Contrato</b></div>
             </div>
         </div>
 
-        <asp:Panel runat="server" ID="SeleccionarContratoPanel">
+        <asp:Panel runat="server" ID="SeleccionarContratoPanel" Visible="false">
             <div class="form-row" style="padding-top: 5px">
 
                 <div class="col-2">
@@ -77,7 +77,7 @@
 
         <div class="form-row">
             <div class="col-2">
-                <div class="col-form-label">Nro. Contrato</div>
+                <div class="col-form-label">Nro. de Contrato</div>
             </div>
             <div class="col-4">
                 <div class="col-form-label">Proveedor</div>
@@ -107,11 +107,11 @@
                 </div>
                 <div class="form-row">
 
-                    <div class="col">
+                    <div class="col-3">
                         <div class="col-form-label">Definición</div>
                     </div>
-                    <div class="col-1">
-                        <div class="col-form-label">#Factura</div>
+                    <div class="col-2">
+                        <div class="col-form-label">#Remisión</div>
                     </div>
                     <div class="col-1">
                         <div class="col-form-label">#Transacción</div>
@@ -124,10 +124,10 @@
                 </div>
                 <div class="form-row">
 
-                    <div class="col">
+                    <div class="col-3">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtDefincion" runat="server" />
                     </div>
-                    <div class="col-1">
+                    <div class="col-2">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtNroFactura" runat="server" />
                     </div>
                     <div class="col-1">

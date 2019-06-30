@@ -82,11 +82,11 @@ namespace Almacenes
 
                 if (Request.QueryString["Tipo"] == "Entrada")
                 {
-                    url = "http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fAlmacenesSSRS%2fLotesEntrada&rs:Command=Render&IdTransaccion=" + e.CommandArgument.ToString();
+                    url = "rptEntrada.aspx?IdTransaccion=" + e.CommandArgument.ToString();
                 }
                 else
                 {
-                    url = "http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fAlmacenesSSRS%2fLotesSalida&rs:Command=Render&IdTransaccion=" + e.CommandArgument.ToString();
+                    url = "rptSalida.aspx?IdTransaccion=" + e.CommandArgument.ToString();
                 }
 
              

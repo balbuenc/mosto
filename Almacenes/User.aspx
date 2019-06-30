@@ -204,6 +204,20 @@
                                                     <asp:TextBox ID="txtDocumentNumber" runat="server" Text='<%# Bind("DocumentNumber") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-3">Rol</div>
+                                                <div class="col-9">
+                                                    <asp:DropDownList ID="ddlIdUserRole"
+                                                        runat="server"
+                                                        DataSourceID="RoleDS"
+                                                        DataTextField="Role"
+                                                        DataValueField="IdRole"
+                                                        CssClass="form-control spacing"
+                                                        SelectedValue='<%# Bind("IdRole") %>'
+                                                        >
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
 
 
                                         </div>
@@ -498,6 +512,7 @@
                 <asp:Parameter Name="Phone" Type="String" DefaultValue="ND" />
                 <asp:Parameter Name="Discriminator" Type="String" DefaultValue="ND" />
                 <asp:Parameter Name="DocumentNumber" Type="String" DefaultValue="ND" />
+                <asp:Parameter Name="IdRole" Type="Int16"/>
 
             </InsertParameters>
             <UpdateParameters>

@@ -31,6 +31,15 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.TextBox txtNroContrato;
         
         /// <summary>
+        /// TipoDDL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList TipoDDL;
+        
+        /// <summary>
         /// txtSearchProveedor control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtSearchArticulo;
+        
+        /// <summary>
+        /// btnClearArticulo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnClearArticulo;
         
         /// <summary>
         /// txtArticuloCantidad control.

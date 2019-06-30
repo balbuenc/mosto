@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
-        <div class="container-fluid">
+        <div class="container-fluid" style="background-color:white">
             <div class="row">
                 <div class="col-2">
                     <div class="col-form-label-lg azul"><%: Page.Title %> </div>
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="background-color:white">
         <asp:DataPager ID="ContratoDataPager" runat="server" PagedControlID="ContratoListView" PageSize="10">
             <Fields>
                 <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
@@ -60,6 +60,8 @@
                             <th>Fin</th>
                             <th>#</th>
                             <th>Liticación</th>
+                            <th>Estado</th>
+                            <th>Tipo</th>
                             <th>...</th>
                             <th>...</th>
                             <th>...</th>
@@ -85,6 +87,12 @@
                         <asp:Label ID="lblNroContrato" runat="server" Text='<%# Eval("NroContrato") %>' /></td>
                     <td>
                         <asp:Label ID="lblIdLicitacion" runat="server" Text='<%# Eval("Licitacion") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblEstado" runat="server" Text='<%# Eval("Estado") %>' />
+                    </td>
+                     <td>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("Tipo") %>' />
                     </td>
 
                     <td>
@@ -137,6 +145,27 @@
                         </asp:DropDownList>
 
                     </td>
+                     <td>
+                        <asp:DropDownList ID="EstadoDDL"
+                            runat="server"
+                            CssClass="form-control form-control-sm"
+                            SelectedValue='<%# Bind("Estado") %>'>
+                            <asp:ListItem Value="Activo" Text="Activo"></asp:ListItem>
+                            <asp:ListItem Value="Cancelado" Text="Cancelado"></asp:ListItem>
+                            <asp:ListItem Value="Vencido" Text="Vencido"></asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                     <td>
+                        <asp:DropDownList ID="TipoDDL"
+                            runat="server"
+                            CssClass="form-control form-control-sm"
+                            SelectedValue='<%# Bind("Tipo") %>'>
+                            <asp:ListItem Value="N" Text="Normal"></asp:ListItem>
+                            <asp:ListItem Value="R" Text="Requerimiento"></asp:ListItem>
+                            
+                        </asp:DropDownList>
+                    </td>
+
 
                     <td>
                         <asp:LinkButton runat="server" ID="btnEdit" CommandName="Update" ToolTip="Aceptar">
@@ -173,6 +202,8 @@
                 <asp:Parameter Name="FechaFinContrato" DbType="Date" />
                 <asp:Parameter Name="NroContrato" DbType="String" />
                 <asp:Parameter Name="IdLicitacion" DbType="Int32" />
+                <asp:Parameter Name="Estado" DbType="String" />
+                <asp:Parameter Name="Tipo" DbType="String" />
             </UpdateParameters>
             <SelectParameters>
                 <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />

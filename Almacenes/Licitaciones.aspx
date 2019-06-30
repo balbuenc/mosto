@@ -354,7 +354,7 @@
             <DeleteParameters>
             </DeleteParameters>
             <InsertParameters>
-                <asp:Parameter Name="NroLicitacion" Type="Int32" />
+                <asp:Parameter Name="NroLicitacion" Type="String" />
                 <asp:Parameter DbType="Date" Name="FechaLicitacion" />
 
                 <asp:Parameter Name="IdTipoLicitacion" Type="Int16" />

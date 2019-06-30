@@ -17,6 +17,14 @@
       <Name>LotesSalida.rdl</Name>
       <FullPath>LotesSalida.rdl</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>LotesSalidaGlobal.rdl</Name>
+      <FullPath>LotesSalidaGlobal.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>LotesEntradaGlobal.rdl</Name>
+      <FullPath>LotesEntradaGlobal.rdl</FullPath>
+    </ProjectItem>
   </Reports>
   <Configurations>
     <Configuration>

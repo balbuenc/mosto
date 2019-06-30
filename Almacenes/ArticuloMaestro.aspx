@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <asp:DataPager ID="ArticuloMaestroListViewDataPager" runat="server" PagedControlID="ArticuloMaestroListView" PageSize="15">
             <Fields>
                 <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
@@ -118,7 +118,7 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="addModalLabel">Agregar nuevo ArticuloMaestro.</b>
+                                <b id="addModalLabel">Agregar Articulo.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
@@ -145,7 +145,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Artículo</div>
+                                                <div class="col-3">Nombre de Artículo</div>
                                                 <div class="col-9">
                                                     <asp:TextBox ID="txtArticulo" runat="server" Text='<%# Bind("Articulo") %>' CssClass="form-control" />
                                                 </div>
@@ -170,7 +170,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Cód. de Barras</div>
+                                                <div class="col-3">Código de Barras</div>
                                                 <div class="col-9">
                                                     <asp:TextBox ID="txtCodigoDeBarra" runat="server" Text='<%# Bind("CodigoDeBarra") %>' CssClass="form-control" />
                                                 </div>
@@ -208,7 +208,7 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="editModalLabel">Modificar ArticuloMaestro.</b>
+                                <b id="editModalLabel">Modificar Articulo.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
@@ -231,7 +231,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Artículo</div>
+                                                <div class="col-3">Nombre de Artículo</div>
                                                 <div class="col-9">
                                                     <asp:TextBox ID="txtArticulo" runat="server" Text='<%# Bind("Articulo") %>' CssClass="form-control" />
                                                 </div>
@@ -256,7 +256,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3">Cód. de Barras</div>
+                                                <div class="col-3">Código de Barras</div>
                                                 <div class="col-9">
                                                     <asp:TextBox ID="txtCodigoDeBarra" runat="server" Text='<%# Bind("CodigoDeBarra") %>' CssClass="form-control" />
                                                 </div>

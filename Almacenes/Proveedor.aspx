@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
-        <div class="container-fluid">
+        <div class="container-fluid" style="background-color:white">
             <div class="row">
                 <div class="col-2">
                     <div class="col-form-label-lg azul"><%: Page.Title %> </div>
@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="background-color:white; padding-top:5px">
         <asp:DataPager ID="ProveedorDataPager" runat="server" PagedControlID="ProveedorListView" PageSize="10">
             <Fields>
                 <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />

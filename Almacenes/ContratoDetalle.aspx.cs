@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -21,11 +22,19 @@ namespace Almacenes
                 {
                     DisableControls();
                     ObtenerDatosContrato(Convert.ToInt32(Request.QueryString["IdContrato"]));
+
+                    //Desabilito el calendario
+                    txtFechaInicioContrato.TextMode = TextBoxMode.SingleLine;
+                    txtFechaFinContrato.TextMode = TextBoxMode.SingleLine;
                 }
             }
             else if (!IsPostBack)
             {
                 EnableControls();
+
+                //Habilito el calendario
+                txtFechaInicioContrato.TextMode = TextBoxMode.Date;
+                txtFechaFinContrato.TextMode = TextBoxMode.Date;
             }
 
         }
@@ -58,6 +67,7 @@ namespace Almacenes
                         txtFechaFinContrato.Text = dr["FechaFinContrato"].ToString().Remove(11);
                         txtSearchProveedor.Value = dr["Proveedor"].ToString();
                         IdLicitacionDDL.SelectedValue = dr["IdLicitacion"].ToString();
+                        TipoDDL.SelectedValue = dr["Tipo"].ToString();
                     }
                 }
 
@@ -128,6 +138,7 @@ namespace Almacenes
             txtFechaInicioContrato.Enabled = false;
             txtFechaFinContrato.Enabled = false;
             IdLicitacionDDL.Enabled = false;
+            TipoDDL.Enabled = false;
         }
 
         void EnableControls()
@@ -137,6 +148,7 @@ namespace Almacenes
             txtFechaInicioContrato.Enabled = true;
             txtFechaFinContrato.Enabled = true;
             IdLicitacionDDL.Enabled = true;
+            TipoDDL.Enabled = true;
         }
 
         void LimpiarArticulo()
@@ -146,10 +158,46 @@ namespace Almacenes
             txtArticuloPrecio.Value = "";
         }
 
+        private void ShowPopUpMsg(string msg)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("alert('");
+            sb.Append(msg.Replace("\n", "\\n").Replace("\r", "").Replace("'", "\\'"));
+            sb.Append("');");
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "showalert", sb.ToString(), true);
+        }
 
         protected void AgregarArticuloBtn_Click(object sender, EventArgs e)
         {
             SqlCommand cmd = new SqlCommand();
+            Int32 cant;
+
+            if (txtNroContrato.Text == "")
+            {
+                ShowPopUpMsg("Favor ingresar un número de contrato");
+                return;
+            }
+
+            try {
+                cant = Convert.ToInt32(txtArticuloCantidad.Value.ToString());
+            }
+            catch
+            {
+                ShowPopUpMsg("La cantidad solicitada debe ser un número válido");
+                return;
+            }
+
+            try
+            {
+                cant = Convert.ToInt32(txtArticuloPrecio.Value.ToString());
+            }
+            catch
+            {
+                ShowPopUpMsg("El precio debe ser un número válido");
+                return;
+            }
+
+
             try
             {
                 SqlConnection conn = new SqlConnection(ArticuloContratoDS.ConnectionString);
@@ -169,6 +217,7 @@ namespace Almacenes
                 cmd.Parameters.AddWithValue("@CantidadArticulo", txtArticuloCantidad.Value);
                 cmd.Parameters.AddWithValue("@Precio", txtArticuloPrecio.Value);
                 cmd.Parameters.AddWithValue("@IdImpuesto", IdImpuestoDDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@Tipo", TipoDDL.SelectedValue);
 
 
                 conn.Open();
@@ -192,6 +241,13 @@ namespace Almacenes
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
+        }
+
+        protected void btnClearArticulo_ServerClick(object sender, EventArgs e)
+        {
+            txtSearchArticulo.Value = "";
+            txtArticuloCantidad.Value = "";
+            txtArticuloPrecio.Value = "";
         }
     }
 

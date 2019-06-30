@@ -8,17 +8,17 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
         <div class="container-fluid">
-            <div class="row">
+          <%--  <div class="row">
                 <div class="col-12">
                     <div class="col-form-label-lg azul"><%: Page.Title %> </div>
                 </div>
-            </div>
+            </div>--%>
             <div class="row">
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
             </div>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid" style="background-color:white">
         <asp:UpdatePanel ID="ArticuloContratoUP" runat="server">
             <ContentTemplate>
                 <div class="form-row">

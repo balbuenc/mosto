@@ -4,12 +4,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
-        <div class="container-fluid">
+        <div class="container-fluid" style="background-color: white">
             <div class="row">
-                <div class="col-2">
+                <div class="col-1">
                     <div class="col-form-label-lg azul" runat="server" id="divTitle">Transacciones</div>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <asp:TextBox ID="txtSearchKey" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-2">
@@ -25,14 +25,18 @@
                         <i class="fas fa-search fa-sm"></i>
                     </button>
                 </div>
-                <div class="col-1">
-                    <button class="btn btn-primary" type="button" runat="server" id="AddTransaccionBtn" data-toggle="modal" data-target="#addModal" >
-                        <i class="fas fa-sign-in-alt"></i>
+                <div class="col-2">
+                    <button class="btn btn-primary" type="button" runat="server" id="AddTransaccionBtn" data-toggle="modal" data-target="#addModal">
+                        <span>Agregar
+                            <i class="fas fa-sign-in-alt"></i>
+                        </span>
                     </button>
                 </div>
-                 <div class="col-1">
+                <div class="col-2">
                     <button class="btn btn-primary" type="button" runat="server" id="AddtransaccionSalidaBtn" data-toggle="modal" data-target="#addModalSalida">
+                        <span>Agregar
                         <i class="fas fa-sign-out-alt"></i>
+                        </span>
                     </button>
                 </div>
             </div>
@@ -42,7 +46,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="background-color: white">
         <asp:DataPager ID="TransaccionDataPager" runat="server" PagedControlID="TransaccionListView" PageSize="10">
             <Fields>
                 <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
@@ -133,7 +137,7 @@
                     <ContentTemplate>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <b id="addModalLabel">Agregar nuevo Transaccion.</b>
+                                <b id="addModalLabel">Agregar entrada.</b>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
@@ -141,13 +145,13 @@
                                 <div class="container-fluid">
 
                                     <div class="row">
-                                        <div class="col-3">Definición</div>
+                                        <div class="col-3">Descripción</div>
                                         <div class="col-9">
                                             <asp:TextBox ID="txtDefinicion" runat="server" Text='<%# Bind("Definicion") %>' CssClass="form-control" />
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-3">Nro. Factura</div>
+                                        <div class="col-3">Nro. de Remisión</div>
                                         <div class="col-9">
                                             <asp:TextBox ID="txtNroFactura" runat="server" Text='<%# Bind("NroFactura") %>' CssClass="form-control" />
                                         </div>
@@ -199,7 +203,7 @@
                                 <div class="container-fluid">
 
                                     <div class="row">
-                                        <div class="col-3">Definición</div>
+                                        <div class="col-3">Descripción</div>
                                         <div class="col-9">
                                             <asp:TextBox ID="txtDefinicionSalida" runat="server" Text='<%# Bind("Definicion") %>' CssClass="form-control" />
                                         </div>
@@ -234,7 +238,7 @@
                                             <asp:TextBox ID="txtSolicitanteSalida" runat="server" Text="" CssClass="form-control" />
                                         </div>
                                     </div>
-                                   
+
                                 </div>
 
                                 <hr />
@@ -264,7 +268,7 @@
                 <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
                 <asp:ControlParameter ControlID="searchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
                 <asp:QueryStringParameter Name="tipo_transaccion" Type="String" DefaultValue="Entrada" QueryStringField="Tipo" />
-             </SelectParameters>
+            </SelectParameters>
         </asp:SqlDataSource>
 
         <asp:SqlDataSource ID="ContratoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
@@ -275,7 +279,7 @@
             SelectCommand="management.sp_get_Contrato_ExistenciaDDL"
             SelectCommandType="StoredProcedure"></asp:SqlDataSource>
 
-         <asp:SqlDataSource ID="DependenciaDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+        <asp:SqlDataSource ID="DependenciaDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
             SelectCommand="select IdDependencia, Dependencia from warehouse.Dependencia where Activo = 'S' order by 2 asc"
             SelectCommandType="Text"></asp:SqlDataSource>
         <!-- #endregion -->

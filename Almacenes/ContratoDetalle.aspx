@@ -72,20 +72,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="col-form-label-lg azul"><%: Page.Title %> </div>
 
-                </div>
-
-            </div>
             <div class="row">
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
             </div>
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="background-color: white">
 
 
         <div class="form-row">
@@ -96,11 +90,23 @@
         </div>
         <br />
         <div class="form-row">
-            <div class="col-1">
+            <div class="col-2">
                 <div class="col-form-label"><b>Nro. Contrato</b></div>
             </div>
             <div class="col-2">
-                <asp:TextBox ID="txtNroContrato" runat="server" Text="" CssClass="form-control form-control-sm" TextMode="Number" />
+                <asp:TextBox ID="txtNroContrato" runat="server" Text="" CssClass="form-control form-control-sm" />
+            </div>
+            <div class="col-1">
+                <div class="col-form-label"><b>Tipo</b></div>
+            </div>
+            <div class="col-2">
+                <asp:DropDownList ID="TipoDDL"
+                    runat="server"
+                    CssClass="form-control form-control-sm">
+                    <asp:ListItem Value="N" Text="Normal"></asp:ListItem>
+                    <asp:ListItem Value="R" Text="Requerimiento"></asp:ListItem>
+
+                </asp:DropDownList>
             </div>
         </div>
         <div class="form-row">
@@ -122,10 +128,10 @@
                 <input id="txtSearchProveedor" class="form-control form-control-sm" runat="server" placeholder="Proveedor" />
             </div>
             <div class="col">
-                <asp:TextBox ID="txtFechaInicioContrato" runat="server" Text="" CssClass="form-control form-control-sm" TextMode="Date" />
+                <asp:TextBox ID="txtFechaInicioContrato" runat="server" Text="" CssClass="form-control form-control-sm" />
             </div>
             <div class="col">
-                <asp:TextBox ID="txtFechaFinContrato" runat="server" Text="" CssClass="form-control form-control-sm" TextMode="Date" />
+                <asp:TextBox ID="txtFechaFinContrato" runat="server" Text="" CssClass="form-control form-control-sm" />
             </div>
 
             <div class="col-4">
@@ -150,7 +156,15 @@
             <div class="form-row">
 
                 <div class="col-4">
-                    <input id="txtSearchArticulo" runat="server" placeholder="Articulo" class="form-control form-control-sm">
+                    <div class="input-group mb-4">
+                        <input id="txtSearchArticulo" runat="server" placeholder="Articulo" class="form-control form-control-sm">
+                        <div class="input-group-append">
+
+                            <button class="btn btn-outline-secondary btn-sm" type="button" runat="server" id="btnClearArticulo" onserverclick="btnClearArticulo_ServerClick" title="Limpiar artículo">
+                                <i class="fas fa-broom fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="col">
                     <input type="text" class="form-control form-control-sm" id="txtArticuloCantidad" runat="server" placeholder="Cantidad del Artículo">

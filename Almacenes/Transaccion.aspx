@@ -272,7 +272,12 @@
         </asp:SqlDataSource>
 
         <asp:SqlDataSource ID="ContratoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-            SelectCommand="select IdContrato, NroContrato from management.Contrato order by 2 ;"
+            SelectCommand="select IdContrato, NroContrato + ' [' + p.RazonSocial + ']'  as NroContrato
+                            from management.Contrato c
+                            left outer join management.Licitacion l on c.IdLicitacion = l.IdLicitacion
+                            left outer join management.Proveedor p on c.IdProveedor = p.IdProveedor 
+                            where c.Estado = 'Activo'
+                            order by 2"
             SelectCommandType="Text"></asp:SqlDataSource>
 
         <asp:SqlDataSource ID="ContratoExistenciaDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"

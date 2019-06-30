@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid" style="background-color:white">
+    <div class="container-fluid" style="background-color: white">
         <div class="form-row">
             <div class="col-12">
                 <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold"><b>Datos del Contrato</b></div>
@@ -76,25 +76,37 @@
         </asp:Panel>
 
         <div class="form-row">
-            <div class="col-2">
-                <div class="col-form-label">Nro. de Contrato</div>
+            <div class="col-1">
+                <div class="col-form-label">#Contrato</div>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <div class="col-form-label">Proveedor</div>
             </div>
-            <div class="col">
+            <div class="col-3">
                 <div class="col-form-label">Licitación</div>
+            </div>
+            <div class="col-1">
+                <div class="col-form-label">Tipo</div>
+            </div>
+            <div class="col-1">
+                <div class="col-form-label">Estado</div>
             </div>
         </div>
         <div class="form-row">
-            <div class="col-2">
+            <div class="col-1">
                 <asp:TextBox ID="txtNroContrato" CssClass="form-control form-control-sm" runat="server" Text="" Enabled="false" />
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <asp:TextBox ID="txtProveedor" runat="server" Text="" CssClass="form-control form-control-sm" Enabled="false" />
             </div>
-            <div class="col">
+            <div class="col-3">
                 <asp:TextBox ID="txtLicitacion" runat="server" Text="" CssClass="form-control form-control-sm" Enabled="false" />
+            </div>
+            <div class="col-1">
+                <asp:TextBox ID="txtTipoContrato" runat="server" Text="" CssClass="form-control form-control-sm" Enabled="false" />
+            </div>
+            <div class="col-1">
+                <asp:TextBox ID="txtEstadoContrato" runat="server" Text="" CssClass="form-control form-control-sm" Enabled="false" />
             </div>
         </div>
 
@@ -108,15 +120,19 @@
                 <div class="form-row">
 
                     <div class="col-3">
-                        <div class="col-form-label">Definición</div>
+                        <div class="col-form-label">Descripción</div>
                     </div>
                     <div class="col-2">
-                        <div class="col-form-label">#Remisión</div>
+                        <div class="col-form-label">#Nota de Remisión</div>
                     </div>
                     <div class="col-1">
                         <div class="col-form-label">#Transacción</div>
+                           <asp:LinkButton runat="server" ID="ReportTransaccionBtn" CommandName="ViewReport" ToolTip="Ver reporte">
+                            <i class="fas fa-book-reader"></i>
+
+                        </asp:LinkButton>
                     </div>
-                    
+
                     <div class="col-1">
                         <div class="col-form-label">Fecha</div>
                     </div>
@@ -160,10 +176,10 @@
                         <div class="col-form-label">Impuesto</div>
                     </div>
                     <div class="col">
-                        <div class="col-form-label">Cant. total</div>
+                        <div class="col-form-label">Cant. Contrato</div>
                     </div>
                     <div class="col">
-                        <div class="col-form-label">Existente</div>
+                        <div class="col-form-label">Dif. Contrato</div>
                     </div>
                 </div>
 
@@ -192,7 +208,8 @@
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtCantidadTotal" runat="server" Enabled="false" />
                     </div>
                     <div class="col">
-                        <asp:TextBox CssClass="form-control form-control-sm" ID="txtExistente" runat="server" Enabled="false" />
+                        <asp:TextBox CssClass="form-control form-control-sm" ID="txtExistente" runat="server" Enabled="false" Visible="false" />
+                        <asp:TextBox CssClass="form-control form-control-sm" ID="txtDiferenciaContrato" runat="server" Enabled="false" />
                     </div>
 
                 </div>
@@ -235,7 +252,7 @@
                             </asp:DropDownList>
                         </div>
                         <div class="col-2">
-                            <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Agregar al Lote" CausesValidation="false" CssClass="form-control" OnClick="AgregarArticuloBtn_Click" />
+                            <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Agregar artículo" CausesValidation="false" CssClass="form-control" OnClick="AgregarArticuloBtn_Click" />
                         </div>
 
                     </div>
@@ -262,7 +279,8 @@
                         <asp:ListView ID="LoteContratoListView"
                             runat="server"
                             DataSourceID="LoteContratoDS"
-                            DataKeyNames="IdLote">
+                            DataKeyNames="IdLote"
+                            OnItemDeleted="LoteContratoListView_ItemDeleted">
                             <LayoutTemplate>
                                 <div class="table responsive">
                                     <table class="table table-striped table-condensed">

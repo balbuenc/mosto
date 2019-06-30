@@ -328,7 +328,8 @@
 
     <asp:SqlDataSource ID="LicitacionDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
         SelectCommand="select l.IdLicitacion, upper(l.llamado) + ' | Nro. [' + cast(l.NroLicitacion as varchar(50)) + ']'  as Licitacion
-                            from management.licitacion l;"
+                            from management.licitacion l
+                            where Activo = 'S';"
         SelectCommandType="Text"></asp:SqlDataSource>
 
     <asp:SqlDataSource ID="ImpuestoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"

@@ -76,6 +76,24 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.TextBox txtLicitacion;
         
         /// <summary>
+        /// txtTipoContrato control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTipoContrato;
+        
+        /// <summary>
+        /// txtEstadoContrato control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEstadoContrato;
+        
+        /// <summary>
         /// ArticuloContratoUP control.
         /// </summary>
         /// <remarks>
@@ -83,6 +101,15 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel ArticuloContratoUP;
+        
+        /// <summary>
+        /// ReportTransaccionBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton ReportTransaccionBtn;
         
         /// <summary>
         /// txtDefincion control.
@@ -164,6 +191,15 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtExistente;
+        
+        /// <summary>
+        /// txtDiferenciaContrato control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDiferenciaContrato;
         
         /// <summary>
         /// ArticuloPanel control.

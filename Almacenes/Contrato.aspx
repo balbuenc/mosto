@@ -152,7 +152,7 @@
                             SelectedValue='<%# Bind("Estado") %>'>
                             <asp:ListItem Value="Activo" Text="Activo"></asp:ListItem>
                             <asp:ListItem Value="Cancelado" Text="Cancelado"></asp:ListItem>
-                            <asp:ListItem Value="Vencido" Text="Vencido"></asp:ListItem>
+                            <asp:ListItem Value="Finalizado" Text="Finalizado"></asp:ListItem>
                         </asp:DropDownList>
                     </td>
                      <td>
@@ -213,6 +213,7 @@
 
         <asp:SqlDataSource ID="LicitacionDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
             SelectCommand="select l.IdLicitacion, upper(l.llamado) + ' | Nro. [' + cast(l.NroLicitacion as varchar(50)) + ']'  as Licitacion
+                           
                             from management.licitacion l;"
             SelectCommandType="Text"></asp:SqlDataSource>
 

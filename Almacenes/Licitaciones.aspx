@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
-        <div class="container-fluid">
+        <div class="container-fluid" style="background-color:white">
             <div class="row">
                 <div class="col-2">
                     <div class="col-form-label-lg azul"><%: Page.Title %> </div>
@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="background-color:white">
         <asp:DataPager ID="LicitacionDataPager" runat="server" PagedControlID="LicitacionListView" PageSize="10">
             <Fields>
                 <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
@@ -61,10 +61,10 @@
                             <th>Llamado</th>
                             <th>Fecha</th>
                             <th>Tipo</th>
-                            <th>Referancia (UOC)</th>
-                            <th>ID (UOC)</th>
+                            <th style="text-align:center">Ref. UOC</th>
+                            <th>Id (UOC)</th>
                             <th>Activo</th>
-                            <th>Fecha Desactivación</th>
+                            <th>Desactivación</th>
                             <th>...</th>
                             <th>...</th>
                         </thead>
@@ -154,7 +154,7 @@
                                                 <div class="col-9">
                                                     <asp:DropDownList ID="IdLicitacionDDL"
                                                         runat="server"
-                                                        DataSourceID="TipoLicitacionDS"
+                                                        DataSourceID="TipoLicitacionAddDS"
                                                         DataTextField="TipoLicitacion"
                                                         DataValueField="IdTipoLicitacion"
                                                         CssClass="form-control spacing"
@@ -373,7 +373,10 @@
         </asp:SqlDataSource>
 
         <asp:SqlDataSource ID="TipoLicitacionDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-            SelectCommand="select IdTipoLicitacion, TipoLicitacion from management.TipoLicitacion order by 2" SelectCommandType="Text"></asp:SqlDataSource>
+            SelectCommand="select IdTipoLicitacion, TipoLicitacion from management.TipoLicitacion  order by 2" SelectCommandType="Text"></asp:SqlDataSource>
+
+          <asp:SqlDataSource ID="TipoLicitacionAddDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+            SelectCommand="select IdTipoLicitacion, TipoLicitacion from management.TipoLicitacion where Activo = 'S' order by 2" SelectCommandType="Text"></asp:SqlDataSource>
 
         <!-- #endregion -->
 

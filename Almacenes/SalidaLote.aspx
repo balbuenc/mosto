@@ -29,7 +29,7 @@
                 <div class="form-row">
 
                     <div class="col-3">
-                        <div class="col-form-label">Definición</div>
+                        <div class="col-form-label">Descripción</div>
                     </div>
                     <div class="col-3">
                         <div class="col-form-label">Dependencia</div>

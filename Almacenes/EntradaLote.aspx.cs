@@ -27,7 +27,7 @@ namespace Almacenes
                 }
                 else if (Request.QueryString["mode"] == "edit")
                 {
-                    ObtenerTransaccion( Convert.ToInt32( Request.QueryString["IdTransaccion"].ToString() ));
+                    ObtenerTransaccion(Convert.ToInt32(Request.QueryString["IdTransaccion"].ToString()));
                 }
             }
         }
@@ -70,6 +70,8 @@ namespace Almacenes
                         txtNroContrato.Text = dr["NroContrato"].ToString();
                         txtProveedor.Text = dr["Proveedor"].ToString();
                         txtLicitacion.Text = dr["Licitacion"].ToString();
+                        txtTipoContrato.Text = dr["Tipo"].ToString();
+                        txtEstadoContrato.Text = dr["Estado"].ToString();
                     }
                 }
 
@@ -189,6 +191,16 @@ namespace Almacenes
                     return;
                 }
 
+                //Control si la cantidad de entrada exede la cantidad del contrato menos la cantidad existente
+                if (txtTipoContrato.Text == "N")
+                {
+                    if (Convert.ToInt32(txtArticuloCantidad.Text) > Convert.ToInt32(txtDiferenciaContrato.Text))
+                    {
+                        ShowPopUpMsg("La cantidad ingresada supera el limite del contrato.");
+                        return;
+                    }
+                }
+
                 SqlConnection conn = new SqlConnection(ArticuloContratoDS.ConnectionString);
 
                 cmd.Connection = conn;
@@ -299,6 +311,8 @@ namespace Almacenes
         //Procedimiento que obtienen los datos del Articulo Contrato |  precio, impuesto, Cantidad total
         private void ObtenerDatosArticuloContrato(Int32 IdArticulo)
         {
+            Int32 cantDiferenciaContrato = 0;
+
             SqlCommand cmd = new SqlCommand();
             try
             {
@@ -323,11 +337,14 @@ namespace Almacenes
                         txtPrecio.Text = string.Format("{0:N0}", dr["Precio"]);
                         txtImpuesto.Text = string.Format("{0:N0}", dr["PrecioImpuesto"]);
                         txtCantidadTotal.Text = string.Format("{0:N0}", dr["CantidadTotal"]);
-                        txtExistente.Text = string.Format("{0:N0}", dr["Existente"]);
+                        txtExistente.Text = string.Format("{0:N0}", dr["Existente"]);                    
                     }
                 }
 
                 conn.Close();
+
+                cantDiferenciaContrato = Convert.ToInt32(txtCantidadTotal.Text) - Convert.ToInt32(txtExistente.Text);
+                txtDiferenciaContrato.Text = cantDiferenciaContrato.ToString();
 
             }
             catch (Exception ex)
@@ -362,6 +379,7 @@ namespace Almacenes
         protected void AgregarArticuloBtn_Click(object sender, EventArgs e)
         {
             InsertarArticuloLote();
+            ObtenerDatosArticuloContrato(Convert.ToInt32(((DropDownList)sender).SelectedValue));
         }
 
         protected void ReporteBtn_Click(object sender, EventArgs e)
@@ -375,5 +393,11 @@ namespace Almacenes
             NuevaTransaccion();
             LoteContratoListView.DataBind();
         }
+
+        protected void LoteContratoListView_ItemDeleted(object sender, ListViewDeletedEventArgs e)
+        {
+            ObtenerDatosArticuloContrato(Convert.ToInt32(((DropDownList)sender).SelectedValue));
+        }
+   
     }
 }

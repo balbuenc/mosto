@@ -132,8 +132,8 @@
                             <asp:TextBox CssClass="form-control form-control-sm" ID="txtArticuloCantidad" runat="server" TextMode="Number" />
                         </div>
 
-                        <div class="col-2">
-                            <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Agregar al Lote" CausesValidation="false" CssClass="form-control" OnClick="AgregarArticuloBtn_Click" />
+                        <div class="col-3">
+                            <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Agregar salida de Artículo" CausesValidation="false" CssClass="form-control" OnClick="AgregarArticuloBtn_Click" />
                         </div>
 
                     </div>

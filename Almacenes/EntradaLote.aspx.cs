@@ -23,6 +23,7 @@ namespace Almacenes
                     ObtenerDatosContrato(Convert.ToInt32(this.Session["IdContratoTransaccion"].ToString()));
                     txtDefincion.Text = this.Session["DefinicionTransaccion"].ToString();
                     txtNroFactura.Text = this.Session["NroFactura"].ToString();
+                    txtNotaRemision.Text = this.Session["NotaRemision"].ToString();
                     NuevaTransaccion();
                 }
                 else if (Request.QueryString["mode"] == "edit")
@@ -114,6 +115,7 @@ namespace Almacenes
                         txtFecha.Text = dr["Fecha"].ToString();
                         txtDefincion.Text = dr["Definicion"].ToString();
                         txtNroFactura.Text = dr["NroFactura"].ToString();
+                        txtNotaRemision.Text = dr["NotaRemision"].ToString();
 
                         ObtenerDatosContrato((int)dr["IdContrato"]);
                     }
@@ -156,6 +158,7 @@ namespace Almacenes
                         txtFecha.Text = dr["Fecha"].ToString();
                         txtDefincion.Text = dr["Definicion"].ToString();
                         txtNroFactura.Text = dr["NroFactura"].ToString();
+                        txtNotaRemision.Text = dr["NotaRemision"].ToString();
                     }
                 }
 
@@ -254,6 +257,7 @@ namespace Almacenes
                 cmd.Parameters.AddWithValue("@TipoTransaccion", "Entrada");
                 cmd.Parameters.AddWithValue("@IdContrato", (int)Session["IdContrato"]);
                 cmd.Parameters.AddWithValue("@Solicitante", DBNull.Value);
+                cmd.Parameters.AddWithValue("@NotaRemision", txtNotaRemision.Text);
 
                 // Set Output Paramater
                 SqlParameter OutputParam = new SqlParameter("@NroTransaccion", SqlDbType.VarChar);
@@ -296,6 +300,7 @@ namespace Almacenes
             txtDefincion.Enabled = false;
             txtFecha.Enabled = false;
             txtNroFactura.Enabled = false;
+            txtNotaRemision.Enabled = false;
         }
 
         private void EnableTransactionControls()
@@ -304,6 +309,7 @@ namespace Almacenes
             txtDefincion.Enabled = true;
             txtFecha.Enabled = true;
             txtNroFactura.Enabled = true;
+            txtNotaRemision.Enabled = true;
         }
 
 
@@ -337,7 +343,7 @@ namespace Almacenes
                         txtPrecio.Text = string.Format("{0:N0}", dr["Precio"]);
                         txtImpuesto.Text = string.Format("{0:N0}", dr["PrecioImpuesto"]);
                         txtCantidadTotal.Text = string.Format("{0:N0}", dr["CantidadTotal"]);
-                        txtExistente.Text = string.Format("{0:N0}", dr["Existente"]);                    
+                        txtExistente.Text = string.Format("{0:N0}", dr["Existente"]);
                     }
                 }
 
@@ -379,7 +385,7 @@ namespace Almacenes
         protected void AgregarArticuloBtn_Click(object sender, EventArgs e)
         {
             InsertarArticuloLote();
-            ObtenerDatosArticuloContrato(Convert.ToInt32(((DropDownList)sender).SelectedValue));
+            ObtenerDatosArticuloContrato(Convert.ToInt32(IdArticuloDDL.SelectedValue));
         }
 
         protected void ReporteBtn_Click(object sender, EventArgs e)
@@ -396,8 +402,17 @@ namespace Almacenes
 
         protected void LoteContratoListView_ItemDeleted(object sender, ListViewDeletedEventArgs e)
         {
-            ObtenerDatosArticuloContrato(Convert.ToInt32(((DropDownList)sender).SelectedValue));
+            if (IdArticuloDDL.SelectedValue != "")
+                ObtenerDatosArticuloContrato(Convert.ToInt32(IdArticuloDDL.SelectedValue));
         }
-   
+
+        protected void ReportTransaccionBtn_ServerClick(object sender, EventArgs e)
+        {
+            string url;
+
+            url = "rptEntrada.aspx?IdTransaccion=" + Request.QueryString["IdTransaccion"];
+
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('" + url + "','_blank')", true);
+        }
     }
 }

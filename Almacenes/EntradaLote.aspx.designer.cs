@@ -103,15 +103,6 @@ namespace Almacenes {
         protected global::System.Web.UI.UpdatePanel ArticuloContratoUP;
         
         /// <summary>
-        /// ReportTransaccionBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton ReportTransaccionBtn;
-        
-        /// <summary>
         /// txtDefincion control.
         /// </summary>
         /// <remarks>
@@ -130,6 +121,15 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.TextBox txtNroFactura;
         
         /// <summary>
+        /// txtNotaRemision control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNotaRemision;
+        
+        /// <summary>
         /// txtNroTransaccion control.
         /// </summary>
         /// <remarks>
@@ -137,6 +137,15 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNroTransaccion;
+        
+        /// <summary>
+        /// ReportTransaccionBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton ReportTransaccionBtn;
         
         /// <summary>
         /// txtFecha control.

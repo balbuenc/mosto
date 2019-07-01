@@ -72,6 +72,7 @@
                             <th>Usuario</th>
                             <th>NroContrato</th>
                             <th>Solicitante</th>
+                            <th>Remisión</th>
                             <th>...</th>
                             <th>...</th>
                             <th>...</th>
@@ -101,6 +102,8 @@
                         <asp:Label ID="lblNroContrato" runat="server" Text='<%# Eval("NroContrato") %>' /></td>
                     <td>
                         <asp:Label ID="lblSolicitante" runat="server" Text='<%# Eval("Solicitante") %>' /></td>
+                     <td>
+                        <asp:Label ID="lblNotaRemision" runat="server" Text='<%# Eval("NotaRemision") %>' /></td>
 
                     <td>
                         <asp:LinkButton runat="server" ID="ReportTransaccionBtn" CommandName="ViewReport" CommandArgument='<%# Eval("IdTransaccion")%>' ToolTip="Ver reporte">
@@ -151,9 +154,15 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-3">Nro. de Remisión</div>
+                                        <div class="col-3">Nro. Factura</div>
                                         <div class="col-9">
                                             <asp:TextBox ID="txtNroFactura" runat="server" Text='<%# Bind("NroFactura") %>' CssClass="form-control" />
+                                        </div>
+                                    </div>
+                                     <div class="row">
+                                        <div class="col-3">Remisión</div>
+                                        <div class="col-9">
+                                            <asp:TextBox ID="txtNotaRemision" runat="server" Text='<%# Bind("NotaRemision") %>' CssClass="form-control" />
                                         </div>
                                     </div>
 
@@ -285,7 +294,7 @@
             SelectCommandType="StoredProcedure"></asp:SqlDataSource>
 
         <asp:SqlDataSource ID="DependenciaDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-            SelectCommand="select IdDependencia, Dependencia from warehouse.Dependencia where Activo = 'S' order by 2 asc"
+            SelectCommand="select IdDependencia, Dependencia + ' [' + Descripcion + ']' as Descripcion from warehouse.Dependencia where Activo = 'S' order by 2 asc"
             SelectCommandType="Text"></asp:SqlDataSource>
         <!-- #endregion -->
 

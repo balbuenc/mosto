@@ -14,6 +14,10 @@
       <FullPath>LotesEntrada.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>LotesEntradaGlobal.rdl</Name>
+      <FullPath>LotesEntradaGlobal.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>LotesSalida.rdl</Name>
       <FullPath>LotesSalida.rdl</FullPath>
     </ProjectItem>
@@ -22,8 +26,8 @@
       <FullPath>LotesSalidaGlobal.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>LotesEntradaGlobal.rdl</Name>
-      <FullPath>LotesEntradaGlobal.rdl</FullPath>
+      <Name>Existencia.rdl</Name>
+      <FullPath>Existencia.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>

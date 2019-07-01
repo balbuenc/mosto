@@ -1087,7 +1087,7 @@ ORDER BY Descripcion</CommandText>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
-                        <Format>MM/dd/yyyy</Format>
+                        <Format>d</Format>
                       </Style>
                     </TextRun>
                   </TextRuns>

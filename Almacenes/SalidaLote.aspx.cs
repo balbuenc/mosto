@@ -106,6 +106,7 @@ namespace Almacenes
                 cmd.Parameters.AddWithValue("@TipoTransaccion", "Salida");
                 cmd.Parameters.AddWithValue("@IdContrato", this.Session["IdContratoExistencia"].ToString());
                 cmd.Parameters.AddWithValue("@Solicitante", txtSolicitante.Text);
+                cmd.Parameters.AddWithValue("@NotaRemision", DBNull.Value);
 
 
                 // Set Output Paramater

@@ -118,6 +118,7 @@ namespace Almacenes
             this.Session["DefinicionTransaccion"] = txtDefinicion.Text;
             this.Session["IdContratoTransaccion"] = IdContratoDDL.SelectedValue;
             this.Session["NroFactura"] = txtNroFactura.Text;
+            this.Session["NotaRemision"] = txtNotaRemision.Text;
 
             Response.Redirect("EntradaLote.aspx?mode=insert");
         }

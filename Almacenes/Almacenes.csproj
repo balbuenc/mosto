@@ -266,6 +266,7 @@
     <Content Include="Proveedor.aspx" />
     <Content Include="rptEntrada.aspx" />
     <Content Include="rptEntradaGlobal.aspx" />
+    <Content Include="rptExistencia.aspx" />
     <Content Include="rptSalida.aspx" />
     <Content Include="Role.aspx" />
     <Content Include="rptSalidaGlobal.aspx" />
@@ -2279,6 +2280,13 @@
     </Compile>
     <Compile Include="rptEntradaGlobal.aspx.designer.cs">
       <DependentUpon>rptEntradaGlobal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="rptExistencia.aspx.cs">
+      <DependentUpon>rptExistencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rptExistencia.aspx.designer.cs">
+      <DependentUpon>rptExistencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="rptSalida.aspx.cs">
       <DependentUpon>rptSalida.aspx</DependentUpon>

@@ -123,14 +123,17 @@
                         <div class="col-form-label">Descripción</div>
                     </div>
                     <div class="col-2">
-                        <div class="col-form-label">#Nota de Remisión</div>
+                        <div class="col-form-label">#Factura</div>
+                    </div>
+                    <div class="col-2">
+                        <div class="col-form-label">#Remisión</div>
                     </div>
                     <div class="col-1">
                         <div class="col-form-label">#Transacción</div>
-                           <asp:LinkButton runat="server" ID="ReportTransaccionBtn" CommandName="ViewReport" ToolTip="Ver reporte">
-                            <i class="fas fa-book-reader"></i>
+                           
+                    </div>
+                    <div class="col-1">
 
-                        </asp:LinkButton>
                     </div>
 
                     <div class="col-1">
@@ -146,8 +149,16 @@
                     <div class="col-2">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtNroFactura" runat="server" />
                     </div>
+                    <div class="col-2">
+                        <asp:TextBox CssClass="form-control form-control-sm" ID="txtNotaRemision" runat="server" />
+                    </div>
                     <div class="col-1">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtNroTransaccion" runat="server" Enabled="false" />
+                    </div>
+                    <div class="col-1">
+                        <button runat="server" ID="ReportTransaccionBtn" class="btn btn-sm" title="Ver reporte" onserverclick="ReportTransaccionBtn_ServerClick">
+                            <i class="fas fa-book-reader"></i>
+                        </button>
                     </div>
                     <%--<div class="col-1">
                         <asp:LinkButton runat="server" ID="NewTransactionBtn" ToolTip="Nueva transacción" OnClick="NewTransactionBtn_Click">

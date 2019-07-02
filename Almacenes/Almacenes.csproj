@@ -263,6 +263,7 @@
     <Content Include="js\sb-admin.min.js" />
     <Content Include="Licitaciones.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="MovimientoDependencias.aspx" />
     <Content Include="Proveedor.aspx" />
     <Content Include="rptEntrada.aspx" />
     <Content Include="rptEntradaGlobal.aspx" />
@@ -2258,6 +2259,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MovimientoDependencias.aspx.cs">
+      <DependentUpon>MovimientoDependencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MovimientoDependencias.aspx.designer.cs">
+      <DependentUpon>MovimientoDependencias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Proveedor.aspx.cs">
       <DependentUpon>Proveedor.aspx</DependentUpon>

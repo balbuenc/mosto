@@ -52,8 +52,15 @@
     </div>
     <div class="container-fluid" style="background-color: white">
         <div class="form-row">
-            <div class="col-12">
-                <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold"><b>Datos del Contrato</b></div>
+            <div class="col-10">
+                <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold" ><b>Datos del Contrato</b></div>
+            </div>
+            <div class="col-2" style="text-align:right">
+                <button runat="server" id="ReportTransaccionBtn" class="btn btn-primary btn-group-lg" title="Ver reporte" onserverclick="ReportTransaccionBtn_ServerClick">
+                    <span>Imprimir Entrada
+                    <i class="fas fa-book-reader"></i>
+                    </span>
+                </button>
             </div>
         </div>
 
@@ -108,6 +115,7 @@
             <div class="col-1">
                 <asp:TextBox ID="txtEstadoContrato" runat="server" Text="" CssClass="form-control form-control-sm" Enabled="false" />
             </div>
+
         </div>
 
         <asp:UpdatePanel ID="ArticuloContratoUP" runat="server">
@@ -130,11 +138,9 @@
                     </div>
                     <div class="col-1">
                         <div class="col-form-label">#Transacción</div>
-                           
-                    </div>
-                    <div class="col-1">
 
                     </div>
+
 
                     <div class="col-1">
                         <div class="col-form-label">Fecha</div>
@@ -155,11 +161,7 @@
                     <div class="col-1">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtNroTransaccion" runat="server" Enabled="false" />
                     </div>
-                    <div class="col-1">
-                        <button runat="server" ID="ReportTransaccionBtn" class="btn btn-sm" title="Ver reporte" onserverclick="ReportTransaccionBtn_ServerClick">
-                            <i class="fas fa-book-reader"></i>
-                        </button>
-                    </div>
+
                     <%--<div class="col-1">
                         <asp:LinkButton runat="server" ID="NewTransactionBtn" ToolTip="Nueva transacción" OnClick="NewTransactionBtn_Click">
                     <i class="fas fa-plus-circle"></i>

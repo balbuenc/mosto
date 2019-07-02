@@ -28,10 +28,9 @@ namespace Almacenes
                 else if (Request.QueryString["mode"] == "edit")
                 {
                     ObtenerTransaccion(Convert.ToInt32(Request.QueryString["IdTransaccion"].ToString()));
+                    Session["IdTransaccion"] = Request.QueryString["IdTransaccion"].ToString();
                     ArticuloLoteDS.DataBind();
                     LoteContratoDS.DataBind();
-
-
                 }
             }
         }
@@ -122,11 +121,17 @@ namespace Almacenes
                 FechaParam.Size = 10;
                 cmd.Parameters.Add(FechaParam);
 
+                SqlParameter IdTransaccionParam = new SqlParameter("@IdTransaccion", SqlDbType.Int);
+                IdTransaccionParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(IdTransaccionParam);
+
                 conn.Open();
                 cmd.ExecuteNonQuery();
 
                 txtNroTransaccion.Text = OutputParam.Value.ToString();
                 txtFecha.Text = FechaParam.Value.ToString();
+
+                Session["IdTransaccion"] = IdTransaccionParam.Value.ToString();
 
                 conn.Close();
             }
@@ -290,6 +295,15 @@ namespace Almacenes
         protected void SalidaLoteListView_ItemDeleted(object sender, ListViewDeletedEventArgs e)
         {
             IdArticuloDDL.DataBind();
+        }
+
+        protected void ReportTransaccionBtn_ServerClick(object sender, EventArgs e)
+        {
+            string url;
+
+            url = "rptSalida.aspx?IdTransaccion=" + Session["IdTransaccion"];
+
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('" + url + "','_blank')", true);
         }
     }
 }

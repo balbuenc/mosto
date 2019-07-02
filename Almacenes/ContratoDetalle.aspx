@@ -11,8 +11,9 @@
         $(function () {
             $("[id$=txtSearchArticulo]").autocomplete(
                 {
-                    source: "SearchArticulo.ashx",
+                    source: "SearchArticulo.ashx?IdContrato='<%=Request.QueryString["IdContrato"] %>'" ,
                     // note minlength, triggers the Handler call only once 3 characters entered
+                    //source: 
 
                     minLength: 3,
                     focus: function (event, ui) {

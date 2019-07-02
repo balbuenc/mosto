@@ -29,6 +29,7 @@ namespace Almacenes
                 else if (Request.QueryString["mode"] == "edit")
                 {
                     ObtenerTransaccion(Convert.ToInt32(Request.QueryString["IdTransaccion"].ToString()));
+                    Session["IdTransaccion"] = Request.QueryString["IdTransaccion"].ToString();
                 }
             }
         }
@@ -270,7 +271,9 @@ namespace Almacenes
                 FechaParam.Size = 10;
                 cmd.Parameters.Add(FechaParam);
 
-
+                SqlParameter IdTransaccionParam = new SqlParameter("@IdTransaccion", SqlDbType.Int);
+                FechaParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(IdTransaccionParam);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -278,7 +281,7 @@ namespace Almacenes
                 txtNroTransaccion.Text = OutputParam.Value.ToString();
                 txtFecha.Text = FechaParam.Value.ToString();
 
-
+                Session["IdTransaccion"] = IdTransaccionParam.Value.ToString();
 
                 conn.Close();
 
@@ -410,7 +413,7 @@ namespace Almacenes
         {
             string url;
 
-            url = "rptEntrada.aspx?IdTransaccion=" + Request.QueryString["IdTransaccion"];
+            url = "rptEntrada.aspx?IdTransaccion=" + Session["IdTransaccion"];
 
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('" + url + "','_blank')", true);
         }

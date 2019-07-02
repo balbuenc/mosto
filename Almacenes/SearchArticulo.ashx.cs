@@ -12,7 +12,7 @@ namespace Almacenes
     /// <summary>
     /// Summary description for SearchArticulo
     /// </summary>
-    
+
     [WebService(Namespace = "Almacenes/http-handlers/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     public class SearchArticulo : IHttpHandler
@@ -26,26 +26,38 @@ namespace Almacenes
             if (!string.IsNullOrEmpty(context.Request["term"]))
             {
                 string searchTerm = context.Request["term"];
+                string idContrato = context.Request["IdContrato"];
+
+                idContrato= idContrato.Replace("'", "");
 
                 using (SqlConnection conn = new SqlConnection())
                 {
                     conn.ConnectionString = ConfigurationManager.ConnectionStrings["AlmacenesConnectionString"].ConnectionString;
 
-                    using (SqlCommand cmd = new SqlCommand())
+                    try
                     {
-                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.CommandText = "[warehouse].[sp_search_articulo]";
-                        cmd.Parameters.AddWithValue("@find", searchTerm);
-                        cmd.Connection = conn;
-                        conn.Open();
-                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        using (SqlCommand cmd = new SqlCommand())
                         {
-                            while (sdr.Read())
+                            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                            cmd.CommandText = "[warehouse].[sp_search_articulo]";
+                            cmd.Parameters.AddWithValue("@find", searchTerm);
+                            cmd.Parameters.AddWithValue("@IdContrato", idContrato);
+                            cmd.Connection = conn;
+                            conn.Open();
+                            using (SqlDataReader sdr = cmd.ExecuteReader())
                             {
-                                customers.Add(sdr["client"].ToString());
+                                while (sdr.Read())
+                                {
+                                    customers.Add(sdr["client"].ToString());
+                                }
                             }
+                            conn.Close();
                         }
-                        conn.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        string error = ex.Message;
+                        return;
                     }
                 }
 

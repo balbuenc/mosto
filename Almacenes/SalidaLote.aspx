@@ -7,8 +7,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
-        <div class="container-fluid" style="background-color:white">
-          <%--  <div class="row">
+        <div class="container-fluid" style="background-color: white">
+            <%--  <div class="row">
                 <div class="col-12">
                     <div class="col-form-label-lg azul"><%: Page.Title %> </div>
                 </div>
@@ -18,12 +18,19 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid" style="background-color:white">
+    <div class="container-fluid" style="background-color: white">
         <asp:UpdatePanel ID="ArticuloContratoUP" runat="server">
             <ContentTemplate>
                 <div class="form-row">
-                    <div class="col-12">
+                    <div class="col-10">
                         <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold"><b>Operación de Salida</b></div>
+                    </div>
+                    <div class="col-2" style="text-align:right">
+                        <button runat="server" id="ReportTransaccionBtn" class="btn btn-primary btn-group-lg" title="Ver reporte" onserverclick="ReportTransaccionBtn_ServerClick">
+                            <span>Imprimir Salida
+                    <i class="fas fa-book-reader"></i>
+                            </span>
+                        </button>
                     </div>
                 </div>
                 <div class="form-row">
@@ -71,6 +78,7 @@
                     <div class="col-2">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtContrato" runat="server" Enabled="false" />
                     </div>
+
                 </div>
 
                 <div class="form-row">
@@ -161,9 +169,8 @@
                             runat="server"
                             DataSourceID="LoteContratoDS"
                             DataKeyNames="IdSalidaLote"
-                            
-                             OnItemDataBound="SalidaLoteListView_ItemDataBound"
-                             OnItemDeleted="SalidaLoteListView_ItemDeleted">
+                            OnItemDataBound="SalidaLoteListView_ItemDataBound"
+                            OnItemDeleted="SalidaLoteListView_ItemDeleted">
                             <LayoutTemplate>
                                 <div class="table responsive">
                                     <table class="table table-striped table-condensed">
@@ -207,7 +214,7 @@
                                     <td hidden="hidden">
                                         <asp:Label ID="lblDependencia" runat="server" Text='<%# Eval("Dependencia") %>' Visible="false" />
                                     </td>
-                                     <td hidden="hidden">
+                                    <td hidden="hidden">
                                         <asp:Label ID="lblIdDependencia" runat="server" Text='<%# Eval("IdDependencia") %>' Visible="false" />
                                     </td>
 

@@ -284,7 +284,7 @@
                                             <div class="row">
                                                 <div class="col-3"><b>Fecha</b></div>
                                                 <div class="col-9">
-                                                    <asp:TextBox ID="txtFechaLicitacion" runat="server" Text='<%#  Bind( "FechaLicitacion" , "0:dd-MM-yyyy")  %>' CssClass="form-control" TextMode="Date" />
+                                                    <asp:TextBox ID="txtFechaLicitacion" runat="server" Text='<%#  Bind( "FechaLicitacion" )  %>' CssClass="form-control"  />
                                                 </div>
                                             </div>
 

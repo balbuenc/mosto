@@ -160,17 +160,18 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3"><b>Descripción</b></div>
-                                                <div class="col-9">
-                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" />
-                                                </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="col-3"><b>Información</b></div>
                                                 <div class="col-9">
                                                     <asp:TextBox ID="txtDatoContacto" runat="server" Text='<%# Bind("DatoContacto") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-3"><b>Descripción</b></div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" />
+                                                </div>
+                                            </div>
+                                            
                                             <div class="row">
                                                 <div class="col-3"><b>Activo</b></div>
                                                 <div class="col-9">
@@ -259,17 +260,18 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3"><b>Descripción</b></div>
-                                                <div class="col-9">
-                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" />
-                                                </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="col-3"><b>Información</b></div>
                                                 <div class="col-9">
                                                     <asp:TextBox ID="txtDatoContacto" runat="server" Text='<%# Bind("DatoContacto") %>' CssClass="form-control" />
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-3"><b>Descripción</b></div>
+                                                <div class="col-9">
+                                                    <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" />
+                                                </div>
+                                            </div>
+                                            
                                             <div class="row">
                                                 <div class="col-3"><b>Activo</b></div>
                                                 <div class="col-9">

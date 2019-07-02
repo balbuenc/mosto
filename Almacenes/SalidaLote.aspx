@@ -7,7 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-header">
-        <div class="container-fluid">
+        <div class="container-fluid" style="background-color:white">
           <%--  <div class="row">
                 <div class="col-12">
                     <div class="col-form-label-lg azul"><%: Page.Title %> </div>
@@ -241,10 +241,18 @@
         </asp:UpdatePanel>
     </div>
     <!-- #region DataSources -->
-    <asp:SqlDataSource ID="ArticuloLoteDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+    <%--<asp:SqlDataSource ID="ArticuloLoteDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
         SelectCommand="[warehouse].[sp_GetLoteArticuloExistente_DDL]" SelectCommandType="StoredProcedure">
         <SelectParameters>
             <asp:SessionParameter SessionField="idContratoExistencia" Name="IdContrato" DbType="Int32" />
+        </SelectParameters>
+
+    </asp:SqlDataSource>--%>
+
+    <asp:SqlDataSource ID="ArticuloLoteDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+        SelectCommand="[warehouse].[sp_GetLoteArticuloExistenteByIdDependencia_DDL]" SelectCommandType="StoredProcedure">
+        <SelectParameters>
+            <asp:SessionParameter SessionField="IdDependencia" Name="IdDependencia" DbType="Int32" />
         </SelectParameters>
 
     </asp:SqlDataSource>

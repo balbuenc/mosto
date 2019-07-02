@@ -102,7 +102,7 @@
                         <asp:Label ID="lblNroContrato" runat="server" Text='<%# Eval("NroContrato") %>' /></td>
                     <td>
                         <asp:Label ID="lblSolicitante" runat="server" Text='<%# Eval("Solicitante") %>' /></td>
-                     <td>
+                    <td>
                         <asp:Label ID="lblNotaRemision" runat="server" Text='<%# Eval("NotaRemision") %>' /></td>
 
                     <td>
@@ -159,7 +159,7 @@
                                             <asp:TextBox ID="txtNroFactura" runat="server" Text='<%# Bind("NroFactura") %>' CssClass="form-control" />
                                         </div>
                                     </div>
-                                     <div class="row">
+                                    <div class="row">
                                         <div class="col-3">Remisión</div>
                                         <div class="col-9">
                                             <asp:TextBox ID="txtNotaRemision" runat="server" Text='<%# Bind("NotaRemision") %>' CssClass="form-control" />
@@ -230,6 +230,12 @@
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div class="col-3">Solicitante</div>
+                                        <div class="col-9">
+                                            <asp:TextBox ID="txtSolicitanteSalida" runat="server" Text="" CssClass="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="row" style="visibility: hidden">
                                         <div class="col-3">Contrato</div>
                                         <div class="col-9">
                                             <asp:DropDownList ID="ContratoExistenciaDDL"
@@ -241,12 +247,7 @@
                                             </asp:DropDownList>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-3">Solicitante</div>
-                                        <div class="col-9">
-                                            <asp:TextBox ID="txtSolicitanteSalida" runat="server" Text="" CssClass="form-control" />
-                                        </div>
-                                    </div>
+
 
                                 </div>
 
@@ -294,7 +295,7 @@
             SelectCommandType="StoredProcedure"></asp:SqlDataSource>
 
         <asp:SqlDataSource ID="DependenciaDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-            SelectCommand="select IdDependencia, Dependencia + ' [' + Descripcion + ']' as Descripcion from warehouse.Dependencia where Activo = 'S' order by 2 asc"
+            SelectCommand="select IdDependencia, Dependencia + ' [' + Descripcion + ']' as Dependencia from warehouse.Dependencia where Activo = 'S' order by 2 asc"
             SelectCommandType="Text"></asp:SqlDataSource>
         <!-- #endregion -->
 

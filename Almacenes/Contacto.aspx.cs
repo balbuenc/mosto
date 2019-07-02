@@ -38,7 +38,7 @@ namespace Almacenes
             SqlCommand cmd = new SqlCommand();
             SqlConnection con = new SqlConnection(ContactoDS.ConnectionString);
 
-            cmd = new SqlCommand("secure.[sp_Contacto_get_Contacto]", con);
+            cmd = new SqlCommand("management.[sp_Contacto_get_Contacto]", con);
             cmd.Parameters.Add(new SqlParameter("@IdContacto", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -63,7 +63,7 @@ namespace Almacenes
             SqlCommand cmd = new SqlCommand();
             SqlConnection con = new SqlConnection(ContactoDS.ConnectionString);
 
-            cmd = new SqlCommand("secure.[sp_Contacto_delete]", con);
+            cmd = new SqlCommand("management.[sp_Contacto_delete]", con);
             cmd.Parameters.Add(new SqlParameter("@IdContacto", ID));
 
 
@@ -125,7 +125,7 @@ namespace Almacenes
             try
             {
                 //Obtengo los valores de los campos a editar
-                DropDownList txtIdDeposito = (DropDownList)EditFormView.FindControl("IdDepositoDDL");
+                DropDownList IdProveedorDDL = (DropDownList)EditFormView.FindControl("IdProveedorDDL");
                 DropDownList txtIdTipoContacto = (DropDownList)EditFormView.FindControl("IdTipoContactoDDL");
                 TextBox txtDescripcion = (TextBox)EditFormView.FindControl("txtDescripcion");
                 TextBox txtDatoContacto = (TextBox)EditFormView.FindControl("txtDatoContacto");
@@ -139,10 +139,10 @@ namespace Almacenes
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "secure.sp_Contacto_update";
+                cmd.CommandText = "management.sp_Contacto_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@IdDeposito", txtIdDeposito.SelectedValue);
+                cmd.Parameters.AddWithValue("@IdProveedor", IdProveedorDDL.SelectedValue);
                 cmd.Parameters.AddWithValue("@IdTipoContacto", txtIdTipoContacto.SelectedValue);
                 cmd.Parameters.AddWithValue("@Descripcion", txtDescripcion.Text);
                 cmd.Parameters.AddWithValue("@DatoContacto", txtDatoContacto.Text);

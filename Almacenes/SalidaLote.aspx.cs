@@ -69,6 +69,8 @@ namespace Almacenes
                         txtSolicitante.Text = dr["Solicitante"].ToString();
                         txtContrato.Text = dr["Contrato"].ToString();
                         this.Session["IdContratoExistencia"] = dr["IdContrato"].ToString();
+                        this.Session["IdDependencia"] = dr["IdDependencia"].ToString();
+                        txtDependencia.Text = dr["Dependencia"].ToString();
                     }
                 }
 

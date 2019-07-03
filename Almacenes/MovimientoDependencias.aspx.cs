@@ -240,7 +240,7 @@ namespace Almacenes
             }
             catch (Exception ex)
             {
-                ShowPopUpMsg("La cantidad solicitada no es válida.");
+                ShowPopUpMsg("Error al Registrar movimiento : " + ex.Message);
                 return;
             }
         }

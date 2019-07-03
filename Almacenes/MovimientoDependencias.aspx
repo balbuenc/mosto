@@ -184,16 +184,16 @@
                                     <div class="table responsive">
                                         <table class="table table-striped table-condensed">
                                             <thead>
-                                                <th>IdDependenciaMovimiento</th>
-                                                <th>IdTransaccion</th>
-                                                <th>IdUser</th>
-                                                <th>IdDependenciaAnterior</th>
-                                                <th>IdDependenciaActual</th>
+                                                <th>#</th>
+                                              
+                                                <th>Usuario</th>
+                                                <th>Origen</th>
+                                                <th>Destino</th>
                                                 <th>Fecha</th>
                                                 <th>Cantidad</th>
-                                                <th>IdLoteOrigen</th>
-                                                <th>IdLoteDestino</th>
-                                                <th>Descripcion</th>
+                                                <th>#Origen</th>
+                                                <th>#Destino</th>
+                                                <th>Descripción</th>
                                                 <th>Solicitante</th>
                                                 <th>...</th>
                                             </thead>
@@ -206,11 +206,11 @@
                                 <ItemTemplate>
                                     <tr style="min-height: 5px; height: 5px; font-size: x-small">
                                         <td><asp:Label ID="lblIdDependenciaMovimiento" runat="server" Text='<%# Eval("IdDependenciaMovimiento") %>' /></td>
-                                        <td><asp:Label ID="lblIdTransaccion" runat="server" Text='<%# Eval("IdTransaccion") %>' /></td>
-                                        <td><asp:Label ID="lblIdUser" runat="server" Text='<%# Eval("IdUser") %>' /></td>
-                                        <td><asp:Label ID="lblIdDependenciaAnterior" runat="server" Text='<%# Eval("IdDependenciaAnterior") %>' /></td>
-                                        <td><asp:Label ID="lblIdDependenciaActual" runat="server" Text='<%# Eval("IdDependenciaActual") %>' /></td>
-                                        <td><asp:Label ID="lblFecha" runat="server" Text='<%# Eval("Fecha") %>' /></td>
+                                        
+                                        <td><asp:Label ID="lblIdUser" runat="server" Text='<%# Eval("UserName") %>' /></td>
+                                        <td><asp:Label ID="lblIdDependenciaAnterior" runat="server" Text='<%# Eval("Origen") %>' /></td>
+                                        <td><asp:Label ID="lblIdDependenciaActual" runat="server" Text='<%# Eval("Destino") %>' /></td>
+                                        <td><asp:Label ID="lblFecha" runat="server" Text='<%# Eval("Fecha", "{0:dd/MM/yyyy}") %>' /></td>
                                         <td><asp:Label ID="lblCantidad" runat="server" Text='<%# Eval("Cantidad") %>' /></td>
                                         <td><asp:Label ID="lblIdLoteOrigen" runat="server" Text='<%# Eval("IdLoteOrigen") %>' /></td>
                                         <td><asp:Label ID="lblIdLoteDestino" runat="server" Text='<%# Eval("IdLoteDestino") %>' /></td>
@@ -219,7 +219,7 @@
 
 
                                         <td>
-                                            <asp:LinkButton runat="server" ID="DeleteArticuloBtn" CommandName="Delete" CommandArgument='<%# Eval("IdSalidaLote")%>' ToolTip="Eliminar">
+                                            <asp:LinkButton runat="server" ID="DeleteArticuloBtn" CommandName="Delete" CommandArgument='<%# Eval("IdDependenciaMovimiento")%>' ToolTip="Eliminar">
                                            <i class="fas fa-trash-alt"></i>
                                             </asp:LinkButton>
                                         </td>

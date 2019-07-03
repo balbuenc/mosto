@@ -163,7 +163,6 @@ namespace Almacenes
 
         protected void btnCrearMovimientoDependenci_ServerClick(object sender, EventArgs e)
         {
-
             if (txtDefincion.Text == "")
             {
                 ShowPopUpMsg("El movimiento debe tener una descripción");
@@ -185,6 +184,71 @@ namespace Almacenes
             {
                 EnableControls();
             }
+        }
+
+        //Procedimiento que Agrega un Articulo al lote de la transacción Actual
+        private void InsertarArticuloMovimiento()
+        {
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                if (txtNroTransaccion.Text == "")
+                {
+                    ShowPopUpMsg("No se ha seleccionado una transacción.");
+                    return;
+                }
+
+                if (Convert.ToInt32(txtExistente.Text) < Convert.ToInt32(txtArticuloCantidad.Text))
+                {
+                    ShowPopUpMsg("La cantidad solicitada supera la existencia del artículo.");
+                    return;
+                }
+
+                if (txtArticuloCantidad.Text == "")
+                {
+                    ShowPopUpMsg("La cantidad solicitada no es válida.");
+                    return;
+                }
+
+
+                SqlConnection conn = new SqlConnection(ArticuloLoteDS.ConnectionString);
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = "warehouse.sp_DependenciasMovimientos";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.AddWithValue("@IdTransaccion", Session["idTransaccion"]);
+                cmd.Parameters.AddWithValue("@Login", Context.User.Identity.Name);
+                cmd.Parameters.AddWithValue("@IdDependenciaAnterior", DependenciaDDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@IdDependenciaActual", DependenciaDestinoDDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@Cantidad", txtArticuloCantidad.Text);
+                cmd.Parameters.AddWithValue("@IdLoteOrigen", IdArticuloDDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@Descripcion", txtDefincion.Text);
+                cmd.Parameters.AddWithValue("@Solicitante", txtSolicitante.Text);
+
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+                DependenciaMovimientosListView.DataBind();
+
+                txtArticuloCantidad.Text = "";
+
+            }
+            catch (Exception ex)
+            {
+                ShowPopUpMsg("La cantidad solicitada no es válida.");
+                return;
+            }
+        }
+
+        protected void AgregarArticuloBtn_Click(object sender, EventArgs e)
+        {
+            InsertarArticuloMovimiento();
+            IdArticuloDDL.DataBind();
         }
     }
 }

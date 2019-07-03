@@ -184,13 +184,13 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.DataPager SalidaLoteDataPager;
         
         /// <summary>
-        /// SalidaLoteListView control.
+        /// DependenciaMovimientosListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView SalidaLoteListView;
+        protected global::System.Web.UI.WebControls.ListView DependenciaMovimientosListView;
         
         /// <summary>
         /// ArticuloLoteDS control.
@@ -202,13 +202,13 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.SqlDataSource ArticuloLoteDS;
         
         /// <summary>
-        /// LoteContratoDS control.
+        /// DependenciaMovimientosDS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource LoteContratoDS;
+        protected global::System.Web.UI.WebControls.SqlDataSource DependenciaMovimientosDS;
         
         /// <summary>
         /// DependenciaDS control.

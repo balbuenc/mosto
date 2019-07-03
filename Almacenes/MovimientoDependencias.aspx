@@ -45,7 +45,7 @@
                 </div>
                 <div class="form-row">
                     <div class="col-3">
-                        <div class="col-form-label">Desripción del movimiento.</div>
+                        <div class="col-form-label">Descripción del movimiento.</div>
                     </div>
                     <div class="col-3">
                         <div class="col-form-label">Solicitante</div>
@@ -86,12 +86,6 @@
 
                 </div>
                 <hr />
-
-
-
-
-
-
                 <asp:Panel ID="DestinoPanel" runat="server" DefaultButton="AgregarArticuloBtn" Visible="false">
                     <div class="form-row">
                         <div class="col-5">
@@ -107,11 +101,7 @@
                             <div class="col-form-label">Existente</div>
                         </div>
                     </div>
-
-
-
                     <div class="form-row">
-
                         <div class="col-5">
                             <asp:DropDownList ID="IdArticuloDDL"
                                 runat="server"
@@ -163,7 +153,7 @@
                         </div>
 
                         <div class="col-2">
-                            <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Mover Artículo" CausesValidation="false" CssClass="form-control" />
+                            <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Mover Artículo" CausesValidation="false" CssClass="form-control" OnClick="AgregarArticuloBtn_Click" />
                         </div>
 
                     </div>
@@ -178,7 +168,7 @@
                     <div class="form-row">
                         <div class="col-12">
                             <div class="col-10">
-                                <asp:DataPager ID="SalidaLoteDataPager" runat="server" PagedControlID="SalidaLoteListView" PageSize="10">
+                                <asp:DataPager ID="SalidaLoteDataPager" runat="server" PagedControlID="DependenciaMovimientosListView" PageSize="10">
                                     <Fields>
                                         <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
                                         <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
@@ -186,23 +176,26 @@
                                     </Fields>
                                 </asp:DataPager>
                             </div>
-                            <asp:ListView ID="SalidaLoteListView"
+                            <asp:ListView ID="DependenciaMovimientosListView"
                                 runat="server"
-                                DataSourceID="LoteContratoDS"
-                                DataKeyNames="IdSalidaLote">
+                                DataSourceID="DependenciaMovimientosDS"
+                                DataKeyNames="IdDependenciaMovimiento">
                                 <LayoutTemplate>
                                     <div class="table responsive">
                                         <table class="table table-striped table-condensed">
                                             <thead>
-                                                <th>ID</th>
-                                                <th>Artículo</th>
+                                                <th>IdDependenciaMovimiento</th>
+                                                <th>IdTransaccion</th>
+                                                <th>IdUser</th>
+                                                <th>IdDependenciaAnterior</th>
+                                                <th>IdDependenciaActual</th>
+                                                <th>Fecha</th>
                                                 <th>Cantidad</th>
-                                                <th>Precio Unitario</th>
-                                                <th>Monto Impuesto</th>
-                                                <th>Total</th>
-
+                                                <th>IdLoteOrigen</th>
+                                                <th>IdLoteDestino</th>
+                                                <th>Descripcion</th>
+                                                <th>Solicitante</th>
                                                 <th>...</th>
-
                                             </thead>
                                             <tbody>
                                                 <tr runat="server" id="itemPlaceholder" />
@@ -212,30 +205,17 @@
                                 </LayoutTemplate>
                                 <ItemTemplate>
                                     <tr style="min-height: 5px; height: 5px; font-size: x-small">
-                                        <td>
-                                            <asp:Label ID="lblIdLote" runat="server" Text='<%# Eval("IdSalidaLote") %>' />
-                                        </td>
-                                        <td>
-                                            <asp:Label ID="lbArticulo" runat="server" Text='<%# Eval("Articulo") %>' />
-                                        </td>
-                                        <td>
-                                            <asp:Label ID="lblCantidad" runat="server" Text='<%#:string.Format("{0:N0}", Eval("Cantidad")) %>' />
-                                        </td>
-                                        <td>
-                                            <asp:Label ID="lblPrecio" runat="server" Text='<%#:string.Format("{0:N0}",Eval("Precio")) %>' />
-                                        </td>
-                                        <td>
-                                            <asp:Label ID="lblPrecioImpuesto" runat="server" Text='<%#:string.Format("{0:N0}", Eval("PrecioImpuesto")) %>' />
-                                        </td>
-                                        <td>
-                                            <asp:Label ID="lblTotal" runat="server" Text='<%#:string.Format("{0:N0}", Eval("PrecioLote")) %>' />
-                                        </td>
-                                        <td hidden="hidden">
-                                            <asp:Label ID="lblDependencia" runat="server" Text='<%# Eval("Dependencia") %>' Visible="false" />
-                                        </td>
-                                        <td hidden="hidden">
-                                            <asp:Label ID="lblIdDependencia" runat="server" Text='<%# Eval("IdDependencia") %>' Visible="false" />
-                                        </td>
+                                        <td><asp:Label ID="lblIdDependenciaMovimiento" runat="server" Text='<%# Eval("IdDependenciaMovimiento") %>' /></td>
+                                        <td><asp:Label ID="lblIdTransaccion" runat="server" Text='<%# Eval("IdTransaccion") %>' /></td>
+                                        <td><asp:Label ID="lblIdUser" runat="server" Text='<%# Eval("IdUser") %>' /></td>
+                                        <td><asp:Label ID="lblIdDependenciaAnterior" runat="server" Text='<%# Eval("IdDependenciaAnterior") %>' /></td>
+                                        <td><asp:Label ID="lblIdDependenciaActual" runat="server" Text='<%# Eval("IdDependenciaActual") %>' /></td>
+                                        <td><asp:Label ID="lblFecha" runat="server" Text='<%# Eval("Fecha") %>' /></td>
+                                        <td><asp:Label ID="lblCantidad" runat="server" Text='<%# Eval("Cantidad") %>' /></td>
+                                        <td><asp:Label ID="lblIdLoteOrigen" runat="server" Text='<%# Eval("IdLoteOrigen") %>' /></td>
+                                        <td><asp:Label ID="lblIdLoteDestino" runat="server" Text='<%# Eval("IdLoteDestino") %>' /></td>
+                                        <td><asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("Descripcion") %>' /></td>
+                                        <td><asp:Label ID="lblSolicitante" runat="server" Text='<%# Eval("Solicitante") %>' /></td>
 
 
                                         <td>
@@ -276,14 +256,14 @@
 
     </asp:SqlDataSource>
 
-    <asp:SqlDataSource ID="LoteContratoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-        SelectCommand="[warehouse].[sp_SalidaLote_get_SalidaLote_By_NroTransaccion]" SelectCommandType="StoredProcedure"
-        DeleteCommand="warehouse.sp_SalidaLote_delete" DeleteCommandType="StoredProcedure">
+    <asp:SqlDataSource ID="DependenciaMovimientosDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+        SelectCommand="warehouse.sp_DependenciaMovimiento_get_all" SelectCommandType="StoredProcedure"
+        DeleteCommand="warehouse.sp_DependenciaMovimiento_delete" DeleteCommandType="StoredProcedure">
         <SelectParameters>
             <asp:ControlParameter ControlID="txtNroTransaccion" Name="NroTransaccion" PropertyName="Text" />
         </SelectParameters>
         <DeleteParameters>
-            <asp:Parameter Name="IdSalidaLote" DbType="Int32" />
+            <asp:Parameter Name="IdDependenciaMovimiento" DbType="Int32" />
         </DeleteParameters>
 
     </asp:SqlDataSource>

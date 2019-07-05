@@ -84,7 +84,7 @@ namespace Almacenes
             }
             catch (Exception ex)
             {
-                ErrorLabel.Text = ex.Message;
+                ErrorLabel.Text = "ObtenerDatosContrato:" + ex.Message;
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
@@ -128,7 +128,7 @@ namespace Almacenes
             }
             catch (Exception ex)
             {
-                ErrorLabel.Text = ex.Message;
+                ErrorLabel.Text = "ObtenerTransaccion: " + ex.Message;
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
@@ -167,7 +167,7 @@ namespace Almacenes
             }
             catch (Exception ex)
             {
-                ErrorLabel.Text = ex.Message;
+                ErrorLabel.Text = "ObtenerUltimaTransaccion: " + ex.Message;
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
@@ -203,6 +203,12 @@ namespace Almacenes
                         ShowPopUpMsg("La cantidad ingresada supera el limite del contrato.");
                         return;
                     }
+                    
+                    if (Convert.ToInt32(txtArticuloCantidad.Text) <= 0)
+                    {
+                        ShowPopUpMsg("La cantidad ingresada debe de ser mayor a cero.");
+                        return;
+                    }
                 }
 
                 SqlConnection conn = new SqlConnection(ArticuloContratoDS.ConnectionString);
@@ -231,7 +237,7 @@ namespace Almacenes
             }
             catch (Exception ex)
             {
-                ErrorLabel.Text = ex.Message;
+                ErrorLabel.Text = "InsertarArticuloLote: " +  ex.Message;
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
@@ -272,7 +278,7 @@ namespace Almacenes
                 cmd.Parameters.Add(FechaParam);
 
                 SqlParameter IdTransaccionParam = new SqlParameter("@IdTransaccion", SqlDbType.Int);
-                FechaParam.Direction = ParameterDirection.Output;
+                IdTransaccionParam.Direction = ParameterDirection.Output;
                 cmd.Parameters.Add(IdTransaccionParam);
 
                 conn.Open();
@@ -347,18 +353,33 @@ namespace Almacenes
                         txtImpuesto.Text = string.Format("{0:N0}", dr["PrecioImpuesto"]);
                         txtCantidadTotal.Text = string.Format("{0:N0}", dr["CantidadTotal"]);
                         txtExistente.Text = string.Format("{0:N0}", dr["Existente"]);
+                       
                     }
                 }
 
                 conn.Close();
 
-                cantDiferenciaContrato = Convert.ToInt32(txtCantidadTotal.Text) - Convert.ToInt32(txtExistente.Text);
-                txtDiferenciaContrato.Text = cantDiferenciaContrato.ToString();
+                try {
+                    //ShowPopUpMsg("Total :" + txtCantidadTotal.Text  + " Existente: " + txtExistente.Text);
+
+                    cantDiferenciaContrato = Convert.ToInt32(txtCantidadTotal.Text) - Convert.ToInt32(txtExistente.Text);
+                    //ShowPopUpMsg("Calculo de Dif.: " + cantDiferenciaContrato.ToString());
+
+                    txtDiferenciaContrato.Text = cantDiferenciaContrato.ToString();
+                }
+                catch(Exception exp)
+                {
+                    ErrorLabel.Text = "ObtenerDatosArticuloContrato: Calculo de Diferencia - " + exp.Message + " : " + exp.InnerException;
+                    ErrorLabel.Visible = true;
+                    FadeOut(ErrorLabel.ClientID, 5000);
+
+                }
+                
 
             }
             catch (Exception ex)
             {
-                ErrorLabel.Text = ex.Message;
+                ErrorLabel.Text = "ObtenerDatosArticuloContrato: " + ex.Message + " : " + ex.InnerException ;
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
             }

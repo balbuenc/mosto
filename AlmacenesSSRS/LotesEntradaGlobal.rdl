@@ -98,6 +98,10 @@
           <DataField>NroContrato</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="CantidadEntrada">
+          <DataField>CantidadEntrada</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
       </Fields>
     </DataSet>
     <DataSet Name="EntradasDS">
@@ -467,14 +471,14 @@ ORDER BY Descripcion</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Cantidad">
+                        <Textbox Name="CantidadEntrada">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Cantidad.Value</Value>
+                                  <Value>=Fields!CantidadEntrada.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <Format>#,0;(#,0)</Format>
@@ -486,7 +490,7 @@ ORDER BY Descripcion</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Cantidad</rd:DefaultName>
+                          <rd:DefaultName>CantidadEntrada</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -710,6 +714,7 @@ ORDER BY Descripcion</CommandText>
                                   <Value />
                                   <Style>
                                     <FontSize>8pt</FontSize>
+                                    <Format>#,0;(#,0)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>

@@ -15,7 +15,13 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!IsPostBack)
+            {
+                DependenciaDDL.Enabled = true;
+                txtDefincion.Enabled = true;
+                txtSolicitante.Enabled = true;
+                CrearMovimientoBtn.Visible = true;
+            }
         }
 
         protected void IdArticuloDDL_SelectedIndexChanged(object sender, EventArgs e)
@@ -148,7 +154,7 @@ namespace Almacenes
 
         protected void EnableControls()
         {
-            ReportTransaccionBtn.Visible = true;
+            //ReportTransaccionBtn.Visible = true;
             DestinoPanel.Visible = true;
             ArticuloPanel.Visible = true;
         }
@@ -161,30 +167,7 @@ namespace Almacenes
 
         }
 
-        protected void btnCrearMovimientoDependenci_ServerClick(object sender, EventArgs e)
-        {
-            if (txtDefincion.Text == "")
-            {
-                ShowPopUpMsg("El movimiento debe tener una descripción");
-                return;
-            }
-
-            if (txtSolicitante.Text == "")
-            {
-                ShowPopUpMsg("El movimiento debe tener un solicitante");
-                return;
-            }
-
-            if (!NuevaTransaccion())
-            {
-                DisableControls();
-                ShowPopUpMsg("Error al crear cabecera de movimiento entre Dependencias");
-            }
-            else
-            {
-                EnableControls();
-            }
-        }
+       
 
         //Procedimiento que Agrega un Articulo al lote de la transacción Actual
         private void InsertarArticuloMovimiento()
@@ -201,6 +184,12 @@ namespace Almacenes
                 if (Convert.ToInt32(txtExistente.Text) < Convert.ToInt32(txtArticuloCantidad.Text))
                 {
                     ShowPopUpMsg("La cantidad solicitada supera la existencia del artículo.");
+                    return;
+                }
+
+                if (Convert.ToInt32(txtArticuloCantidad.Text) <= 0)
+                {
+                    ShowPopUpMsg("La cantidad solicitada debe ser mayor a cero.");
                     return;
                 }
 
@@ -249,6 +238,36 @@ namespace Almacenes
         {
             InsertarArticuloMovimiento();
             IdArticuloDDL.DataBind();
+        }
+
+        protected void CraerMovimientoBtn_Click(object sender, EventArgs e)
+        {
+            if (txtDefincion.Text == "")
+            {
+                ShowPopUpMsg("El movimiento debe tener una descripción");
+                return;
+            }
+
+            if (txtSolicitante.Text == "")
+            {
+                ShowPopUpMsg("El movimiento debe tener un solicitante");
+                return;
+            }
+
+            if (!NuevaTransaccion())
+            {
+                DisableControls();
+                ShowPopUpMsg("Error al crear cabecera de movimiento entre Dependencias");
+            }
+            else
+            {
+                EnableControls();
+
+                DependenciaDDL.Enabled = false;
+                txtDefincion.Enabled = false;
+                txtSolicitante.Enabled = false;
+                CrearMovimientoBtn.Visible = false;
+            }
         }
     }
 }

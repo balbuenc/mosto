@@ -445,6 +445,7 @@
     <Content Include="TipoContacto.aspx" />
     <Content Include="TipoLicitaciones.aspx" />
     <Content Include="Transaccion.aspx" />
+    <Content Include="TransaccionMovimiento.aspx" />
     <Content Include="UnidadMedida.aspx" />
     <Content Include="User.aspx" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
@@ -2355,6 +2356,13 @@
     </Compile>
     <Compile Include="Transaccion.aspx.designer.cs">
       <DependentUpon>Transaccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TransaccionMovimiento.aspx.cs">
+      <DependentUpon>TransaccionMovimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransaccionMovimiento.aspx.designer.cs">
+      <DependentUpon>TransaccionMovimiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="UnidadMedida.aspx.cs">
       <DependentUpon>UnidadMedida.aspx</DependentUpon>

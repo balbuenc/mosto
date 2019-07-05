@@ -98,6 +98,10 @@
           <DataField>NroContrato</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="CantidadEntrada">
+          <DataField>CantidadEntrada</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
       </Fields>
     </DataSet>
   </DataSets>
@@ -447,14 +451,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Cantidad">
+                        <Textbox Name="CantidadEntrada">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Cantidad.Value</Value>
+                                  <Value>=Fields!CantidadEntrada.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <Format>#,0;(#,0)</Format>
@@ -466,7 +470,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Cantidad</rd:DefaultName>
+                          <rd:DefaultName>CantidadEntrada</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -474,7 +478,6 @@
                             </Border>
                             <TopBorder>
                               <Color>Black</Color>
-                              <Style>Solid</Style>
                               <Width>1pt</Width>
                             </TopBorder>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -483,6 +486,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -690,6 +694,7 @@
                                   <Value />
                                   <Style>
                                     <FontSize>8pt</FontSize>
+                                    <Format>#,0;(#,0)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>

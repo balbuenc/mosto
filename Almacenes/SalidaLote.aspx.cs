@@ -176,6 +176,12 @@ namespace Almacenes
                     return;
                 }
 
+                if (Convert.ToInt32(txtArticuloCantidad.Text) <= 0)
+                {
+                    ShowPopUpMsg("La cantidad ingresada debe de ser mayor a cero.");
+                    return;
+                }
+
                 if (txtArticuloCantidad.Text == "")
                 {
 

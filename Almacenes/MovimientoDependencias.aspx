@@ -47,7 +47,15 @@
                     <div class="col-3">
                         <div class="col-form-label">Descripción del movimiento.</div>
                     </div>
-                    <div class="col-3">
+                </div>
+                <div class="form-row">
+                    <div class="col-12">
+                        <asp:TextBox CssClass="form-control form-control-sm" ID="txtDefincion" runat="server" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    
+                    <div class="col-4">
                         <div class="col-form-label">Solicitante</div>
                     </div>
                     <div class="col-1">
@@ -61,10 +69,8 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="col-3">
-                        <asp:TextBox CssClass="form-control form-control-sm" ID="txtDefincion" runat="server" />
-                    </div>
-                    <div class="col-3">
+                    
+                    <div class="col-4">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtSolicitante" runat="server" />
                     </div>
 
@@ -75,13 +81,14 @@
                     <div class="col-1">
                         <asp:TextBox CssClass="form-control form-control-sm" ID="txtFecha" runat="server" Enabled="false" />
                     </div>
-                    <div class="col-2"></div>
+                    <div class="col-4"></div>
                     <div class="col-2" style="text-align: right">
-                        <button runat="server" id="btnCrearMovimientoDependenci" class="btn btn-danger" title="Ver reporte" onserverclick="btnCrearMovimientoDependenci_ServerClick">
+                        <asp:LinkButton runat="server" ID="CrearMovimientoBtn" CssClass="btn btn-danger" Text="Grabar movimiento" OnClick="CraerMovimientoBtn_Click" >
                             <span>Grabar Movmiento                    
                                     <i class="fas fa-suitcase-rolling"></i>
                             </span>
-                        </button>
+                        </asp:LinkButton>
+                       
                     </div>
 
                 </div>
@@ -141,7 +148,7 @@
                         <div class="col-3">
                             <asp:DropDownList ID="DependenciaDestinoDDL"
                                 runat="server"
-                                DataSourceID="DependenciaDS"
+                                DataSourceID="DependenciaDestinoDS"
                                 DataTextField="Dependencia"
                                 DataValueField="IdDependencia"
                                 CssClass="form-control form-control-sm"
@@ -186,15 +193,13 @@
                                             <thead>
                                                 <th>#</th>
                                               
-                                                <th>Usuario</th>
+                                            
                                                 <th>Origen</th>
                                                 <th>Destino</th>
                                                 <th>Fecha</th>
                                                 <th>Cantidad</th>
-                                                <th>#Origen</th>
-                                                <th>#Destino</th>
-                                                <th>Descripción</th>
-                                                <th>Solicitante</th>
+                                               
+                                              
                                                 <th>...</th>
                                             </thead>
                                             <tbody>
@@ -207,15 +212,13 @@
                                     <tr style="min-height: 5px; height: 5px; font-size: x-small">
                                         <td><asp:Label ID="lblIdDependenciaMovimiento" runat="server" Text='<%# Eval("IdDependenciaMovimiento") %>' /></td>
                                         
-                                        <td><asp:Label ID="lblIdUser" runat="server" Text='<%# Eval("UserName") %>' /></td>
+                                      
                                         <td><asp:Label ID="lblIdDependenciaAnterior" runat="server" Text='<%# Eval("Origen") %>' /></td>
                                         <td><asp:Label ID="lblIdDependenciaActual" runat="server" Text='<%# Eval("Destino") %>' /></td>
                                         <td><asp:Label ID="lblFecha" runat="server" Text='<%# Eval("Fecha", "{0:dd/MM/yyyy}") %>' /></td>
                                         <td><asp:Label ID="lblCantidad" runat="server" Text='<%# Eval("Cantidad") %>' /></td>
-                                        <td><asp:Label ID="lblIdLoteOrigen" runat="server" Text='<%# Eval("IdLoteOrigen") %>' /></td>
-                                        <td><asp:Label ID="lblIdLoteDestino" runat="server" Text='<%# Eval("IdLoteDestino") %>' /></td>
-                                        <td><asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("Descripcion") %>' /></td>
-                                        <td><asp:Label ID="lblSolicitante" runat="server" Text='<%# Eval("Solicitante") %>' /></td>
+                                       
+                                      
 
 
                                         <td>
@@ -269,7 +272,14 @@
     </asp:SqlDataSource>
 
     <asp:SqlDataSource ID="DependenciaDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-        SelectCommand="select IdDependencia, Dependencia from warehouse.Dependencia where Activo = 'S' order by 1" SelectCommandType="Text"></asp:SqlDataSource>
+        SelectCommand="select IdDependencia, Dependencia + ' (' + Descripcion + ')' as Dependencia from warehouse.Dependencia where Activo = 'S' order by 1" SelectCommandType="Text"></asp:SqlDataSource>
+
+    <asp:SqlDataSource ID="DependenciaDestinoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+        SelectCommand="select IdDependencia, Dependencia + ' (' + Descripcion + ')' as Dependencia from warehouse.Dependencia where Activo = 'S' and IdDependencia <> @IdDependenciaOrigen order by 1" SelectCommandType="Text">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="DependenciaDDL" Name="IdDependenciaOrigen" PropertyName="SelectedValue" />
+        </SelectParameters>
+    </asp:SqlDataSource>
 
     <!-- #endregion -->
 </asp:Content>

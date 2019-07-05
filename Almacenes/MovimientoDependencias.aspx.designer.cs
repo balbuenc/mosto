@@ -85,13 +85,13 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.TextBox txtFecha;
         
         /// <summary>
-        /// btnCrearMovimientoDependenci control.
+        /// CrearMovimientoBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnCrearMovimientoDependenci;
+        protected global::System.Web.UI.WebControls.LinkButton CrearMovimientoBtn;
         
         /// <summary>
         /// DestinoPanel control.
@@ -218,5 +218,14 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource DependenciaDS;
+        
+        /// <summary>
+        /// DependenciaDestinoDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource DependenciaDestinoDS;
     }
 }

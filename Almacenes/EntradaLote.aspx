@@ -324,7 +324,7 @@
                                         <asp:Label ID="lbArticulo" runat="server" Text='<%# Eval("Articulo") %>' />
                                     </td>
                                     <td>
-                                        <asp:Label ID="lblCantidad" runat="server" Text='<%#:string.Format("{0:N0}", Eval("Cantidad")) %>' />
+                                        <asp:Label ID="lblCantidad" runat="server" Text='<%#:string.Format("{0:N0}", Eval("CantidadEntrada")) %>' />
                                     </td>
                                     <td>
                                         <asp:Label ID="lblPrecio" runat="server" Text='<%#:string.Format("{0:N0}",Eval("Precio")) %>' />
@@ -376,7 +376,7 @@
 
 
     <asp:SqlDataSource ID="DependenciaDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-        SelectCommand="select IdDependencia, Dependencia from warehouse.Dependencia where Activo = 'S' order by 1" SelectCommandType="Text"></asp:SqlDataSource>
+        SelectCommand="select IdDependencia, Dependencia + ' (' + Descripcion + ')' as Dependencia from warehouse.Dependencia where Activo = 'S' order by 1" SelectCommandType="Text"></asp:SqlDataSource>
 
     <asp:SqlDataSource ID="DepositoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
         SelectCommand="select IdDeposito, Deposito + ' ('+isnull(Ubicacion,'Sin ùbicación')+')' as Deposito from warehouse.Deposito where Activo = 'S' order by Deposito" SelectCommandType="Text"></asp:SqlDataSource>

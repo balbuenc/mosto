@@ -65,13 +65,14 @@ body {
 }
 
 .fondo {
-    background-color: rgba(255, 255, 255, 0.60);
+    /*background-color: rgba(255, 255, 255, 0.60);*/
     border-radius: 5px 5px;
     -webkit-box-shadow: 10px 10px 5px #888888;
     box-shadow: 5px 5px 45px #888888;
     border: 2px solid #999999;
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
+    background-color: rgba(125, 115, 125, 0.60);
 }
 
 .encabezado{

@@ -102,6 +102,10 @@
           <DataField>CantidadEntrada</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="NotaRemision">
+          <DataField>NotaRemision</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
     </DataSet>
     <DataSet Name="EntradasDS">
@@ -1332,7 +1336,7 @@ ORDER BY Descripcion</CommandText>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="Factura Nº: " + First(Fields!NroFactura.Value, "DataSet1")</Value>
+                      <Value>="Nº Remisión: " + First(Fields!NotaRemision.Value, "DataSet1")</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>

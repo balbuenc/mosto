@@ -11,14 +11,12 @@
                 <asp:Panel runat="server" DefaultButton="SearchBtn">
                     
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-4 font-weight-bold">
                             Palabra clave
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 font-weight-bold">
                             Criterio
                         </div>
-                     
-                    
                         <div class="col-6">
                         </div>
                     </div>
@@ -88,8 +86,8 @@
                 DataKeyNames="IdArticuloMaestro"
                 OnItemCommand="ListView_ItemCommand">
                 <LayoutTemplate>
-                    <div class="table responsive">
-                        <table class="table table-striped table-condensed table-enigma" >
+                    <div class="table table-responsive">
+                        <table class="table table-striped table-condensed" >
                             <thead>
                                 <th>ID</th>
                                 <th>Código</th>

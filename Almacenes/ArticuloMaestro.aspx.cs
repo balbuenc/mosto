@@ -15,7 +15,11 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
+            if (Request.QueryString["PageSize"] != null)
+            {
+                ArticuloMaestroListViewDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
+            }
         }
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
@@ -126,9 +130,10 @@ namespace Almacenes
             {
                 //Obtengo los valores de los campos a editar
                 TextBox txtIdArticuloMaestro = (TextBox)EditFormView.FindControl("txtIdArticuloMaestro");
+                TextBox txtArticulo = (TextBox)EditFormView.FindControl("txtArticulo");
                 TextBox txtDescripcion = (TextBox)EditFormView.FindControl("txtDescripcion");
-               
-                TextBox txtCodigoDeBarra = (TextBox)EditFormView.FindControl("txtCodigoDeBarra");
+
+                TextBox txtCodigo = (TextBox)EditFormView.FindControl("txtCodigo");
                 DropDownList IdUnidadMedidaDDL = (DropDownList)EditFormView.FindControl("IdUnidadMedidaDDL");
 
 
@@ -139,9 +144,11 @@ namespace Almacenes
                 cmd.CommandText = "warehouse.sp_ArticuloMaestro_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
+
                 cmd.Parameters.AddWithValue("@IdArticuloMaestro", txtIdArticuloMaestro.Text);
+                cmd.Parameters.AddWithValue("@Codigo", txtCodigo.Text);
+                cmd.Parameters.AddWithValue("@Articulo", txtArticulo.Text);
                 cmd.Parameters.AddWithValue("@Descripcion", txtDescripcion.Text);
-                cmd.Parameters.AddWithValue("@CodigoDeBarra", txtCodigoDeBarra.Text);
                 cmd.Parameters.AddWithValue("@IdUnidadMedida", IdUnidadMedidaDDL.SelectedValue);
 
                 conn.Open();

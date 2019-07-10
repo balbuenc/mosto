@@ -268,6 +268,7 @@
     <Content Include="rptEntrada.aspx" />
     <Content Include="rptEntradaGlobal.aspx" />
     <Content Include="rptExistencia.aspx" />
+    <Content Include="rptExistenciaGlobal.aspx" />
     <Content Include="rptSalida.aspx" />
     <Content Include="Role.aspx" />
     <Content Include="rptSalidaGlobal.aspx" />
@@ -2296,6 +2297,13 @@
     </Compile>
     <Compile Include="rptExistencia.aspx.designer.cs">
       <DependentUpon>rptExistencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="rptExistenciaGlobal.aspx.cs">
+      <DependentUpon>rptExistenciaGlobal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rptExistenciaGlobal.aspx.designer.cs">
+      <DependentUpon>rptExistenciaGlobal.aspx</DependentUpon>
     </Compile>
     <Compile Include="rptSalida.aspx.cs">
       <DependentUpon>rptSalida.aspx</DependentUpon>

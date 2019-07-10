@@ -10,6 +10,10 @@
   <DataSets />
   <Reports>
     <ProjectItem>
+      <Name>Existencia.rdl</Name>
+      <FullPath>Existencia.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>LotesEntrada.rdl</Name>
       <FullPath>LotesEntrada.rdl</FullPath>
     </ProjectItem>
@@ -26,8 +30,8 @@
       <FullPath>LotesSalidaGlobal.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Existencia.rdl</Name>
-      <FullPath>Existencia.rdl</FullPath>
+      <Name>ExistenciaGlobal.rdl</Name>
+      <FullPath>ExistenciaGlobal.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>

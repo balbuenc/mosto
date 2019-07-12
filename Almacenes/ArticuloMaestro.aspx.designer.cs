@@ -112,6 +112,33 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.FormView EditFormView;
         
         /// <summary>
+        /// CodigoBarraUP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel CodigoBarraUP;
+        
+        /// <summary>
+        /// IdArticuloMaestroHF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField IdArticuloMaestroHF;
+        
+        /// <summary>
+        /// CodigoBarraListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView CodigoBarraListView;
+        
+        /// <summary>
         /// ArticuloMaestroDS control.
         /// </summary>
         /// <remarks>
@@ -128,5 +155,14 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource UnidadMedidaDS;
+        
+        /// <summary>
+        /// CodigoBarraDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource CodigoBarraDS;
     }
 }

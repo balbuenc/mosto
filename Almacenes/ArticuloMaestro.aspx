@@ -9,7 +9,7 @@
         <div class="page-header  encabezado">
             <div class="container-fluid">
                 <asp:Panel runat="server" DefaultButton="SearchBtn">
-                    
+
                     <div class="row">
                         <div class="col-4 font-weight-bold">
                             Palabra clave
@@ -32,7 +32,7 @@
                             </asp:DropDownList>
                         </div>
 
-                        <div class="col-6" >
+                        <div class="col-6">
                             <div class="btn-group btn-shadow">
                                 <asp:LinkButton CssClass="btn btn-primary" runat="server" ID="SearchBtn" onserverclick="SearchBtn_ServerClick" ToolTip="Buscar">
                                 <div class="form-row">
@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </asp:Panel>
             </div>
@@ -71,7 +71,7 @@
         </div>
 
         <div class="container-fluid">
-            <div class="row pie" style="padding-left:15px">
+            <div class="row pie" style="padding-left: 15px">
                 <asp:DataPager ID="ArticuloMaestroListViewDataPager" runat="server" PagedControlID="ArticuloMaestroListView" PageSize="10">
                     <Fields>
                         <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
@@ -87,13 +87,14 @@
                 OnItemCommand="ListView_ItemCommand">
                 <LayoutTemplate>
                     <div class="table table-responsive">
-                        <table class="table table-striped table-condensed" >
+                        <table class="table table-striped table-condensed">
                             <thead>
                                 <th>ID</th>
                                 <th>Código</th>
                                 <th>Artículo</th>
                                 <th>Descripción</th>
                                 <th>UM</th>
+                                <th>...</th>
                                 <th>...</th>
                                 <th>...</th>
                             </thead>
@@ -116,7 +117,11 @@
                         <td>
                             <asp:Label ID="lblIdUnidadMedida" runat="server" Text='<%# Eval("UnidadMedida") %>' /></td>
 
-
+                        <td>
+                            <asp:LinkButton runat="server" ID="CodigoBarraBtn" CommandName="CodigoBarra" CommandArgument='<%# Eval("IdArticuloMaestro")%>' ToolTip="Ver código de barras">
+                                <i class="fas fa-barcode fa-sm"></i>
+                            </asp:LinkButton>
+                        </td>
 
                         <td>
                             <asp:LinkButton runat="server" ID="EditArticuloMaestroBtn" CommandName="Editar" CommandArgument='<%# Eval("IdArticuloMaestro")%>' ToolTip="Editar">
@@ -125,11 +130,9 @@
                         </td>
 
                         <td>
-
                             <asp:LinkButton runat="server" ID="DeleteArticuloMaestroBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdArticuloMaestro")%>' ToolTip="Eliminar" OnClientClick="return confirm('Desea eliminar el registro?');">
                             <i class="fas fa-trash-alt"></i>
                             </asp:LinkButton>
-
                         </td>
 
                     </tr>
@@ -307,9 +310,97 @@
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
-
-
             </div>
+
+            <div id="CodigoBarraModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="CodigoBarraModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <asp:UpdatePanel ID="CodigoBarraUP" runat="server">
+                        <ContentTemplate>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <b id="CodigoBarraModalLabel">Código de barras.</b>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                </div>
+                                <div class="modal-body">
+                                    <asp:HiddenField ID="IdArticuloMaestroHF" runat="server" />
+                                    <asp:ListView ID="CodigoBarraListView"
+                                        runat="server"
+                                        DataSourceID="CodigoBarraDS"
+                                        DataKeyNames="IdCodigoBarra"
+                                         InsertItemPosition="FirstItem">
+                                        <LayoutTemplate>
+                                            <div class="table table-responsive">
+                                                <table class="table table-striped table-condensed">
+                                                    <thead>
+                                                        <th>ID</th>
+                                                        <th>Dato</th>
+                                                        <th>...</th>
+                                                        <th>...</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr runat="server" id="itemPlaceholder" />
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </LayoutTemplate>
+                                        <ItemTemplate>
+                                            <tr>
+                                                <td>
+                                                    <asp:Label ID="lblIdCodigoBarra" runat="server" Text='<%# Eval("IdCodigoBarra") %>' /></td>
+                                               
+                                                <td>
+                                                    <asp:Label ID="lblDato" runat="server" Text='<%# Eval("Dato") %>' /></td>
+
+
+                                                <td>
+                                                    <asp:LinkButton runat="server" ID="EditCodigoBarraBtn" CommandName="Edit" CommandArgument='<%# Eval("IdCodigoBarra")%>' ToolTip="Editar" >
+                                                        <i class="fa fa-edit fa-sm"></i>
+                                                    </asp:LinkButton>
+                                                </td>
+
+                                                <td>
+                                                    <asp:LinkButton runat="server" ID="DeleteCodigoBarraBtn" CommandName="Delete" CommandArgument='<%# Eval("IdCodigoBarra")%>' ToolTip="Eliminar" OnClientClick="return confirm('Desea eliminar el registro?');" >
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </asp:LinkButton>
+                                                </td>
+
+                                            </tr>
+
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <td>
+                                                <asp:Label ID="txtIdCodigoBarra" runat="server" Text='<%# Bind("IdCodigoBarra") %>' CssClass="form-control mitad" Enabled="false" /></td>
+
+                                            <td>
+                                                <asp:TextBox ID="txtDato" runat="server" Text='<%# Bind("Dato") %>' CssClass="form-control" /></td>
+                                        </EditItemTemplate>
+                                        <InsertItemTemplate>
+                                            <td>
+                                                <asp:Label ID="txtIdCodigoBarra" runat="server" Text="#"  Enabled="false" /></td>
+
+                                            <td>
+                                                <asp:TextBox ID="txtDato" runat="server" Text='<%# Bind("Dato") %>' CssClass="form-control" /></td>
+
+                                            <td>
+                                                <asp:Button runat="server" ID="InsertarCNBtn" CssClass="btn btn-primary btn-sm" CommandName="Insert" ToolTip="Insertar código" Text="Insertar código"  UseSubmitBehavior="false">
+                                                </asp:Button>
+                                            </td>
+
+                                            <td>
+                                                <asp:Button runat="server" ID="CancelarBtn" CssClass="btn btn-danger btn-sm" CommandName="Cancel" ToolTip="Cancelar"  Text="Cancelar" >
+                                                </asp:Button>
+                                            </td>
+                                        </InsertItemTemplate>
+                                    </asp:ListView>
+                                </div>
+                                <div class="modal-footer">
+                                </div>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+
 
             <!-- #endregion -->
 
@@ -342,6 +433,28 @@
 
             <asp:SqlDataSource ID="UnidadMedidaDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
                 SelectCommand="select IdUnidadMedida, UnidadMedida from warehouse.UnidadMedida  order by 2" SelectCommandType="Text"></asp:SqlDataSource>
+
+            <asp:SqlDataSource ID="CodigoBarraDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                SelectCommand="[warehouse].[sp_CodigoBarra_get_CodigoBarra_By_IdArticuloMaestro]" SelectCommandType="StoredProcedure"
+                InsertCommand="[warehouse].[sp_CodigoBarra_insert]" InsertCommandType="StoredProcedure"
+                DeleteCommand="[warehouse].[sp_CodigoBarra_delete]" DeleteCommandType="StoredProcedure"
+                UpdateCommand="[warehouse].[sp_CodigoBarra_update]" UpdateCommandType="StoredProcedure">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="IdArticuloMaestroHF" Name="IdArticuloMaestro" PropertyName="Value" Type="Int32" />
+                </SelectParameters>
+                <InsertParameters>
+                    <asp:ControlParameter ControlID="IdArticuloMaestroHF" Name="IdArticuloMaestro" PropertyName="Value" Type="Int32" />
+                    <asp:Parameter Name="Dato" Type="String" />
+                </InsertParameters>
+                <UpdateParameters>
+                    <asp:Parameter Name="IdCodigoBarra" Type="Int32" />
+                    <asp:ControlParameter ControlID="IdArticuloMaestroHF" Name="IdArticuloMaestro" PropertyName="Value" Type="Int32" />
+                    <asp:Parameter Name="Dato" Type="String" />
+                </UpdateParameters>
+                <DeleteParameters>
+                    <asp:Parameter Name="IdCodigoBarra" Type="Int32" />
+                </DeleteParameters>
+            </asp:SqlDataSource>
 
 
 

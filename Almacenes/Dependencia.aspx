@@ -86,7 +86,7 @@
 
                     <td>
 
-                        <asp:LinkButton runat="server" ID="DeleteDependenciaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdDependencia")%>' ToolTip="Eliminar">
+                        <asp:LinkButton runat="server" ID="DeleteDependenciaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdDependencia")%>' ToolTip="Eliminar" OnClientClick="return confirm('Desea eliminar el registro?');">
                             <i class="fas fa-trash-alt"></i>
                         </asp:LinkButton>
 

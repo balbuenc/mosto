@@ -22,6 +22,8 @@ namespace Almacenes
         {
             string json = string.Empty;
             List<string> customers = new List<string>();
+            string error = "";
+
             // note the httpcontext.Request contains the search term
             if (!string.IsNullOrEmpty(context.Request["term"]))
             {
@@ -56,7 +58,7 @@ namespace Almacenes
                     }
                     catch (Exception ex)
                     {
-                        string error = ex.Message;
+                        error = ex.Message;
                         return;
                     }
                 }

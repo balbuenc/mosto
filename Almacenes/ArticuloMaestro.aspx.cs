@@ -91,9 +91,6 @@ namespace Almacenes
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                "$('#editModal').modal('show');", true);
-
-
-
             }
             else if (e.CommandName == "Eliminar")
             {
@@ -103,6 +100,14 @@ namespace Almacenes
                 ErrorLabel.Text = "El Registro se eliminó correctamente.";
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 3000);
+            }
+            if (e.CommandName == "CodigoBarra")
+            {
+                IdArticuloMaestroHF.Value = e.CommandArgument.ToString();
+                CodigoBarraListView.DataBind();
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "",
+               "$('#CodigoBarraModal').modal('show');", true);
             }
         }
 

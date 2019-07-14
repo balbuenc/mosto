@@ -9,7 +9,6 @@
         <div class="page-header  encabezado">
             <div class="container-fluid">
                 <asp:Panel runat="server" DefaultButton="SearchBtn">
-
                     <div class="row">
                         <div class="col-4 font-weight-bold">
                             Palabra clave
@@ -34,21 +33,21 @@
 
                         <div class="col-6">
                             <div class="btn-group btn-shadow">
-                                <asp:LinkButton CssClass="btn btn-primary" runat="server" ID="SearchBtn" onserverclick="SearchBtn_ServerClick" ToolTip="Buscar">
+                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="SearchBtn" onserverclick="SearchBtn_ServerClick" ToolTip="Buscar">
                                 <div class="form-row">
                                 <asp:Label Text="Buscar" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label>
                                 <i class="fas fa-search fa-sm" style="padding:5px"></i>
                               </div>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton CssClass="btn btn-primary" runat="server" ID="AddLicitacionBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar Artículo">
+                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddLicitacionBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar Artículo">
                                 <div class="form-row">
                                 <asp:Label  Text="Agregar Artículo" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
                                 <i class="fas fa-plus fa-sm"  style="padding:5px"></i>
                                 </div>
                                 </asp:LinkButton>
                                 <div class="btn-group" role="group">
-                                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle btn-border" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         #
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -67,7 +66,6 @@
             <div class="row">
                 <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
             </div>
-
         </div>
 
         <div class="container-fluid">
@@ -318,7 +316,7 @@
                         <ContentTemplate>
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <b id="CodigoBarraModalLabel">Código de barras.</b>
+                                    <b id="CodigoBarraModalLabel" runat="server">Código de barras.</b>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
                                 <div class="modal-body">
@@ -327,7 +325,7 @@
                                         runat="server"
                                         DataSourceID="CodigoBarraDS"
                                         DataKeyNames="IdCodigoBarra"
-                                         InsertItemPosition="FirstItem">
+                                        InsertItemPosition="FirstItem">
                                         <LayoutTemplate>
                                             <div class="table table-responsive">
                                                 <table class="table table-striped table-condensed">
@@ -347,53 +345,60 @@
                                             <tr>
                                                 <td>
                                                     <asp:Label ID="lblIdCodigoBarra" runat="server" Text='<%# Eval("IdCodigoBarra") %>' /></td>
-                                               
                                                 <td>
                                                     <asp:Label ID="lblDato" runat="server" Text='<%# Eval("Dato") %>' /></td>
 
 
                                                 <td>
-                                                    <asp:LinkButton runat="server" ID="EditCodigoBarraBtn" CommandName="Edit" CommandArgument='<%# Eval("IdCodigoBarra")%>' ToolTip="Editar" >
-                                                        <i class="fa fa-edit fa-sm"></i>
-                                                    </asp:LinkButton>
+                                                    <asp:Button runat="server" ID="EditCodigoBarraBtn" CommandName="Edit" CommandArgument='<%# Eval("IdCodigoBarra")%>' ToolTip="Editar" Text="Editar" UseSubmitBehavior="false"></asp:Button>
                                                 </td>
-
                                                 <td>
-                                                    <asp:LinkButton runat="server" ID="DeleteCodigoBarraBtn" CommandName="Delete" CommandArgument='<%# Eval("IdCodigoBarra")%>' ToolTip="Eliminar" OnClientClick="return confirm('Desea eliminar el registro?');" >
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </asp:LinkButton>
+                                                    <asp:Button runat="server" ID="DeleteCodigoBarraBtn" CommandName="Delete" CommandArgument='<%# Eval("IdCodigoBarra")%>' ToolTip="Eliminar" Text="Eliminar" OnClientClick="return confirm('Desea eliminar el registro?');"></asp:Button>
                                                 </td>
 
                                             </tr>
 
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <td>
-                                                <asp:Label ID="txtIdCodigoBarra" runat="server" Text='<%# Bind("IdCodigoBarra") %>' CssClass="form-control mitad" Enabled="false" /></td>
+                                            <asp:UpdatePanel ID="InsertArticuloUP" runat="server">
+                                                <ContentTemplate>
+                                                    <tr>
+                                                        <td>
+                                                            <asp:Label ID="txtIdCodigoBarra" runat="server" Text='<%# Bind("IdCodigoBarra") %>' CssClass="mitad" Enabled="false" /></td>
 
-                                            <td>
-                                                <asp:TextBox ID="txtDato" runat="server" Text='<%# Bind("Dato") %>' CssClass="form-control" /></td>
+                                                        <td>
+                                                            <asp:TextBox ID="txtDato" runat="server" Text='<%# Bind("Dato") %>' CssClass="form-control" /></td>
+
+                                                        <td>
+                                                            <asp:Button runat="server" ID="ModificarCNBtn" CssClass="btn btn-primary btn-sm" CommandName="Update" ToolTip="Guardar" Text="Guardar"></asp:Button>
+                                                        </td>
+
+                                                        <td>
+                                                            <asp:Button runat="server" ID="CancelarBtn" CssClass="btn btn-danger btn-sm" CommandName="Cancel" ToolTip="Cancelar" Text="Cancelar" UseSubmitBehavior="false"></asp:Button>
+                                                        </td>
+                                                    </tr>
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
                                         </EditItemTemplate>
                                         <InsertItemTemplate>
-                                            <td>
-                                                <asp:Label ID="txtIdCodigoBarra" runat="server" Text="#"  Enabled="false" /></td>
+                                            <tr>
+                                                <td>
+                                                    <asp:Label ID="txtIdCodigoBarra" runat="server" Text="#" Enabled="false" /></td>
 
-                                            <td>
-                                                <asp:TextBox ID="txtDato" runat="server" Text='<%# Bind("Dato") %>' CssClass="form-control" /></td>
+                                                <td>
+                                                    <asp:TextBox ID="txtDato" runat="server" Text='<%# Bind("Dato") %>' CssClass="form-control" /></td>
 
-                                            <td>
-                                                <asp:Button runat="server" ID="InsertarCNBtn" CssClass="btn btn-primary btn-sm" CommandName="Insert" ToolTip="Insertar código" Text="Insertar código"  UseSubmitBehavior="false">
-                                                </asp:Button>
-                                            </td>
-
-                                            <td>
-                                                <asp:Button runat="server" ID="CancelarBtn" CssClass="btn btn-danger btn-sm" CommandName="Cancel" ToolTip="Cancelar"  Text="Cancelar" >
-                                                </asp:Button>
-                                            </td>
+                                                <td>
+                                                    <asp:Button runat="server" ID="InsertarCNBtn" CssClass="btn btn-primary btn-sm" CommandName="Insert" ToolTip="Insertar código" Text="Insertar código" UseSubmitBehavior="false"></asp:Button>
+                                                </td>
+                                            </tr>
                                         </InsertItemTemplate>
                                     </asp:ListView>
                                 </div>
                                 <div class="modal-footer">
+                                    <td>
+                                        <asp:Button runat="server" ID="AceptarBtn" CssClass="btn btn-info btn-sm" ToolTip="Aceptar" Text="Aceptar" data-dismiss="modal"></asp:Button>
+                                    </td>
                                 </div>
                             </div>
                         </ContentTemplate>

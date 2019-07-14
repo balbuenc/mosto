@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div style="background-color: white">
+     <div  style="background-color:white">
         <rsweb:ReportViewer ID="ReportViewer1" runat="server" ProcessingMode="Remote" ShowCredentialPrompts="false" Width="100%" Height="800px">
         </rsweb:ReportViewer>
     </div>

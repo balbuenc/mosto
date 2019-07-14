@@ -13,6 +13,11 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["PageSize"] != null)
+            {
+                DependenciaDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
+            }
+
 
         }
 

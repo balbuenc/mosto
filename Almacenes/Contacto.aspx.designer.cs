@@ -37,7 +37,7 @@ namespace Almacenes {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton SearchBtn;
+        protected global::System.Web.UI.WebControls.LinkButton SearchBtn;
         
         /// <summary>
         /// AddLicitacionBtn control.
@@ -46,7 +46,7 @@ namespace Almacenes {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton AddLicitacionBtn;
+        protected global::System.Web.UI.WebControls.LinkButton AddLicitacionBtn;
         
         /// <summary>
         /// ErrorLabel control.
@@ -58,13 +58,13 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// ContactoistViewDataPager control.
+        /// ContactoListViewDataPager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataPager ContactoistViewDataPager;
+        protected global::System.Web.UI.WebControls.DataPager ContactoListViewDataPager;
         
         /// <summary>
         /// ContactoListView control.

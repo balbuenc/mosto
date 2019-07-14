@@ -13,7 +13,10 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.QueryString["PageSize"] != null)
+            {
+                ContactoListViewDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
+            }
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)

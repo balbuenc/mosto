@@ -104,6 +104,11 @@ namespace Almacenes
             if (e.CommandName == "CodigoBarra")
             {
                 IdArticuloMaestroHF.Value = e.CommandArgument.ToString();
+
+                Label idlbl = (Label)e.Item.FindControl("lblArticulo");
+                
+
+                CodigoBarraModalLabel.InnerText = "Código de barras: " + idlbl.Text;
                 CodigoBarraListView.DataBind();
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",

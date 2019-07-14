@@ -11,19 +11,48 @@ namespace Almacenes
 {
     public partial class Transaccion : System.Web.UI.Page
     {
+       
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            divTitle.InnerText = Request.QueryString["Tipo"];
             if (Request.QueryString["Tipo"] == "Entrada")
             {
                 AddTransaccionBtn.Visible = true;
                 AddtransaccionSalidaBtn.Visible = false;
+
+                Entrada10.Visible = true;
+                Entrada20.Visible = true;
+                Entrada30.Visible = true;
+                Entrada50.Visible = true;
+
+                Salida10.Visible = false;
+                Salida20.Visible = false;
+                Salida30.Visible = false;
+                Salida50.Visible = false;
+
             }
-            else
+            else if (Request.QueryString["Tipo"] == "Salida")
             {
                 AddtransaccionSalidaBtn.Visible = true;
                 AddTransaccionBtn.Visible = false;
+
+                Entrada10.Visible = false;
+                Entrada20.Visible = false;
+                Entrada30.Visible = false;
+                Entrada50.Visible = false;
+
+                Salida10.Visible = true;
+                Salida20.Visible = true;
+                Salida30.Visible = true;
+                Salida50.Visible = true;
             }
+
+
+            if (Request.QueryString["PageSize"] != null)
+            {
+                TransaccionDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
+            }
+
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)

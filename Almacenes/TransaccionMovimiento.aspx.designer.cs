@@ -13,15 +13,6 @@ namespace Almacenes {
     public partial class TransaccionMovimiento {
         
         /// <summary>
-        /// divTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTitle;
-        
-        /// <summary>
         /// txtSearchKey control.
         /// </summary>
         /// <remarks>
@@ -46,16 +37,97 @@ namespace Almacenes {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton SearchBtn;
+        protected global::System.Web.UI.WebControls.LinkButton SearchBtn;
         
         /// <summary>
-        /// AddTransaccionBtn control.
+        /// AddTransaccionDependenciaBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton AddTransaccionBtn;
+        protected global::System.Web.UI.WebControls.LinkButton AddTransaccionDependenciaBtn;
+        
+        /// <summary>
+        /// AddtransaccionDepositoBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton AddtransaccionDepositoBtn;
+        
+        /// <summary>
+        /// Dependencia10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Dependencia10;
+        
+        /// <summary>
+        /// Dependencia20 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Dependencia20;
+        
+        /// <summary>
+        /// Dependencia30 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Dependencia30;
+        
+        /// <summary>
+        /// Dependencia50 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Dependencia50;
+        
+        /// <summary>
+        /// Deposito10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Deposito10;
+        
+        /// <summary>
+        /// Deposito20 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Deposito20;
+        
+        /// <summary>
+        /// Deposito30 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Deposito30;
+        
+        /// <summary>
+        /// Deposito50 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Deposito50;
         
         /// <summary>
         /// ErrorLabel control.

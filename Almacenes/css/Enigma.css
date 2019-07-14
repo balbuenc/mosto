@@ -84,3 +84,8 @@ body {
     padding-bottom: 5px;
 }
 
+.btn-border{
+    border-width:1px;
+    border-color:cornflowerblue;
+}
+

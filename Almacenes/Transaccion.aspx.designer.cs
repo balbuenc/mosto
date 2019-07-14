@@ -13,15 +13,6 @@ namespace Almacenes {
     public partial class Transaccion {
         
         /// <summary>
-        /// divTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTitle;
-        
-        /// <summary>
         /// txtSearchKey control.
         /// </summary>
         /// <remarks>
@@ -46,7 +37,7 @@ namespace Almacenes {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton SearchBtn;
+        protected global::System.Web.UI.WebControls.LinkButton SearchBtn;
         
         /// <summary>
         /// AddTransaccionBtn control.
@@ -55,7 +46,7 @@ namespace Almacenes {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton AddTransaccionBtn;
+        protected global::System.Web.UI.WebControls.LinkButton AddTransaccionBtn;
         
         /// <summary>
         /// AddtransaccionSalidaBtn control.
@@ -64,7 +55,79 @@ namespace Almacenes {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton AddtransaccionSalidaBtn;
+        protected global::System.Web.UI.WebControls.LinkButton AddtransaccionSalidaBtn;
+        
+        /// <summary>
+        /// Entrada10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Entrada10;
+        
+        /// <summary>
+        /// Entrada20 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Entrada20;
+        
+        /// <summary>
+        /// Entrada30 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Entrada30;
+        
+        /// <summary>
+        /// Entrada50 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Entrada50;
+        
+        /// <summary>
+        /// Salida10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Salida10;
+        
+        /// <summary>
+        /// Salida20 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Salida20;
+        
+        /// <summary>
+        /// Salida30 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Salida30;
+        
+        /// <summary>
+        /// Salida50 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Salida50;
         
         /// <summary>
         /// ErrorLabel control.

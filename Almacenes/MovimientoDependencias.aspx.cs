@@ -15,7 +15,7 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 DependenciaDDL.Enabled = true;
                 txtDefincion.Enabled = true;
@@ -61,7 +61,7 @@ namespace Almacenes
                     }
                 }
 
-                txtExistente.Text = txtExistente.Text.Replace(".","");
+                txtExistente.Text = txtExistente.Text.Replace(".", "");
 
                 conn.Close();
 
@@ -106,7 +106,7 @@ namespace Almacenes
                 cmd.Parameters.AddWithValue("@IdContrato", DBNull.Value);
                 cmd.Parameters.AddWithValue("@Solicitante", txtSolicitante.Text);
                 cmd.Parameters.AddWithValue("@NotaRemision", DBNull.Value);
-                
+
 
 
                 // Set Output Paramater
@@ -170,7 +170,7 @@ namespace Almacenes
 
         }
 
-       
+
 
         //Procedimiento que Agrega un Articulo al lote de la transacción Actual
         private void InsertarArticuloMovimiento()
@@ -275,7 +275,34 @@ namespace Almacenes
 
         protected void CerrarMovimientoBtn_Click(object sender, EventArgs e)
         {
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
 
+                SqlConnection conn = new SqlConnection(ArticuloLoteDS.ConnectionString);
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = "staging.sp_Transaccion_Close";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.AddWithValue("@IdTransaccion", Session["idTransaccion"]);
+                cmd.Parameters.AddWithValue("@Login", Context.User.Identity.Name);
+
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+
+                Response.Redirect("TransaccionMovimiento.aspx?Tipo=Dependencia");
+            }
+            catch (Exception ex)
+            {
+                ShowPopUpMsg("Error al Cerrar transacción: " + ex.Message);
+                return;
+            }
         }
     }
 }

@@ -25,7 +25,7 @@
                         <div class="col-2" style="text-align: right">
                             <button runat="server" id="ReportTransaccionBtn" class="btn btn-primary btn-group-lg" title="Ver reporte" visible="false">
                                 <span>Imprimir Movimiento
-                    <i class="fas fa-book-reader"></i>
+                                       <i class="fas fa-book-reader"></i>
                                 </span>
                             </button>
                         </div>
@@ -86,7 +86,7 @@
                         <div class="col-4"></div>
                         <div class="col-2" style="text-align: right">
                             <asp:LinkButton runat="server" ID="CrearMovimientoBtn" CssClass="btn btn-danger" Text="Grabar movimiento" OnClick="CraerMovimientoBtn_Click">
-                            <span>Grabar Movmiento                    
+                            <span>Grabar Movimiento                    
                                     <i class="fas fa-suitcase-rolling"></i>
                             </span>
                             </asp:LinkButton>
@@ -170,8 +170,16 @@
 
                     <asp:Panel ID="ArticuloPanel" runat="server" Visible="false">
                         <div class="form-row">
-                            <div class="col-12">
+                            <div class="col-10">
                                 <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold">Artículos</div>
+                            </div>
+                            <div class="col-2" style="text-align: right">
+                                <asp:LinkButton runat="server" ID="CerrarMovimientoBtn" CssClass="btn btn-success" Text="Cerrar movimiento" OnClick="CerrarMovimientoBtn_Click">
+                            <span>Cerrar Movimiento 
+                                <i class="fas fa-vote-yea"></i>
+                            </span>
+                                </asp:LinkButton>
+
                             </div>
                         </div>
                         <div class="form-row">
@@ -259,7 +267,7 @@
         <!-- #region DataSources -->
 
         <asp:SqlDataSource ID="ArticuloLoteDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-            SelectCommand="[warehouse].[sp_GetLoteArticuloExistenteByIdDependencia_DDL]" SelectCommandType="StoredProcedure">
+            SelectCommand="[staging].[sp_GetLoteArticuloExistenteByIdDependencia_DDL]" SelectCommandType="StoredProcedure">
             <SelectParameters>
                 <asp:ControlParameter ControlID="DependenciaDDL" PropertyName="SelectedValue" Name="IdDependencia" DbType="Int32" />
             </SelectParameters>
@@ -267,8 +275,8 @@
         </asp:SqlDataSource>
 
         <asp:SqlDataSource ID="DependenciaMovimientosDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-            SelectCommand="warehouse.sp_DependenciaMovimiento_get_all" SelectCommandType="StoredProcedure"
-            DeleteCommand="warehouse.sp_DependenciaMovimiento_delete" DeleteCommandType="StoredProcedure">
+            SelectCommand="staging.sp_DependenciaMovimiento_get_all" SelectCommandType="StoredProcedure"
+            DeleteCommand="staging.sp_DependenciaMovimiento_delete" DeleteCommandType="StoredProcedure">
             <SelectParameters>
                 <asp:ControlParameter ControlID="txtNroTransaccion" Name="NroTransaccion" PropertyName="Text" />
             </SelectParameters>

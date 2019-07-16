@@ -362,7 +362,8 @@ namespace Almacenes
                 try {
                     //ShowPopUpMsg("Total :" + txtCantidadTotal.Text  + " Existente: " + txtExistente.Text);
 
-                    cantDiferenciaContrato = Convert.ToInt32(txtCantidadTotal.Text) - Convert.ToInt32(txtExistente.Text);
+                    
+                    cantDiferenciaContrato = Convert.ToInt32(txtCantidadTotal.Text.Replace(".", "")) - Convert.ToInt32(txtExistente.Text.Replace(".", ""));
                     //ShowPopUpMsg("Calculo de Dif.: " + cantDiferenciaContrato.ToString());
 
                     txtDiferenciaContrato.Text = cantDiferenciaContrato.ToString();

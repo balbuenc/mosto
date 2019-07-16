@@ -56,9 +56,12 @@ namespace Almacenes
                         txtPrecio.Text = string.Format("{0:N0}", dr["Precio"]);
                         txtImpuesto.Text = string.Format("{0:N0}", dr["PrecioImpuesto"]);
 
-                        txtExistente.Text = string.Format("{0:N0}", dr["Cantidad"]);
+                        txtExistente.Text = string.Format("{0:N0}", dr["CantidadStaging"]);
+
                     }
                 }
+
+                txtExistente.Text = txtExistente.Text.Replace(".","");
 
                 conn.Close();
 
@@ -103,6 +106,7 @@ namespace Almacenes
                 cmd.Parameters.AddWithValue("@IdContrato", DBNull.Value);
                 cmd.Parameters.AddWithValue("@Solicitante", txtSolicitante.Text);
                 cmd.Parameters.AddWithValue("@NotaRemision", DBNull.Value);
+                
 
 
                 // Set Output Paramater
@@ -138,7 +142,6 @@ namespace Almacenes
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
                 return false;
-                     
             }
         }
 
@@ -268,6 +271,11 @@ namespace Almacenes
                 txtSolicitante.Enabled = false;
                 CrearMovimientoBtn.Visible = false;
             }
+        }
+
+        protected void CerrarMovimientoBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

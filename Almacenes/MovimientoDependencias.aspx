@@ -203,7 +203,7 @@
                                                 <thead>
                                                     <th>#</th>
 
-
+                                                    <th>Artículo</th>
                                                     <th>Origen</th>
                                                     <th>Destino</th>
                                                     <th>Fecha</th>
@@ -223,7 +223,8 @@
                                             <td>
                                                 <asp:Label ID="lblIdDependenciaMovimiento" runat="server" Text='<%# Eval("IdDependenciaMovimiento") %>' /></td>
 
-
+                                            <td>
+                                                <asp:Label ID="lblArticulo" runat="server" Text='<%# Eval("Articulo") %>' /></td>
                                             <td>
                                                 <asp:Label ID="lblIdDependenciaAnterior" runat="server" Text='<%# Eval("Origen") %>' /></td>
                                             <td>

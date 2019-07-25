@@ -60,12 +60,45 @@ namespace Almacenes
             {
                 return;
             }
-            
+
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)
         {
             TransaccionListView.DataBind();
+        }
+
+        protected void TransaccionListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+
+                Label lblEstado = (Label)e.Item.FindControl("lblEstado");
+                LinkButton DeleteTransaccionMovimientoBtn = (LinkButton)e.Item.FindControl("DeleteTransaccionMovimientoBtn");
+                LinkButton DetailsTransaccionBtn = (LinkButton)e.Item.FindControl("DetailsTransaccionBtn");
+
+                if (lblEstado.Text == "Abierto")
+                {
+                    DeleteTransaccionMovimientoBtn.Visible = true;
+                    DetailsTransaccionBtn.Visible = true;
+                    lblEstado.Attributes["class"] = "badge badge-success";
+                }
+                else
+                {
+                    DeleteTransaccionMovimientoBtn.Visible = false;
+                    DetailsTransaccionBtn.Visible = false;
+                    lblEstado.Attributes["class"] = "badge badge-danger";
+                }
+
+            }
+        }
+
+        protected void TransaccionListView_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Editar")
+            {
+                Response.Redirect("/MovimientoDependencias.aspx?mode=edit&IdTransaccion=" + e.CommandArgument.ToString());
+            }
         }
     }
 }

@@ -17,16 +17,91 @@ namespace Almacenes
         {
             if (!IsPostBack)
             {
-                DependenciaDDL.Enabled = true;
-                txtDefincion.Enabled = true;
-                txtSolicitante.Enabled = true;
-                CrearMovimientoBtn.Visible = true;
+                if (Request.QueryString["mode"] == "insert")
+                {
+                    DependenciaDDL.Enabled = true;
+                    txtDefincion.Enabled = true;
+                    txtSolicitante.Enabled = true;
+                    CrearMovimientoBtn.Visible = true;
+                }
+                else if (Request.QueryString["mode"] == "edit" && Request.QueryString["IdTransaccion"] != null)
+                {
+                    DependenciaDDL.Enabled = false;
+                    txtDefincion.Enabled = false;
+                    txtSolicitante.Enabled = false;
+                    CrearMovimientoBtn.Visible = false;
+                    DestinoPanel.Visible = true;
+                    ArticuloPanel.Visible = true;
+
+                    DependenciaDDL.DataBind();
+
+                    ObtenerTransaccion(Convert.ToInt32(Request.QueryString["IdTransaccion"].ToString()));
+                    Session["IdTransaccion"] = Request.QueryString["IdTransaccion"].ToString();
+
+                    DependenciaMovimientosListView.DataBind();
+                    IdArticuloDDL.DataBind();
+                }
+                else
+                {
+                    DependenciaDDL.Enabled = false;
+                    txtDefincion.Enabled = false;
+                    txtSolicitante.Enabled = false;
+                    CrearMovimientoBtn.Visible = false;
+                }
             }
         }
 
         protected void IdArticuloDDL_SelectedIndexChanged(object sender, EventArgs e)
         {
             ObtenerDatosArticuloLote(Convert.ToInt32(((DropDownList)sender).SelectedValue));
+        }
+
+        //Función que obtiene los datos de la última transacción relacionada al contrato por su ID
+        private void ObtenerTransaccion(int IdTransaccion)
+        {
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                SqlConnection conn = new SqlConnection(DependenciaMovimientosDS.ConnectionString);
+                cmd.Connection = conn;
+
+                cmd.CommandText = "[warehouse].[sp_getTransactionByID]";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@IdTransaccion", IdTransaccion);
+
+                conn.Open();
+
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        txtNroTransaccion.Text = dr["NroTransaccion"].ToString();
+                        txtFecha.Text = dr["Fecha"].ToString();
+                        txtDefincion.Text = dr["Definicion"].ToString();
+                        txtSolicitante.Text = dr["Solicitante"].ToString();
+
+                        DependenciaDDL.SelectedValue = dr["IdDependenciaAnterior"].ToString();
+
+                        //DependenciaDDL.SelectedIndex = -1;
+
+                        //DependenciaDDL.Items.FindByValue(IdDependenciaActual).Selected = true;
+
+
+                    }
+                }
+
+                conn.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Text = "ObtenerTransaccion: " + ex.Message;
+                ErrorLabel.Visible = true;
+                FadeOut(ErrorLabel.ClientID, 5000);
+            }
         }
 
         //Procedimiento que obtienen los datos del Articulo Contrato |  precio, impuesto, Cantidad total

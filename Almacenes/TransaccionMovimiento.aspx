@@ -39,14 +39,14 @@
                               </div>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddTransaccionDependenciaBtn"  ToolTip="Nuevo movimiento entre dependencias" OnClick="AddTransaccionBtn_ServerClick">
+                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddTransaccionDependenciaBtn" ToolTip="Nuevo movimiento entre dependencias" OnClick="AddTransaccionBtn_ServerClick">
                                 <div class="form-row">
                                 <asp:Label  Text="Movimiento Dependencia" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
                                 <i class="fas fa-plus"  style="padding:5px"></i>
                                 </div>
                                 </asp:LinkButton>
 
-                                 <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddtransaccionDepositoBtn"    ToolTip="Nuevo movimiento entre depósitos" OnClick="AddTransaccionBtn_ServerClick">
+                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddtransaccionDepositoBtn" ToolTip="Nuevo movimiento entre depósitos" OnClick="AddTransaccionBtn_ServerClick">
                                 <div class="form-row">
                                 <asp:Label  Text="Movimiento Depósito" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
                                 <i class="fas fa-sign-out-alt"  style="padding:5px"></i>
@@ -93,7 +93,9 @@
             <asp:ListView ID="TransaccionListView"
                 runat="server"
                 DataSourceID="TransaccionDS"
-                DataKeyNames="IdTransaccion">
+                DataKeyNames="IdTransaccion"
+                OnItemDataBound="TransaccionListView_ItemDataBound"
+                OnItemCommand="TransaccionListView_ItemCommand">
                 <LayoutTemplate>
                     <div class="table table-responsive">
                         <table class="table table-striped table-condensed">
@@ -104,6 +106,7 @@
                                 <th>Descripción</th>
                                 <th>Usuario</th>
                                 <th>Solicitante</th>
+                                <th>Estado</th>
                                 <th>...</th>
                                 <th>...</th>
                                 <th>...</th>
@@ -128,7 +131,8 @@
                             <asp:Label ID="lblUser" runat="server" Text='<%# Eval("UserName") %>' /></td>
                         <td>
                             <asp:Label ID="lblSolicitante" runat="server" Text='<%# Eval("Solicitante") %>' /></td>
-
+                        <td>
+                            <asp:Label ID="lblEstado" runat="server" Text='<%# Eval("Estado") %>' /></td>
 
                         <td>
                             <asp:LinkButton runat="server" ID="ReportTransaccionBtn" CommandName="ViewReport" CommandArgument='<%# Eval("IdTransaccion")%>' ToolTip="Ver reporte">

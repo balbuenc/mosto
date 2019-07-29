@@ -14,6 +14,10 @@
       <FullPath>Existencia.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>ExistenciaGlobal.rdl</Name>
+      <FullPath>ExistenciaGlobal.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>LotesEntrada.rdl</Name>
       <FullPath>LotesEntrada.rdl</FullPath>
     </ProjectItem>
@@ -30,8 +34,12 @@
       <FullPath>LotesSalidaGlobal.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>ExistenciaGlobal.rdl</Name>
-      <FullPath>ExistenciaGlobal.rdl</FullPath>
+      <Name>MovimientoDependencia.rdl</Name>
+      <FullPath>MovimientoDependencia.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>ExistenciaGlobalPorDependencia.rdl</Name>
+      <FullPath>ExistenciaGlobalPorDependencia.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>

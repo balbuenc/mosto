@@ -99,6 +99,10 @@ namespace Almacenes
             {
                 Response.Redirect("/MovimientoDependencias.aspx?mode=edit&IdTransaccion=" + e.CommandArgument.ToString());
             }
+            if (e.CommandName == "Ver")
+            {
+                Response.Redirect("/MovimientoDependencias.aspx?mode=view&IdTransaccion=" + e.CommandArgument.ToString());
+            }
         }
     }
 }

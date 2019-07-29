@@ -154,9 +154,11 @@
                             <div class="dropdown-menu" aria-labelledby="pagesDropdownAlmacenes">
                                 <h6 class="dropdown-header">Reportes:</h6>
                                 <a class="dropdown-item" href="/rptExistencia.aspx">Existencia por depósito</a>
-                                <a class="dropdown-item" href="/rptExistenciaGlobal.aspx">Existencia</a>
+                                <a class="dropdown-item" href="/rptExistenciaDependencia.aspx">Existencia por dependencia</a>
+                                <a class="dropdown-item" href="/rptExistenciaGlobal.aspx">Existencia global</a>
                                 <a class="dropdown-item" href="/rptEntradaGlobal.aspx">Entradas</a>
                                 <a class="dropdown-item" href="/rptSalidaGlobal.aspx">Salidas</a>
+                                <a class="dropdown-item" href="/rptMovimientoDependencias.aspx">Movimiento dependencias</a>
 
                             </div>
                         </li>

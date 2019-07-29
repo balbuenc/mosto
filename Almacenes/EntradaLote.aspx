@@ -267,7 +267,7 @@
                                 </asp:DropDownList>
                             </div>
                             <div class="col-2">
-                                <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Agregar artículo" CausesValidation="false" CssClass="form-control" OnClick="AgregarArticuloBtn_Click" />
+                                <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Agregar artículo" CausesValidation="false" CssClass="btn btn-info" OnClick="AgregarArticuloBtn_Click" />
                             </div>
 
                         </div>

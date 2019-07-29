@@ -268,7 +268,9 @@
     <Content Include="rptEntrada.aspx" />
     <Content Include="rptEntradaGlobal.aspx" />
     <Content Include="rptExistencia.aspx" />
+    <Content Include="rptExistenciaDependencia.aspx" />
     <Content Include="rptExistenciaGlobal.aspx" />
+    <Content Include="rptMovimientoDependencias.aspx" />
     <Content Include="rptSalida.aspx" />
     <Content Include="Role.aspx" />
     <Content Include="rptSalidaGlobal.aspx" />
@@ -2298,12 +2300,26 @@
     <Compile Include="rptExistencia.aspx.designer.cs">
       <DependentUpon>rptExistencia.aspx</DependentUpon>
     </Compile>
+    <Compile Include="rptExistenciaDependencia.aspx.cs">
+      <DependentUpon>rptExistenciaDependencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rptExistenciaDependencia.aspx.designer.cs">
+      <DependentUpon>rptExistenciaDependencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="rptExistenciaGlobal.aspx.cs">
       <DependentUpon>rptExistenciaGlobal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="rptExistenciaGlobal.aspx.designer.cs">
       <DependentUpon>rptExistenciaGlobal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="rptMovimientoDependencias.aspx.cs">
+      <DependentUpon>rptMovimientoDependencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rptMovimientoDependencias.aspx.designer.cs">
+      <DependentUpon>rptMovimientoDependencias.aspx</DependentUpon>
     </Compile>
     <Compile Include="rptSalida.aspx.cs">
       <DependentUpon>rptSalida.aspx</DependentUpon>

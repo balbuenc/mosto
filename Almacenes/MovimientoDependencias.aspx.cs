@@ -41,6 +41,41 @@ namespace Almacenes
                     DependenciaMovimientosListView.DataBind();
                     IdArticuloDDL.DataBind();
                 }
+                else if (Request.QueryString["mode"] == "view" && Request.QueryString["IdTransaccion"] != null)
+                {
+                    DependenciaDDL.Enabled = false;
+                    DependenciaDDL.DataBind();
+                    IdArticuloDDL.DataBind();
+
+                    txtDefincion.Enabled = false;
+                    txtSolicitante.Enabled = false;
+
+                    CrearMovimientoBtn.Visible = false;
+                    CerrarMovimientoBtn.Visible = false;
+
+                    DestinoPanel.Visible = false;
+                    ArticuloPanel.Visible = true;
+
+                    ArticuloPanel.Enabled = false;
+                    DestinoPanel.Enabled = false;
+
+                    
+
+                    ObtenerTransaccion(Convert.ToInt32(Request.QueryString["IdTransaccion"].ToString()));
+                    Session["IdTransaccion"] = Request.QueryString["IdTransaccion"].ToString();
+
+                    DependenciaMovimientosDS.SelectCommand = "[warehouse].[sp_DependenciaMovimiento_get_all]";
+                    DependenciaMovimientosDS.SelectCommandType = SqlDataSourceCommandType.StoredProcedure;
+
+                    DependenciaMovimientosDS.SelectParameters.Clear();
+                    DependenciaMovimientosDS.SelectParameters.Add("NroTransaccion", txtNroTransaccion.Text);
+
+                    DependenciaMovimientosListView.DataBind();
+
+                    ReportTransaccionBtn.Visible = true;
+
+
+                }
                 else
                 {
                     DependenciaDDL.Enabled = false;
@@ -378,6 +413,20 @@ namespace Almacenes
                 ShowPopUpMsg("Error al Cerrar transacción: " + ex.Message);
                 return;
             }
+        }
+
+        protected void DependenciaMovimientosListView_ItemDeleted(object sender, ListViewDeletedEventArgs e)
+        {
+            IdArticuloDDL.DataBind();
+        }
+
+        protected void ReportTransaccionBtn_ServerClick(object sender, EventArgs e)
+        {
+            string url;
+
+            url = "rptMovimientoDependencias.aspx?NroTransaccion=" + txtNroTransaccion.Text;
+
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('" + url + "','_blank')", true);
         }
     }
 }

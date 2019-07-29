@@ -135,8 +135,8 @@
                             <asp:Label ID="lblEstado" runat="server" Text='<%# Eval("Estado") %>' /></td>
 
                         <td>
-                            <asp:LinkButton runat="server" ID="ReportTransaccionBtn" CommandName="ViewReport" CommandArgument='<%# Eval("IdTransaccion")%>' ToolTip="Ver reporte">
-                            <i class="fas fa-book-reader"></i>
+                            <asp:LinkButton runat="server" ID="ReportTransaccionBtn" CommandName="Ver" CommandArgument='<%# Eval("IdTransaccion")%>' ToolTip="Ver movimiento">
+                            <i class="fas fa-eye fa-sm"></i>
                             </asp:LinkButton>
                         </td>
                         <td>

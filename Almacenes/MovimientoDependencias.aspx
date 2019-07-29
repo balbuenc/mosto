@@ -23,7 +23,7 @@
                             <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold"><b>Movimiento entre Dependencias</b></div>
                         </div>
                         <div class="col-2" style="text-align: right">
-                            <button runat="server" id="ReportTransaccionBtn" class="btn btn-primary btn-group-lg" title="Ver reporte" visible="false">
+                            <button runat="server" id="ReportTransaccionBtn" class="btn btn-primary btn-group-lg" title="Ver reporte" visible="false" onserverclick="ReportTransaccionBtn_ServerClick">
                                 <span>Imprimir Movimiento
                                        <i class="fas fa-book-reader"></i>
                                 </span>
@@ -162,7 +162,7 @@
                             </div>
 
                             <div class="col-2">
-                                <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Mover Artículo" CausesValidation="false" CssClass="form-control" OnClick="AgregarArticuloBtn_Click" />
+                                <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Mover Artículo" CausesValidation="false" CssClass="btn btn-info" OnClick="AgregarArticuloBtn_Click" />
                             </div>
 
                         </div>
@@ -196,7 +196,8 @@
                                 <asp:ListView ID="DependenciaMovimientosListView"
                                     runat="server"
                                     DataSourceID="DependenciaMovimientosDS"
-                                    DataKeyNames="IdDependenciaMovimiento">
+                                    DataKeyNames="IdDependenciaMovimiento"
+                                     OnItemDeleted="DependenciaMovimientosListView_ItemDeleted">
                                     <LayoutTemplate>
                                         <div class="table table-responsive">
                                             <table class="table table-striped table-condensed">

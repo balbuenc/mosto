@@ -413,12 +413,6 @@ namespace Almacenes
             ObtenerDatosArticuloContrato(Convert.ToInt32(IdArticuloDDL.SelectedValue));
         }
 
-        protected void ReporteBtn_Click(object sender, EventArgs e)
-        {
-            string url = "http://app.enigmatech.biz/ReportServer/Pages/ReportViewer.aspx?%2fAlmacenesSSRS%2fLotesEntrada&rs:Command=Render&NroTransaccion=" + txtNroTransaccion.Text;
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('" + url + "','_blank')", true);
-        }
-
         protected void NewTransactionBtn_Click(object sender, EventArgs e)
         {
             NuevaTransaccion();

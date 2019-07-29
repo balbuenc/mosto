@@ -74,10 +74,6 @@ namespace Almacenes
                 }
 
                 conn.Close();
-
-
-
-
             }
             catch (Exception ex)
             {
@@ -86,6 +82,7 @@ namespace Almacenes
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
         }
+
 
         //Procedimiento que genera una nueva transacción para el Contrato actual
         private void NuevaTransaccion()
@@ -142,7 +139,7 @@ namespace Almacenes
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
         }
-
+        
 
         private void ShowPopUpMsg(string msg)
         {
@@ -154,14 +151,10 @@ namespace Almacenes
         }
 
 
-
-
         //Procedimiento que Agrega un Articulo al lote de la transacción Actual
         private void InsertarArticuloSalidaLote()
         {
             SqlCommand cmd = new SqlCommand();
-           
-
             try
             {
                 if (txtNroTransaccion.Text == "")
@@ -184,11 +177,8 @@ namespace Almacenes
 
                 if (txtArticuloCantidad.Text == "")
                 {
-
                     ShowPopUpMsg("La cantidad solicitada no es válida.");
                     return;
-
-
                 }
 
 
@@ -223,6 +213,7 @@ namespace Almacenes
                 return;
             }
         }
+
 
         //Procedimiento que obtienen los datos del Articulo Contrato |  precio, impuesto, Cantidad total
         private void ObtenerDatosArticuloLote(Int32 IdLote)
@@ -266,10 +257,12 @@ namespace Almacenes
             }
         }
 
+
         protected void IdArticuloDDL_SelectedIndexChanged(object sender, EventArgs e)
         {
             ObtenerDatosArticuloLote(Convert.ToInt32(((DropDownList)sender).SelectedValue));
         }
+
 
         protected void IdArticuloDDL_DataBound(object sender, EventArgs e)
         {
@@ -282,8 +275,7 @@ namespace Almacenes
             InsertarArticuloSalidaLote();
             IdArticuloDDL.DataBind();
         }
-
-
+        
 
         protected void SalidaLoteListView_ItemDataBound(object sender, ListViewItemEventArgs e)
         {
@@ -310,6 +302,11 @@ namespace Almacenes
             url = "rptSalida.aspx?IdTransaccion=" + Session["IdTransaccion"];
 
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('" + url + "','_blank')", true);
+        }
+
+        protected void CerrarSalidaBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -9,11 +9,6 @@
     <div class="fondo">
         <div class="page-header">
             <div class="container-fluid">
-                <%--  <div class="row">
-                <div class="col-12">
-                    <div class="col-form-label-lg azul"><%: Page.Title %> </div>
-                </div>
-            </div>--%>
                 <div class="row">
                     <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
                 </div>
@@ -29,13 +24,12 @@
                         <div class="col-2" style="text-align: right">
                             <button runat="server" id="ReportTransaccionBtn" class="btn btn-primary btn-group-lg" title="Ver reporte" onserverclick="ReportTransaccionBtn_ServerClick">
                                 <span>Imprimir Salida
-                    <i class="fas fa-book-reader"></i>
+                                    <i class="fas fa-book-reader"></i>
                                 </span>
                             </button>
                         </div>
                     </div>
                     <div class="form-row">
-
                         <div class="col-3">
                             <div class="col-form-label">Descripción</div>
                         </div>
@@ -56,10 +50,8 @@
                         <div class="col-2">
                             <div class="col-form-label">Contrato</div>
                         </div>
-
                     </div>
                     <div class="form-row">
-
                         <div class="col-3">
                             <asp:TextBox CssClass="form-control form-control-sm" ID="txtDefincion" runat="server" Enabled="false" />
                         </div>
@@ -79,9 +71,7 @@
                         <div class="col-2">
                             <asp:TextBox CssClass="form-control form-control-sm" ID="txtContrato" runat="server" Enabled="false" />
                         </div>
-
                     </div>
-
                     <div class="form-row">
                         <div class="col-5">
                             <div class="col-form-label">Artículo</div>
@@ -97,10 +87,7 @@
                             <div class="col-form-label">Existente</div>
                         </div>
                     </div>
-
-
                     <div class="form-row">
-
                         <div class="col-5">
                             <asp:DropDownList ID="IdArticuloDDL"
                                 runat="server"
@@ -123,38 +110,37 @@
                         <div class="col">
                             <asp:TextBox CssClass="form-control form-control-sm" ID="txtExistente" runat="server" Enabled="false" />
                         </div>
-
                     </div>
-
-
-
                     <asp:Panel ID="ArticuloPanel" runat="server" DefaultButton="AgregarArticuloBtn">
                         <div class="form-row">
                             <div class="col-2">
                                 <div class="col-form-label">Cantidad</div>
                             </div>
-
                             <div class="col-2"></div>
                         </div>
                         <div class="form-row">
                             <div class="col-2">
                                 <asp:TextBox CssClass="form-control form-control-sm" ID="txtArticuloCantidad" runat="server" TextMode="Number" />
                             </div>
-
                             <div class="col-3">
-                                <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Agregar salida de Artículo" CausesValidation="false" CssClass="form-control" OnClick="AgregarArticuloBtn_Click" />
+                                <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Agregar salida de Artículo" CausesValidation="false" CssClass="btn btn-info" OnClick="AgregarArticuloBtn_Click" />
                             </div>
-
+                            <div class="col-5">
+                            </div>
+                            <div class="col-2" style="text-align: right">
+                                <asp:LinkButton runat="server" ID="CerrarSalidaBtn" CssClass="btn btn-success" Text="Cerrar movimiento" OnClick="CerrarSalidaBtn_Click">
+                                    <span>Cerrar Salida 
+                                        <i class="fas fa-vote-yea"></i>
+                                    </span>
+                                </asp:LinkButton>
+                            </div>
                         </div>
                     </asp:Panel>
-
                     <div class="form-row">
                         <div class="col-12">
                             <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold">Artículos de Salida</div>
                         </div>
                     </div>
-
-
                     <div class="form-row">
                         <div class="col-12">
                             <div class="col-10">
@@ -182,9 +168,7 @@
                                                 <th>Precio Unitario</th>
                                                 <th>Monto Impuesto</th>
                                                 <th>Total</th>
-
                                                 <th>...</th>
-
                                             </thead>
                                             <tbody>
                                                 <tr runat="server" id="itemPlaceholder" />
@@ -225,7 +209,6 @@
                                            <i class="fas fa-trash-alt"></i>
                                             </asp:LinkButton>
                                         </td>
-
                                     </tr>
                                 </ItemTemplate>
                                 <EditItemTemplate>
@@ -237,11 +220,7 @@
                                         <div class="alert-info" style="text-align: center">No se registran Artículos en la transacción actual.</div>
                                     </div>
                                 </EmptyDataTemplate>
-
                             </asp:ListView>
-
-
-
                         </div>
                     </div>
 
@@ -249,14 +228,6 @@
             </asp:UpdatePanel>
         </div>
         <!-- #region DataSources -->
-        <%--<asp:SqlDataSource ID="ArticuloLoteDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-        SelectCommand="[warehouse].[sp_GetLoteArticuloExistente_DDL]" SelectCommandType="StoredProcedure">
-        <SelectParameters>
-            <asp:SessionParameter SessionField="idContratoExistencia" Name="IdContrato" DbType="Int32" />
-        </SelectParameters>
-
-    </asp:SqlDataSource>--%>
-
         <asp:SqlDataSource ID="ArticuloLoteDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
             SelectCommand="[warehouse].[sp_GetLoteArticuloExistenteByIdDependencia_DDL]" SelectCommandType="StoredProcedure">
             <SelectParameters>
@@ -276,7 +247,6 @@
             </DeleteParameters>
 
         </asp:SqlDataSource>
-
         <!-- #endregion -->
     </div>
 </asp:Content>

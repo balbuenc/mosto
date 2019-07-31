@@ -14,7 +14,7 @@ namespace Almacenes.Management
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "LICITACIONES";
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)

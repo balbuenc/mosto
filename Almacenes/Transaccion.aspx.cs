@@ -11,7 +11,7 @@ namespace Almacenes
 {
     public partial class Transaccion : System.Web.UI.Page
     {
-       
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,6 +30,9 @@ namespace Almacenes
                 Salida30.Visible = false;
                 Salida50.Visible = false;
 
+                ((Label)this.Master.FindControl("lblActualPage")).Text = "ENTRADAS";
+
+
             }
             else if (Request.QueryString["Tipo"] == "Salida")
             {
@@ -45,6 +48,10 @@ namespace Almacenes
                 Salida20.Visible = true;
                 Salida30.Visible = true;
                 Salida50.Visible = true;
+
+                ((Label)this.Master.FindControl("lblActualPage")).Text = "SALIDAS";
+
+
             }
 
 
@@ -118,7 +125,7 @@ namespace Almacenes
                     url = "rptSalida.aspx?IdTransaccion=" + e.CommandArgument.ToString();
                 }
 
-             
+
                 ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('" + url + "','_blank')", true);
             }
         }
@@ -166,6 +173,52 @@ namespace Almacenes
         {
             SetSessionVariables();
             Response.Redirect("SalidaLote.aspx?mode=insert");
+        }
+
+        protected void TransaccionListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            Label lblEstado = (Label)e.Item.FindControl("lblEstado");
+            LinkButton DeleteTransaccionMovimientoBtn = (LinkButton)e.Item.FindControl("DeleteTransaccionBtn");
+            LinkButton DetailsTransaccionBtn = (LinkButton)e.Item.FindControl("DetailsTransaccionBtn");
+
+            if (lblEstado.Text == "Abierto")
+            {
+                DeleteTransaccionMovimientoBtn.Visible = true;
+                DetailsTransaccionBtn.Visible = true;
+                lblEstado.Attributes["class"] = "badge badge-success";
+            }
+            else
+            {
+                DeleteTransaccionMovimientoBtn.Visible = false;
+                DetailsTransaccionBtn.Visible = false;
+                lblEstado.Attributes["class"] = "badge badge-danger";
+            }
+
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                if (Request.QueryString["Tipo"] == "Entrada")
+                {
+                    e.Item.FindControl("tdSolicitante").Visible = false;
+                }
+                else if (Request.QueryString["Tipo"] == "Salida")
+                {
+                    e.Item.FindControl("tdNotaRemision").Visible = false;
+                }
+            }
+        }
+
+        protected void TransaccionListView_DataBound(object sender, EventArgs e)
+        {
+            if (Request.QueryString["Tipo"] == "Entrada")
+            {
+                TransaccionListView.FindControl("thSolicitante").Visible = false;
+                
+            }
+            else if (Request.QueryString["Tipo"] == "Salida")
+            {
+                TransaccionListView.FindControl("thNotaRemision").Visible = false;
+               
+            }
         }
     }
 }

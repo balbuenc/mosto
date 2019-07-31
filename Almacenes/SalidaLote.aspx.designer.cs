@@ -94,6 +94,24 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.TextBox txtContrato;
         
         /// <summary>
+        /// EditCabeceraBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton EditCabeceraBtn;
+        
+        /// <summary>
+        /// AcceptCabeceraBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton AcceptCabeceraBtn;
+        
+        /// <summary>
         /// IdArticuloDDL control.
         /// </summary>
         /// <remarks>
@@ -157,13 +175,22 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.Button AgregarArticuloBtn;
         
         /// <summary>
-        /// CerrarSalidaBtn control.
+        /// CrearTransaccionBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton CerrarSalidaBtn;
+        protected global::System.Web.UI.WebControls.LinkButton CrearTransaccionBtn;
+        
+        /// <summary>
+        /// CerrarTransaccionBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton CerrarTransaccionBtn;
         
         /// <summary>
         /// SalidaLoteDataPager control.

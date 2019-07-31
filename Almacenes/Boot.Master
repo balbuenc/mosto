@@ -30,8 +30,15 @@
 
     <link href="css/Enigma.css" rel="stylesheet" />
 
+    <script type="text/javascript">
+        function goBack()
+            {
+            window.history.back()
+            }
+    </script>
+
 </head>
-<body style="background-image:url('image/Backgraund.png'); background-repeat:repeat-x repeat-y ">
+<body style="background-image: url('image/Backgraund.png'); background-repeat: repeat-x repeat-y">
     <form id="form1" runat="server">
         <div>
 
@@ -45,17 +52,18 @@
                     </button>
 
                     <!-- Navbar Search -->
-                    <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                    <div class="d-block d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 
-                        <%--   <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Buscar ..." aria-label="Search" aria-describedby="basic-addon2" />
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>--%>
+                        <div style="padding: 0px 5px 5px 0px">
+                            <h5>
+                                <span class="badge badge-info" runat="server">
+                                    <asp:Label ID="lblActualPage" runat="server" Text="" ForeColor="White"></asp:Label>
+                                </span>
+                            </h5>
+                        </div>
+
                     </div>
+
                     <asp:Label ID="UserLabel" runat="server" Text="" ForeColor="White"></asp:Label>
 
                     <!-- Navbar -->
@@ -83,8 +91,14 @@
                     <!-- Sidebar -->
                     <ul class="sidebar navbar-nav toggled">
                         <li class="nav-item active">
+                            <a class="nav-link" onclick="goBack()">
+                                <i class="fas fa-fw  fa-arrow-alt-circle-left"></i>
+                                <span>Atrás</span>
+                            </a>
+                        </li>
+                        <li class="nav-item active">
                             <a class="nav-link" href="Default.aspx">
-                                <i class="fas fa-fw fa-tachometer-alt"></i>
+                                <i class="fas fa-fw fa-home"></i>
                                 <span>Inicio</span>
                             </a>
                         </li>

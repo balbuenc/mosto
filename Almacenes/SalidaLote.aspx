@@ -55,7 +55,7 @@
                         <div class="col-3">
                             <asp:TextBox CssClass="form-control form-control-sm" ID="txtDefincion" runat="server" Enabled="false" />
                         </div>
-                        <div class="col-3">
+                        <div class="col-2">
                             <asp:TextBox CssClass="form-control form-control-sm" ID="txtDependencia" runat="server" Enabled="false" />
                         </div>
                         <div class="col-1">
@@ -70,6 +70,14 @@
                         </div>
                         <div class="col-2">
                             <asp:TextBox CssClass="form-control form-control-sm" ID="txtContrato" runat="server" Enabled="false" />
+                        </div>
+                        <div class="col-1">
+                            <asp:LinkButton runat="server" ID="EditCabeceraBtn" ToolTip="Editar salida" OnClick="EditCabeceraBtn_Click" CssClass="btn btn-danger" Visible="true">
+                                    <i class="fas fa-edit"></i>
+                            </asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="AcceptCabeceraBtn" ToolTip="Guardar cambios" OnClick="AcceptCabeceraBtn_Click" CssClass="btn btn-success" Visible="false">
+                                    <i class="fas fa-check"></i>
+                            </asp:LinkButton>
                         </div>
                     </div>
                     <div class="form-row">
@@ -125,11 +133,19 @@
                             <div class="col-3">
                                 <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Agregar salida de Artículo" CausesValidation="false" CssClass="btn btn-info" OnClick="AgregarArticuloBtn_Click" />
                             </div>
-                            <div class="col-5">
+
+                            <div class="col-3">
+                            </div>
+                            <div class="col-2">
+                                <asp:LinkButton runat="server" ID="CrearTransaccionBtn" CssClass="btn btn-danger" Text="Grabar transacción" OnClick="CrearTransaccionBtn_Click" Visible="false">
+                                    <span>Grabar Transacción
+                                        <i class="fas fa-suitcase-rolling"></i>
+                                    </span>
+                                </asp:LinkButton>
                             </div>
                             <div class="col-2" style="text-align: right">
-                                <asp:LinkButton runat="server" ID="CerrarSalidaBtn" CssClass="btn btn-success" Text="Cerrar movimiento" OnClick="CerrarSalidaBtn_Click">
-                                    <span>Cerrar Salida 
+                                <asp:LinkButton runat="server" ID="CerrarTransaccionBtn" CssClass="btn btn-success" Text="Cerrar movimiento" OnClick="CerrarTransaccionBtn_Click" Visible="false">
+                                    <span>Cerrar Transacción
                                         <i class="fas fa-vote-yea"></i>
                                     </span>
                                 </asp:LinkButton>

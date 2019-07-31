@@ -15,6 +15,7 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "MOVIMIENTO DEPENDENCIAS";
             if (!IsPostBack)
             {
                 if (Request.QueryString["mode"] == "insert")

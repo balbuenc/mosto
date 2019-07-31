@@ -16,6 +16,7 @@ namespace Almacenes
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "ENTRADA";
             if (!IsPostBack)
             {
                 if (Request.QueryString["mode"] == "insert")
@@ -203,7 +204,7 @@ namespace Almacenes
                         ShowPopUpMsg("La cantidad ingresada supera el limite del contrato.");
                         return;
                     }
-                    
+
                     if (Convert.ToInt32(txtArticuloCantidad.Text) <= 0)
                     {
                         ShowPopUpMsg("La cantidad ingresada debe de ser mayor a cero.");
@@ -237,7 +238,7 @@ namespace Almacenes
             }
             catch (Exception ex)
             {
-                ErrorLabel.Text = "InsertarArticuloLote: " +  ex.Message;
+                ErrorLabel.Text = "InsertarArticuloLote: " + ex.Message;
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
@@ -353,34 +354,35 @@ namespace Almacenes
                         txtImpuesto.Text = string.Format("{0:N0}", dr["PrecioImpuesto"]);
                         txtCantidadTotal.Text = string.Format("{0:N0}", dr["CantidadTotal"]);
                         txtExistente.Text = string.Format("{0:N0}", dr["Existente"]);
-                       
+
                     }
                 }
 
                 conn.Close();
 
-                try {
+                try
+                {
                     //ShowPopUpMsg("Total :" + txtCantidadTotal.Text  + " Existente: " + txtExistente.Text);
 
-                    
+
                     cantDiferenciaContrato = Convert.ToInt32(txtCantidadTotal.Text.Replace(".", "")) - Convert.ToInt32(txtExistente.Text.Replace(".", ""));
                     //ShowPopUpMsg("Calculo de Dif.: " + cantDiferenciaContrato.ToString());
 
                     txtDiferenciaContrato.Text = cantDiferenciaContrato.ToString();
                 }
-                catch(Exception exp)
+                catch (Exception exp)
                 {
                     ErrorLabel.Text = "ObtenerDatosArticuloContrato: Calculo de Diferencia - " + exp.Message + " : " + exp.InnerException;
                     ErrorLabel.Visible = true;
                     FadeOut(ErrorLabel.ClientID, 5000);
 
                 }
-                
+
 
             }
             catch (Exception ex)
             {
-                ErrorLabel.Text = "ObtenerDatosArticuloContrato: " + ex.Message + " : " + ex.InnerException ;
+                ErrorLabel.Text = "ObtenerDatosArticuloContrato: " + ex.Message + " : " + ex.InnerException;
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
@@ -413,11 +415,7 @@ namespace Almacenes
             ObtenerDatosArticuloContrato(Convert.ToInt32(IdArticuloDDL.SelectedValue));
         }
 
-        protected void NewTransactionBtn_Click(object sender, EventArgs e)
-        {
-            NuevaTransaccion();
-            LoteContratoListView.DataBind();
-        }
+
 
         protected void LoteContratoListView_ItemDeleted(object sender, ListViewDeletedEventArgs e)
         {
@@ -432,6 +430,71 @@ namespace Almacenes
             url = "rptEntrada.aspx?IdTransaccion=" + Session["IdTransaccion"];
 
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('" + url + "','_blank')", true);
+        }
+
+        protected void EditCabeceraBtn_Click(object sender, EventArgs e)
+        {
+            txtDefincion.BorderColor = System.Drawing.Color.Red;
+            txtNroFactura.BorderColor = System.Drawing.Color.Red;
+            txtNotaRemision.BorderColor = System.Drawing.Color.Red;
+
+            txtDefincion.Enabled = true;
+            txtNroFactura.Enabled = true;
+            txtNotaRemision.Enabled = true;
+
+            AcceptCabeceraBtn.Visible = true;
+            EditCabeceraBtn.Visible = false;
+        }
+
+        protected void AcceptCabeceraBtn_Click(object sender, EventArgs e)
+        {
+            txtDefincion.BorderColor = System.Drawing.Color.LightGray;
+            txtNroFactura.BorderColor = System.Drawing.Color.LightGray;
+            txtNotaRemision.BorderColor = System.Drawing.Color.LightGray;
+
+            txtDefincion.Enabled = false;
+            txtNroFactura.Enabled = false;
+            txtNotaRemision.Enabled = false;
+
+            AcceptCabeceraBtn.Visible = false;
+            EditCabeceraBtn.Visible = true;
+
+            ModificarCabeceraTransaccion();
+        }
+
+        protected void ModificarCabeceraTransaccion()
+        {
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                SqlConnection conn = new SqlConnection(ArticuloContratoDS.ConnectionString);
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = "warehouse.sp_Transaccion_update";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.AddWithValue("@NroTransaccion", txtNroTransaccion.Text);
+                cmd.Parameters.AddWithValue("@Definicion", txtDefincion.Text);
+                cmd.Parameters.AddWithValue("@NroFactura", txtNroFactura.Text);
+                cmd.Parameters.AddWithValue("@NotaRemision", txtNotaRemision.Text);
+                cmd.Parameters.AddWithValue("@Solicitante",  DBNull.Value);
+
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+              
+
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Text = "ModificarCabeceraTransaccion: " + ex.Message;
+                ErrorLabel.Visible = true;
+                FadeOut(ErrorLabel.ClientID, 5000);
+            }
         }
     }
 }

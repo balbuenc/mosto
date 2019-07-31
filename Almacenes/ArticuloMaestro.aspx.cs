@@ -15,7 +15,7 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "ARTICULOS";
             if (Request.QueryString["PageSize"] != null)
             {
                 ArticuloMaestroListViewDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);

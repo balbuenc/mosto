@@ -157,6 +157,24 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.TextBox txtFecha;
         
         /// <summary>
+        /// EditCabeceraBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton EditCabeceraBtn;
+        
+        /// <summary>
+        /// AcceptCabeceraBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton AcceptCabeceraBtn;
+        
+        /// <summary>
         /// IdArticuloDDL control.
         /// </summary>
         /// <remarks>

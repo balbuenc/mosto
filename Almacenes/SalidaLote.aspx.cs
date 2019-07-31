@@ -22,8 +22,9 @@ namespace Almacenes
                     txtSolicitante.Text = this.Session["Solicitante"].ToString();
                     txtDependencia.Text = this.Session["Dependencia"].ToString();
                     txtContrato.Text = this.Session["ContratoExistencia"].ToString();
-                    NuevaTransaccion();
-                    SalidaLoteListView.DataBind();
+
+                    CrearTransaccionBtn.Visible = true;
+                    CerrarTransaccionBtn.Visible = false;
                 }
                 else if (Request.QueryString["mode"] == "edit")
                 {
@@ -31,8 +32,25 @@ namespace Almacenes
                     Session["IdTransaccion"] = Request.QueryString["IdTransaccion"].ToString();
                     ArticuloLoteDS.DataBind();
                     LoteContratoDS.DataBind();
+
+                    CrearTransaccionBtn.Visible = false;
+                    CerrarTransaccionBtn.Visible = true;
                 }
             }
+        }
+
+        protected void CrearTransaccionBtn_Click(object sender, EventArgs e)
+        {
+            if (Request.QueryString["mode"] == "insert")
+            {
+                NuevaTransaccion();
+                SalidaLoteListView.DataBind();
+            }
+        }
+
+        protected void CerrarTransaccionBtn_Click(object sender, EventArgs e)
+        {
+
         }
 
         protected void FadeOut(string ClientID, int Time)
@@ -139,7 +157,7 @@ namespace Almacenes
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
         }
-        
+
 
         private void ShowPopUpMsg(string msg)
         {
@@ -275,7 +293,7 @@ namespace Almacenes
             InsertarArticuloSalidaLote();
             IdArticuloDDL.DataBind();
         }
-        
+
 
         protected void SalidaLoteListView_ItemDataBound(object sender, ListViewItemEventArgs e)
         {
@@ -304,9 +322,73 @@ namespace Almacenes
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('" + url + "','_blank')", true);
         }
 
-        protected void CerrarSalidaBtn_Click(object sender, EventArgs e)
-        {
 
+
+        protected void EditCabeceraBtn_Click(object sender, EventArgs e)
+        {
+            txtDefincion.BorderColor = System.Drawing.Color.Red;
+            txtSolicitante.BorderColor = System.Drawing.Color.Red;
+
+
+            txtDefincion.Enabled = true;
+            txtSolicitante.Enabled = true;
+
+
+            AcceptCabeceraBtn.Visible = true;
+            EditCabeceraBtn.Visible = false;
         }
+
+        protected void AcceptCabeceraBtn_Click(object sender, EventArgs e)
+        {
+            txtDefincion.BorderColor = System.Drawing.Color.LightGray;
+            txtSolicitante.BorderColor = System.Drawing.Color.LightGray;
+
+
+            txtDefincion.Enabled = false;
+            txtSolicitante.Enabled = false;
+
+
+            AcceptCabeceraBtn.Visible = false;
+            EditCabeceraBtn.Visible = true;
+
+            ModificarCabeceraTransaccion();
+        }
+
+        protected void ModificarCabeceraTransaccion()
+        {
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                SqlConnection conn = new SqlConnection(LoteContratoDS.ConnectionString);
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = "warehouse.sp_Transaccion_update";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.AddWithValue("@NroTransaccion", txtNroTransaccion.Text);
+                cmd.Parameters.AddWithValue("@Definicion", txtDefincion.Text);
+                cmd.Parameters.AddWithValue("@NroFactura", DBNull.Value);
+                cmd.Parameters.AddWithValue("@NotaRemision", DBNull.Value);
+                cmd.Parameters.AddWithValue("@Solicitante", txtSolicitante.Text);
+
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Text = "ModificarCabeceraTransaccion: " + ex.Message;
+                ErrorLabel.Visible = true;
+                FadeOut(ErrorLabel.ClientID, 5000);
+            }
+        }
+
+
     }
 }

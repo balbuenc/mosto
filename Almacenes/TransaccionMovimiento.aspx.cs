@@ -26,6 +26,8 @@ namespace Almacenes
                 Deposito30.Visible = false;
                 Deposito50.Visible = false;
 
+                ((Label)this.Master.FindControl("lblActualPage")).Text = "MOVIMIENTO DEPENDENCIAS";
+
             }
             else if (Request.QueryString["Tipo"] == "Deposito")
             {
@@ -41,6 +43,8 @@ namespace Almacenes
                 Deposito20.Visible = true;
                 Deposito30.Visible = true;
                 Deposito50.Visible = true;
+
+                ((Label)this.Master.FindControl("lblActualPage")).Text = "MOVIMIENTO DEPOSITOS";
             }
 
             if (Request.QueryString["PageSize"] != null)

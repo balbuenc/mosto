@@ -46,7 +46,7 @@
                                 </div>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddtransaccionSalidaBtn"  data-toggle="modal" data-target="#addModalSalida" ToolTip="Agregar salida">
+                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddtransaccionSalidaBtn" data-toggle="modal" data-target="#addModalSalida" ToolTip="Agregar salida">
                                 <div class="form-row">
                                 <asp:Label  Text="Nueva Salida" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
                                 <i class="fas fa-sign-out-alt"  style="padding:5px"></i>
@@ -95,7 +95,9 @@
                 runat="server"
                 DataSourceID="TransaccionDS"
                 DataKeyNames="IdTransaccion"
-                OnItemCommand="ListView_ItemCommand">
+                OnItemCommand="ListView_ItemCommand"
+                OnItemDataBound="TransaccionListView_ItemDataBound"
+                OnDataBound="TransaccionListView_DataBound">
                 <LayoutTemplate>
                     <div class="table table-responsive">
                         <table class="table table-striped table-condensed">
@@ -104,11 +106,12 @@
                                 <th>Fecha</th>
                                 <th>Nro. Transacción</th>
                                 <th>Definición</th>
-                                <th>Nro. Factura</th>
+
                                 <th>Usuario</th>
                                 <th>NroContrato</th>
-                                <th>Solicitante</th>
-                                <th>Remisión</th>
+                                <th id="thSolicitante" runat="server">Solicitante</th>
+                                <th id="thNotaRemision" runat="server">Remisión</th>
+                                <th>Estado</th>
                                 <th>...</th>
                                 <th>...</th>
                                 <th>...</th>
@@ -130,16 +133,17 @@
                             <asp:Label ID="lblNroTransaccion" runat="server" Text='<%# Eval("NroTransaccion") %>' /></td>
                         <td>
                             <asp:Label ID="lblDefinicion" runat="server" Text='<%# Eval("Definicion") %>' /></td>
-                        <td>
-                            <asp:Label ID="lblNroFactura" runat="server" Text='<%# Eval("NroFactura") %>' /></td>
+
                         <td>
                             <asp:Label ID="lblUser" runat="server" Text='<%# Eval("UserName") %>' /></td>
                         <td>
                             <asp:Label ID="lblNroContrato" runat="server" Text='<%# Eval("NroContrato") %>' /></td>
-                        <td>
+                        <td id="tdSolicitante" runat="server">
                             <asp:Label ID="lblSolicitante" runat="server" Text='<%# Eval("Solicitante") %>' /></td>
-                        <td>
+                        <td id="tdNotaRemision" runat="server">
                             <asp:Label ID="lblNotaRemision" runat="server" Text='<%# Eval("NotaRemision") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblEstado" runat="server" Text='<%# Eval("Estado") %>' /></td>
 
                         <td>
                             <asp:LinkButton runat="server" ID="ReportTransaccionBtn" CommandName="ViewReport" CommandArgument='<%# Eval("IdTransaccion")%>' ToolTip="Ver reporte">

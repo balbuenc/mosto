@@ -13,6 +13,7 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "CONTACTOS";
             if (Request.QueryString["PageSize"] != null)
             {
                 ContactoListViewDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);

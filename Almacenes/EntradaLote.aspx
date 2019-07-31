@@ -42,11 +42,6 @@
     <div class="fondo">
         <div class="page-header">
             <div class="container-fluid">
-                <%--<div class="row">
-                <div class="col-12">
-                    <div class="col-form-label-lg azul"><%: Page.Title %> </div>
-                </div>
-            </div>--%>
                 <div class="row">
                     <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
                 </div>
@@ -58,7 +53,7 @@
                     <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold"><b>Datos del Contrato</b></div>
                 </div>
                 <div class="col-2" style="text-align: right">
-                    <button runat="server" id="ReportTransaccionBtn" class="btn btn-primary btn-group-lg" title="Ver reporte" onserverclick="ReportTransaccionBtn_ServerClick">
+                    <button runat="server" id="ReportTransaccionBtn" class="btn btn-warning btn-group-lg" title="Ver reporte" onserverclick="ReportTransaccionBtn_ServerClick">
                         <span>Imprimir Entrada
                     <i class="fas fa-book-reader"></i>
                         </span>
@@ -148,8 +143,11 @@
                             <div class="col-form-label">Fecha</div>
                         </div>
 
+
+
                     </div>
                     <div class="form-row">
+
 
                         <div class="col-3">
                             <asp:TextBox CssClass="form-control form-control-sm" ID="txtDefincion" runat="server" />
@@ -160,23 +158,20 @@
                         <div class="col-2">
                             <asp:TextBox CssClass="form-control form-control-sm" ID="txtNotaRemision" runat="server" />
                         </div>
+
                         <div class="col-1">
                             <asp:TextBox CssClass="form-control form-control-sm" ID="txtNroTransaccion" runat="server" Enabled="false" />
                         </div>
-
-                        <%--<div class="col-1">
-                        <asp:LinkButton runat="server" ID="NewTransactionBtn" ToolTip="Nueva transacción" OnClick="NewTransactionBtn_Click">
-                    <i class="fas fa-plus-circle"></i>
-                        </asp:LinkButton>
-                        <%-- <asp:LinkButton runat="server" ID="SeacrhTransactionBtn" ToolTip="Buscar transaccipon">
-                    <i class="fas fa-search-plus"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton runat="server" ID="ReporteBtn" ToolTip="Ver Reporte" OnClick="ReporteBtn_Click">
-                    <i class="fas fa-book-reader"></i>
-                        </asp:LinkButton>
-                    </div>--%>
                         <div class="col-1">
                             <asp:TextBox CssClass="form-control form-control-sm" ID="txtFecha" runat="server" Enabled="false" />
+                        </div>
+                        <div class="col-1">
+                            <asp:LinkButton runat="server" ID="EditCabeceraBtn" ToolTip="Editar entrada" OnClick="EditCabeceraBtn_Click" CssClass="btn btn-danger" Visible="true">
+                                <i class="fas fa-edit"></i>
+                            </asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="AcceptCabeceraBtn" ToolTip="Guardar cambios" OnClick="AcceptCabeceraBtn_Click" CssClass="btn btn-success" Visible="false">
+                                <i class="fas fa-check"></i>
+                            </asp:LinkButton>
                         </div>
                     </div>
 

@@ -13,7 +13,7 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "DEPOSITOS";
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)

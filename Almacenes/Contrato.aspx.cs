@@ -13,6 +13,7 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "CONTRATOS";
             if (Request.QueryString["PageSize"] != null)
             {
                 ContratoDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);

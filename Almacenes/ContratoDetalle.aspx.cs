@@ -15,7 +15,7 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "CONTRATO";
             if (Request.QueryString["IdContrato"] != null)
             {
                 if (!IsPostBack)

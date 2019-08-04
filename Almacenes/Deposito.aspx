@@ -5,51 +5,80 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="fondo">
-        <div class="page-header">
-            <div class="container-fluid" >
-                <div class="row">
-                    <div class="col-2">
-                        <div class="col-form-label-lg azul"><%: Page.Title %> </div>
+        <div class="page-header  encabezado">
+            <div class="container-fluid">
+                <asp:Panel runat="server" DefaultButton="SearchBtn">
+                    <div class="row">
+                        <div class="col-4 font-weight-bold">
+                            Palabra clave
+                        </div>
+                        <div class="col-2 font-weight-bold">
+                            Criterio
+                        </div>
+                        <div class="col-6">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <asp:TextBox ID="txtSearchKey" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <div class="col-2">
+                            <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
+                                <asp:ListItem Text="Deposito" Value="DEPOSITO"></asp:ListItem>
+                                <asp:ListItem Text="Descripción" Value="DESCRIPCION"></asp:ListItem>
+                                <asp:ListItem Text="Contenido" Value="CONTENIDO"></asp:ListItem>
+                                <asp:ListItem Text="Ubicación" Value="UBICACION"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="btn-group btn-shadow">
+                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="SearchBtn" onserverclick="SearchBtn_ServerClick" ToolTip="Buscar">
+                                <div class="form-row">
+                                <asp:Label Text="Buscar" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label>
+                                <i class="fas fa-search fa-sm" style="padding:5px"></i>
+                              </div>
+                                </asp:LinkButton>
+
+                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar depósito">
+                                <div class="form-row">
+                                <asp:Label  Text="Agregar depósito" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
+                                <i class="fas fa-plus fa-sm"  style="padding:5px"></i>
+                                </div>
+                                </asp:LinkButton>
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle btn-border" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        #
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                        <a class="dropdown-item" href="/Deposito.aspx?PageSize=10" runat="server">10</a>
+                                        <a class="dropdown-item" href="/Deposito.aspx?PageSize=20" runat="server">20</a>
+                                        <a class="dropdown-item" href="/Deposito.aspx?PageSize=30" runat="server">30</a>
+                                        <a class="dropdown-item" href="/Deposito.aspx?PageSize=50" runat="server">50</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
-                    <div class="col-4">
-                        <asp:TextBox ID="txtSearchKey" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
-                    <div class="col-2">
-                        <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
-                            <asp:ListItem Text="Deposito" Value="DEPOSITO"></asp:ListItem>
-                            <asp:ListItem Text="Descripción" Value="DESCRIPCION"></asp:ListItem>
-                            <asp:ListItem Text="Contenido" Value="CONTENIDO"></asp:ListItem>
-                            <asp:ListItem Text="Ubicación" Value="UBICACION"></asp:ListItem>
-
-                        </asp:DropDownList>
-
-                    </div>
-                    <div class="col-1">
-                        <button class="btn btn-primary" type="button" runat="server" id="SearchBtn" onserverclick="SearchBtn_ServerClick">
-                            <i class="fas fa-search fa-sm"></i>
-                        </button>
-                    </div>
-                    <div class="col-1">
-                        <button class="btn btn-primary" type="button" runat="server" id="AddLicitacionBtn" data-toggle="modal" data-target="#addModal">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="row">
-                    <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
-                </div>
+                </asp:Panel>
+            </div>
+            <div class="row">
+                <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
             </div>
         </div>
 
-        <div class="container-fluid" >
-            <asp:DataPager ID="DepositoDataPager" runat="server" PagedControlID="DepositoListView" PageSize="10">
-                <Fields>
-                    <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
-                    <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
-                    <asp:NextPreviousPagerField ButtonCssClass="btn btn-default btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
-                </Fields>
-            </asp:DataPager>
+        <div class="container-fluid">
+            <div class="row pie" style="padding-left: 15px">
+                <asp:DataPager ID="DepositoDataPager" runat="server" PagedControlID="DepositoListView" PageSize="10">
+                    <Fields>
+                        <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
+                        <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm font-weight-bold  border" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
+                        <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary  btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
+                    </Fields>
+                </asp:DataPager>
+            </div>
+            
             <asp:ListView ID="DepositoListView"
                 runat="server"
                 DataSourceID="DepositoDS"

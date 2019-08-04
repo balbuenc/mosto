@@ -37,16 +37,16 @@ namespace Almacenes {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton SearchBtn;
+        protected global::System.Web.UI.WebControls.LinkButton SearchBtn;
         
         /// <summary>
-        /// AddRoleBtn control.
+        /// AddRegistroBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton AddRoleBtn;
+        protected global::System.Web.UI.WebControls.LinkButton AddRegistroBtn;
         
         /// <summary>
         /// ErrorLabel control.
@@ -56,6 +56,15 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
+        
+        /// <summary>
+        /// RoleDataPager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataPager RoleDataPager;
         
         /// <summary>
         /// RoleListView control.

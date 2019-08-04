@@ -14,6 +14,10 @@ namespace Almacenes
         protected void Page_Load(object sender, EventArgs e)
         {
             ((Label)this.Master.FindControl("lblActualPage")).Text = "DEPOSITOS";
+            if (Request.QueryString["PageSize"] != null)
+            {
+                DepositoDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
+            }
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)

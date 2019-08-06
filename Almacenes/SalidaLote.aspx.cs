@@ -14,6 +14,7 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "SALIDA DE ARTÍCULOS";
             if (!IsPostBack)
             {
                 if (Request.QueryString["mode"] == "insert")
@@ -23,6 +24,11 @@ namespace Almacenes
                     txtDependencia.Text = this.Session["Dependencia"].ToString();
                     txtContrato.Text = this.Session["ContratoExistencia"].ToString();
 
+                    IdArticuloDDL.DataBind();
+
+                    ArticuloPanel.Visible = false;
+
+                    ReportTransaccionBtn.Visible = false;
                     CrearTransaccionBtn.Visible = true;
                     CerrarTransaccionBtn.Visible = false;
                 }
@@ -33,6 +39,9 @@ namespace Almacenes
                     ArticuloLoteDS.DataBind();
                     LoteContratoDS.DataBind();
 
+                    ArticuloPanel.Visible = true;
+
+                    ReportTransaccionBtn.Visible = true;
                     CrearTransaccionBtn.Visible = false;
                     CerrarTransaccionBtn.Visible = true;
                 }
@@ -43,8 +52,14 @@ namespace Almacenes
         {
             if (Request.QueryString["mode"] == "insert")
             {
-                NuevaTransaccion();
-                SalidaLoteListView.DataBind();
+                if(NuevaTransaccion())
+                {
+                    SalidaLoteListView.DataBind();
+                    ArticuloPanel.Visible = true;
+                    CrearTransaccionBtn.Visible = false;
+                    ReportTransaccionBtn.Visible = true;
+                }
+                  
             }
         }
 
@@ -102,8 +117,8 @@ namespace Almacenes
         }
 
 
-        //Procedimiento que genera una nueva transacción para el Contrato actual
-        private void NuevaTransaccion()
+        //Función que genera una nueva transacción para el Contrato actual y devuelve el resultado (TRUE/FALSE)
+        private bool NuevaTransaccion()
         {
             SqlCommand cmd = new SqlCommand();
             try
@@ -149,12 +164,16 @@ namespace Almacenes
                 Session["IdTransaccion"] = IdTransaccionParam.Value.ToString();
 
                 conn.Close();
+
+                return true;
             }
             catch (Exception ex)
             {
                 ErrorLabel.Text = ex.Message;
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
+
+                return false;
             }
         }
 
@@ -220,9 +239,13 @@ namespace Almacenes
                 cmd.ExecuteNonQuery();
 
                 conn.Close();
+
                 SalidaLoteListView.DataBind();
+             
 
                 txtArticuloCantidad.Text = "";
+                txtArticuloCantidad.Focus();
+
 
             }
             catch (Exception ex)

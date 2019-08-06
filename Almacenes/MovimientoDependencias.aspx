@@ -19,15 +19,26 @@
             <asp:UpdatePanel ID="MovimientoDependenciaUP" runat="server">
                 <ContentTemplate>
                     <div class="form-row">
-                        <div class="col-10">
+                        <div class="col-3">
                             <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold"><b>Movimiento entre Dependencias</b></div>
                         </div>
-                        <div class="col-2" style="text-align: right">
-                            <button runat="server" id="ReportTransaccionBtn" class="btn btn-primary btn-group-lg" title="Ver reporte" visible="false" onserverclick="ReportTransaccionBtn_ServerClick">
-                                <span>Imprimir Movimiento
+
+                        <div class="col-9" style="text-align: right">
+
+                            <div class="btn-group btn-shadow">
+                                <asp:LinkButton runat="server" ID="CrearMovimientoBtn" CssClass="btn btn-danger" Text="Grabar movimiento" OnClick="CraerMovimientoBtn_Click">
+                            <span>Grabar Movimiento                    
+                                    <i class="fas fa-suitcase-rolling"></i>
+                            </span>
+                                </asp:LinkButton>
+
+
+                                <button runat="server" id="ReportTransaccionBtn" class="btn btn-primary btn-group-lg" title="Ver reporte" visible="false" onserverclick="ReportTransaccionBtn_ServerClick">
+                                    <span>Imprimir Movimiento
                                        <i class="fas fa-book-reader"></i>
-                                </span>
-                            </button>
+                                    </span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div class="form-row" style="padding-top: 10px">
@@ -83,15 +94,8 @@
                         <div class="col-1">
                             <asp:TextBox CssClass="form-control form-control-sm" ID="txtFecha" runat="server" Enabled="false" />
                         </div>
-                        <div class="col-4"></div>
-                        <div class="col-2" style="text-align: right">
-                            <asp:LinkButton runat="server" ID="CrearMovimientoBtn" CssClass="btn btn-danger" Text="Grabar movimiento" OnClick="CraerMovimientoBtn_Click">
-                            <span>Grabar Movimiento                    
-                                    <i class="fas fa-suitcase-rolling"></i>
-                            </span>
-                            </asp:LinkButton>
 
-                        </div>
+
 
                     </div>
                     <hr />
@@ -197,7 +201,7 @@
                                     runat="server"
                                     DataSourceID="DependenciaMovimientosDS"
                                     DataKeyNames="IdDependenciaMovimiento"
-                                     OnItemDeleted="DependenciaMovimientosListView_ItemDeleted">
+                                    OnItemDeleted="DependenciaMovimientosListView_ItemDeleted">
                                     <LayoutTemplate>
                                         <div class="table table-responsive">
                                             <table class="table table-striped table-condensed">

@@ -17,18 +17,30 @@
         <div class="container-fluid">
             <asp:UpdatePanel ID="ArticuloContratoUP" runat="server">
                 <ContentTemplate>
+
                     <div class="form-row">
-                        <div class="col-10">
+                        <div class="col-3">
                             <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold"><b>Operación de Salida</b></div>
                         </div>
-                        <div class="col-2" style="text-align: right">
-                            <button runat="server" id="ReportTransaccionBtn" class="btn btn-primary btn-group-lg" title="Ver reporte" onserverclick="ReportTransaccionBtn_ServerClick">
-                                <span>Imprimir Salida
+                        <div class="col-5">
+                        </div>
+                        <div class="col-4" style="text-align: right">
+                            <div class="btn-group btn-shadow">
+                                <asp:LinkButton runat="server" ID="CrearTransaccionBtn" CssClass="btn btn-danger btn-border" Text="Grabar transacción" OnClick="CrearTransaccionBtn_Click" Visible="false" ToolTip="Grabar Salida">
+                                    <span>Grabar Transacción
+                                        <i class="fas fa-suitcase-rolling"></i>
+                                    </span>
+                                </asp:LinkButton>
+
+                                <button runat="server" id="ReportTransaccionBtn" class="btn btn-primary btn-border" title="Ver reporte" onserverclick="ReportTransaccionBtn_ServerClick">
+                                    <span>Imprimir Salida
                                     <i class="fas fa-book-reader"></i>
-                                </span>
-                            </button>
+                                    </span>
+                                </button>
+                            </div>
                         </div>
                     </div>
+
                     <div class="form-row">
                         <div class="col-3">
                             <div class="col-form-label">Descripción</div>
@@ -80,46 +92,48 @@
                             </asp:LinkButton>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="col-5">
-                            <div class="col-form-label">Artículo</div>
+
+                    <asp:Panel ID="ArticuloPanel" runat="server" DefaultButton="AgregarArticuloBtn"  Visible="false">
+                        <div class="form-row">
+                            <div class="col-5">
+                                <div class="col-form-label">Artículo</div>
+                            </div>
+                            <div class="col">
+                                <div class="col-form-label">Precio</div>
+                            </div>
+                            <div class="col">
+                                <div class="col-form-label">Impuesto</div>
+                            </div>
+
+                            <div class="col">
+                                <div class="col-form-label">Existente</div>
+                            </div>
                         </div>
-                        <div class="col">
-                            <div class="col-form-label">Precio</div>
-                        </div>
-                        <div class="col">
-                            <div class="col-form-label">Impuesto</div>
+                        <div class="form-row">
+                            <div class="col-5">
+                                <asp:DropDownList ID="IdArticuloDDL"
+                                    runat="server"
+                                    DataSourceID="ArticuloLoteDS"
+                                    DataTextField="Articulo"
+                                    DataValueField="IdLote"
+                                    CssClass="form-control form-control-sm"
+                                    OnDataBound="IdArticuloDDL_DataBound"
+                                    OnSelectedIndexChanged="IdArticuloDDL_SelectedIndexChanged"
+                                    AutoPostBack="true">
+                                </asp:DropDownList>
+                            </div>
+                            <div class="col">
+                                <asp:TextBox CssClass="form-control form-control-sm" ID="txtPrecio" runat="server" Enabled="false" />
+                            </div>
+                            <div class="col">
+                                <asp:TextBox CssClass="form-control form-control-sm" ID="txtImpuesto" runat="server" Enabled="false" />
+                            </div>
+
+                            <div class="col">
+                                <asp:TextBox CssClass="form-control form-control-sm" ID="txtExistente" runat="server" Enabled="false" />
+                            </div>
                         </div>
 
-                        <div class="col">
-                            <div class="col-form-label">Existente</div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-5">
-                            <asp:DropDownList ID="IdArticuloDDL"
-                                runat="server"
-                                DataSourceID="ArticuloLoteDS"
-                                DataTextField="Articulo"
-                                DataValueField="IdLote"
-                                CssClass="form-control form-control-sm"
-                                OnDataBound="IdArticuloDDL_DataBound"
-                                OnSelectedIndexChanged="IdArticuloDDL_SelectedIndexChanged"
-                                AutoPostBack="true">
-                            </asp:DropDownList>
-                        </div>
-                        <div class="col">
-                            <asp:TextBox CssClass="form-control form-control-sm" ID="txtPrecio" runat="server" Enabled="false" />
-                        </div>
-                        <div class="col">
-                            <asp:TextBox CssClass="form-control form-control-sm" ID="txtImpuesto" runat="server" Enabled="false" />
-                        </div>
-
-                        <div class="col">
-                            <asp:TextBox CssClass="form-control form-control-sm" ID="txtExistente" runat="server" Enabled="false" />
-                        </div>
-                    </div>
-                    <asp:Panel ID="ArticuloPanel" runat="server" DefaultButton="AgregarArticuloBtn">
                         <div class="form-row">
                             <div class="col-2">
                                 <div class="col-form-label">Cantidad</div>
@@ -137,14 +151,9 @@
                             <div class="col-3">
                             </div>
                             <div class="col-2">
-                                <asp:LinkButton runat="server" ID="CrearTransaccionBtn" CssClass="btn btn-danger" Text="Grabar transacción" OnClick="CrearTransaccionBtn_Click" Visible="false">
-                                    <span>Grabar Transacción
-                                        <i class="fas fa-suitcase-rolling"></i>
-                                    </span>
-                                </asp:LinkButton>
                             </div>
                             <div class="col-2" style="text-align: right">
-                                <asp:LinkButton runat="server" ID="CerrarTransaccionBtn" CssClass="btn btn-success" Text="Cerrar movimiento" OnClick="CerrarTransaccionBtn_Click" Visible="false">
+                                <asp:LinkButton runat="server" ID="CerrarTransaccionBtn" CssClass="btn btn-success btn-shadow" Text="Cerrar movimiento" OnClick="CerrarTransaccionBtn_Click" Visible="false">
                                     <span>Cerrar Transacción
                                         <i class="fas fa-vote-yea"></i>
                                     </span>
@@ -245,7 +254,7 @@
         </div>
         <!-- #region DataSources -->
         <asp:SqlDataSource ID="ArticuloLoteDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-            SelectCommand="[warehouse].[sp_GetLoteArticuloExistenteByIdDependencia_DDL]" SelectCommandType="StoredProcedure">
+            SelectCommand="[staging].[sp_GetLoteArticuloExistenteByIdDependencia_DDL]" SelectCommandType="StoredProcedure">
             <SelectParameters>
                 <asp:SessionParameter SessionField="IdDependencia" Name="IdDependencia" DbType="Int32" />
             </SelectParameters>
@@ -253,8 +262,8 @@
         </asp:SqlDataSource>
 
         <asp:SqlDataSource ID="LoteContratoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-            SelectCommand="[warehouse].[sp_SalidaLote_get_SalidaLote_By_NroTransaccion]" SelectCommandType="StoredProcedure"
-            DeleteCommand="warehouse.sp_SalidaLote_delete" DeleteCommandType="StoredProcedure">
+            SelectCommand="[staging].[sp_SalidaLote_get_SalidaLote_By_NroTransaccion]" SelectCommandType="StoredProcedure"
+            DeleteCommand="staging.sp_SalidaLote_delete" DeleteCommandType="StoredProcedure">
             <SelectParameters>
                 <asp:ControlParameter ControlID="txtNroTransaccion" Name="NroTransaccion" PropertyName="Text" />
             </SelectParameters>

@@ -31,6 +31,15 @@ namespace Almacenes {
         protected global::System.Web.UI.UpdatePanel MovimientoDependenciaUP;
         
         /// <summary>
+        /// CrearMovimientoBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton CrearMovimientoBtn;
+        
+        /// <summary>
         /// ReportTransaccionBtn control.
         /// </summary>
         /// <remarks>
@@ -83,15 +92,6 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFecha;
-        
-        /// <summary>
-        /// CrearMovimientoBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton CrearMovimientoBtn;
         
         /// <summary>
         /// DestinoPanel control.

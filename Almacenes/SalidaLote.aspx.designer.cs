@@ -31,6 +31,15 @@ namespace Almacenes {
         protected global::System.Web.UI.UpdatePanel ArticuloContratoUP;
         
         /// <summary>
+        /// CrearTransaccionBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton CrearTransaccionBtn;
+        
+        /// <summary>
         /// ReportTransaccionBtn control.
         /// </summary>
         /// <remarks>
@@ -112,6 +121,15 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.LinkButton AcceptCabeceraBtn;
         
         /// <summary>
+        /// ArticuloPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel ArticuloPanel;
+        
+        /// <summary>
         /// IdArticuloDDL control.
         /// </summary>
         /// <remarks>
@@ -148,15 +166,6 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.TextBox txtExistente;
         
         /// <summary>
-        /// ArticuloPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ArticuloPanel;
-        
-        /// <summary>
         /// txtArticuloCantidad control.
         /// </summary>
         /// <remarks>
@@ -173,15 +182,6 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button AgregarArticuloBtn;
-        
-        /// <summary>
-        /// CrearTransaccionBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton CrearTransaccionBtn;
         
         /// <summary>
         /// CerrarTransaccionBtn control.

@@ -45,7 +45,7 @@
                         <div class="col-3">
                             <div class="col-form-label">Descripción</div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-2">
                             <div class="col-form-label">Dependencia</div>
                         </div>
 

@@ -61,24 +61,6 @@
                 </div>
             </div>
 
-            <asp:Panel runat="server" ID="SeleccionarContratoPanel" Visible="false">
-                <div class="form-row" style="padding-top: 5px">
-
-                    <div class="col-2">
-                        <div class="col-form-label" style="vertical-align: central; text-align: left"><b>Contrato - Licitación</b></div>
-                    </div>
-                    <div class="col-8">
-                        <input id="txtSearchContrato" runat="server" cssclass="form-control" placeholder="Llamado, Proveedor, Nro. Contrato" style="width: 100%; height: 80%" />
-                    </div>
-                    <div class="col-2">
-                        <button id="SearchContratoBtn" runat="server" class="btn btn-default" onserverclick="SearchContratoBtn_Click">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-
-                </div>
-            </asp:Panel>
-
             <div class="form-row">
                 <div class="col-1">
                     <div class="col-form-label">#Contrato</div>

@@ -354,7 +354,7 @@ namespace Almacenes
             IdArticuloDDL.DataBind();
         }
 
-        protected void CraerMovimientoBtn_Click(object sender, EventArgs e)
+        protected void CrearMovimientoBtn_Click(object sender, EventArgs e)
         {
             if (txtDefincion.Text == "")
             {

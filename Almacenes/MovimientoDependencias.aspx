@@ -26,7 +26,7 @@
                         <div class="col-9" style="text-align: right">
 
                             <div class="btn-group btn-shadow">
-                                <asp:LinkButton runat="server" ID="CrearMovimientoBtn" CssClass="btn btn-danger" Text="Grabar movimiento" OnClick="CraerMovimientoBtn_Click">
+                                <asp:LinkButton runat="server" ID="CrearMovimientoBtn" CssClass="btn btn-danger" Text="Grabar movimiento" OnClick="CrearMovimientoBtn_Click">
                             <span>Grabar Movimiento                    
                                     <i class="fas fa-suitcase-rolling"></i>
                             </span>

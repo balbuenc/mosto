@@ -38,12 +38,16 @@ namespace Almacenes
                     Session["IdTransaccion"] = Request.QueryString["IdTransaccion"].ToString();
                     ArticuloLoteDS.DataBind();
                     LoteContratoDS.DataBind();
+                    SalidaLoteListView.DataBind();
 
                     ArticuloPanel.Visible = true;
 
                     ReportTransaccionBtn.Visible = true;
                     CrearTransaccionBtn.Visible = false;
-                    CerrarTransaccionBtn.Visible = true;
+                    if (ExisteItemSalida())
+                    {
+                        CerrarTransaccionBtn.Visible = true;
+                    }
                 }
             }
         }
@@ -52,20 +56,60 @@ namespace Almacenes
         {
             if (Request.QueryString["mode"] == "insert")
             {
-                if(NuevaTransaccion())
+                if (NuevaTransaccion())
                 {
                     SalidaLoteListView.DataBind();
                     ArticuloPanel.Visible = true;
                     CrearTransaccionBtn.Visible = false;
                     ReportTransaccionBtn.Visible = true;
+
+                    if (ExisteItemSalida())
+                    {
+                        CerrarTransaccionBtn.Visible = true;
+                    }
                 }
-                  
+
             }
+        }
+
+        protected bool ExisteItemSalida()
+        {
+            if (SalidaLoteListView.Items.Count > 0)
+                return true;
+            else
+                return false;
         }
 
         protected void CerrarTransaccionBtn_Click(object sender, EventArgs e)
         {
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
 
+                SqlConnection conn = new SqlConnection(ArticuloLoteDS.ConnectionString);
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = "staging.sp_Transaccion_Close";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.AddWithValue("@IdTransaccion", Session["idTransaccion"]);
+                cmd.Parameters.AddWithValue("@Login", Context.User.Identity.Name);
+
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+
+                Response.Redirect("Transaccion.aspx?Tipo=Salida");
+            }
+            catch (Exception ex)
+            {
+                ShowPopUpMsg("Error al Cerrar transacción: " + ex.Message);
+                return;
+            }
         }
 
         protected void FadeOut(string ClientID, int Time)
@@ -200,7 +244,7 @@ namespace Almacenes
                     return;
                 }
 
-                if (Convert.ToInt32(txtExistente.Text) < Convert.ToInt32(txtArticuloCantidad.Text))
+                if (Convert.ToInt32(txtExistente.Text.Replace(".","")) < Convert.ToInt32(txtArticuloCantidad.Text))
                 {
                     ShowPopUpMsg("La cantidad solicitada supera la existencia del artículo.");
                     return;
@@ -241,7 +285,7 @@ namespace Almacenes
                 conn.Close();
 
                 SalidaLoteListView.DataBind();
-             
+
 
                 txtArticuloCantidad.Text = "";
                 txtArticuloCantidad.Focus();
@@ -315,6 +359,11 @@ namespace Almacenes
         {
             InsertarArticuloSalidaLote();
             IdArticuloDDL.DataBind();
+
+            if (ExisteItemSalida())
+            {
+                CerrarTransaccionBtn.Visible = true;
+            }
         }
 
 
@@ -329,11 +378,14 @@ namespace Almacenes
                 txtDependencia.Text = lblDependencia.Text;
 
             }
+           
         }
 
         protected void SalidaLoteListView_ItemDeleted(object sender, ListViewDeletedEventArgs e)
         {
             IdArticuloDDL.DataBind();
+            SalidaLoteListView.DataBind();
+           
         }
 
         protected void ReportTransaccionBtn_ServerClick(object sender, EventArgs e)
@@ -412,6 +464,6 @@ namespace Almacenes
             }
         }
 
-
+     
     }
 }

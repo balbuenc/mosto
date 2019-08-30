@@ -209,15 +209,22 @@ namespace Almacenes
 
         protected void TransaccionListView_DataBound(object sender, EventArgs e)
         {
-            if (Request.QueryString["Tipo"] == "Entrada")
+            try
             {
-                TransaccionListView.FindControl("thSolicitante").Visible = false;
-                
+                if (Request.QueryString["Tipo"] == "Entrada")
+                {
+                    TransaccionListView.FindControl("thSolicitante").Visible = false;
+
+                }
+                else if (Request.QueryString["Tipo"] == "Salida")
+                {
+                    TransaccionListView.FindControl("thNotaRemision").Visible = false;
+
+                }
             }
-            else if (Request.QueryString["Tipo"] == "Salida")
+            catch (Exception Ex)
             {
-                TransaccionListView.FindControl("thNotaRemision").Visible = false;
-               
+                
             }
         }
     }

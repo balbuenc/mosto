@@ -80,8 +80,7 @@ namespace Almacenes
 
                 conn.Close();
 
-                //Ontengo la última transaccion del Contrato por su ID
-                //ObtenerUltimaTransaccion(IdContrato);
+               
             }
             catch (Exception ex)
             {
@@ -135,44 +134,7 @@ namespace Almacenes
             }
         }
 
-        //Función que obtiene los datos de la última transacción relacionada al contrato por su ID
-        private void ObtenerUltimaTransaccion(int IdContrato)
-        {
-            SqlCommand cmd = new SqlCommand();
-            try
-            {
-                SqlConnection conn = new SqlConnection(ArticuloContratoDS.ConnectionString);
-                cmd.Connection = conn;
-
-                cmd.CommandText = "[warehouse].[sp_getLastTransaction]";
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@IdContrato", IdContrato);
-
-                conn.Open();
-
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows)
-                {
-                    while (dr.Read())
-                    {
-                        txtNroTransaccion.Text = dr["NroTransaccion"].ToString();
-                        txtFecha.Text = dr["Fecha"].ToString();
-                        txtDefincion.Text = dr["Definicion"].ToString();
-                        txtNroFactura.Text = dr["NroFactura"].ToString();
-                        txtNotaRemision.Text = dr["NotaRemision"].ToString();
-                    }
-                }
-
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                ErrorLabel.Text = "ObtenerUltimaTransaccion: " + ex.Message;
-                ErrorLabel.Visible = true;
-                FadeOut(ErrorLabel.ClientID, 5000);
-            }
-        }
+       
 
         private void ShowPopUpMsg(string msg)
         {
@@ -234,6 +196,7 @@ namespace Almacenes
                 LoteContratoListView.DataBind();
 
                 txtArticuloCantidad.Text = "";
+                txtArticuloCantidad.Focus();
 
             }
             catch (Exception ex)
@@ -388,15 +351,7 @@ namespace Almacenes
             }
         }
 
-        protected void SearchContratoBtn_Click(object sender, EventArgs e)
-        {
-            string[] broker = txtSearchContrato.Value.ToString().Split('|');
-            string[] id = broker[2].Split('#');
-            txtNroContrato.Text = broker[0].TrimEnd(' ');
-            ObtenerDatosContrato(Convert.ToInt32(id[1]));
-            ObtenerUltimaTransaccion(Convert.ToInt32(id[1]));
-            IdArticuloDDL.DataBind();
-        }
+       
 
         protected void IdArticuloDDL_SelectedIndexChanged(object sender, EventArgs e)
         {

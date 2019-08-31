@@ -325,13 +325,15 @@
                                         runat="server"
                                         DataSourceID="CodigoBarraDS"
                                         DataKeyNames="IdCodigoBarra"
-                                        InsertItemPosition="FirstItem">
+                                        InsertItemPosition="FirstItem"
+                                        OnItemCommand="CodigoBarraListView_ItemCommand">
                                         <LayoutTemplate>
                                             <div class="table table-responsive">
                                                 <table class="table table-striped table-condensed">
                                                     <thead>
                                                         <th>ID</th>
                                                         <th>Dato</th>
+                                                        <th>Código</th>
                                                         <th>...</th>
                                                         <th>...</th>
                                                     </thead>
@@ -347,6 +349,9 @@
                                                     <asp:Label ID="lblIdCodigoBarra" runat="server" Text='<%# Eval("IdCodigoBarra") %>' /></td>
                                                 <td>
                                                     <asp:Label ID="lblDato" runat="server" Text='<%# Eval("Dato") %>' /></td>
+                                                <td>
+                                                    <asp:Button runat="server" ID="ViewBarcodeBtn" CommandName="Barcode" CommandArgument='<%# Eval("Dato")%>' ToolTip="Ver código de barras" Text="Ver código" UseSubmitBehavior="false"></asp:Button>
+                                                </td>
 
 
                                                 <td>
@@ -368,6 +373,7 @@
 
                                                         <td>
                                                             <asp:TextBox ID="txtDato" runat="server" Text='<%# Bind("Dato") %>' CssClass="form-control" /></td>
+                                                        <td></td>
 
                                                         <td>
                                                             <asp:Button runat="server" ID="ModificarCNBtn" CssClass="btn btn-primary btn-sm" CommandName="Update" ToolTip="Guardar" Text="Guardar"></asp:Button>
@@ -387,6 +393,7 @@
 
                                                 <td>
                                                     <asp:TextBox ID="txtDato" runat="server" Text='<%# Bind("Dato") %>' CssClass="form-control" /></td>
+                                                <td></td>
 
                                                 <td>
                                                     <asp:Button runat="server" ID="InsertarCNBtn" CssClass="btn btn-primary btn-sm" CommandName="Insert" ToolTip="Insertar código" Text="Insertar código" UseSubmitBehavior="false"></asp:Button>
@@ -394,6 +401,10 @@
                                             </tr>
                                         </InsertItemTemplate>
                                     </asp:ListView>
+                                    <div>
+                                        <div id="bar" runat="server">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <td>

@@ -1,7 +1,9 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -190,6 +192,23 @@ namespace Almacenes
             FadeOut(ErrorLabel.ClientID, 5000);
             ArticuloMaestroListView.DataBind();
 
+        }
+
+       
+
+        protected void CodigoBarraListView_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Barcode")
+            {
+                string url;
+
+                url = "PrintBarCode.aspx?Data=" + e.CommandArgument.ToString() ;
+
+                
+
+                Response.Redirect(url);
+
+            }
         }
     }
 }

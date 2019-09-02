@@ -5,11 +5,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Zen.Barcode;
 
 namespace Almacenes
 {
@@ -202,13 +204,38 @@ namespace Almacenes
             {
                 string url;
 
-                url = "PrintBarCode.aspx?Data=" + e.CommandArgument.ToString() ;
+                url = "rptCodigoBarra.aspx?IdCodigoBarra=" + e.CommandArgument.ToString() ;
 
                 
 
                 Response.Redirect(url);
 
             }
+        }
+
+        private byte[] getBarcode(string Data)
+        {
+            BarcodeSymbology s = BarcodeSymbology.Code39C;
+            BarcodeDraw drawObject = BarcodeDrawFactory.GetSymbology(s);
+            var metrics = drawObject.GetDefaultMetrics(60);
+            metrics.Scale = 2;
+            var barcodeImage = drawObject.Draw(Data, metrics);
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                barcodeImage.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                byte[] imageBytes = ms.ToArray();
+
+                //return Convert.ToBase64String(imageBytes);
+                return imageBytes;
+            }
+        }
+
+        protected void CodigoBarraDS_Inserting(object sender, SqlDataSourceCommandEventArgs e)
+        {
+            
+            e.Command.Parameters["@Image"].Value = getBarcode(e.Command.Parameters["@Dato"].Value.ToString());
+
         }
     }
 }

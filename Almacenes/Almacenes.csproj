@@ -276,8 +276,10 @@
     <Content Include="Licitaciones.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MovimientoDependencias.aspx" />
+    <Content Include="PlanCuenta.aspx" />
     <Content Include="PrintBarCode.aspx" />
     <Content Include="Proveedor.aspx" />
+    <Content Include="rptCodigoBarra.aspx" />
     <Content Include="rptEntrada.aspx" />
     <Content Include="rptEntradaGlobal.aspx" />
     <Content Include="rptExistencia.aspx" />
@@ -2284,6 +2286,13 @@
     <Compile Include="MovimientoDependencias.aspx.designer.cs">
       <DependentUpon>MovimientoDependencias.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PlanCuenta.aspx.cs">
+      <DependentUpon>PlanCuenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlanCuenta.aspx.designer.cs">
+      <DependentUpon>PlanCuenta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PrintBarCode.aspx.cs">
       <DependentUpon>PrintBarCode.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2299,6 +2308,13 @@
       <DependentUpon>Proveedor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rptCodigoBarra.aspx.cs">
+      <DependentUpon>rptCodigoBarra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rptCodigoBarra.aspx.designer.cs">
+      <DependentUpon>rptCodigoBarra.aspx</DependentUpon>
+    </Compile>
     <Compile Include="rptEntrada.aspx.cs">
       <DependentUpon>rptEntrada.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

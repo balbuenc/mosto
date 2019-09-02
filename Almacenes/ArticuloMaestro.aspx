@@ -350,7 +350,7 @@
                                                 <td>
                                                     <asp:Label ID="lblDato" runat="server" Text='<%# Eval("Dato") %>' /></td>
                                                 <td>
-                                                    <asp:Button runat="server" ID="ViewBarcodeBtn" CommandName="Barcode" CommandArgument='<%# Eval("Dato")%>' ToolTip="Ver código de barras" Text="Ver código" UseSubmitBehavior="false"></asp:Button>
+                                                    <asp:Button runat="server" ID="ViewBarcodeBtn" CommandName="Barcode" CommandArgument='<%# Eval("IdCodigoBarra")%>' ToolTip="Ver código de barras" Text="Ver código" UseSubmitBehavior="false"></asp:Button>
                                                 </td>
 
 
@@ -454,18 +454,23 @@
                 SelectCommand="[warehouse].[sp_CodigoBarra_get_CodigoBarra_By_IdArticuloMaestro]" SelectCommandType="StoredProcedure"
                 InsertCommand="[warehouse].[sp_CodigoBarra_insert]" InsertCommandType="StoredProcedure"
                 DeleteCommand="[warehouse].[sp_CodigoBarra_delete]" DeleteCommandType="StoredProcedure"
-                UpdateCommand="[warehouse].[sp_CodigoBarra_update]" UpdateCommandType="StoredProcedure">
+                UpdateCommand="[warehouse].[sp_CodigoBarra_update]" UpdateCommandType="StoredProcedure"
+                OnInserting="CodigoBarraDS_Inserting"
+                OnUpdating="CodigoBarraDS_Inserting">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="IdArticuloMaestroHF" Name="IdArticuloMaestro" PropertyName="Value" Type="Int32" />
                 </SelectParameters>
                 <InsertParameters>
                     <asp:ControlParameter ControlID="IdArticuloMaestroHF" Name="IdArticuloMaestro" PropertyName="Value" Type="Int32" />
                     <asp:Parameter Name="Dato" Type="String" />
+                    <asp:Parameter Name="Image" DbType="Binary" />
+
                 </InsertParameters>
                 <UpdateParameters>
                     <asp:Parameter Name="IdCodigoBarra" Type="Int32" />
                     <asp:ControlParameter ControlID="IdArticuloMaestroHF" Name="IdArticuloMaestro" PropertyName="Value" Type="Int32" />
                     <asp:Parameter Name="Dato" Type="String" />
+                    <asp:Parameter Name="Image" DbType="Binary" />
                 </UpdateParameters>
                 <DeleteParameters>
                     <asp:Parameter Name="IdCodigoBarra" Type="Int32" />

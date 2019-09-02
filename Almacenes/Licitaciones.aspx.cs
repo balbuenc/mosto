@@ -43,7 +43,7 @@ namespace Almacenes.Management
             SqlCommand cmd = new SqlCommand();
             SqlConnection con = new SqlConnection(LicitacionDS.ConnectionString);
 
-            cmd = new SqlCommand("[management].[sp_licitacion_get_licitacion]", con);
+            cmd = new SqlCommand("[accounting].[sp_licitacion_get_licitacion]", con);
             cmd.Parameters.Add(new SqlParameter("@IdLicitacion", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -68,7 +68,7 @@ namespace Almacenes.Management
             SqlCommand cmd = new SqlCommand();
             SqlConnection con = new SqlConnection(LicitacionDS.ConnectionString);
 
-            cmd = new SqlCommand("[management].[sp_licitacion_delete]", con);
+            cmd = new SqlCommand("[accounting].[sp_licitacion_delete]", con);
             cmd.Parameters.Add(new SqlParameter("@IdLicitacion", ID));
 
             // Set Output Paramater
@@ -144,7 +144,7 @@ namespace Almacenes.Management
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "management.sp_licitacion_update";
+                cmd.CommandText = "accounting.sp_licitacion_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@IdLicitacion", txtIdLicitacion.Text);

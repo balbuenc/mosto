@@ -139,6 +139,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/Contrato.aspx">Contratos</a>
                                 <a class="dropdown-item" href="/ArticuloMaestro.aspx">Articulos</a>
+                                <a class="dropdown-item" href="/PlanCuenta.aspx">Plan de cuentas</a>
                             </div>
                         </li>
 

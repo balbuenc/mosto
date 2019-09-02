@@ -17,7 +17,7 @@ namespace Almacenes
         protected void Page_Load(object sender, EventArgs e)
         {
             try {
-                ((Label)this.Master.FindControl("lblActualPage")).Text = "IMPRESIÓN DE CÓDIGO DE BARRASS";
+                ((Label)this.Master.FindControl("lblActualPage")).Text = "IMPRESIÓN DE CÓDIGO DE BARRAS";
 
                 string img = "data:image/png;base64," + getBarcode(Request.QueryString["Data"].ToString());
                 Code.Src = img;

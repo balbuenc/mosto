@@ -18,6 +18,10 @@
       <FullPath>ExistenciaGlobal.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>ExistenciaGlobalPorDependencia.rdl</Name>
+      <FullPath>ExistenciaGlobalPorDependencia.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>LotesEntrada.rdl</Name>
       <FullPath>LotesEntrada.rdl</FullPath>
     </ProjectItem>
@@ -38,8 +42,12 @@
       <FullPath>MovimientoDependencia.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>ExistenciaGlobalPorDependencia.rdl</Name>
-      <FullPath>ExistenciaGlobalPorDependencia.rdl</FullPath>
+      <Name>CodigoBarra.rdl</Name>
+      <FullPath>CodigoBarra.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>BarcodeMatrix.rdl</Name>
+      <FullPath>BarcodeMatrix.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>

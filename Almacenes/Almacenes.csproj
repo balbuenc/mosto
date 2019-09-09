@@ -189,7 +189,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ArticuloCuenta.aspx" />
     <Content Include="ArticuloMaestro.aspx" />
+    <Content Include="CodigoBarra.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
@@ -461,6 +463,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TipoContacto.aspx" />
+    <Content Include="TipoCuenta.aspx" />
     <Content Include="TipoLicitaciones.aspx" />
     <Content Include="Transaccion.aspx" />
     <Content Include="TransaccionMovimiento.aspx" />
@@ -2191,6 +2194,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ArticuloCuenta.aspx.cs">
+      <DependentUpon>ArticuloCuenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ArticuloCuenta.aspx.designer.cs">
+      <DependentUpon>ArticuloCuenta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ArticuloMaestro.aspx.cs">
       <DependentUpon>ArticuloMaestro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2204,6 +2214,13 @@
     </Compile>
     <Compile Include="Boot.Master.designer.cs">
       <DependentUpon>Boot.Master</DependentUpon>
+    </Compile>
+    <Compile Include="CodigoBarra.aspx.cs">
+      <DependentUpon>CodigoBarra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CodigoBarra.aspx.designer.cs">
+      <DependentUpon>CodigoBarra.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contacto.aspx.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>
@@ -2389,6 +2406,9 @@
     <Compile Include="SearchArticulo.ashx.cs">
       <DependentUpon>SearchArticulo.ashx</DependentUpon>
     </Compile>
+    <Compile Include="SearchArticuloBarcode.ashx.cs">
+      <DependentUpon>SearchArticuloBarcode.ashx</DependentUpon>
+    </Compile>
     <Compile Include="SearchContrato.ashx.cs">
       <DependentUpon>SearchContrato.ashx</DependentUpon>
     </Compile>
@@ -2402,6 +2422,13 @@
     </Compile>
     <Compile Include="TipoContacto.aspx.designer.cs">
       <DependentUpon>TipoContacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TipoCuenta.aspx.cs">
+      <DependentUpon>TipoCuenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TipoCuenta.aspx.designer.cs">
+      <DependentUpon>TipoCuenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="TipoLicitaciones.aspx.cs">
       <DependentUpon>TipoLicitaciones.aspx</DependentUpon>
@@ -2457,6 +2484,7 @@
     <Content Include="SearchProveedor.ashx" />
     <Content Include="SearchArticulo.ashx" />
     <Content Include="SearchContrato.ashx" />
+    <Content Include="SearchArticuloBarcode.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

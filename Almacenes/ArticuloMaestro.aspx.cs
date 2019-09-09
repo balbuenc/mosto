@@ -118,6 +118,7 @@ namespace Almacenes
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                "$('#CodigoBarraModal').modal('show');", true);
             }
+           
         }
 
 
@@ -215,7 +216,7 @@ namespace Almacenes
 
         private byte[] getBarcode(string Data)
         {
-            BarcodeSymbology s = BarcodeSymbology.Code39C;
+            BarcodeSymbology s = BarcodeSymbology.Code128;
             BarcodeDraw drawObject = BarcodeDrawFactory.GetSymbology(s);
             var metrics = drawObject.GetDefaultMetrics(60);
             metrics.Scale = 2;

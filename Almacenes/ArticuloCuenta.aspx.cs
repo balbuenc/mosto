@@ -9,41 +9,41 @@ using System.Web.UI.WebControls;
 
 namespace Almacenes
 {
-    public partial class PlanCuenta : System.Web.UI.Page
+    public partial class ArticuloCuenta : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ((Label)this.Master.FindControl("lblActualPage")).Text = "PLAN DE CUENTA";
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "ASIGNACIÓN DE CUENTAS CONTABLES";
             if (Request.QueryString["PageSize"] != null)
             {
-                PlanCuentaListViewDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
+                ArticuloCuentaListViewDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
             }
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)
         {
-            PlanCuentaListView.DataBind();
+            ArticuloCuentaListView.DataBind();
         }
 
 
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
-            Response.Redirect("PlanCuenta.aspx");
+            Response.Redirect("ArticuloCuenta.aspx");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("PlanCuenta.aspx");
+            Response.Redirect("ArticuloCuenta.aspx");
         }
 
         protected void GetRecordToUpdate(String ID)
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(PlanCuentaDS.ConnectionString);
+            SqlConnection con = new SqlConnection(ArticuloCuentaDS.ConnectionString);
 
-            cmd = new SqlCommand("accounting.[sp_PlanCuenta_get_PlanCuenta]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdCuenta", ID));
+            cmd = new SqlCommand("accounting.[sp_ArticuloCuenta_get_ArticuloCuenta]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdArticuloCuenta", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter adp = new SqlDataAdapter();
@@ -65,10 +65,10 @@ namespace Almacenes
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(PlanCuentaDS.ConnectionString);
+            SqlConnection con = new SqlConnection(ArticuloCuentaDS.ConnectionString);
 
-            cmd = new SqlCommand("accounting.[sp_PlanCuenta_delete]", con);
-            cmd.Parameters.Add(new SqlParameter("@IdCuenta", ID));
+            cmd = new SqlCommand("accounting.[sp_ArticuloCuenta_delete]", con);
+            cmd.Parameters.Add(new SqlParameter("@IdArticuloCuenta", ID));
 
 
 
@@ -98,7 +98,7 @@ namespace Almacenes
             else if (e.CommandName == "Eliminar")
             {
                 DeleteRecord(e.CommandArgument.ToString());
-                PlanCuentaListView.DataBind();
+                ArticuloCuentaListView.DataBind();
 
                 ErrorLabel.Text = "El Registro se eliminó correctamente.";
                 ErrorLabel.Visible = true;
@@ -129,25 +129,27 @@ namespace Almacenes
             try
             {
                 //Obtengo los valores de los campos a editar
-                TextBox txtIdCuenta = (TextBox)EditFormView.FindControl("txtIdCuenta");
-                TextBox txtNroCuenta = (TextBox)EditFormView.FindControl("txtNroCuenta");
-                TextBox txtCuenta = (TextBox)EditFormView.FindControl("txtCuenta");
-                DropDownList IdTipoCuenta = (DropDownList)EditFormView.FindControl("IdTipoCuenta");
+                DropDownList IdArticuloMaestro = (DropDownList)EditFormView.FindControl("IdArticuloMaestro");
+               
+                DropDownList IdCuenta = (DropDownList)EditFormView.FindControl("IdCuenta");
+                TextBox txtIdArticuloCuenta = (TextBox)EditFormView.FindControl("txtIdArticuloCuenta");
 
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
-                SqlConnection conn = new SqlConnection(PlanCuentaDS.ConnectionString);
+                SqlConnection conn = new SqlConnection(ArticuloCuentaDS.ConnectionString);
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "accounting.sp_PlanCuenta_update";
+                cmd.CommandText = "accounting.sp_ArticuloCuenta_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@IdCuenta", txtIdCuenta.Text);
-                cmd.Parameters.AddWithValue("@NroCuenta", txtNroCuenta.Text);
-                cmd.Parameters.AddWithValue("@Cuenta", txtCuenta.Text);
-                cmd.Parameters.AddWithValue("@IdTipoCuenta", IdTipoCuenta.SelectedValue);
+               
+                cmd.Parameters.AddWithValue("@IdCuenta", IdCuenta.SelectedValue);
+               
+                cmd.Parameters.AddWithValue("@IdArticuloMaestro", IdArticuloMaestro.Text);
+                
+                cmd.Parameters.AddWithValue("@IdArticuloCuenta", txtIdArticuloCuenta.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -157,7 +159,7 @@ namespace Almacenes
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#editModal').modal('hide');", true);
 
-                Response.Redirect("PlanCuenta.aspx");
+                Response.Redirect("ArticuloCuenta.aspx");
 
 
             }
@@ -173,10 +175,10 @@ namespace Almacenes
         protected void EditFormView_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
         {
             EditFormView.ChangeMode(FormViewMode.ReadOnly);
-            ErrorLabel.Text = "El registro de actualizó correctamente";
+            ErrorLabel.Text = "El Registro de actualizó correctamente";
             ErrorLabel.Visible = true;
             FadeOut(ErrorLabel.ClientID, 5000);
-            PlanCuentaListView.DataBind();
+            ArticuloCuentaListView.DataBind();
 
         }
     }

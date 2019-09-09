@@ -10,7 +10,7 @@
 namespace Almacenes {
     
     
-    public partial class PlanCuenta {
+    public partial class TipoCuenta {
         
         /// <summary>
         /// txtSearchKey control.
@@ -58,22 +58,22 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// PlanCuentaListViewDataPager control.
+        /// TipoCuentaListViewDataPager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataPager PlanCuentaListViewDataPager;
+        protected global::System.Web.UI.WebControls.DataPager TipoCuentaListViewDataPager;
         
         /// <summary>
-        /// PlanCuentaListView control.
+        /// TipoCuentaListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView PlanCuentaListView;
+        protected global::System.Web.UI.WebControls.ListView TipoCuentaListView;
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -112,21 +112,12 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.FormView EditFormView;
         
         /// <summary>
-        /// PlanCuentaDS control.
+        /// TipoCuentaDS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource PlanCuentaDS;
-        
-        /// <summary>
-        /// TipoCuentaDS_DLL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource TipoCuentaDS_DLL;
+        protected global::System.Web.UI.WebControls.SqlDataSource TipoCuentaDS;
     }
 }

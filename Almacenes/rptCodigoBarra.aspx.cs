@@ -12,6 +12,7 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "IMPRESIÓN DE CODIGO DE BARRAS";
             if (!IsPostBack)
             {
 

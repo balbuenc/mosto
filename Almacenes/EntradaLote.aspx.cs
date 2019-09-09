@@ -35,6 +35,69 @@ namespace Almacenes
             }
         }
 
+        protected bool ExisteItemEntrada()
+        {
+            if (LoteContratoListView.Items.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
+        protected void CerrarTransaccionBtn_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+
+                SqlConnection conn = new SqlConnection(LoteContratoDS.ConnectionString);
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = "staging.sp_Transaccion_Close";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.AddWithValue("@IdTransaccion", Session["idTransaccion"]);
+                cmd.Parameters.AddWithValue("@Login", Context.User.Identity.Name);
+
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+
+                Response.Redirect("Transaccion.aspx?Tipo=Salida");
+            }
+            catch (Exception ex)
+            {
+                ShowPopUpMsg("Error al Cerrar transacción: " + ex.Message);
+                return;
+            }
+        }
+
+        protected void CrearTransaccionBtn_Click(object sender, EventArgs e)
+        {
+            if (Request.QueryString["mode"] == "insert")
+            {
+                if (NuevaTransaccion())
+                {
+                    LoteContratoListView.DataBind();
+                    ArticuloPanel.Visible = true;
+                    CrearTransaccionBtn.Visible = false;
+                    ReportTransaccionBtn.Visible = true;
+
+                    if (ExisteItemEntrada())
+                    {
+                        CerrarTransaccionBtn.Visible = true;
+                    }
+                }
+
+            }
+        }
+
+   
+
+
         protected void FadeOut(string ClientID, int Time)
         {
             ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "script", "window.setTimeout(function() { document.getElementById('" + ClientID + "').style.display = 'none' }," + Time.ToString() + ");", true);
@@ -209,7 +272,7 @@ namespace Almacenes
 
 
         //Procedimiento que genera una nueva transacción para el Contrato actual
-        private void NuevaTransaccion()
+        private bool NuevaTransaccion()
         {
             SqlCommand cmd = new SqlCommand();
             try
@@ -257,6 +320,7 @@ namespace Almacenes
 
                 DisableTransactionControls();
 
+                return true;
 
             }
             catch (Exception ex)
@@ -264,6 +328,7 @@ namespace Almacenes
                 ErrorLabel.Text = ex.Message;
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
+                return false;
             }
         }
 

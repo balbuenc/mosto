@@ -139,7 +139,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/Contrato.aspx">Contratos</a>
                                 <a class="dropdown-item" href="/ArticuloMaestro.aspx">Articulos</a>
-                                <a class="dropdown-item" href="/PlanCuenta.aspx">Plan de cuentas</a>
+                               
                             </div>
                         </li>
 
@@ -160,7 +160,32 @@
 
                             </div>
                         </li>
+                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownContabilidad" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-calculator"></i>
+                                <span>Contabilidad</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="pagesDropdownAlmacenes">
+                                <h6 class="dropdown-header">Contabilidad:</h6>
+                                <a class="dropdown-item" href="/PlanCuenta.aspx?Tipo=Entrada">Plan de cuentas</a>
+                                <a class="dropdown-item" href="/TipoCuenta.aspx?Tipo=Salida">Tipo de cuentas</a>
+                                <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="/ArticuloCuenta.aspx?Tipo=Salida">Asignación de cuentas</a>
 
+                            </div>
+                        </li>
+                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="CodigoBarrasDropdownAlmacenes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-barcode"></i>
+                                <span>Código de barras</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="pagesDropdownAlmacenes">
+                                <h6 class="dropdown-header">Códigos:</h6>
+                                <a class="dropdown-item" href="/CodigoBarra.aspx">Código de barras</a>
+                                
+
+                            </div>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownAlmacenes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-warehouse"></i>

@@ -10,7 +10,25 @@
 namespace Almacenes {
     
     
-    public partial class PlanCuenta {
+    public partial class CodigoBarra {
+        
+        /// <summary>
+        /// txtSearchArticulo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSearchArticulo;
+        
+        /// <summary>
+        /// AddLicitacionBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton AddLicitacionBtn;
         
         /// <summary>
         /// txtSearchKey control.
@@ -40,15 +58,6 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.LinkButton SearchBtn;
         
         /// <summary>
-        /// AddLicitacionBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AddLicitacionBtn;
-        
-        /// <summary>
         /// ErrorLabel control.
         /// </summary>
         /// <remarks>
@@ -58,22 +67,22 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// PlanCuentaListViewDataPager control.
+        /// CodigoBarraListViewDataPager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataPager PlanCuentaListViewDataPager;
+        protected global::System.Web.UI.WebControls.DataPager CodigoBarraListViewDataPager;
         
         /// <summary>
-        /// PlanCuentaListView control.
+        /// CodigoBarraListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView PlanCuentaListView;
+        protected global::System.Web.UI.WebControls.ListView CodigoBarraListView;
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -85,13 +94,49 @@ namespace Almacenes {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// InsertFormView control.
+        /// txtIdArticuloMaestro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView InsertFormView;
+        protected global::System.Web.UI.WebControls.TextBox txtIdArticuloMaestro;
+        
+        /// <summary>
+        /// txtArticuloMaestro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtArticuloMaestro;
+        
+        /// <summary>
+        /// txtDato control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDato;
+        
+        /// <summary>
+        /// InsertButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton InsertButton;
+        
+        /// <summary>
+        /// InsertCancelButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton InsertCancelButton;
         
         /// <summary>
         /// UpdatePanel2 control.
@@ -112,21 +157,12 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.FormView EditFormView;
         
         /// <summary>
-        /// PlanCuentaDS control.
+        /// CodigoBarraDS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource PlanCuentaDS;
-        
-        /// <summary>
-        /// TipoCuentaDS_DLL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource TipoCuentaDS_DLL;
+        protected global::System.Web.UI.WebControls.SqlDataSource CodigoBarraDS;
     }
 }

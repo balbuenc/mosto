@@ -22,6 +22,15 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
+        /// CrearTransaccionBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton CrearTransaccionBtn;
+        
+        /// <summary>
         /// ReportTransaccionBtn control.
         /// </summary>
         /// <remarks>
@@ -245,6 +254,15 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button AgregarArticuloBtn;
+        
+        /// <summary>
+        /// CerrarTransaccionBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton CerrarTransaccionBtn;
         
         /// <summary>
         /// LoteContratoDataPager control.

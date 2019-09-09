@@ -49,15 +49,23 @@
         </div>
         <div class="container-fluid">
             <div class="form-row">
-                <div class="col-10">
+                <div class="col-3">
                     <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold"><b>Datos del Contrato</b></div>
                 </div>
-                <div class="col-2" style="text-align: right">
-                    <button runat="server" id="ReportTransaccionBtn" class="btn btn-warning btn-group-lg" title="Ver reporte" onserverclick="ReportTransaccionBtn_ServerClick">
-                        <span>Imprimir Entrada
+                <div class="col-5"></div>
+                <div class="col-4" style="text-align: right">
+                    <div class="btn-group btn-shadow">
+                        <asp:LinkButton runat="server" ID="CrearTransaccionBtn" CssClass="btn btn-danger btn-border" Text="Grabar transacción" OnClick="CrearTransaccionBtn_Click" Visible="false" ToolTip="Grabar Salida">
+                                    <span>Grabar Transacción
+                                        <i class="fas fa-suitcase-rolling"></i>
+                                    </span>
+                        </asp:LinkButton>
+                        <button runat="server" id="ReportTransaccionBtn" class="btn btn-primary btn-border" title="Ver reporte" onserverclick="ReportTransaccionBtn_ServerClick">
+                            <span>Imprimir Entrada
                     <i class="fas fa-book-reader"></i>
-                        </span>
-                    </button>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -245,6 +253,13 @@
                             </div>
                             <div class="col-2">
                                 <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" Text="Agregar artículo" CausesValidation="false" CssClass="btn btn-info" OnClick="AgregarArticuloBtn_Click" />
+                            </div>
+                            <div class="col-2" style="text-align: right">
+                                <asp:LinkButton runat="server" ID="CerrarTransaccionBtn" CssClass="btn btn-success btn-shadow" Text="Cerrar movimiento" OnClick="CerrarTransaccionBtn_Click" Visible="false">
+                                    <span>Cerrar Transacción
+                                        <i class="fas fa-vote-yea"></i>
+                                    </span>
+                                </asp:LinkButton>
                             </div>
 
                         </div>

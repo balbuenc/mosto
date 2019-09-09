@@ -254,6 +254,7 @@
     <Content Include="Contrato.aspx" />
     <Content Include="ContratoDetalle.aspx" />
     <Content Include="css\Enigma.css" />
+    <Content Include="css\jquery-ui.css" />
     <Content Include="css\sb-admin.css" />
     <Content Include="css\sb-admin.min.css" />
     <Content Include="Default.aspx" />

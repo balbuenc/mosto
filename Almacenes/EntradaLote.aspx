@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="Entrada de Lotes" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="EntradaLote.aspx.cs" Inherits="Almacenes.EntradaLote" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+    <%--<link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />--%>
+    <link href="css/jquery-ui.css" rel="stylesheet" />
     <link href="css/Enigma.css" rel="stylesheet" />
     <script src="Scripts/jquery-3.0.0.js"></script>
 

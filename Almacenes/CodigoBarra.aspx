@@ -4,7 +4,7 @@
 
     <%--<link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />--%>
     <link href="css/jquery-ui.css" rel="stylesheet" />
-    
+
     <link href="css/Enigma.css" rel="stylesheet" />
     <script src="Scripts/jquery-3.0.0.js"></script>
 
@@ -47,18 +47,24 @@
                 <asp:Panel runat="server" DefaultButton="SearchBtn">
                     <div class="row">
                         <div class="col-2 font-weight-bold">
-                           Generar código
+                            Código barras
                         </div>
-                        <div class="col-7">
+                        <div class="col-6">
                             <input id="txtSearchArticulo" runat="server" placeholder="Articulo" class="form-control form-control-sm">
                         </div>
-                        <div class="col-2">
+                        <div class="col-3">
                             <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddLicitacionBtn" ToolTip="Agregar código" OnClick="AddLicitacionBtn_Click">
                                 <div class="form-row">
                                 <asp:Label  Text="Agregar código" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
                                 <i class="fas fa-plus fa-sm"  style="padding:5px"></i>
                                 </div>
                             </asp:LinkButton>
+                        </div>
+                        <div class="col-1" style="background-color:white">
+                            <a class="btn btn-link" onclick="goBack()">
+                                <i class="fas fa-fw  fa-arrow-alt-circle-left" style="background-color:white"></i>
+                                <span>Atrás</span>
+                            </a>
                         </div>
                     </div>
                     <div class="row">
@@ -77,9 +83,9 @@
                             <asp:TextBox ID="txtSearchKey" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="col-2">
-                            <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
+                            <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">                                
+                                <asp:ListItem Text="Código de barras" Value="DATO"></asp:ListItem>
                                 <asp:ListItem Text="Artículo" Value="ARTICULO"></asp:ListItem>
-                                <asp:ListItem Text="Dato" Value="DATO"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
 
@@ -136,7 +142,7 @@
                             <thead>
                                 <th>ID</th>
                                 <th>Artículo</th>
-                                <th>Dato</th>
+                                <th>Código de barras</th>
                                 <th>...</th>
                                 <th>...</th>
                                 <th>...</th>
@@ -212,7 +218,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-3">Dato</div>
+                                            <div class="col-3">Código de barras</div>
                                             <div class="col-9">
                                                 <asp:TextBox ID="txtDato" runat="server" Text='<%# Bind("Dato") %>' CssClass="form-control" />
                                             </div>
@@ -265,12 +271,12 @@
                                                 <div class="row">
                                                     <div class="col-3">Articulo</div>
                                                     <div class="col-9">
-                                                        <asp:TextBox ID="txtIdArticuloMaestro" runat="server" Text='<%# Bind("IdArticuloMaestro") %>' CssClass="form-control"  Visible="false"/>
+                                                        <asp:TextBox ID="txtIdArticuloMaestro" runat="server" Text='<%# Bind("IdArticuloMaestro") %>' CssClass="form-control" Visible="false" />
                                                         <asp:TextBox ID="txtArticuloMaestro" runat="server" Text='<%# Bind("Articulo") %>' CssClass="form-control" />
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-3">Dato</div>
+                                                    <div class="col-3">Código de barras</div>
                                                     <div class="col-9">
                                                         <asp:TextBox ID="txtDato" runat="server" Text='<%# Bind("Dato") %>' CssClass="form-control" />
                                                     </div>

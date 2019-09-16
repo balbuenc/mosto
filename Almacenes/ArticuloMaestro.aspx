@@ -349,9 +349,9 @@
                                                     <asp:Label ID="lblIdCodigoBarra" runat="server" Text='<%# Eval("IdCodigoBarra") %>' /></td>
                                                 <td>
                                                     <asp:Label ID="lblDato" runat="server" Text='<%# Eval("Dato") %>' /></td>
-                                                <td>
+                                                <%--<td>
                                                     <asp:Button runat="server" ID="ViewBarcodeBtn" CommandName="Barcode" CommandArgument='<%# Eval("IdCodigoBarra")%>' ToolTip="Ver código de barras" Text="Ver código" UseSubmitBehavior="false"></asp:Button>
-                                                </td>
+                                                </td>--%>
 
 
                                                 <td>

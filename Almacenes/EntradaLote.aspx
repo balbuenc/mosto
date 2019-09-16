@@ -106,7 +106,7 @@
 
             </div>
 
-            <asp:UpdatePanel ID="ArticuloContratoUP" runat="server">
+            <asp:UpdatePanel ID="EntradaCabeceraUP" runat="server">
                 <ContentTemplate>
                     <div class="form-row">
                         <div class="col-12">
@@ -165,7 +165,11 @@
                             </asp:LinkButton>
                         </div>
                     </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
 
+            <asp:UpdatePanel ID="ArticuloContratoUP" runat="server" Visible="false">
+                <ContentTemplate>
                     <div class="form-row">
                         <div class="col-5">
                             <div class="col-form-label">Artículo</div>
@@ -288,7 +292,8 @@
                                 runat="server"
                                 DataSourceID="LoteContratoDS"
                                 DataKeyNames="IdLote"
-                                OnItemDeleted="LoteContratoListView_ItemDeleted">
+                                OnItemDeleted="LoteContratoListView_ItemDeleted"
+                                OnDataBound="LoteContratoListView_DataBound">
                                 <LayoutTemplate>
                                     <div class="table table-responsive">
                                         <table class="table table-striped table-condensed">

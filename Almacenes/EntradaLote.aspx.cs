@@ -25,12 +25,20 @@ namespace Almacenes
                     txtDefincion.Text = this.Session["DefinicionTransaccion"].ToString();
                     txtNroFactura.Text = this.Session["NroFactura"].ToString();
                     txtNotaRemision.Text = this.Session["NotaRemision"].ToString();
-                    NuevaTransaccion();
+
+                    CrearTransaccionBtn.Visible = true;
+
+                    ArticuloPanel.Visible = false;
+                    ArticuloContratoUP.Visible = false;
                 }
                 else if (Request.QueryString["mode"] == "edit")
                 {
                     ObtenerTransaccion(Convert.ToInt32(Request.QueryString["IdTransaccion"].ToString()));
                     Session["IdTransaccion"] = Request.QueryString["IdTransaccion"].ToString();
+
+                    CrearTransaccionBtn.Visible = false;
+                    ArticuloPanel.Visible = true;
+                    ArticuloContratoUP.Visible = true;
                 }
             }
         }
@@ -83,6 +91,7 @@ namespace Almacenes
                 {
                     LoteContratoListView.DataBind();
                     ArticuloPanel.Visible = true;
+                    ArticuloContratoUP.Visible = true;
                     CrearTransaccionBtn.Visible = false;
                     ReportTransaccionBtn.Visible = true;
 
@@ -95,7 +104,7 @@ namespace Almacenes
             }
         }
 
-   
+
 
 
         protected void FadeOut(string ClientID, int Time)
@@ -143,7 +152,7 @@ namespace Almacenes
 
                 conn.Close();
 
-               
+
             }
             catch (Exception ex)
             {
@@ -197,7 +206,7 @@ namespace Almacenes
             }
         }
 
-       
+
 
         private void ShowPopUpMsg(string msg)
         {
@@ -416,7 +425,7 @@ namespace Almacenes
             }
         }
 
-       
+
 
         protected void IdArticuloDDL_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -499,14 +508,14 @@ namespace Almacenes
                 cmd.Parameters.AddWithValue("@Definicion", txtDefincion.Text);
                 cmd.Parameters.AddWithValue("@NroFactura", txtNroFactura.Text);
                 cmd.Parameters.AddWithValue("@NotaRemision", txtNotaRemision.Text);
-                cmd.Parameters.AddWithValue("@Solicitante",  DBNull.Value);
+                cmd.Parameters.AddWithValue("@Solicitante", DBNull.Value);
 
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
 
                 conn.Close();
-              
+
 
             }
             catch (Exception ex)
@@ -514,6 +523,18 @@ namespace Almacenes
                 ErrorLabel.Text = "ModificarCabeceraTransaccion: " + ex.Message;
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
+            }
+        }
+
+        protected void LoteContratoListView_DataBound(object sender, EventArgs e)
+        {
+            if (ExisteItemEntrada())
+            {
+                CerrarTransaccionBtn.Visible = true;
+            }
+            else
+            {
+                CerrarTransaccionBtn.Visible = false;
             }
         }
     }

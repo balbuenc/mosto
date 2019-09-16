@@ -85,13 +85,13 @@ namespace Almacenes {
         protected global::System.Web.UI.WebControls.TextBox txtEstadoContrato;
         
         /// <summary>
-        /// ArticuloContratoUP control.
+        /// EntradaCabeceraUP control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel ArticuloContratoUP;
+        protected global::System.Web.UI.UpdatePanel EntradaCabeceraUP;
         
         /// <summary>
         /// txtDefincion control.
@@ -155,6 +155,15 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton AcceptCabeceraBtn;
+        
+        /// <summary>
+        /// ArticuloContratoUP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel ArticuloContratoUP;
         
         /// <summary>
         /// IdArticuloDDL control.

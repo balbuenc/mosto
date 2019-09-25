@@ -291,7 +291,7 @@
                             <asp:ListView ID="LoteContratoListView"
                                 runat="server"
                                 DataSourceID="LoteContratoDS"
-                                DataKeyNames="IdLote"
+                                DataKeyNames="IdArticulo"
                                 OnItemDeleted="LoteContratoListView_ItemDeleted"
                                 OnDataBound="LoteContratoListView_DataBound">
                                 <LayoutTemplate>
@@ -318,7 +318,8 @@
                                 <ItemTemplate>
                                     <tr style="min-height: 5px; height: 5px; font-size: x-small">
                                         <td>
-                                            <asp:Label ID="lblIdLote" runat="server" Text='<%# Eval("IdLote") %>' />
+                                            <asp:Label ID="lblIdLote" runat="server" Text='<%# Eval("IdLote") %>' Visible="false" />
+                                            <asp:Label ID="lblIdArticulo" runat="server" Text='<%# Eval("IdArticulo") %>' />
                                         </td>
                                         <td>
                                             <asp:Label ID="lbArticulo" runat="server" Text='<%# Eval("Articulo") %>' />
@@ -390,13 +391,14 @@
         </asp:SqlDataSource>
 
         <asp:SqlDataSource ID="LoteContratoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-            SelectCommand="[warehouse].[sp_Lote_get_Lote_By_NroTransaccion]" SelectCommandType="StoredProcedure"
-            DeleteCommand="[warehouse].[sp_Lote_delete]" DeleteCommandType="StoredProcedure">
+            SelectCommand="[staging].[sp_Lote_get_Lote_By_NroTransaccion]" SelectCommandType="StoredProcedure"
+            DeleteCommand="staging.sp_Lote_delete" DeleteCommandType="StoredProcedure">
             <SelectParameters>
                 <asp:ControlParameter ControlID="txtNroTransaccion" Name="NroTransaccion" PropertyName="Text" />
             </SelectParameters>
             <DeleteParameters>
-                <asp:Parameter Name="IdLote" DbType="Int32" />
+                <asp:Parameter Name="IdArticulo"   DbType="Int64"/>
+                <asp:ControlParameter ControlID="txtNroTransaccion" Name="NroTransaccion" PropertyName="Text" />
             </DeleteParameters>
 
         </asp:SqlDataSource>

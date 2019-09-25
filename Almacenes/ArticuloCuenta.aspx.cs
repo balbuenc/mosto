@@ -133,7 +133,7 @@ namespace Almacenes
                
                 DropDownList IdCuenta = (DropDownList)EditFormView.FindControl("IdCuenta");
                 TextBox txtIdArticuloCuenta = (TextBox)EditFormView.FindControl("txtIdArticuloCuenta");
-
+                DropDownList IdConcpetoContable = (DropDownList)EditFormView.FindControl("ConceptoContableDDL");
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
@@ -150,6 +150,8 @@ namespace Almacenes
                 cmd.Parameters.AddWithValue("@IdArticuloMaestro", IdArticuloMaestro.Text);
                 
                 cmd.Parameters.AddWithValue("@IdArticuloCuenta", txtIdArticuloCuenta.Text);
+
+                cmd.Parameters.AddWithValue("@IdConceptoContable", IdConcpetoContable.SelectedValue);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();

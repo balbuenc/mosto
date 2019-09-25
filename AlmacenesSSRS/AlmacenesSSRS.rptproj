@@ -10,6 +10,14 @@
   <DataSets />
   <Reports>
     <ProjectItem>
+      <Name>BarcodeMatrix.rdl</Name>
+      <FullPath>BarcodeMatrix.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>CodigoBarra.rdl</Name>
+      <FullPath>CodigoBarra.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>Existencia.rdl</Name>
       <FullPath>Existencia.rdl</FullPath>
     </ProjectItem>
@@ -42,12 +50,8 @@
       <FullPath>MovimientoDependencia.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>CodigoBarra.rdl</Name>
-      <FullPath>CodigoBarra.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>BarcodeMatrix.rdl</Name>
-      <FullPath>BarcodeMatrix.rdl</FullPath>
+      <Name>LibroDiario.rdl</Name>
+      <FullPath>LibroDiario.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>

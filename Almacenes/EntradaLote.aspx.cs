@@ -74,7 +74,7 @@ namespace Almacenes
 
                 conn.Close();
 
-                Response.Redirect("Transaccion.aspx?Tipo=Salida");
+                Response.Redirect("Transaccion.aspx?Tipo=Entrada");
             }
             catch (Exception ex)
             {
@@ -273,9 +273,12 @@ namespace Almacenes
             }
             catch (Exception ex)
             {
-                ErrorLabel.Text = "InsertarArticuloLote: " + ex.Message;
-                ErrorLabel.Visible = true;
-                FadeOut(ErrorLabel.ClientID, 5000);
+                //ErrorLabel.Text = "InsertarArticuloLote: " + ex.Message;
+                //ErrorLabel.Visible = true;
+                //FadeOut(ErrorLabel.ClientID, 5000);
+
+                ShowPopUpMsg("Error al agregar artículo: " + ex.Message);
+                return;
             }
         }
 

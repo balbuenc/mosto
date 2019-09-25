@@ -87,6 +87,7 @@
                                 <th>ID</th>
                                 <th>Artículo</th>
                                 <th>Cuenta</th>
+                                <th>Conc. contable</th>
                                 <th>...</th>
                                 <th>...</th>
                             </thead>
@@ -105,7 +106,8 @@
                             <asp:Label ID="lblIdArticuloMaestro" runat="server" Text='<%# Eval("Articulo") %>' /></td>
                         <td>
                             <asp:Label ID="lblIdCuenta" runat="server" Text='<%# Eval("Cuenta") %>' /></td>
-
+                          <td>
+                            <asp:Label ID="lblConceptoContable" runat="server" Text='<%# Eval("Concepto") %>' /></td>
 
                         <td>
                             <asp:LinkButton runat="server" ID="EditArticuloCuentaBtn" CommandName="Editar" CommandArgument='<%# Eval("IdArticuloCuenta")%>' ToolTip="Editar">
@@ -184,7 +186,19 @@
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>
-
+                                                <div class="row">
+                                                    <div class="col-3"><b>Conc. contable</b></div>
+                                                    <div class="col-9">
+                                                        <asp:DropDownList ID="ConceptoContableDDL"
+                                                            runat="server"
+                                                            DataSourceID="ConceptoContableDS_DDL"
+                                                            DataTextField="Concepto"
+                                                            DataValueField="IdConceptoContable"
+                                                            CssClass="form-control spacing"
+                                                            SelectedValue='<%# Bind("IdConceptoContable") %>'>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
 
                                             </div>
 
@@ -261,7 +275,19 @@
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>
-
+                                                 <div class="row">
+                                                    <div class="col-3"><b>Conc. contable</b></div>
+                                                    <div class="col-9">
+                                                        <asp:DropDownList ID="ConceptoContableDDL"
+                                                            runat="server"
+                                                            DataSourceID="ConceptoContableDS_DDL"
+                                                            DataTextField="Concepto"
+                                                            DataValueField="IdConceptoContable"
+                                                            CssClass="form-control spacing"
+                                                            SelectedValue='<%# Bind("IdConceptoContable") %>'>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
 
                                             </div>
 
@@ -307,7 +333,7 @@
                     
                     <asp:Parameter Name="IdCuenta" Type="Int32" />
                     <asp:Parameter Name="IdArticuloMaestro" Type="Int32" />
-
+                    <asp:Parameter Name="IdConceptoContable" Type="Int32" />
                 </InsertParameters>
                 <UpdateParameters>
                 </UpdateParameters>
@@ -324,10 +350,14 @@
                 SelectCommand="select pc.IdCuenta, pc.Cuenta + ' [' + pc.NroCuenta + ']' as Cuenta  from accounting.PlanCuenta pc  order by 2" SelectCommandType="Text"></asp:SqlDataSource>
 
             <asp:SqlDataSource ID="ArticuloInsertDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                SelectCommand="select IdArticuloMaestro, Articulo from warehouse.ArticuloMaestro  where IdArticuloMaestro not in (select ac.IdArticuloMaestro from accounting.ArticuloCuenta ac) order by ltrim(rtrim(Articulo)) " SelectCommandType="Text"></asp:SqlDataSource>
+                SelectCommand="select IdArticuloMaestro, Articulo from warehouse.ArticuloMaestro  order by ltrim(rtrim(Articulo)) " SelectCommandType="Text"></asp:SqlDataSource>
+            
+            <asp:SqlDataSource ID="ConceptoContableDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                SelectCommand="select IdConceptoContable, Concepto from [accounting].[ConceptoContable] order by 2" SelectCommandType="Text"></asp:SqlDataSource>
+            
             <!-- #endregion -->
 
-
+            
 
 
         </div>

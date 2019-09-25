@@ -135,7 +135,7 @@ namespace Almacenes.Management
                 TextBox txtRUC = (TextBox)EditFormView.FindControl("txtRUC");
                 TextBox txtFechaRegistro = (TextBox)EditFormView.FindControl("txtFechaRegistro");
                 TextBox txtNroDocumento = (TextBox)EditFormView.FindControl("txtNroDocumento");
-
+                TextBox txtNroCuenta = (TextBox)EditFormView.FindControl("txtNroCuenta");
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
@@ -153,6 +153,7 @@ namespace Almacenes.Management
                 cmd.Parameters.AddWithValue("@RUC", txtRUC.Text);
                 cmd.Parameters.AddWithValue("@FechaRegistro", txtFechaRegistro.Text);
                 cmd.Parameters.AddWithValue("@NroDocumento", txtNroDocumento.Text);
+                cmd.Parameters.AddWithValue("@NroCuenta", txtNroCuenta.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();

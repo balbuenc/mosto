@@ -288,6 +288,7 @@
     <Content Include="rptExistencia.aspx" />
     <Content Include="rptExistenciaDependencia.aspx" />
     <Content Include="rptExistenciaGlobal.aspx" />
+    <Content Include="rptLibroDiario.aspx" />
     <Content Include="rptMovimientoDependencias.aspx" />
     <Content Include="rptSalida.aspx" />
     <Content Include="Role.aspx" />
@@ -2029,7 +2030,9 @@
     <Content Include="vendor\jquery\jquery.slim.js" />
     <Content Include="vendor\jquery\jquery.slim.min.js" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -2367,6 +2370,13 @@
     </Compile>
     <Compile Include="rptExistenciaGlobal.aspx.designer.cs">
       <DependentUpon>rptExistenciaGlobal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="rptLibroDiario.aspx.cs">
+      <DependentUpon>rptLibroDiario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rptLibroDiario.aspx.designer.cs">
+      <DependentUpon>rptLibroDiario.aspx</DependentUpon>
     </Compile>
     <Compile Include="rptMovimientoDependencias.aspx.cs">
       <DependentUpon>rptMovimientoDependencias.aspx</DependentUpon>

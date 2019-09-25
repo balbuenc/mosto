@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="fondo">
-         <div class="page-header encabezado">
+        <div class="page-header encabezado">
             <div class="container-fluid">
                 <asp:Panel runat="server" DefaultButton="SearchBtn">
                     <div class="row">
@@ -23,9 +23,9 @@
                         </div>
                         <div class="col-2">
                             <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
-                                 <asp:ListItem Text="Proveedor" Value="PROVEEDOR"></asp:ListItem>
-                            <asp:ListItem Text="RUC" Value="RUC"></asp:ListItem>
-                            <asp:ListItem Text="Nro. Documento" Value="DOCUMENTO"></asp:ListItem>
+                                <asp:ListItem Text="Proveedor" Value="PROVEEDOR"></asp:ListItem>
+                                <asp:ListItem Text="RUC" Value="RUC"></asp:ListItem>
+                                <asp:ListItem Text="Nro. Documento" Value="DOCUMENTO"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
 
@@ -66,7 +66,7 @@
             </div>
         </div>
 
-        <div class="container-fluid" >
+        <div class="container-fluid">
             <div class="row pie" style="padding-left: 15px">
                 <asp:DataPager ID="ProveedorDataPager" runat="server" PagedControlID="ProveedorListView" PageSize="10">
                     <Fields>
@@ -76,7 +76,7 @@
                     </Fields>
                 </asp:DataPager>
             </div>
-            
+
             <asp:ListView ID="ProveedorListView"
                 runat="server"
                 DataSourceID="ProveedorDS"
@@ -93,6 +93,7 @@
                                 <th>RUC</th>
                                 <th>Fecha Registro</th>
                                 <th>Nro. Documento</th>
+                                <th>Nro. CC</th>
                                 <th>...</th>
                                 <th>...</th>
                             </thead>
@@ -119,6 +120,8 @@
                             <asp:Label ID="lblFechaRegistro" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval( "FechaRegistro") ) %>' /></td>
                         <td>
                             <asp:Label ID="lblNroDocumento" runat="server" Text='<%# Eval("NroDocumento") %>' /></td>
+                         <td>
+                            <asp:Label ID="lblNroCuenta" runat="server" Text='<%# Eval("NroCuenta") %>' /></td>
 
                         <td>
                             <asp:LinkButton runat="server" ID="EditProveedorBtn" CommandName="Editar" CommandArgument='<%# Eval("IdProveedor")%>' ToolTip="Editar">
@@ -206,7 +209,12 @@
                                                         <asp:TextBox ID="txtNroDocumento" runat="server" Text='<%# Bind("NroDocumento") %>' CssClass="form-control" />
                                                     </div>
                                                 </div>
-
+                                                <div class="row">
+                                                    <div class="col-3"><b>Nro. Cuenta contable</b></div>
+                                                    <div class="col-9">
+                                                        <asp:TextBox ID="txtNroCuenta" runat="server" Text='<%# Bind("NroCuenta") %>' CssClass="form-control" />
+                                                    </div>
+                                                </div>
 
                                             </div>
 
@@ -293,7 +301,12 @@
                                                         <asp:TextBox ID="txtNroDocumento" runat="server" Text='<%# Bind("NroDocumento") %>' CssClass="form-control" />
                                                     </div>
                                                 </div>
-
+                                                <div class="row">
+                                                    <div class="col-3"><b>Nro. Cuenta contable</b></div>
+                                                    <div class="col-9">
+                                                        <asp:TextBox ID="txtNroCuenta" runat="server" Text='<%# Bind("NroCuenta") %>' CssClass="form-control" />
+                                                    </div>
+                                                </div>
 
 
                                             </div>

@@ -279,6 +279,7 @@
     <Content Include="Licitaciones.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MovimientoDependencias.aspx" />
+    <Content Include="MovimientoDepositos.aspx" />
     <Content Include="PlanCuenta.aspx" />
     <Content Include="PrintBarCode.aspx" />
     <Content Include="Proveedor.aspx" />
@@ -2306,6 +2307,13 @@
     </Compile>
     <Compile Include="MovimientoDependencias.aspx.designer.cs">
       <DependentUpon>MovimientoDependencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MovimientoDepositos.aspx.cs">
+      <DependentUpon>MovimientoDepositos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MovimientoDepositos.aspx.designer.cs">
+      <DependentUpon>MovimientoDepositos.aspx</DependentUpon>
     </Compile>
     <Compile Include="PlanCuenta.aspx.cs">
       <DependentUpon>PlanCuenta.aspx</DependentUpon>

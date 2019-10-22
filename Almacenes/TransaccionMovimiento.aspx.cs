@@ -60,6 +60,10 @@ namespace Almacenes
             {
                 Response.Redirect("/MovimientoDependencias.aspx?mode=insert");
             }
+            else if (Request.QueryString["tipo"] == "Deposito")
+            {
+                Response.Redirect("/MovimientoDepositos.aspx?mode=insert");
+            }
             else
             {
                 return;
@@ -99,13 +103,27 @@ namespace Almacenes
 
         protected void TransaccionListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
-            if (e.CommandName == "Editar")
+            if (Request.QueryString["Tipo"] == "Dependencia")
             {
-                Response.Redirect("/MovimientoDependencias.aspx?mode=edit&IdTransaccion=" + e.CommandArgument.ToString());
+                if (e.CommandName == "Editar")
+                {
+                    Response.Redirect("/MovimientoDependencias.aspx?mode=edit&IdTransaccion=" + e.CommandArgument.ToString());
+                }
+                if (e.CommandName == "Ver")
+                {
+                    Response.Redirect("/MovimientoDependencias.aspx?mode=view&IdTransaccion=" + e.CommandArgument.ToString());
+                }
             }
-            if (e.CommandName == "Ver")
+            else if (Request.QueryString["Tipo"] == "Deposito")
             {
-                Response.Redirect("/MovimientoDependencias.aspx?mode=view&IdTransaccion=" + e.CommandArgument.ToString());
+                if (e.CommandName == "Editar")
+                {
+                    Response.Redirect("/MovimientoDepositos.aspx?mode=edit&IdTransaccion=" + e.CommandArgument.ToString());
+                }
+                if (e.CommandName == "Ver")
+                {
+                    Response.Redirect("/MovimientoDepositos.aspx?mode=view&IdTransaccion=" + e.CommandArgument.ToString());
+                }
             }
         }
     }

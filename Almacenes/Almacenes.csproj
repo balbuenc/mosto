@@ -266,6 +266,7 @@
     <Content Include="image\LogoDinac.png" />
     <Content Include="Impuesto.aspx" />
     <Content Include="Inventario.aspx" />
+    <Content Include="InventarioDetalle.aspx" />
     <Content Include="js\demo\chart-area-demo.js" />
     <Content Include="js\demo\chart-bar-demo.js" />
     <Content Include="js\demo\chart-pie-demo.js" />
@@ -2281,6 +2282,13 @@
     </Compile>
     <Compile Include="Inventario.aspx.designer.cs">
       <DependentUpon>Inventario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InventarioDetalle.aspx.cs">
+      <DependentUpon>InventarioDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InventarioDetalle.aspx.designer.cs">
+      <DependentUpon>InventarioDetalle.aspx</DependentUpon>
     </Compile>
     <Compile Include="Licitaciones.aspx.cs">
       <DependentUpon>Licitaciones.aspx</DependentUpon>

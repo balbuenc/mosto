@@ -26,7 +26,7 @@
                             <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
                                 <asp:ListItem Text="Descripción" Value="DESCRIPCION"></asp:ListItem>
                                 <asp:ListItem Text="Usuario" Value="USUARIO"></asp:ListItem>
-                                
+
                             </asp:DropDownList>
                         </div>
 
@@ -91,7 +91,7 @@
                                 <th>Fecha</th>
                                 <th>Usuario</th>
                                 <th>Descripción</th>
-
+                                <th>...</th>
                                 <th>...</th>
                                 <th>...</th>
                             </thead>
@@ -107,12 +107,18 @@
                         <td>
                             <asp:Label ID="lblIdInventario" runat="server" Text='<%# Eval("IdInventario") %>' /></td>
                         <td>
-                            <asp:Label ID="lblFechaInventario" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval( "FechaInventario") ) %>'   /></td>
+                            <asp:Label ID="lblFechaInventario" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval( "FechaInventario") ) %>' /></td>
                         <td>
                             <asp:Label ID="lblIdUser" runat="server" Text='<%# Eval("UserName") %>' /></td>
                         <td>
                             <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("Descripcion") %>' /></td>
 
+                        <td>
+                            <asp:LinkButton runat="server" ID="DetailsInventarioBtn" CommandName="Detalle" CommandArgument='<%# Eval("IdInventario")%>' ToolTip="Ver detalles">
+                            
+                                <i class="fas fa-edit"></i>
+                            </asp:LinkButton>
+                        </td>
                         <td>
                             <asp:LinkButton runat="server" ID="EditInventarioBtn" CommandName="Editar" CommandArgument='<%# Eval("IdInventario")%>' ToolTip="Editar">
                             <i class="fa fa-keyboard fa-sm"></i>
@@ -160,20 +166,20 @@
                                                 <div class="row">
                                                     <div class="col-3">ID</div>
                                                     <div class="col-9">
-                                                        <asp:TextBox ID="txtIdInventario" runat="server" Text="" CssClass="form-control mitad"  Enabled="false" />
+                                                        <asp:TextBox ID="txtIdInventario" runat="server" Text="" CssClass="form-control mitad" Enabled="false" />
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-3">Fecha</div>
                                                     <div class="col-9">
-                                                        <asp:TextBox ID="txtFechaInventario" runat="server" Text='<%# Bind("FechaInventario") %>' CssClass="form-control"  TextMode="Date" />
+                                                        <asp:TextBox ID="txtFechaInventario" runat="server" Text='<%# Bind("FechaInventario") %>' CssClass="form-control" TextMode="Date" />
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="row">
                                                     <div class="col-3">Descripción</div>
                                                     <div class="col-9">
-                                                        <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control"  />
+                                                        <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" />
                                                     </div>
                                                 </div>
 
@@ -223,20 +229,20 @@
                                                 <div class="row">
                                                     <div class="col-3">ID</div>
                                                     <div class="col-9">
-                                                        <asp:TextBox ID="txtIdInventario" runat="server" Text='<%# Bind("IdInventario") %>' CssClass="form-control mitad"  Enabled="false" />
+                                                        <asp:TextBox ID="txtIdInventario" runat="server" Text='<%# Bind("IdInventario") %>' CssClass="form-control mitad" Enabled="false" />
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-3">Fecha</div>
                                                     <div class="col-9">
-                                                        <asp:TextBox ID="txtFechaInventario" runat="server" Text='<%# Bind( "FechaInventario")  %>' CssClass="form-control"  />
+                                                        <asp:TextBox ID="txtFechaInventario" runat="server" Text='<%# Bind( "FechaInventario")  %>' CssClass="form-control" />
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="row">
                                                     <div class="col-3">Descripción</div>
                                                     <div class="col-9">
-                                                        <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control"  />
+                                                        <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" />
                                                     </div>
                                                 </div>
 
@@ -283,7 +289,7 @@
                 </DeleteParameters>
                 <InsertParameters>
                     <asp:Parameter Name="FechaInventario" Type="DateTime" />
-                    <asp:ControlParameter Name="Login" ControlID ="UserNameHF" PropertyName="Value"  Type="String"/>
+                    <asp:ControlParameter Name="Login" ControlID="UserNameHF" PropertyName="Value" Type="String" />
                     <asp:Parameter Name="Descripcion" Type="String" />
                 </InsertParameters>
                 <UpdateParameters>
@@ -294,7 +300,7 @@
                 </SelectParameters>
             </asp:SqlDataSource>
 
-            
+
 
             <!-- #endregion -->
 

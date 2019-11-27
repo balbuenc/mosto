@@ -108,6 +108,10 @@ namespace Almacenes
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
+            else if (e.CommandName == "Detalle")
+            {
+                Response.Redirect("InventarioDetalle.aspx?IdInventario=" + e.CommandArgument);
+            }
         }
 
 
@@ -133,7 +137,7 @@ namespace Almacenes
                 //Obtengo los valores de los campos a editar
                 TextBox txtIdInventario = (TextBox)EditFormView.FindControl("txtIdInventario");
                 TextBox txtFechaInventario = (TextBox)EditFormView.FindControl("txtFechaInventario");
-                
+
                 TextBox txtDescripcion = (TextBox)EditFormView.FindControl("txtDescripcion");
 
 
@@ -146,7 +150,7 @@ namespace Almacenes
 
                 cmd.Parameters.AddWithValue("@IdInventario", txtIdInventario.Text);
                 cmd.Parameters.AddWithValue("@FechaInventario", txtFechaInventario.Text);
-                
+
                 cmd.Parameters.AddWithValue("@Descripcion", txtDescripcion.Text);
 
                 // Set Output Paramater

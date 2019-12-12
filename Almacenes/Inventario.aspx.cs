@@ -139,6 +139,10 @@ namespace Almacenes
                 TextBox txtFechaInventario = (TextBox)EditFormView.FindControl("txtFechaInventario");
 
                 TextBox txtDescripcion = (TextBox)EditFormView.FindControl("txtDescripcion");
+                TextBox txtIdDeposito = (TextBox)EditFormView.FindControl("txtIdDeposito");
+                TextBox txtFechaFin = (TextBox)EditFormView.FindControl("txtFechaFin");
+                TextBox txtResolucion = (TextBox)EditFormView.FindControl("txtResolucion");
+                TextBox txtObservacion = (TextBox)EditFormView.FindControl("txtObservacion");
 
 
                 SqlConnection conn = new SqlConnection(InventarioDS.ConnectionString);
@@ -152,6 +156,10 @@ namespace Almacenes
                 cmd.Parameters.AddWithValue("@FechaInventario", txtFechaInventario.Text);
 
                 cmd.Parameters.AddWithValue("@Descripcion", txtDescripcion.Text);
+                cmd.Parameters.AddWithValue("@IdDeposito", txtIdDeposito.Text);
+                cmd.Parameters.AddWithValue("@FechaFin", txtFechaFin.Text);
+                cmd.Parameters.AddWithValue("@Resolucion", txtResolucion.Text);
+                cmd.Parameters.AddWithValue("@Observacion", txtObservacion.Text);
 
                 // Set Output Paramater
                 //SqlParameter OutputParam = new SqlParameter("@Output", SqlDbType.VarChar);

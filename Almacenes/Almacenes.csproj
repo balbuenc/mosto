@@ -2431,6 +2431,9 @@
     <Compile Include="SearchArticuloBarcode.ashx.cs">
       <DependentUpon>SearchArticuloBarcode.ashx</DependentUpon>
     </Compile>
+    <Compile Include="SearchArticuloDeposito.ashx.cs">
+      <DependentUpon>SearchArticuloDeposito.ashx</DependentUpon>
+    </Compile>
     <Compile Include="SearchContrato.ashx.cs">
       <DependentUpon>SearchContrato.ashx</DependentUpon>
     </Compile>
@@ -2523,6 +2526,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="SearchArticuloDeposito.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

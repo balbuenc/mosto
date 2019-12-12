@@ -88,9 +88,13 @@
                         <table class="table table-striped table-condensed">
                             <thead>
                                 <th>ID</th>
-                                <th>Fecha</th>
+                                <th>Fecha inicio</th>
+                                <th>Fecha fin</th>
                                 <th>Usuario</th>
+                                <th>Depósito</th>
                                 <th>Descripción</th>
+                                <th>Resolución</th>
+                                <th>Observaciones</th>
                                 <th>...</th>
                                 <th>...</th>
                                 <th>...</th>
@@ -109,9 +113,17 @@
                         <td>
                             <asp:Label ID="lblFechaInventario" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval( "FechaInventario") ) %>' /></td>
                         <td>
+                            <asp:Label ID="lblFechaFin" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval( "FechaFin") ) %>' /></td>
+                        <td>
                             <asp:Label ID="lblIdUser" runat="server" Text='<%# Eval("UserName") %>' /></td>
+                          <td>
+                            <asp:Label ID="lblDeposito" runat="server" Text='<%# Eval("Deposito") %>' /></td>
                         <td>
                             <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("Descripcion") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblResolucion" runat="server" Text='<%# Eval("Resolucion") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblObservacion" runat="server" Text='<%# Eval("Observacion") %>' /></td>
 
                         <td>
                             <asp:LinkButton runat="server" ID="DetailsInventarioBtn" CommandName="Detalle" CommandArgument='<%# Eval("IdInventario")%>' ToolTip="Ver detalles">
@@ -175,11 +187,44 @@
                                                         <asp:TextBox ID="txtFechaInventario" runat="server" Text='<%# Bind("FechaInventario") %>' CssClass="form-control" TextMode="Date" />
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-3">Fecha Fin</div>
+                                                    <div class="col-9">
+                                                        <asp:TextBox ID="txtFechaFin" runat="server" Text='<%# Bind("FechaFin") %>' CssClass="form-control" TextMode="Date" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">Depósito</div>
+                                                    <div class="col-9">
+                                                        <asp:DropDownList ID="IdDepositoDDL"
+                                                            runat="server"
+                                                            DataSourceID="DepositoDS"
+                                                            DataTextField="Deposito"
+                                                            DataValueField="IdDeposito"
+                                                            SelectedValue='<%# Bind("IdDeposito") %>'
+                                                            CssClass="form-control form-control-sm">
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
 
                                                 <div class="row">
                                                     <div class="col-3">Descripción</div>
                                                     <div class="col-9">
                                                         <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" />
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-3">Resolución</div>
+                                                    <div class="col-9">
+                                                        <asp:TextBox ID="txtResolucion" runat="server" Text='<%# Bind("Resolucion") %>' CssClass="form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">Observaciones</div>
+                                                    <div class="col-9">
+                                                        <asp:TextBox ID="txtObservacion" runat="server" Text='<%# Bind("Observacion") %>' CssClass="form-control" />
                                                     </div>
                                                 </div>
 
@@ -216,7 +261,7 @@
                         <ContentTemplate>
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <b id="editModalLabel">Modificar licitación.</b>
+                                    <b id="editModalLabel">Modificar inventario.</b>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
                                 <div class="modal-body">
@@ -238,11 +283,44 @@
                                                         <asp:TextBox ID="txtFechaInventario" runat="server" Text='<%# Bind( "FechaInventario")  %>' CssClass="form-control" />
                                                     </div>
                                                 </div>
-
+                                                <div class="row">
+                                                    <div class="col-3">Fecha Fin</div>
+                                                    <div class="col-9">
+                                                        <asp:TextBox ID="txtFechaFin" runat="server" Text='<%# Bind("FechaFin") %>' CssClass="form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">Depósito</div>
+                                                    <div class="col-9">
+                                                        <asp:DropDownList ID="IdDepositoDDL"
+                                                            runat="server"
+                                                            DataSourceID="DepositoDS"
+                                                            DataTextField="Deposito"
+                                                            DataValueField="IdDeposito"
+                                                            SelectedValue='<%# Bind("IdDeposito") %>'
+                                                            CssClass="form-control form-control-sm">
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
                                                 <div class="row">
                                                     <div class="col-3">Descripción</div>
                                                     <div class="col-9">
                                                         <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" />
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="row">
+                                                    <div class="col-3">Resolución</div>
+                                                    <div class="col-9">
+                                                        <asp:TextBox ID="txtResolucion" runat="server" Text='<%# Bind("Resolucion") %>' CssClass="form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">Observaciones</div>
+                                                    <div class="col-9">
+                                                        <asp:TextBox ID="txtObservacion" runat="server" Text='<%# Bind("Observacion") %>' CssClass="form-control" />
                                                     </div>
                                                 </div>
 
@@ -291,6 +369,10 @@
                     <asp:Parameter Name="FechaInventario" Type="DateTime" />
                     <asp:ControlParameter Name="Login" ControlID="UserNameHF" PropertyName="Value" Type="String" />
                     <asp:Parameter Name="Descripcion" Type="String" />
+                    <asp:Parameter Name="IdDeposito" Type="Int32" />
+                    <asp:Parameter Name="FechaFin" Type="DateTime" />
+                    <asp:Parameter Name="Resolucion" Type="String" />
+                    <asp:Parameter Name="Observacion" Type="String" />
                 </InsertParameters>
                 <UpdateParameters>
                 </UpdateParameters>
@@ -299,6 +381,10 @@
                     <asp:ControlParameter ControlID="searchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
                 </SelectParameters>
             </asp:SqlDataSource>
+
+
+            <asp:SqlDataSource ID="DepositoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                SelectCommand="select IdDeposito, Deposito + ' ('+isnull(Ubicacion,'Sin ubicación')+')' as Deposito from warehouse.Deposito where Activo = 'S' order by Deposito" SelectCommandType="Text"></asp:SqlDataSource>
 
 
 

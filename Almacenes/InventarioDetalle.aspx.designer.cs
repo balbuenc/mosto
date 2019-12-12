@@ -13,22 +13,22 @@ namespace Almacenes {
     public partial class InventarioDetalleDetalle {
         
         /// <summary>
-        /// ArticuloDDL control.
+        /// txtSearchArticulo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ArticuloDDL;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSearchArticulo;
         
         /// <summary>
-        /// DepositoDDL control.
+        /// btnClearArticulo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DepositoDDL;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnClearArticulo;
         
         /// <summary>
         /// txtExistencia control.
@@ -92,15 +92,6 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource InventarioDetalleDS;
-        
-        /// <summary>
-        /// DepositoDS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DepositoDS;
         
         /// <summary>
         /// ArticuloDS control.

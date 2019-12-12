@@ -97,11 +97,11 @@ namespace Almacenes
             {
                 cmd = new SqlCommand("inventory.sp_InventarioDetalle_insert", con);
                 cmd.Parameters.Add(new SqlParameter("@IdInventario", Request.QueryString["IdInventario"]));
-                cmd.Parameters.Add(new SqlParameter("@IdDeposito", DepositoDDL.SelectedValue));
+               
                
                 cmd.Parameters.Add(new SqlParameter("@Existencia", txtExistencia.Text));
                 cmd.Parameters.Add(new SqlParameter("@Comentario", txtDetalle.Text));
-                cmd.Parameters.Add(new SqlParameter("@IdArticuloMaestro", ArticuloDDL.SelectedValue));
+                cmd.Parameters.Add(new SqlParameter("@IdArticuloMaestro", txtSearchArticulo.Value.ToString()));
 
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -117,6 +117,12 @@ namespace Almacenes
                 ErrorLabel.Text = ex.Message;
                 ErrorLabel.Visible = true;
             }
+        }
+
+        protected void btnClearArticulo_ServerClick(object sender, EventArgs e)
+        {
+            txtSearchArticulo.Value = "";
+         
         }
 
 

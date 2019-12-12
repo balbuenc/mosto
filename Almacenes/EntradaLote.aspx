@@ -380,7 +380,7 @@
             SelectCommand="select IdDependencia, Dependencia + ' (' + Descripcion + ')' as Dependencia from warehouse.Dependencia where Activo = 'S' order by 1" SelectCommandType="Text"></asp:SqlDataSource>
 
         <asp:SqlDataSource ID="DepositoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-            SelectCommand="select IdDeposito, Deposito + ' ('+isnull(Ubicacion,'Sin ùbicación')+')' as Deposito from warehouse.Deposito where Activo = 'S' order by Deposito" SelectCommandType="Text"></asp:SqlDataSource>
+            SelectCommand="select IdDeposito, Deposito + ' ('+isnull(Ubicacion,'Sin ubicación')+')' as Deposito from warehouse.Deposito where Activo = 'S' order by Deposito" SelectCommandType="Text"></asp:SqlDataSource>
 
         <asp:SqlDataSource ID="ArticuloContratoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
             SelectCommand="warehouse.sp_GetArticuloContrato_By_NroContrato_DDL" SelectCommandType="StoredProcedure">

@@ -1,6 +1,45 @@
 ﻿<%@ Page Title="Detalles de inventario" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="InventarioDetalleDetalle.aspx.cs" Inherits="Almacenes.InventarioDetalleDetalle" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <link href="css/jquery-ui.css" rel="stylesheet" />
+    <link href="css/Enigma.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.0.0.js"></script>
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("[id$=txtSearchArticulo]").autocomplete(
+                {
+                    source: "SearchArticuloDeposito.ashx?IdInventario='<%=Request.QueryString["IdInventario"] %>'" ,
+                    // note minlength, triggers the Handler call only once 3 characters entered
+                    //source: 
+
+                    minLength: 3,
+                    focus: function (event, ui) {
+                        $("[id$=txtSearchArticulo]").val(ui.item.label);
+                        return false;
+                    },
+                    select: function (event, ui) {
+                        if (ui.item) {
+                            $("[id$=txtSearchArticulo]").val(ui.item.Client);
+                            console.log($("[id$=btnSearch]"));
+                            $("[id$=btnSearch]").click();
+                            return false;
+                        }
+
+                    }
+                })
+                .autocomplete("instance")._renderItem = function (ul, item) {
+                    //console.log(item.Client);
+                    return $("<li>")
+                        .append("<div class='style=background:black'>" + item.Client + "</div>")
+                        .appendTo(ul);
+                };
+        });
+
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="fondo">
@@ -12,10 +51,8 @@
                         <div class="col-5 font-weight-bold">
                             Artículo
                         </div>
+                       
                         <div class="col-2 font-weight-bold">
-                            Depósito
-                        </div>
-                        <div class="col-1 font-weight-bold">
                             Existencia
                         </div>
                         <div class="col-4 font-weight-bold">
@@ -24,28 +61,34 @@
                         <div class="col-1"></div>
 
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-5">
-                            <asp:DropDownList ID="ArticuloDDL" runat="server" CssClass="form-control" DataSourceID="ArticuloDS" DataValueField="IdArticuloMaestro" DataTextField="Articulo">
-                            </asp:DropDownList>
+                            <%--<asp:DropDownList ID="ArticuloDDL" runat="server" CssClass="form-control" DataSourceID="ArticuloDS" DataValueField="IdArticuloMaestro" DataTextField="Articulo">
+                            </asp:DropDownList>--%>
+                            <div class="input-group mb-4">
+                            <input id="txtSearchArticulo" runat="server" placeholder="Articulo" class="form-control form-control-sm">
+                            <div class="input-group-append">
+
+                                <button class="btn btn-outline-secondary btn-sm" type="button" runat="server" id="btnClearArticulo" onserverclick="btnClearArticulo_ServerClick" title="Limpiar artículo">
+                                    <i class="fas fa-broom fa-sm"></i>
+                                </button>
+                            </div>
                         </div>
+                        </div>
+
                         <div class="col-2">
-                            <asp:DropDownList ID="DepositoDDL" runat="server" CssClass="form-control" DataSourceID="DepositoDS" DataValueField="IdDeposito" DataTextField="Deposito">
-                            </asp:DropDownList>
-                        </div>
-                        <div class="col-1">
                             <asp:TextBox ID="txtExistencia" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="col-4">
                             <asp:TextBox ID="txtDetalle" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
-                        
+
 
                         <div class="col-1">
                             <div class="btn-group btn-shadow">
 
-                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" ToolTip="Agregar inventario" OnClick="AddRegistroBtn_OnClick" >
+                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" ToolTip="Agregar inventario" OnClick="AddRegistroBtn_OnClick">
                                 <div class="form-row">
                                 <asp:Label  Text="Agregar" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
                                 <i class="fas fa-plus fa-sm"  style="padding:5px"></i>
@@ -86,11 +129,11 @@
                                 <th>ID</th>
                                 <th>Artículo</th>
                                 <th>Depósito</th>
-                              
+
                                 <th>Existencia</th>
                                 <th>Comentario</th>
 
-                              
+
                                 <th>...</th>
                             </thead>
                             <tbody>
@@ -104,18 +147,17 @@
                     <tr>
                         <td>
                             <asp:Label ID="lblIdInventarioDetalle" runat="server" Text='<%# Eval("IdInventarioDetalle") %>' /></td>
-                         <td>
-                            <asp:Label ID="lblArticulo" runat="server" Text='<%# Eval("Articulo") %>' /></td>
-                       
                         <td>
-                            <asp:Label ID="lblIdDeposito" runat="server" Text='<%# Eval("Deposito") %>' /></td>
-                       
+                            <asp:Label ID="lblArticulo" runat="server" Text='<%# Eval("Articulo") %>' /></td>
+
+
+
                         <td>
                             <asp:Label ID="lblExistencia" runat="server" Text='<%# Eval("Existencia") %>' /></td>
                         <td>
                             <asp:Label ID="lblComentario" runat="server" Text='<%# Eval("Comentario") %>' /></td>
 
-                       
+
 
                         <td>
 
@@ -139,11 +181,10 @@
             <!-- #region DataSources -->
             <asp:SqlDataSource ID="InventarioDetalleDS"
                 runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-               
                 SelectCommand="inventory.sp_InventarioDetalle_get_all" SelectCommandType="StoredProcedure">
                 <DeleteParameters>
                 </DeleteParameters>
-               
+
                 <UpdateParameters>
                 </UpdateParameters>
 
@@ -152,14 +193,12 @@
                 </SelectParameters>
             </asp:SqlDataSource>
 
-            <asp:SqlDataSource ID="DepositoDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                SelectCommand="select IdDeposito, Deposito + ' (' + Ubicacion + ')' as Deposito from warehouse.Deposito order by Deposito" SelectCommandType="Text"></asp:SqlDataSource>
 
-             <asp:SqlDataSource ID="ArticuloDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+            <asp:SqlDataSource ID="ArticuloDS" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
                 SelectCommand="select IdArticuloMaestro, Articulo from warehouse.ArticuloMaestro order by ltrim(rtrim(Articulo))" SelectCommandType="Text"></asp:SqlDataSource>
 
 
-           
+
 
             <!-- #endregion -->
 

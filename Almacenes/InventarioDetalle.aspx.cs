@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,14 +12,59 @@ namespace Almacenes
 {
     public partial class InventarioDetalleDetalle : System.Web.UI.Page
     {
+        protected String txtEstado = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
             ((Label)this.Master.FindControl("lblActualPage")).Text = "DETALLE DE INVENTARIO";
-
+            ObtenerDatosInventario(Request.QueryString["IdInventario"]);
+            if (txtEstado == "Abierto")
+            {
+                CommandsBtn.Visible = true;
+            }
+            else
+            {
+                CommandsBtn.Visible = false;
+            }
         }
 
+        private void ObtenerDatosInventario(string IdInventario)
+        {
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                SqlConnection conn = new SqlConnection(InventarioDetalleDS.ConnectionString);
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = "[inventory].[sp_Inventario_get_Inventario]";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.AddWithValue("@IdInventario", IdInventario);
+
+
+                conn.Open();
+
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        txtEstado = dr["Estado"].ToString();
+                    }
+                }
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Text = ex.Message;
+                ErrorLabel.Visible = true;
+                FadeOut(ErrorLabel.ClientID, 5000);
+            }
+        }
 
 
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
@@ -88,20 +134,23 @@ namespace Almacenes
             txtDetalle.Text = "";
         }
 
-        protected void AgregarInventario()
+        protected void CloseInventarioBtn_OnClick(Object sender, EventArgs e)
+        {
+            CerrarInventario();
+            Response.Redirect("Inventario.aspx");
+        }
+
+        private void CerrarInventario()
         {
             SqlCommand cmd = new SqlCommand();
             SqlConnection con = new SqlConnection(InventarioDetalleDS.ConnectionString);
 
+
             try
             {
-                cmd = new SqlCommand("inventory.sp_InventarioDetalle_insert", con);
+                cmd = new SqlCommand("inventory.sp_Inventario_close", con);
                 cmd.Parameters.Add(new SqlParameter("@IdInventario", Request.QueryString["IdInventario"]));
-               
-               
-                cmd.Parameters.Add(new SqlParameter("@Existencia", txtExistencia.Text));
-                cmd.Parameters.Add(new SqlParameter("@Comentario", txtDetalle.Text));
-                cmd.Parameters.Add(new SqlParameter("@IdArticuloMaestro", txtSearchArticulo.Value.ToString()));
+
 
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -111,6 +160,62 @@ namespace Almacenes
 
 
                 con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Text = ex.Message;
+                ErrorLabel.Visible = true;
+            }
+        }
+
+        private void ShowPopUpMsg(string msg)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("alert('");
+            sb.Append(msg.Replace("\n", "\\n").Replace("\r", "").Replace("'", "\\'"));
+            sb.Append("');");
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "showalert", sb.ToString(), true);
+        }
+
+        protected void AgregarInventario()
+        {
+            SqlCommand cmd = new SqlCommand();
+            SqlConnection con = new SqlConnection(InventarioDetalleDS.ConnectionString);
+            Int32 cant;
+
+            try
+            {
+                cant = Convert.ToInt32(txtExistencia.Text.ToString());
+            }
+            catch
+            {
+                ShowPopUpMsg("La cantidad existente debe ser un número válido");
+                return;
+            }
+
+            try
+            {
+                cmd = new SqlCommand("inventory.sp_InventarioDetalle_insert", con);
+                cmd.Parameters.Add(new SqlParameter("@IdInventario", Request.QueryString["IdInventario"]));
+
+
+                cmd.Parameters.Add(new SqlParameter("@Existencia", txtExistencia.Text));
+                cmd.Parameters.Add(new SqlParameter("@Comentario", txtDetalle.Text));
+                cmd.Parameters.Add(new SqlParameter("@Articulo", txtSearchArticulo.Value.ToString()));
+
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+
+
+
+                con.Close();
+
+                txtSearchArticulo.Value = "";
+                txtExistencia.Text = "";
+                txtDetalle.Text = "";
             }
             catch (Exception ex)
             {
@@ -122,7 +227,23 @@ namespace Almacenes
         protected void btnClearArticulo_ServerClick(object sender, EventArgs e)
         {
             txtSearchArticulo.Value = "";
-         
+
+        }
+
+        protected void InventarioDetalleListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+
+            LinkButton DeleteInventarioDetalleBtn = (LinkButton)e.Item.FindControl("DeleteInventarioDetalleBtn");
+
+
+            if (txtEstado == "Abierto")
+            {
+                DeleteInventarioDetalleBtn.Visible = true;
+            }
+            else
+            {
+                DeleteInventarioDetalleBtn.Visible = false;
+            }
         }
 
 

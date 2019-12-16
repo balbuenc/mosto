@@ -2514,6 +2514,7 @@
     <Content Include="SearchArticulo.ashx" />
     <Content Include="SearchContrato.ashx" />
     <Content Include="SearchArticuloBarcode.ashx" />
+    <Content Include="SearchArticuloDeposito.ashx" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.0.0.min.map" />
     <Content Include="Site.Mobile.Master" />
@@ -2526,7 +2527,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="SearchArticuloDeposito.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

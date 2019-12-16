@@ -139,7 +139,7 @@ namespace Almacenes
                 TextBox txtFechaInventario = (TextBox)EditFormView.FindControl("txtFechaInventario");
 
                 TextBox txtDescripcion = (TextBox)EditFormView.FindControl("txtDescripcion");
-                TextBox txtIdDeposito = (TextBox)EditFormView.FindControl("txtIdDeposito");
+                DropDownList IdDepositoDDL = (DropDownList)EditFormView.FindControl("IdDepositoDDL");
                 TextBox txtFechaFin = (TextBox)EditFormView.FindControl("txtFechaFin");
                 TextBox txtResolucion = (TextBox)EditFormView.FindControl("txtResolucion");
                 TextBox txtObservacion = (TextBox)EditFormView.FindControl("txtObservacion");
@@ -156,7 +156,7 @@ namespace Almacenes
                 cmd.Parameters.AddWithValue("@FechaInventario", txtFechaInventario.Text);
 
                 cmd.Parameters.AddWithValue("@Descripcion", txtDescripcion.Text);
-                cmd.Parameters.AddWithValue("@IdDeposito", txtIdDeposito.Text);
+                cmd.Parameters.AddWithValue("@IdDeposito", IdDepositoDDL.SelectedValue.ToString());
                 cmd.Parameters.AddWithValue("@FechaFin", txtFechaFin.Text);
                 cmd.Parameters.AddWithValue("@Resolucion", txtResolucion.Text);
                 cmd.Parameters.AddWithValue("@Observacion", txtObservacion.Text);
@@ -187,6 +187,26 @@ namespace Almacenes
         protected void EditFormView_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
         {
             EditFormView.ChangeMode(FormViewMode.ReadOnly);
+        }
+
+        protected void InventarioListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            Label lblEstado = (Label)e.Item.FindControl("lblEstado");
+            LinkButton DeleteInventarioBtn = (LinkButton)e.Item.FindControl("DeleteInventarioBtn");
+            LinkButton EditInventarioBtn = (LinkButton)e.Item.FindControl("EditInventarioBtn");
+
+            if (lblEstado.Text == "Abierto")
+            {
+                DeleteInventarioBtn.Visible = true;
+                EditInventarioBtn.Visible = true;
+                lblEstado.Attributes["class"] = "badge badge-success";
+            }
+            else
+            {
+                DeleteInventarioBtn.Visible = false;
+                EditInventarioBtn.Visible = false;
+                lblEstado.Attributes["class"] = "badge badge-danger";
+            }
         }
     }
 }

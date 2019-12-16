@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Almacenes {
-    
-    
-    public partial class InventarioDetalleDetalle {
-        
+namespace Almacenes
+{
+
+
+    public partial class InventarioDetalleDetalle
+    {
+
         /// <summary>
         /// txtSearchArticulo control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtSearchArticulo;
-        
+
         /// <summary>
         /// btnClearArticulo control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnClearArticulo;
-        
+
         /// <summary>
         /// txtExistencia control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtExistencia;
-        
+
         /// <summary>
         /// txtDetalle control.
         /// </summary>
@@ -47,7 +49,16 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDetalle;
-        
+
+        /// <summary>
+        /// CommandsBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CommandsBtn;
+
         /// <summary>
         /// AddRegistroBtn control.
         /// </summary>
@@ -56,7 +67,16 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton AddRegistroBtn;
-        
+
+        /// <summary>
+        /// CloseInventarioBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton CloseInventarioBtn;
+
         /// <summary>
         /// ErrorLabel control.
         /// </summary>
@@ -65,7 +85,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
-        
+
         /// <summary>
         /// InventarioDetalleDataPager control.
         /// </summary>
@@ -74,7 +94,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataPager InventarioDetalleDataPager;
-        
+
         /// <summary>
         /// InventarioDetalleListView control.
         /// </summary>
@@ -83,7 +103,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView InventarioDetalleListView;
-        
+
         /// <summary>
         /// InventarioDetalleDS control.
         /// </summary>
@@ -92,14 +112,5 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource InventarioDetalleDS;
-        
-        /// <summary>
-        /// ArticuloDS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ArticuloDS;
     }
 }

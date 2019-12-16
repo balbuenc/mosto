@@ -82,7 +82,8 @@
                 runat="server"
                 DataSourceID="InventarioDS"
                 DataKeyNames="IdInventario"
-                OnItemCommand="InventarioListView_ItemCommand">
+                OnItemCommand="InventarioListView_ItemCommand"
+                OnItemDataBound="InventarioListView_ItemDataBound">
                 <LayoutTemplate>
                     <div class="table table-responsive">
                         <table class="table table-striped table-condensed">
@@ -94,6 +95,7 @@
                                 <th>Depósito</th>
                                 <th>Descripción</th>
                                 <th>Resolución</th>
+                                <th>Estado</th>
                                 <th>Observaciones</th>
                                 <th>...</th>
                                 <th>...</th>
@@ -116,12 +118,14 @@
                             <asp:Label ID="lblFechaFin" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval( "FechaFin") ) %>' /></td>
                         <td>
                             <asp:Label ID="lblIdUser" runat="server" Text='<%# Eval("UserName") %>' /></td>
-                          <td>
+                        <td>
                             <asp:Label ID="lblDeposito" runat="server" Text='<%# Eval("Deposito") %>' /></td>
                         <td>
                             <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("Descripcion") %>' /></td>
                         <td>
                             <asp:Label ID="lblResolucion" runat="server" Text='<%# Eval("Resolucion") %>' /></td>
+                        <td>
+                            <asp:Label ID="lblEstado" runat="server" Text='<%# Eval("Estado") %>' /></td>
                         <td>
                             <asp:Label ID="lblObservacion" runat="server" Text='<%# Eval("Observacion") %>' /></td>
 

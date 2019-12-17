@@ -48,6 +48,25 @@
 
                 <asp:Panel runat="server" DefaultButton="AddRegistroBtn">
                     <div class="row">
+                        <div class="col-md-1">
+                             <span class="label label-default">ID</span>
+                            <asp:TextBox ID="txtIdInventario" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+                        </div>
+                        <div class="col-md-4">
+                             <span class="label label-default">Depósito Inventariado</span>
+                            <asp:TextBox ID="txtDeposito" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+                        </div>
+                        <div class="col-md-2">
+                             <span class="label label-default">Fecha</span>
+                            <asp:TextBox ID="txtFechaInventario" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+                        </div>
+                        <div class="col-md-5">
+                             <span class="label label-default">Descripción</span>
+                            <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
                         <div class="col-md-4">
                             <span class="label label-default">Artículo</span>
                             <div class="input-group mb-4">
@@ -75,7 +94,7 @@
                                     <i class="fas fa-plus fa-sm"  style="padding:5px"></i>
                                     </div>
                                 </asp:LinkButton>
-                                <asp:LinkButton CssClass="btn btn-danger btn-border" runat="server" ID="CloseInventarioBtn" ToolTip="Cerrar Inventario" OnClick="CloseInventarioBtn_OnClick">
+                                <asp:LinkButton CssClass="btn btn-danger btn-border" runat="server" ID="CloseInventarioBtn" ToolTip="Cerrar Inventario" OnClick="CloseInventarioBtn_OnClick" OnClientClick="return confirm('Desea cerrar el inventario?');">
                                     <div class="form-row">
                                     <asp:Label  Text="Cerrar" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
                                          <i class="fas fa-window-close" style="padding:5px"></i>
@@ -87,7 +106,7 @@
                 </asp:Panel>
             </div>
             <div class="row">
-                <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
+                <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control btn-warning" />
             </div>
         </div>
 

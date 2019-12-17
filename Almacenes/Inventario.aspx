@@ -172,13 +172,17 @@
                                     <asp:FormView ID="InsertFormView" runat="server" DataSourceID="InventarioDS" Width="100%"
                                         CellPadding="4" DataKeyNames="IdInventario" ForeColor="#333333"
                                         DefaultMode="Insert"
-                                        OnItemInserted="FormView1_ItemInserted">
+                                        OnItemInserted="FormView1_ItemInserted"
+                                        OnItemInserting="InsertFormView_ItemInserting">
                                         <EditItemTemplate>
                                         </EditItemTemplate>
                                         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                                         <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                                         <InsertItemTemplate>
                                             <div class="container-fluid">
+                                                <div class="row">
+                                                    <asp:Label ID="lblResult" runat="server" Visible="False" CssClass="form-control  btn-warning" />
+                                                </div>
                                                 <div class="row">
                                                     <div class="col-3">ID</div>
                                                     <div class="col-9">
@@ -275,6 +279,9 @@
                                         OnModeChanging="EditFormView_ModeChanging" OnItemUpdating="EditFormView_ItemUpdating" OnItemUpdated="EditFormView_ItemUpdated">
                                         <EditItemTemplate>
                                             <div class="container-fluid">
+                                                <div class="row">
+                                                    <asp:Label ID="lblResult" runat="server" Visible="False" CssClass="form-control  btn-warning" />
+                                                </div>
                                                 <div class="row">
                                                     <div class="col-3">ID</div>
                                                     <div class="col-9">

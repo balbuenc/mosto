@@ -26,6 +26,9 @@ namespace Almacenes
             {
                 CommandsBtn.Visible = false;
             }
+
+            ErrorLabel.Text = "";
+            ErrorLabel.Visible = false;
         }
 
         private void ObtenerDatosInventario(string IdInventario)
@@ -52,7 +55,12 @@ namespace Almacenes
                 {
                     while (dr.Read())
                     {
+                        txtIdInventario.Text = dr["IdInventario"].ToString();
+                        txtDeposito.Text = dr["Deposito"].ToString();
+                        txtFechaInventario.Text = dr["FechaInventario"].ToString();
+                        txtDescripcion.Text = dr["Descripcion"].ToString();
                         txtEstado = dr["Estado"].ToString();
+
                     }
                 }
 
@@ -136,11 +144,11 @@ namespace Almacenes
 
         protected void CloseInventarioBtn_OnClick(Object sender, EventArgs e)
         {
-            CerrarInventario();
-            Response.Redirect("Inventario.aspx");
+            if (CerrarInventario())
+                Response.Redirect("Inventario.aspx");
         }
 
-        private void CerrarInventario()
+        private bool CerrarInventario()
         {
             SqlCommand cmd = new SqlCommand();
             SqlConnection con = new SqlConnection(InventarioDetalleDS.ConnectionString);
@@ -160,12 +168,17 @@ namespace Almacenes
 
 
                 con.Close();
+                return true;
 
             }
             catch (Exception ex)
             {
                 ErrorLabel.Text = ex.Message;
                 ErrorLabel.Visible = true;
+
+                FadeOut(ErrorLabel.ClientID, 5000);
+
+                return false;
             }
         }
 

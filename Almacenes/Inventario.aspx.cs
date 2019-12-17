@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -131,9 +132,14 @@ namespace Almacenes
         {
             SqlCommand cmd = new SqlCommand();
             DataKey key = EditFormView.DataKey;
+            Label lblResult = (Label)EditFormView.FindControl("lblResult");
 
             try
             {
+
+                DateTime inicio;
+                DateTime fin;
+
                 //Obtengo los valores de los campos a editar
                 TextBox txtIdInventario = (TextBox)EditFormView.FindControl("txtIdInventario");
                 TextBox txtFechaInventario = (TextBox)EditFormView.FindControl("txtFechaInventario");
@@ -144,42 +150,53 @@ namespace Almacenes
                 TextBox txtResolucion = (TextBox)EditFormView.FindControl("txtResolucion");
                 TextBox txtObservacion = (TextBox)EditFormView.FindControl("txtObservacion");
 
-
-                SqlConnection conn = new SqlConnection(InventarioDS.ConnectionString);
-
-                cmd.Connection = conn;
-
-                cmd.CommandText = "inventory.sp_Inventario_update";
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@IdInventario", txtIdInventario.Text);
-                cmd.Parameters.AddWithValue("@FechaInventario", txtFechaInventario.Text);
-
-                cmd.Parameters.AddWithValue("@Descripcion", txtDescripcion.Text);
-                cmd.Parameters.AddWithValue("@IdDeposito", IdDepositoDDL.SelectedValue.ToString());
-                cmd.Parameters.AddWithValue("@FechaFin", txtFechaFin.Text);
-                cmd.Parameters.AddWithValue("@Resolucion", txtResolucion.Text);
-                cmd.Parameters.AddWithValue("@Observacion", txtObservacion.Text);
-
-                // Set Output Paramater
-                //SqlParameter OutputParam = new SqlParameter("@Output", SqlDbType.VarChar);
-                //OutputParam.Direction = ParameterDirection.Output;
-                //OutputParam.Size = 512;
-                //cmd.Parameters.Add(OutputParam);
+                DateTime.TryParse(txtFechaInventario.Text, out inicio);
+                DateTime.TryParse(txtFechaFin.Text, out fin);
 
 
-                conn.Open();
-                cmd.ExecuteNonQuery();
+                
+                if (fin < inicio)
+                {
 
-                conn.Close();
+                    lblResult.Text = "La fecha de inicio no puede ser posterior a la fecha de finalización del inventario.";
+                    lblResult.Visible = true;
 
-                Response.Redirect("Inventario.aspx");
+                    e.Cancel = true;
+                }
+                else
+                {
+
+                    SqlConnection conn = new SqlConnection(InventarioDS.ConnectionString);
+
+                    cmd.Connection = conn;
+
+                    cmd.CommandText = "inventory.sp_Inventario_update";
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@IdInventario", txtIdInventario.Text);
+                    cmd.Parameters.AddWithValue("@FechaInventario", txtFechaInventario.Text);
+
+                    cmd.Parameters.AddWithValue("@Descripcion", txtDescripcion.Text);
+                    cmd.Parameters.AddWithValue("@IdDeposito", IdDepositoDDL.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@FechaFin", txtFechaFin.Text);
+                    cmd.Parameters.AddWithValue("@Resolucion", txtResolucion.Text);
+                    cmd.Parameters.AddWithValue("@Observacion", txtObservacion.Text);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close();
+
+                    Response.Redirect("Inventario.aspx");
+                }
             }
             catch (Exception ex)
             {
-                ErrorLabel.Text = ex.Message;
-                ErrorLabel.Visible = true;
-                FadeOut(ErrorLabel.ClientID, 5000);
+                lblResult.Text = ex.Message;
+                lblResult.Visible = true;
+
+                e.Cancel = true;
+                
             }
         }
 
@@ -206,6 +223,38 @@ namespace Almacenes
                 DeleteInventarioBtn.Visible = false;
                 EditInventarioBtn.Visible = false;
                 lblEstado.Attributes["class"] = "badge badge-danger";
+            }
+        }
+
+
+        private void ShowPopUpMsg(string msg)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("alert('");
+            sb.Append(msg.Replace("\n", "\\n").Replace("\r", "").Replace("'", "\\'"));
+            sb.Append("');");
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "showalert", sb.ToString(), true);
+        }
+
+        protected void InsertFormView_ItemInserting(object sender, FormViewInsertEventArgs e)
+        {
+            DateTime inicio;
+            DateTime fin;
+
+            TextBox txtFechaInventario = (TextBox)InsertFormView.FindControl("txtFechaInventario");
+            TextBox txtFechaFin = (TextBox)InsertFormView.FindControl("txtFechaFin");
+            Label lblResult = (Label)InsertFormView.FindControl("lblResult");
+
+            DateTime.TryParse(txtFechaInventario.Text, out inicio);
+            DateTime.TryParse(txtFechaFin.Text, out fin);
+
+            if (fin < inicio)
+            {
+
+                lblResult.Text = "La fecha de inicio no puede ser posterior a la fecha de finalización del inventario.";
+                lblResult.Visible = true;
+
+                e.Cancel = true;
             }
         }
     }

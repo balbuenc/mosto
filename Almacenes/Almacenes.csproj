@@ -255,6 +255,8 @@
     <Content Include="Default.aspx" />
     <Content Include="Dependencia.aspx" />
     <Content Include="Deposito.aspx" />
+    <Content Include="Diario.aspx" />
+    <Content Include="DiarioDetalle.aspx" />
     <Content Include="EntradaLote.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -2258,6 +2260,20 @@
     </Compile>
     <Compile Include="Deposito.aspx.designer.cs">
       <DependentUpon>Deposito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Diario.aspx.cs">
+      <DependentUpon>Diario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Diario.aspx.designer.cs">
+      <DependentUpon>Diario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DiarioDetalle.aspx.cs">
+      <DependentUpon>DiarioDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DiarioDetalle.aspx.designer.cs">
+      <DependentUpon>DiarioDetalle.aspx</DependentUpon>
     </Compile>
     <Compile Include="EntradaLote.aspx.cs">
       <DependentUpon>EntradaLote.aspx</DependentUpon>

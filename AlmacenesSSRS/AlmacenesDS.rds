@@ -2,7 +2,7 @@
 <RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="AlmacenesDS">
   <ConnectionProperties>
     <Extension>SQL</Extension>
-    <ConnectString>Data Source=iasdbus01,1500;Initial Catalog=Almacenes</ConnectString>
+    <ConnectString>Data Source=localhost;Initial Catalog=Almacenes</ConnectString>
   </ConnectionProperties>
   <DataSourceID>31f660aa-c344-4177-bc87-c7a048a24cca</DataSourceID>
 </RptDataSource>

@@ -172,6 +172,8 @@
                                 <a class="dropdown-item" href="/TipoCuenta.aspx?Tipo=Salida">Tipo de cuentas</a>
                                 <div class="dropdown-divider"></div>
                               <a class="dropdown-item" href="/ArticuloCuenta.aspx?Tipo=Salida">Asignación de cuentas</a>
+                                <a class="dropdown-item" href="/ArticuloCuenta.aspx?Tipo=Salida">Asignación de cuentas</a>
+                                <a class="dropdown-item" href="/Diario.aspx">Libro diario</a>
 
                             </div>
                         </li>

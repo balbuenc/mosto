@@ -14,13 +14,6 @@ namespace Almacenes
             ((Label)this.Master.FindControl("lblActualPage")).Text = "DETALLE ASIENTO";
         }
 
-
-        protected void ListView_ItemCommand(object sender, ListViewCommandEventArgs e)
-        {
-
-        }
-
-
         protected void FadeOut(string ClientID, int Time)
         {
             ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "script", "window.setTimeout(function() { document.getElementById('" + ClientID + "').style.display = 'none' }," + Time.ToString() + ");", true);
@@ -42,6 +35,12 @@ namespace Almacenes
                 if (lblFecha != null)
                     txtFecha.Text = lblFecha.Text;
             }
+        }
+
+        protected void PlanCuentaListView_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            TextBox txtNroCuenta = (TextBox)DiarioListView.EditItem.FindControl("txtNroCuenta");
+            txtNroCuenta.Text = e.CommandArgument.ToString();
         }
     }
 }

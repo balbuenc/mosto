@@ -18,6 +18,12 @@ namespace Almacenes
             {
                 DiarioDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
             }
+
+            if (!IsPostBack)
+            {
+                txtFechaInicio.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                txtFechaFin.Text = DateTime.Today.ToString("dd/MM/yyyy");
+            }
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)
@@ -31,7 +37,7 @@ namespace Almacenes
             {
                 Response.Redirect("DiarioDetalle.aspx?IdDiario=" + e.CommandArgument.ToString());
             }
-           
+
         }
 
 
@@ -40,6 +46,6 @@ namespace Almacenes
             ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "script", "window.setTimeout(function() { document.getElementById('" + ClientID + "').style.display = 'none' }," + Time.ToString() + ");", true);
         }
 
-        
+
     }
 }

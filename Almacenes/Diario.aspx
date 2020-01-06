@@ -30,10 +30,10 @@
                                 <asp:ListItem Text="Lote" Value="LOTE"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
-                        <div class="col-2">
+                        <div class="col-2" style="font-size:small">
                             <asp:TextBox ID="txtFechaInicio" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                         </div>
-                        <div class="col-2">
+                        <div class="col-2" style="font-size:small">
                             <asp:TextBox ID="txtFechaFin" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="col-2">

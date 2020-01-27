@@ -170,7 +170,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-3">Código</div>
+                                                    <div class="col-3">Código artículo</div>
                                                     <div class="col-9">
                                                         <asp:TextBox ID="txtCodigo" runat="server" Text='<%# Bind("Codigo") %>' CssClass="form-control" />
                                                     </div>
@@ -251,7 +251,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-3">Código</div>
+                                                    <div class="col-3">Código artículo</div>
                                                     <div class="col-9">
                                                         <asp:TextBox ID="txtCodigo" runat="server" Text='<%# Bind("Codigo") %>' CssClass="form-control" />
                                                     </div>

@@ -326,7 +326,7 @@
                             from management.Contrato c
                             left outer join management.Licitacion l on c.IdLicitacion = l.IdLicitacion
                             left outer join management.Proveedor p on c.IdProveedor = p.IdProveedor 
-                            where c.Estado = 'Activo'
+                            
                             order by 2"
                 SelectCommandType="Text"></asp:SqlDataSource>
 

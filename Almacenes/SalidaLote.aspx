@@ -99,14 +99,14 @@
                             <div class="col-5">
                                 <div class="col-form-label">Artículo</div>
                             </div>
-                            <div class="col">
+                            <div class="col-1">
                                 <div class="col-form-label">Precio</div>
                             </div>
-                            <div class="col">
+                            <div class="col-1">
                                 <div class="col-form-label">Impuesto</div>
                             </div>
 
-                            <div class="col">
+                            <div class="col-1">
                                 <div class="col-form-label">Existente</div>
                             </div>
                         </div>
@@ -123,14 +123,14 @@
                                     AutoPostBack="true">
                                 </asp:DropDownList>
                             </div>
-                            <div class="col">
+                            <div class="col-1">
                                 <asp:TextBox CssClass="form-control form-control-sm" ID="txtPrecio" runat="server" Enabled="false" />
                             </div>
-                            <div class="col">
+                            <div class="col-1">
                                 <asp:TextBox CssClass="form-control form-control-sm" ID="txtImpuesto" runat="server" Enabled="false" />
                             </div>
 
-                            <div class="col">
+                            <div class="col-1">
                                 <asp:TextBox CssClass="form-control form-control-sm" ID="txtExistente" runat="server" Enabled="false" />
                             </div>
                         </div>

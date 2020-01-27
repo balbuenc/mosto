@@ -249,6 +249,40 @@ namespace Almacenes
             txtArticuloCantidad.Value = "";
             txtArticuloPrecio.Value = "";
         }
+
+        protected void CerrarDetalleBtn_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                SqlConnection conn = new SqlConnection(ArticuloContratoDS.ConnectionString);
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = "management.sp_CerrarContrato";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add(new SqlParameter("@IdContrato", Request.QueryString["IdContrato"]));
+
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+
+                Response.Redirect("Contrato.aspx");
+
+
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Text = ex.Message;
+                ErrorLabel.Visible = true;
+                FadeOut(ErrorLabel.ClientID, 5000);
+            }
+        }
     }
 
 }

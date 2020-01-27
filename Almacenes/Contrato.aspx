@@ -183,7 +183,6 @@
                                 CssClass="form-control form-control-sm"
                                 SelectedValue='<%# Bind("Estado") %>'>
                                 <asp:ListItem Value="Activo" Text="Activo"></asp:ListItem>
-                                <asp:ListItem Value="Cancelado" Text="Cancelado"></asp:ListItem>
                                 <asp:ListItem Value="Finalizado" Text="Finalizado"></asp:ListItem>
                             </asp:DropDownList>
                         </td>

@@ -12,7 +12,7 @@
         $(function () {
             $("[id$=txtSearchArticulo]").autocomplete(
                 {
-                    source: "SearchArticulo.ashx?IdContrato='<%=Request.QueryString["IdContrato"] %>'" ,
+                    source: "SearchArticulo.ashx?IdContrato='<%=Request.QueryString["IdContrato"] %>'",
                     // note minlength, triggers the Handler call only once 3 characters entered
                     //source: 
 
@@ -158,8 +158,8 @@
             <asp:Panel ID="ArticuloPanel" runat="server" DefaultButton="AgregarArticuloBtn">
                 <div class="form-row">
 
-                    <div class="col-4">
-                        <div class="input-group mb-4">
+                    <div class="col-7">
+                        <div class="input-group mb-7">
                             <input id="txtSearchArticulo" runat="server" placeholder="Articulo" class="form-control form-control-sm">
                             <div class="input-group-append">
 
@@ -185,8 +185,8 @@
                         </asp:DropDownList>
 
                     </div>
-                    <div class="col-2 pull-right">
-                        <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" OnClick="AgregarArticuloBtn_Click" Text="Agregar Artículo" CausesValidation="false" CssClass="form-control" />
+                    <div class="col-1 pull-right">
+                        <asp:Button runat="server" ID="AgregarArticuloBtn" UseSubmitBehavior="false" OnClick="AgregarArticuloBtn_Click" Text="Agregar" CausesValidation="false" CssClass="btn btn-success" />
                     </div>
 
                 </div>
@@ -196,15 +196,21 @@
                 <div class="col-12">
                     <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold">Artículos del contrato</div>
                 </div>
+
             </div>
             <div class="row pie" style="padding-left: 15px">
-                <asp:DataPager ID="ArticuloContratoDataPager" runat="server" PagedControlID="ArticuloContratoListView" PageSize="10">
-                    <Fields>
-                        <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
-                        <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm font-weight-bold  border" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
-                        <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
-                    </Fields>
-                </asp:DataPager>
+                <div class="col-10">
+                    <asp:DataPager ID="ArticuloContratoDataPager" runat="server" PagedControlID="ArticuloContratoListView" PageSize="10">
+                        <Fields>
+                            <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
+                            <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm font-weight-bold  border" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
+                            <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
+                        </Fields>
+                    </asp:DataPager>
+                </div>
+                <div class="col-2">
+                    <asp:Button runat="server" ID="CerrarDetalleBtn" CssClass="btn btn-danger btn-sm" Text="Finalizar contrato" OnClick="CerrarDetalleBtn_Click" />
+                </div>
             </div>
             <div class="form-row">
                 <div class="col-12">

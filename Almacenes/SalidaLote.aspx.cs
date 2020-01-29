@@ -310,7 +310,7 @@ namespace Almacenes
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "warehouse.sp_ArticuloLote_get_ArticuloLote";
+                cmd.CommandText = "warehouse.sp_ArticuloLote_get_ArticuloLote_Salida";
                 cmd.CommandType = CommandType.StoredProcedure;
 
 
@@ -327,7 +327,7 @@ namespace Almacenes
                         txtPrecio.Text = string.Format("{0:N0}", dr["Precio"]);
                         txtImpuesto.Text = string.Format("{0:N0}", dr["PrecioImpuesto"]);
 
-                        txtExistente.Text = string.Format("{0:N0}", dr["Cantidad"]);
+                        txtExistente.Text = string.Format("{0:N0}", dr["CantidadStaging"]);
                     }
                 }
 

@@ -13,7 +13,7 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ((Label)this.Master.FindControl("lblActualPage")).Text = "IMPRESIÓN DE CÓDIGO DE BARRAS";
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "NOTA DE SALIDA";
             if (!IsPostBack)
             {
 

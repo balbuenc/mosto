@@ -253,10 +253,14 @@ namespace Almacenes
                 cmd.CommandText = "[warehouse].[sp_Lote_insert]";
                 cmd.CommandType = CommandType.StoredProcedure;
 
+                String idDependendencia;
+                string[] tokens = txtSearchDependencia.Value.ToString().Split('#');
+                idDependendencia = tokens[1];
+                
 
                 cmd.Parameters.AddWithValue("@IdArticulo", IdArticuloDDL.SelectedValue);
                 cmd.Parameters.AddWithValue("@Cantidad", txtArticuloCantidad.Text);
-                cmd.Parameters.AddWithValue("@IdDependencia", IdDependendciaDDL.Text);
+                cmd.Parameters.AddWithValue("@IdDependencia", idDependendencia);
                 cmd.Parameters.AddWithValue("@IdDeposito", IdDepositoDDL.Text);
                 cmd.Parameters.AddWithValue("@Nrotransaccion", txtNroTransaccion.Text);
 
@@ -269,6 +273,7 @@ namespace Almacenes
 
                 txtArticuloCantidad.Text = "";
                 txtArticuloCantidad.Focus();
+                txtSearchDependencia.Value = "";
 
             }
             catch (Exception ex)

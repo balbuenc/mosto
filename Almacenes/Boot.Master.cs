@@ -24,6 +24,24 @@ namespace Almacenes
                 {
                     UserLabel.Text = Context.User.Identity.Name;
                 }
+
+                ValidateRole();
+            }
+        }
+
+        private void ValidateRole()
+        {
+            if (Session["UserRole"].ToString() == "Administrador")
+            {
+                AdministracionMenu.Visible = true;
+                ComprasMenu.Visible = true;
+                ProcesosMenu.Visible = true;
+            }
+            else
+            {
+                AdministracionMenu.Visible = false;
+                ComprasMenu.Visible = false;
+                ProcesosMenu.Visible = false;
             }
         }
 

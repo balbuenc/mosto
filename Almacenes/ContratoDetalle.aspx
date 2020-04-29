@@ -130,10 +130,10 @@
                 <div class="col-4">
                     <input id="txtSearchProveedor" class="form-control form-control-sm" runat="server" placeholder="Proveedor" />
                 </div>
-                <div class="col">
+                <div class="col-2">
                     <asp:TextBox ID="txtFechaInicioContrato" runat="server" Text="" CssClass="form-control form-control-sm" />
                 </div>
-                <div class="col">
+                <div class="col-2">
                     <asp:TextBox ID="txtFechaFinContrato" runat="server" Text="" CssClass="form-control form-control-sm" />
                 </div>
 
@@ -218,7 +218,9 @@
                     <asp:ListView ID="ArticuloContratoListView"
                         runat="server"
                         DataSourceID="ArticuloContratoDS"
-                        DataKeyNames="IdArticulo">
+                        DataKeyNames="IdArticulo"
+                        OnItemDataBound="ArticuloContratoListView_ItemDataBound"
+                         OnDataBound="ArticuloContratoListView_DataBound">
                         <LayoutTemplate>
                             <div class="table table-responsive">
                                 <table class="table table-striped table-condensed">

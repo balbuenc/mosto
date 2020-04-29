@@ -15,6 +15,7 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             ((Label)this.Master.FindControl("lblActualPage")).Text = "CONTRATO";
             if (Request.QueryString["IdContrato"] != null)
             {
@@ -27,6 +28,8 @@ namespace Almacenes
                     txtFechaInicioContrato.TextMode = TextBoxMode.SingleLine;
                     txtFechaFinContrato.TextMode = TextBoxMode.SingleLine;
                 }
+
+              
             }
             else if (!IsPostBack)
             {
@@ -37,13 +40,30 @@ namespace Almacenes
                 txtFechaFinContrato.TextMode = TextBoxMode.Date;
             }
 
+            ValidateRole();
+
+        }
+
+        private void ValidateRole()
+        {
+            if (Session["UserRole"].ToString() == "Administrador")
+            {
+                AgregarArticuloBtn.Visible = true;
+            }
+            else
+            {
+                AgregarArticuloBtn.Visible = false;
+            }
         }
 
         private void ObtenerDatosContrato(int IdContrato)
         {
+            string Estado;
+
             SqlCommand cmd = new SqlCommand();
             try
             {
+                Estado = "";
                 SqlConnection conn = new SqlConnection(ArticuloContratoDS.ConnectionString);
 
                 cmd.Connection = conn;
@@ -68,12 +88,29 @@ namespace Almacenes
                         txtSearchProveedor.Value = dr["Proveedor"].ToString();
                         IdLicitacionDDL.SelectedValue = dr["IdLicitacion"].ToString();
                         TipoDDL.SelectedValue = dr["Tipo"].ToString();
+                        Estado = dr["Estado"].ToString();
                     }
                 }
 
                 conn.Close();
 
                 DisableControls();
+
+                if (Estado == "Finalizado")
+                {
+                    ArticuloPanel.Enabled = false;
+                    CerrarDetalleBtn.Text = "Contrato finalizado";
+                    CerrarDetalleBtn.Enabled = false;
+                    ArticuloContratoListView.Enabled = false;
+                }
+                else
+                {
+                    ArticuloPanel.Enabled = true;
+                    CerrarDetalleBtn.Text = "Finalizar Contrato";
+                    CerrarDetalleBtn.Enabled = true;
+                    ArticuloContratoListView.Enabled = true;
+                }
+
 
                 ArticuloContratoListView.DataBind();
 
@@ -264,7 +301,7 @@ namespace Almacenes
                 cmd.CommandType = CommandType.StoredProcedure;
 
 
-                cmd.Parameters.Add(new SqlParameter("@IdContrato", Request.QueryString["IdContrato"]));
+                cmd.Parameters.Add(new SqlParameter("@NroContrato", txtNroContrato.Text));
 
 
                 conn.Open();
@@ -282,6 +319,22 @@ namespace Almacenes
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
+        }
+
+        protected void ArticuloContratoListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            if (ArticuloContratoListView.Items.Count > 0)
+                CerrarDetalleBtn.Visible = true;
+            else
+                CerrarDetalleBtn.Visible = false;
+        }
+
+        protected void ArticuloContratoListView_DataBound(object sender, EventArgs e)
+        {
+            if (ArticuloContratoListView.Items.Count > 0)
+                CerrarDetalleBtn.Visible = true;
+            else
+                CerrarDetalleBtn.Visible = false;
         }
     }
 

@@ -244,7 +244,7 @@ namespace Almacenes
                     return;
                 }
 
-                if (Convert.ToInt32(txtExistente.Text.Replace(".","")) < Convert.ToInt32(txtArticuloCantidad.Text))
+                if (Convert.ToInt32(txtExistente.Text.Replace(".", "")) < Convert.ToInt32(txtArticuloCantidad.Text))
                 {
                     ShowPopUpMsg("La cantidad solicitada supera la existencia del artículo.");
                     return;
@@ -378,14 +378,14 @@ namespace Almacenes
                 txtDependencia.Text = lblDependencia.Text;
 
             }
-           
+
         }
 
         protected void SalidaLoteListView_ItemDeleted(object sender, ListViewDeletedEventArgs e)
         {
             IdArticuloDDL.DataBind();
             SalidaLoteListView.DataBind();
-           
+
         }
 
         protected void ReportTransaccionBtn_ServerClick(object sender, EventArgs e)
@@ -464,6 +464,6 @@ namespace Almacenes
             }
         }
 
-     
+
     }
 }

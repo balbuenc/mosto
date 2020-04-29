@@ -72,11 +72,39 @@ namespace Almacenes
 
 
 
-       
+
 
         protected void AddLicitacionBtn_ServerClick(object sender, EventArgs e)
         {
             Response.Redirect("ContratoDetalle.aspx");
+        }
+
+        protected void ContratoListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            Label lblEstado = (Label)e.Item.FindControl("lblEstado");
+            LinkButton DeleteContratoBtn = (LinkButton)e.Item.FindControl("DeleteContratoBtn");
+            LinkButton EditContratoBtn = (LinkButton)e.Item.FindControl("EditContratoBtn");
+            try
+            {
+
+
+                if (lblEstado.Text == "Finalizado")
+                {
+                    DeleteContratoBtn.Visible = false;
+                    EditContratoBtn.Visible = false;
+                    lblEstado.Attributes["class"] = "badge badge-danger";
+                }
+                else
+                {
+                    DeleteContratoBtn.Visible = true;
+                    EditContratoBtn.Visible = true;
+                    lblEstado.Attributes["class"] = "badge badge-success";
+                }
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
         }
     }
 }

@@ -81,7 +81,8 @@
                 runat="server"
                 DataSourceID="ContratoDS"
                 DataKeyNames="IdContrato"
-                OnItemCommand="ListView_ItemCommand">
+                OnItemCommand="ListView_ItemCommand"
+                OnItemDataBound="ContratoListView_ItemDataBound">
                 <LayoutTemplate>
                     <div class="table table-responsive">
                         <table class="table table-striped table-condensed">

@@ -7,34 +7,36 @@
     <script src="Scripts/jquery-3.0.0.js"></script>
 
 
-
     <script type="text/javascript">
-        $(function () {
-            $("[id$=txtSearchContrato]").autocomplete(
-                {
-                    source: "SearchContrato.ashx",
-                    minLength: 3,
-                    focus: function (event, ui) {
-                        $("[id$=txtSearchContrato]").val(ui.item.label);
-                        return false;
-                    },
-                    select: function (event, ui) {
-                        if (ui.item) {
-                            $("[id$=txtSearchContrato]").val(ui.item.Client);
-                            console.log($("[id$=SearchContratoBtn]"));
-                            $("[id$=SearchContratoBtn]").click();
+
+        function pageLoad() {
+            $(function tst() {
+                $("[id$=txtSearchDependencia]").autocomplete(
+                    {
+                        source: "SearchDependencia.ashx",
+                        minLength: 3,
+                        focus: function (event, ui) {
+                            $("[id$=txtSearchDependencia]").val(ui.item.label);
                             return false;
+                        },
+                        select: function (event, ui) {
+                            if (ui.item) {
+                                $("[id$=txtSearchDependencia]").val(ui.item.Client);
+                                console.log($("[id$=SearchDependenciaBtn]"));
+                                $("[id$=SearchDependenciaBtn]").click();
+                                return false;
+                            }
+
                         }
+                    })
+                    .autocomplete("instance")._renderItem = function (ul, item) {
 
-                    }
-                })
-                .autocomplete("instance")._renderItem = function (ul, item) {
+                        var item = $('<div style="font-size: smaller">' + item.Client + '</div></div>')
+                        return $("<li>").append(item).appendTo(ul);
+                    };
+            })
 
-                    return $("<li>")
-                        .append("<div class='style=background:black'>" + item.Client + "</div>")
-                        .appendTo(ul);
-                };
-        });
+        }
 
     </script>
 </asp:Content>
@@ -170,6 +172,8 @@
 
             <asp:UpdatePanel ID="ArticuloContratoUP" runat="server" Visible="false">
                 <ContentTemplate>
+
+
                     <div class="form-row">
                         <div class="col-6">
                             <div class="col-form-label">Artículo</div>
@@ -220,7 +224,7 @@
                     </div>
 
 
-
+                    <%-- Aqui va el inicio de ArticuloPanel voler a corregir --%>
                     <asp:Panel ID="ArticuloPanel" runat="server" DefaultButton="AgregarArticuloBtn">
                         <div class="form-row">
                             <div class="col-1">
@@ -239,13 +243,16 @@
                                 <asp:TextBox CssClass="form-control form-control-sm" ID="txtArticuloCantidad" runat="server" TextMode="Number" />
                             </div>
                             <div class="col-5">
-                                <asp:DropDownList ID="IdDependendciaDDL"
+                                <%--<asp:DropDownList ID="IdDependendciaDDL"
                                     runat="server"
                                     DataSourceID="DependenciaDS"
                                     DataTextField="Dependencia"
                                     DataValueField="IdDependencia"
-                                    CssClass="form-control form-control-sm">
-                                </asp:DropDownList>
+                                    CssClass="form-control form-control-sm"
+                                    Visible="false">
+                                </asp:DropDownList>--%>
+
+                                <input id="txtSearchDependencia" runat="server" placeholder="Dependencia" class="form-control form-control-sm">
                             </div>
                             <div class="col-4">
                                 <asp:DropDownList ID="IdDepositoDDL"
@@ -262,6 +269,7 @@
 
 
                         </div>
+
 
                     </asp:Panel>
 
@@ -283,7 +291,7 @@
                                 </Fields>
                             </asp:DataPager>
                         </div>
-                        <div class="col-2" style="padding:5px">
+                        <div class="col-2" style="padding: 5px">
                             <asp:LinkButton runat="server" ID="CerrarTransaccionBtn" CssClass="btn btn-success btn-shadow btn-sm" Text="Cerrar entrada" OnClick="CerrarTransaccionBtn_Click" Visible="false">
                                   
                             </asp:LinkButton>
@@ -293,7 +301,7 @@
                         <asp:ListView ID="LoteContratoListView"
                             runat="server"
                             DataSourceID="LoteContratoDS"
-                            DataKeyNames="IdArticulo"
+                            DataKeyNames="Id"
                             OnItemDeleted="LoteContratoListView_ItemDeleted"
                             OnDataBound="LoteContratoListView_DataBound">
                             <LayoutTemplate>
@@ -320,8 +328,8 @@
                             <ItemTemplate>
                                 <tr style="min-height: 5px; height: 5px; font-size: x-small">
                                     <td>
-                                        <asp:Label ID="lblIdLote" runat="server" Text='<%# Eval("IdLote") %>' Visible="false" />
-                                        <asp:Label ID="lblIdArticulo" runat="server" Text='<%# Eval("IdArticulo") %>' />
+                                        <asp:Label ID="lblIdLote" runat="server" Text='<%# Eval("Id") %>' Visible="true" />
+                                        <asp:Label ID="lblIdArticulo" runat="server" Text='<%# Eval("IdArticulo") %>' Visible="false" />
                                     </td>
                                     <td>
                                         <asp:Label ID="lbArticulo" runat="server" Text='<%# Eval("Articulo") %>' />
@@ -399,8 +407,8 @@
                 <asp:ControlParameter ControlID="txtNroTransaccion" Name="NroTransaccion" PropertyName="Text" />
             </SelectParameters>
             <DeleteParameters>
-                <asp:Parameter Name="IdArticulo" DbType="Int64" />
-                <asp:ControlParameter ControlID="txtNroTransaccion" Name="NroTransaccion" PropertyName="Text" />
+                <asp:Parameter Name="Id" DbType="Int64" />
+                
             </DeleteParameters>
 
         </asp:SqlDataSource>

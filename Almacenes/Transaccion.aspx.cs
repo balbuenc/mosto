@@ -161,9 +161,13 @@ namespace Almacenes
 
         void SetSessionVariables()
         {
+            String idDependendencia;
+            string[] tokens = txtSearchDependencia.Value.ToString().Split('#');
+            idDependendencia = tokens[1];
+
             this.Session["DefinicionTransaccion"] = txtDefinicionSalida.Text;
-            this.Session["IdDependencia"] = DependenciaDDL.SelectedValue;
-            this.Session["Dependencia"] = DependenciaDDL.SelectedItem.Text;
+            this.Session["IdDependencia"] = idDependendencia;
+            this.Session["Dependencia"] = txtSearchDependencia.Value.ToString();
             this.Session["Solicitante"] = txtSolicitanteSalida.Text;
             this.Session["idContratoExistencia"] = ContratoExistenciaDDL.SelectedValue;
             this.Session["ContratoExistencia"] = ContratoExistenciaDDL.SelectedItem.Text;

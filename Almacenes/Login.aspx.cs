@@ -21,7 +21,7 @@ namespace Almacenes
         bool ValidateUser(string UserName, String Password)
         {
             SqlCommand cmd = new SqlCommand();
-         
+
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["AlmacenesConnectionString"].ConnectionString;
@@ -32,10 +32,10 @@ namespace Almacenes
                 cmd.CommandText = "[secure].[sp_User_Validate]";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@UserName",UserName);
+                cmd.Parameters.AddWithValue("@UserName", UserName);
                 cmd.Parameters.AddWithValue("@Password", Password);
 
-                SqlParameter RetParam = new SqlParameter("@Authentincated", SqlDbType.Int );
+                SqlParameter RetParam = new SqlParameter("@Authentincated", SqlDbType.Int);
                 RetParam.Direction = ParameterDirection.Output;
                 cmd.Parameters.Add(RetParam);
 
@@ -46,16 +46,18 @@ namespace Almacenes
 
                 conn.Close();
 
+                Session["UserRole"] = GetUserRole(UserName);
+
                 if (IntReturn == 1)
                 {
                     return true;
                 }
                 else
-                { 
+                {
                     return false;
                 }
 
-               
+
             }
             catch (Exception ex)
             {
@@ -65,7 +67,50 @@ namespace Almacenes
 
             }
 
-          
+
+        }
+
+        public string GetUserRole(string UserName)
+        {
+            SqlCommand cmd = new SqlCommand();
+            string UserRole = "";
+
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["AlmacenesConnectionString"].ConnectionString;
+                SqlConnection conn = new SqlConnection(cs);
+
+                cmd.Connection = conn;
+
+                cmd.CommandText = "[secure].[sp_get_UserRole]";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@UserName", UserName);
+
+
+
+                conn.Open();
+                
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        UserRole = dr["Role"].ToString();
+                    }
+                }
+
+                conn.Close();
+
+
+                return UserRole;
+
+            }
+            catch (Exception ex)
+            {
+                Msg.Text = ex.Message;
+                return null;
+            }
         }
 
         public void Login_OnClick(object sender, EventArgs args)

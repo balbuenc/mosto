@@ -240,13 +240,13 @@ namespace Almacenes
         protected global::System.Web.UI.WebControls.TextBox txtArticuloCantidad;
 
         /// <summary>
-        /// IdDependendciaDDL control.
+        /// txtSearchDependencia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList IdDependendciaDDL;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSearchDependencia;
 
         /// <summary>
         /// IdDepositoDDL control.

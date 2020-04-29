@@ -31,10 +31,9 @@
     <link href="css/Enigma.css" rel="stylesheet" />
 
     <script type="text/javascript">
-        function goBack()
-            {
+        function goBack() {
             window.history.back()
-            }
+        }
     </script>
 
 </head>
@@ -102,7 +101,7 @@
                                 <span>Inicio</span>
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" runat="server" id="AdministracionMenu">
                             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user-shield"></i>
                                 <span>Administración</span>
@@ -124,7 +123,7 @@
                                 <a class="dropdown-item" href="/Role.aspx">Roles</a>
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown"  runat="server" id="ComprasMenu">
                             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownLicitaciones" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-file-invoice-dollar"></i>
                                 <span>Compras</span>
@@ -140,11 +139,11 @@
                                 <a class="dropdown-item" href="/Contrato.aspx">Contratos</a>
                                 <a class="dropdown-item" href="/ArticuloMaestro.aspx">Artículos</a>
                                 <a class="dropdown-item" href="/CodigoBarra.aspx">Código de barras</a>
-                               
+
                             </div>
                         </li>
 
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" runat="server" id="ProcesosMenu">
                             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownProcesos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-code-branch"></i>
                                 <span>Procesos</span>
@@ -161,9 +160,9 @@
                                 <a class="dropdown-item" href="/Inventario.aspx">Inventario</a>
                             </div>
                         </li>
-                         <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" runat="server" id="ContabilidadMenu">
                             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownContabilidad" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-calculator"></i>
+                                <i class="fas fa-calculator"></i>
                                 <span>Contabilidad</span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="pagesDropdownAlmacenes">
@@ -171,14 +170,13 @@
                                 <a class="dropdown-item" href="/PlanCuenta.aspx?Tipo=Entrada">Plan de cuentas</a>
                                 <a class="dropdown-item" href="/TipoCuenta.aspx?Tipo=Salida">Tipo de cuentas</a>
                                 <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="/ArticuloCuenta.aspx?Tipo=Salida">Asignación de cuentas</a>
-                                <a class="dropdown-item" href="/ArticuloCuenta.aspx?Tipo=Salida">Asignación de cuentas</a>
+                                <a class="dropdown-item" href="/ArticuloCuenta.aspx?Tipo=Salida">Asignación de cuentas</a>                                
                                 <a class="dropdown-item" href="/Diario.aspx">Libro diario</a>
 
                             </div>
                         </li>
-                         
-                        <li class="nav-item dropdown">
+
+                        <li class="nav-item dropdown" runat="server" id="ReportesMenu">
                             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownAlmacenes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-warehouse"></i>
                                 <span>Reportes</span>

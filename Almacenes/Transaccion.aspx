@@ -1,6 +1,49 @@
 ﻿<%@ Page Title="Ingresos" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="Transaccion.aspx.cs" Inherits="Almacenes.Transaccion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+    <link href="css/Enigma.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.0.0.js"></script>
+
+    <style>
+        .ui-autocomplete { z-index: 2147483647; }
+
+    </style>
+
+    <script type="text/javascript">
+        
+
+        
+        function pageLoad() {
+            $(function tst() {
+                $("[id$=txtSearchDependencia]").autocomplete(
+                    {
+                        source: "SearchDependencia.ashx",
+                        minLength: 3,
+                        focus: function (event, ui) {
+                            $("[id$=txtSearchDependencia]").val(ui.item.label);
+                            return false;
+                        },
+                        select: function (event, ui) {
+                            if (ui.item) {
+                                $("[id$=txtSearchDependencia]").val(ui.item.Client);
+                                console.log($("[id$=SearchDependenciaBtn]"));
+                                $("[id$=SearchDependenciaBtn]").click();
+                                return false;
+                            }
+
+                        }
+                    })
+                    .autocomplete("instance")._renderItem = function (ul, item) { 
+
+                        var item = $('<div style="font-size: smaller">' + item.Client + '</div>')
+                        return $("<li>").append(item).appendTo(ul);
+                    };
+            })
+
+        }
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="fondo">
@@ -247,7 +290,7 @@
                                     <b id="addModalSalidaLabel">Agregar Salida.</b>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
-                                <div class="modal-body">
+                                <div class="modal-body" style="z-index:4">
 
                                     <div class="container-fluid">
 
@@ -260,13 +303,16 @@
                                         <div class="row">
                                             <div class="col-3">Dependencia</div>
                                             <div class="col-9">
-                                                <asp:DropDownList ID="DependenciaDDL"
+                                                <%-- <asp:DropDownList ID="DependenciaDDL"
                                                     runat="server"
                                                     DataSourceID="DependenciaDS"
                                                     DataTextField="Dependencia"
                                                     DataValueField="IdDependencia"
                                                     CssClass="form-control form-control-sm">
-                                                </asp:DropDownList>
+                                                </asp:DropDownList>--%>
+                                                
+                                                <input id="txtSearchDependencia" runat="server" placeholder="Dependencia" class="form-control form-control-sm"  >
+                                                 
                                             </div>
                                         </div>
                                         <div class="row">

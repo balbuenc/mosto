@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Almacenes {
-    
-    
-    public partial class Transaccion {
-        
+namespace Almacenes
+{
+
+
+    public partial class Transaccion
+    {
+
         /// <summary>
         /// txtSearchKey control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearchKey;
-        
+
         /// <summary>
         /// searchParameterDDL control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList searchParameterDDL;
-        
+
         /// <summary>
         /// SearchBtn control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton SearchBtn;
-        
+
         /// <summary>
         /// AddTransaccionBtn control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton AddTransaccionBtn;
-        
+
         /// <summary>
         /// AddtransaccionSalidaBtn control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton AddtransaccionSalidaBtn;
-        
+
         /// <summary>
         /// Entrada10 control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor Entrada10;
-        
+
         /// <summary>
         /// Entrada20 control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor Entrada20;
-        
+
         /// <summary>
         /// Entrada30 control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor Entrada30;
-        
+
         /// <summary>
         /// Entrada50 control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor Entrada50;
-        
+
         /// <summary>
         /// Salida10 control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor Salida10;
-        
+
         /// <summary>
         /// Salida20 control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor Salida20;
-        
+
         /// <summary>
         /// Salida30 control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor Salida30;
-        
+
         /// <summary>
         /// Salida50 control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor Salida50;
-        
+
         /// <summary>
         /// ErrorLabel control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
-        
+
         /// <summary>
         /// TransaccionDataPager control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataPager TransaccionDataPager;
-        
+
         /// <summary>
         /// TransaccionListView control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView TransaccionListView;
-        
+
         /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+
         /// <summary>
         /// txtDefinicion control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDefinicion;
-        
+
         /// <summary>
         /// txtNroFactura control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNroFactura;
-        
+
         /// <summary>
         /// txtNotaRemision control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNotaRemision;
-        
+
         /// <summary>
         /// IdContratoDDL control.
         /// </summary>
@@ -200,7 +202,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList IdContratoDDL;
-        
+
         /// <summary>
         /// InsertButton control.
         /// </summary>
@@ -209,7 +211,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton InsertButton;
-        
+
         /// <summary>
         /// InsertCancelButton control.
         /// </summary>
@@ -218,7 +220,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton InsertCancelButton;
-        
+
         /// <summary>
         /// UpdatePanel2 control.
         /// </summary>
@@ -227,7 +229,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-        
+
         /// <summary>
         /// txtDefinicionSalida control.
         /// </summary>
@@ -236,16 +238,16 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDefinicionSalida;
-        
+
         /// <summary>
-        /// DependenciaDDL control.
+        /// txtSearchDependencia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DependenciaDDL;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSearchDependencia;
+
         /// <summary>
         /// txtSolicitanteSalida control.
         /// </summary>
@@ -254,7 +256,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSolicitanteSalida;
-        
+
         /// <summary>
         /// ContratoExistenciaDDL control.
         /// </summary>
@@ -263,7 +265,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ContratoExistenciaDDL;
-        
+
         /// <summary>
         /// InsertSalidaBtn control.
         /// </summary>
@@ -272,7 +274,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton InsertSalidaBtn;
-        
+
         /// <summary>
         /// LinkButton2 control.
         /// </summary>
@@ -281,7 +283,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
-        
+
         /// <summary>
         /// TransaccionDS control.
         /// </summary>
@@ -290,7 +292,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource TransaccionDS;
-        
+
         /// <summary>
         /// ContratoDS control.
         /// </summary>
@@ -299,7 +301,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource ContratoDS;
-        
+
         /// <summary>
         /// ContratoExistenciaDS control.
         /// </summary>
@@ -308,7 +310,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource ContratoExistenciaDS;
-        
+
         /// <summary>
         /// DependenciaDS control.
         /// </summary>

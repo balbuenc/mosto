@@ -6,6 +6,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace Almacenes
 {
     public partial class Boot : System.Web.UI.MasterPage
@@ -25,25 +26,26 @@ namespace Almacenes
                     UserLabel.Text = Context.User.Identity.Name;
                 }
 
-                ValidateRole();
+                //Habilito los Accesos al menu principal (Si estan con privilegio de lectura [1] == 1)
+                AdministracionMenu.Visible = ((int[])Session["vAdministracionMenu"])[1] == 1 ? true : false;
+                ComprasMenu.Visible = ((int[])Session["vComprasMenu"])[1] == 1 ? true : false;
+                ProcesosMenu.Visible = ((int[])Session["vProcesosMenu"])[1] == 1 ? true : false;
+                ContabilidadMenu.Visible = ((int[])Session["vContabilidadMenu"])[1] == 1 ? true : false;
+                ReportesMenu.Visible = ((int[])Session["vReportesMenu"])[1] == 1 ? true : false;
+
+                //Menu secundarions ADMINISTRACION
+                TipodeLicitacionesMenu.Visible = ((int[])Session["vTipodeLicitaciones"])[1] == 1 ? true : false;                
+                TipodeContactoMenu.Visible = ((int[])Session["vTipodeContacto"])[1] == 1 ? true : false;
+                ImpuestosMenu.Visible = ((int[])Session["vImpuestos"])[1] == 1 ? true : false;
+                UnidaddeMedidaMenu.Visible = ((int[])Session["vUnidaddeMedida"])[1] == 1 ? true : false;
+                DependenciasMenu.Visible = ((int[])Session["vDependencias"])[1] == 1 ? true : false;
+                DepositosMenu.Visible = ((int[])Session["vDepositos"])[1] == 1 ? true : false;
+                UsuariosMenu.Visible = ((int[])Session["vUsuarios"])[1] == 1 ? true : false;
+                RolesMenu.Visible = ((int[])Session["vRoles"])[1] == 1 ? true : false;
             }
         }
 
-        private void ValidateRole()
-        {
-            if (Session["UserRole"].ToString() == "Administrador")
-            {
-                AdministracionMenu.Visible = true;
-                ComprasMenu.Visible = true;
-                ProcesosMenu.Visible = true;
-            }
-            else
-            {
-                AdministracionMenu.Visible = false;
-                ComprasMenu.Visible = false;
-                ProcesosMenu.Visible = false;
-            }
-        }
+       
 
         protected void Unnamed_ServerClick(object sender, EventArgs e)
         {

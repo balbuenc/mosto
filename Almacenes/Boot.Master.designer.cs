@@ -60,6 +60,78 @@ namespace Almacenes
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl AdministracionMenu;
 
         /// <summary>
+        /// TipodeLicitacionesMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor TipodeLicitacionesMenu;
+
+        /// <summary>
+        /// TipodeContactoMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor TipodeContactoMenu;
+
+        /// <summary>
+        /// ImpuestosMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor ImpuestosMenu;
+
+        /// <summary>
+        /// UnidaddeMedidaMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor UnidaddeMedidaMenu;
+
+        /// <summary>
+        /// DependenciasMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor DependenciasMenu;
+
+        /// <summary>
+        /// DepositosMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor DepositosMenu;
+
+        /// <summary>
+        /// UsuariosMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor UsuariosMenu;
+
+        /// <summary>
+        /// RolesMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor RolesMenu;
+
+        /// <summary>
         /// ComprasMenu control.
         /// </summary>
         /// <remarks>

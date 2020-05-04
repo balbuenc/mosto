@@ -121,6 +121,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/User.aspx"   runat="server" id="UsuariosMenu">Usuarios</a>
                                 <a class="dropdown-item" href="/Role.aspx"  runat="server" id="RolesMenu">Roles</a>
+                                <a class="dropdown-item" href="/Seguridad.aspx"  runat="server" id="SeguridadMenu">Asignación de permisos</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown"  runat="server" id="ComprasMenu">

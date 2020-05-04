@@ -40,7 +40,7 @@ namespace Almacenes
             Session["vDepositos"] = u.GetSecurityPrivilege("Administracion.Depositos");
             Session["vUsuarios"] = u.GetSecurityPrivilege("Administracion.Usuarios");
             Session["vRoles"] = u.GetSecurityPrivilege("Administracion.Roles");
-
+            Session["vSeguridad"] = u.GetSecurityPrivilege("Administracion.Seguridad");
 
         }
 

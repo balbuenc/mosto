@@ -23,8 +23,8 @@
                         </div>
                         <div class="col-2">
                             <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
-                                 <asp:ListItem Text="Rol" Value="ROL"></asp:ListItem>
-                            <asp:ListItem Text="Descripción" Value="DESCRIPCION"></asp:ListItem>
+                                <asp:ListItem Text="Rol" Value="ROL"></asp:ListItem>
+                                <asp:ListItem Text="Descripción" Value="DESCRIPCION"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
 
@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <div class="container-fluid" >
+        <div class="container-fluid">
             <div class="row pie" style="padding-left: 15px">
                 <asp:DataPager ID="RoleDataPager" runat="server" PagedControlID="RoleListView" PageSize="10">
                     <Fields>
@@ -79,6 +79,7 @@
                 runat="server"
                 DataSourceID="RoleDS"
                 DataKeyNames="IdRole"
+                OnItemDataBound="RoleListView_ItemDataBound"
                 OnItemCommand="ListView_ItemCommand">
                 <LayoutTemplate>
                     <div class="table table-responsive">

@@ -80,7 +80,8 @@
                 runat="server"
                 DataSourceID="TipoLicitacionDS"
                 DataKeyNames="IdTipoLicitacion"
-                OnItemCommand="ListView_ItemCommand">
+                OnItemCommand="ListView_ItemCommand"
+                 OnItemDataBound="TipoLicitacionListView_ItemDataBound">
                 <LayoutTemplate>
                     <div class="table table-responsive">
                         <table class="table table-striped table-condensed">
@@ -115,14 +116,14 @@
 
 
                         <th>
-                            <asp:LinkButton runat="server" ID="EditTipoLicitacionBtn" CommandName="Editar" CommandArgument='<%# Eval("IdTipoLicitacion")%>' ToolTip="Editar">
+                            <asp:LinkButton runat="server" ID="EditTipoLicitacionBtn" CommandName="Editar" CommandArgument='<%# Eval("IdTipoLicitacion")%>' ToolTip="Editar" >
                             <i class="fa fa-keyboard fa-sm"></i>
                             </asp:LinkButton>
                         </th>
 
                         <th>
 
-                            <asp:LinkButton runat="server" ID="DeleteTipoLicitacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdTipoLicitacion")%>' ToolTip="Eliminar" OnClientClick="return confirm('Desea eliminar el registro?');">
+                            <asp:LinkButton runat="server" ID="DeleteTipoLicitacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("IdTipoLicitacion")%>' ToolTip="Eliminar" OnClientClick="return confirm('Desea eliminar el registro?');" >
                             <i class="fas fa-trash-alt"></i>
                             </asp:LinkButton>
 

@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Almacenes {
-    
-    
-    public partial class Contrato {
-        
+namespace Almacenes
+{
+
+
+    public partial class Contrato
+    {
+
         /// <summary>
         /// txtSearchKey control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearchKey;
-        
+
         /// <summary>
         /// searchParameterDDL control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList searchParameterDDL;
-        
+
         /// <summary>
         /// SearchBtn control.
         /// </summary>
@@ -38,16 +40,16 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton SearchBtn;
-        
+
         /// <summary>
-        /// AddContratoBtn control.
+        /// AddRegistroBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AddContratoBtn;
-        
+        protected global::System.Web.UI.WebControls.LinkButton AddRegistroBtn;
+
         /// <summary>
         /// ErrorLabel control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
-        
+
         /// <summary>
         /// ContratoDataPager control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataPager ContratoDataPager;
-        
+
         /// <summary>
         /// ContratoListView control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView ContratoListView;
-        
+
         /// <summary>
         /// ContratoDS control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource ContratoDS;
-        
+
         /// <summary>
         /// LicitacionDS control.
         /// </summary>

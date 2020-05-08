@@ -18,6 +18,17 @@ namespace Almacenes
             {
                 TipoLicitacionDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
             }
+
+            //Authorize User Role
+            if (Session["SecureMatrix"] == null)
+            {
+                string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                string LoginPageUrl = "/Login.aspx";
+                HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+            }
+            
+            Utils.Authorization("vTipodeLicitaciones");
+            AddRegistroBtn.Visible = Utils.WRITE;
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)
@@ -182,5 +193,14 @@ namespace Almacenes
 
         }
 
+        protected void TipoLicitacionListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            
+            LinkButton EditTipoLicitacionBtn = (LinkButton)e.Item.FindControl("EditTipoLicitacionBtn");
+            LinkButton DeleteTipoLicitacionBtn = (LinkButton)e.Item.FindControl("DeleteTipoLicitacionBtn");
+
+            EditTipoLicitacionBtn.Enabled = Utils.UPDATE;
+            DeleteTipoLicitacionBtn.Enabled = Utils.DELETE;
+        }
     }
 }

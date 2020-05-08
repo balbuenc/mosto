@@ -21,26 +21,56 @@ namespace Almacenes
 
         private void ValidateRole()
         {
-            Utils u = new Utils();
+            
 
             //Cargo la matriz de seguridad desde la DB [W][R][D][U]
             //Menu Principales
-            Session["vAdministracionMenu"] = u.GetSecurityPrivilege("Administracion.Menu");
-            Session["vComprasMenu"] = u.GetSecurityPrivilege("Compras.Menu");
-            Session["vProcesosMenu"] = u.GetSecurityPrivilege("Procesos.Menu");
-            Session["vContabilidadMenu"] = u.GetSecurityPrivilege("Contabilidad.Menu");
-            Session["vReportesMenu"] = u.GetSecurityPrivilege("Reportes.Menu");
+            Session["vAdministracionMenu"] = Utils.GetSecurityPrivilege("Administracion.Menu");
+            Session["vComprasMenu"] = Utils.GetSecurityPrivilege("Compras.Menu");
+            Session["vProcesosMenu"] = Utils.GetSecurityPrivilege("Procesos.Menu");
+            Session["vContabilidadMenu"] = Utils.GetSecurityPrivilege("Contabilidad.Menu");
+            Session["vReportesMenu"] = Utils.GetSecurityPrivilege("Reportes.Menu");
 
             //Menu secundario ADMINISTRACION
-            Session["vTipodeLicitaciones"] = u.GetSecurityPrivilege("Administracion.TipodeLicitaciones");
-            Session["vTipodeContacto"] = u.GetSecurityPrivilege("Administracion.TipodeContacto");
-            Session["vImpuestos"] = u.GetSecurityPrivilege("Administracion.Impuestos");
-            Session["vUnidaddeMedida"] = u.GetSecurityPrivilege("Administracion.UnidaddeMedida");
-            Session["vDependencias"] = u.GetSecurityPrivilege("Administracion.Dependencias");
-            Session["vDepositos"] = u.GetSecurityPrivilege("Administracion.Depositos");
-            Session["vUsuarios"] = u.GetSecurityPrivilege("Administracion.Usuarios");
-            Session["vRoles"] = u.GetSecurityPrivilege("Administracion.Roles");
-            Session["vSeguridad"] = u.GetSecurityPrivilege("Administracion.Seguridad");
+            Session["vTipodeLicitaciones"] = Utils.GetSecurityPrivilege("Administracion.TipodeLicitaciones");
+            Session["vTipodeContacto"] = Utils.GetSecurityPrivilege("Administracion.TipodeContacto");
+            Session["vImpuestos"] = Utils.GetSecurityPrivilege("Administracion.Impuestos");
+            Session["vUnidaddeMedida"] = Utils.GetSecurityPrivilege("Administracion.UnidaddeMedida");
+            Session["vDependencias"] = Utils.GetSecurityPrivilege("Administracion.Dependencias");
+            Session["vDepositos"] = Utils.GetSecurityPrivilege("Administracion.Depositos");
+            Session["vUsuarios"] = Utils.GetSecurityPrivilege("Administracion.Usuarios");
+            Session["vRoles"] = Utils.GetSecurityPrivilege("Administracion.Roles");
+            Session["vSeguridad"] = Utils.GetSecurityPrivilege("Administracion.Seguridad");
+
+            //Menu secundario COMPRAS           
+            Session["vLicitaciones"] = Utils.GetSecurityPrivilege("Compras.Licitaciones");
+            Session["vProveedores"] = Utils.GetSecurityPrivilege("Compras.Proveedores");
+            Session["vContratos"] = Utils.GetSecurityPrivilege("Compras.Contratos");
+            Session["vContactos"] = Utils.GetSecurityPrivilege("Compras.Contactos");
+            Session["vArticulos"] = Utils.GetSecurityPrivilege("Compras.Articulos");
+            Session["vCodigosdeBarra"] = Utils.GetSecurityPrivilege("Compras.CodigosdeBarra");
+
+            //Menu secundario PROCESOS
+            Session["vOperacionesdeEntradas"] = Utils.GetSecurityPrivilege("Procesos.OperacionesdeEntradas");
+            Session["vOperacionesdeSalidas"] = Utils.GetSecurityPrivilege("Procesos.OperacionesdeSalidas");
+            Session["vMovimientoporDependencias"] = Utils.GetSecurityPrivilege("Procesos.MovimientoporDependencias");
+            Session["vMovimientoporDepositos"] = Utils.GetSecurityPrivilege("Procesos.MovimientoporDepositos");
+            Session["vInventario"] = Utils.GetSecurityPrivilege("Procesos.Inventario");
+
+            //Menu secundario CONTABILIDAD
+            Session["vPlandeCuentas"] = Utils.GetSecurityPrivilege("Contabilidad.PlandeCuentas");
+            Session["vTipodeCuentas"] = Utils.GetSecurityPrivilege("Contabilidad.TipodeCuentas");
+            Session["vAsiganciondecuentas"] = Utils.GetSecurityPrivilege("Contabilidad.Asiganciondecuentas");
+            Session["vLibrodiario"] = Utils.GetSecurityPrivilege("Contabilidad.Librodiario");
+
+            //Menu nsecundario REPORTES
+            Session["vExistenciapordespositos"] = Utils.GetSecurityPrivilege("Reportes.Existenciapordespositos");
+            Session["vExistenciapordependencia"] = Utils.GetSecurityPrivilege("Reportes.Existenciapordependencia");
+            Session["vExistenciaglobal"] = Utils.GetSecurityPrivilege("Reportes.Existenciaglobal");
+            Session["vEntradas"] = Utils.GetSecurityPrivilege("Reportes.Entradas");
+            Session["vSalidas"] = Utils.GetSecurityPrivilege("Reportes.Salidas");
+            Session["vMovimientodependencias"] = Utils.GetSecurityPrivilege("Reportes.Movimientodependencias");
+            Session["vLibro"] = Utils.GetSecurityPrivilege("Reportes.Libro");
 
         }
 

@@ -28,6 +28,17 @@ namespace Almacenes
 
                 ((Label)this.Master.FindControl("lblActualPage")).Text = "MOVIMIENTO DEPENDENCIAS";
 
+                //Authorize User Role
+                if (Session["SecureMatrix"] == null)
+                {
+                    string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                    string LoginPageUrl = "/Login.aspx";
+                    HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+                }
+
+                Utils.Authorization("vMovimientoporDependencias");
+                AddTransaccionDependenciaBtn.Visible = Utils.WRITE;
+
             }
             else if (Request.QueryString["Tipo"] == "Deposito")
             {
@@ -45,6 +56,17 @@ namespace Almacenes
                 Deposito50.Visible = true;
 
                 ((Label)this.Master.FindControl("lblActualPage")).Text = "MOVIMIENTO DEPOSITOS";
+
+                //Authorize User Role
+                if (Session["SecureMatrix"] == null)
+                {
+                    string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                    string LoginPageUrl = "/Login.aspx";
+                    HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+                }
+
+                Utils.Authorization("vMovimientoporDepositos");
+                AddtransaccionDepositoBtn.Visible = Utils.WRITE;
             }
 
             if (Request.QueryString["PageSize"] != null)
@@ -84,6 +106,9 @@ namespace Almacenes
                 Label lblEstado = (Label)e.Item.FindControl("lblEstado");
                 LinkButton DeleteTransaccionMovimientoBtn = (LinkButton)e.Item.FindControl("DeleteTransaccionMovimientoBtn");
                 LinkButton DetailsTransaccionBtn = (LinkButton)e.Item.FindControl("DetailsTransaccionBtn");
+
+                DetailsTransaccionBtn.Enabled = Utils.UPDATE;
+                DeleteTransaccionMovimientoBtn.Enabled = Utils.DELETE;
 
                 if (lblEstado.Text == "Abierto")
                 {

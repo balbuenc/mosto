@@ -19,6 +19,17 @@ namespace Almacenes
             {
                 UserDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
             }
+
+            //Authorize User Role
+            if (Session["SecureMatrix"] == null)
+            {
+                string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                string LoginPageUrl = "/Login.aspx";
+                HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+            }
+
+            Utils.Authorization("vUsuarios");
+            AddRegistroBtn.Visible = Utils.WRITE;
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)
@@ -335,6 +346,16 @@ namespace Almacenes
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
+        }
+
+        protected void UserListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+
+            LinkButton EditUserBtn = (LinkButton)e.Item.FindControl("EditUserBtn");
+            LinkButton DeleteUserBtn = (LinkButton)e.Item.FindControl("DeleteUserBtn");
+
+            EditUserBtn.Enabled = Utils.UPDATE;
+            DeleteUserBtn.Enabled = Utils.DELETE;
         }
     }
 }

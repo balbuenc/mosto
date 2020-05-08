@@ -18,6 +18,17 @@ namespace Almacenes
             {
                 UnidadMedidaDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
             }
+
+            //Authorize User Role
+            if (Session["SecureMatrix"] == null)
+            {
+                string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                string LoginPageUrl = "/Login.aspx";
+                HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+            }
+
+            Utils.Authorization("vUnidaddeMedida");
+            AddRegistroBtn.Visible = Utils.WRITE;
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)
@@ -177,5 +188,13 @@ namespace Almacenes
 
         }
 
+        protected void UnidadMedidaListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            LinkButton EditUnidadMedidaBtn = (LinkButton)e.Item.FindControl("EditUnidadMedidaBtn");
+            LinkButton DeleteUnidadMedidaBtn = (LinkButton)e.Item.FindControl("DeleteUnidadMedidaBtn");
+
+            EditUnidadMedidaBtn.Enabled = Utils.UPDATE;
+            DeleteUnidadMedidaBtn.Enabled = Utils.DELETE;
+        }
     }
 }

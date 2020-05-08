@@ -79,6 +79,7 @@
                 runat="server"
                 DataSourceID="DependenciaDS"
                 DataKeyNames="IdDependencia"
+                OnItemDataBound="DependenciaListView_ItemDataBound"
                 OnItemCommand="ListView_ItemCommand">
                 <LayoutTemplate>
                     <div class="table table-responsive">

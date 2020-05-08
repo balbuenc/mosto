@@ -15,6 +15,17 @@ namespace Almacenes
         protected void Page_Load(object sender, EventArgs e)
         {
             ((Label)this.Master.FindControl("lblActualPage")).Text = "ASIGNACIÓN DE PERMISOS";
+
+            //Authorize User Role
+            if (Session["SecureMatrix"] == null)
+            {
+                string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                string LoginPageUrl = "/Login.aspx";
+                HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+            }
+
+            Utils.Authorization("vSeguridad");
+            AddPrivilegeBtn.Visible = Utils.WRITE;
         }
 
         protected void AsignacionesListView_ItemDeleted(object sender, ListViewDeletedEventArgs e)
@@ -65,6 +76,16 @@ namespace Almacenes
                
             }
 
+        }
+
+        protected void AsignacionesListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+
+           
+            LinkButton DeleteArticuloCuentaBtn = (LinkButton)e.Item.FindControl("DeleteArticuloCuentaBtn");
+
+           
+            DeleteArticuloCuentaBtn.Enabled = Utils.DELETE;
         }
     }
 }

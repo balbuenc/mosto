@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-2">
                             <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
-                                 <asp:ListItem Text="Unidad Medida" Value="UNIDAD"></asp:ListItem>
+                                <asp:ListItem Text="Unidad Medida" Value="UNIDAD"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
 
@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class="container-fluid" >
+        <div class="container-fluid">
             <div class="row pie" style="padding-left: 15px">
                 <asp:DataPager ID="UnidadMedidaDataPager" runat="server" PagedControlID="UnidadMedidaListView" PageSize="10">
                     <Fields>
@@ -78,6 +78,7 @@
                 runat="server"
                 DataSourceID="UnidadMedidaDS"
                 DataKeyNames="IdUnidadMedida"
+                OnItemDataBound="UnidadMedidaListView_ItemDataBound"
                 OnItemCommand="ListView_ItemCommand">
                 <LayoutTemplate>
                     <div class="table table-responsive">

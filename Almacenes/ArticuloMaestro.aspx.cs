@@ -24,6 +24,17 @@ namespace Almacenes
             {
                 ArticuloMaestroListViewDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
             }
+
+            //Authorize User Role
+            if (Session["SecureMatrix"] == null)
+            {
+                string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                string LoginPageUrl = "/Login.aspx";
+                HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+            }
+
+            Utils.Authorization("vArticulos");
+            AddRegistroBtn.Visible = Utils.WRITE;
         }
         protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
         {
@@ -237,6 +248,15 @@ namespace Almacenes
             
             e.Command.Parameters["@Image"].Value = getBarcode(e.Command.Parameters["@Dato"].Value.ToString());
 
+        }
+
+        protected void ArticuloMaestroListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            LinkButton EditArticuloMaestroBtn = (LinkButton)e.Item.FindControl("EditArticuloMaestroBtn");
+            LinkButton DeleteArticuloMaestroBtn = (LinkButton)e.Item.FindControl("DeleteArticuloMaestroBtn");
+
+            EditArticuloMaestroBtn.Enabled = Utils.UPDATE;
+            DeleteArticuloMaestroBtn.Enabled = Utils.DELETE;
         }
     }
 }

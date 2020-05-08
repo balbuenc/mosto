@@ -32,6 +32,18 @@ namespace Almacenes
 
                 ((Label)this.Master.FindControl("lblActualPage")).Text = "ENTRADAS";
 
+                //Authorize User Role
+                if (Session["SecureMatrix"] == null)
+                {
+                    string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                    string LoginPageUrl = "/Login.aspx";
+                    HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+                }
+
+                Utils.Authorization("vOperacionesdeEntradas");
+                AddTransaccionBtn.Visible = Utils.WRITE;
+
+
 
             }
             else if (Request.QueryString["Tipo"] == "Salida")
@@ -50,6 +62,16 @@ namespace Almacenes
                 Salida50.Visible = true;
 
                 ((Label)this.Master.FindControl("lblActualPage")).Text = "SALIDAS";
+
+                if (Session["SecureMatrix"] == null)
+                {
+                    string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                    string LoginPageUrl = "/Login.aspx";
+                    HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+                }
+
+                Utils.Authorization("vOperacionesdeSalidas");
+                AddtransaccionSalidaBtn.Visible = Utils.WRITE;
 
 
             }
@@ -185,6 +207,9 @@ namespace Almacenes
             LinkButton DeleteTransaccionMovimientoBtn = (LinkButton)e.Item.FindControl("DeleteTransaccionBtn");
             LinkButton DetailsTransaccionBtn = (LinkButton)e.Item.FindControl("DetailsTransaccionBtn");
 
+            DetailsTransaccionBtn.Enabled = Utils.UPDATE;
+            DeleteTransaccionMovimientoBtn.Enabled = Utils.DELETE;
+
             if (lblEstado.Text == "Abierto")
             {
                 DeleteTransaccionMovimientoBtn.Visible = true;
@@ -213,6 +238,7 @@ namespace Almacenes
 
         protected void TransaccionListView_DataBound(object sender, EventArgs e)
         {
+
             try
             {
                 if (Request.QueryString["Tipo"] == "Entrada")

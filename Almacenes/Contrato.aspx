@@ -37,7 +37,7 @@
                               </div>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddContratoBtn" ToolTip="Agregar contrato" OnClick="AddLicitacionBtn_ServerClick">
+                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" ToolTip="Agregar contrato" OnClick="AddLicitacionBtn_ServerClick">
                                 <div class="form-row">
                                 <asp:Label  Text="Agregar contrato" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
                                 <i class="fas fa-plus fa-sm"  style="padding:5px"></i>

@@ -53,16 +53,16 @@
                             <input id="txtSearchArticulo" runat="server" placeholder="Articulo" class="form-control form-control-sm">
                         </div>
                         <div class="col-3">
-                            <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddLicitacionBtn" ToolTip="Agregar código" OnClick="AddLicitacionBtn_Click">
+                            <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" ToolTip="Agregar código" OnClick="AddLicitacionBtn_Click">
                                 <div class="form-row">
                                 <asp:Label  Text="Agregar código" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
                                 <i class="fas fa-plus fa-sm"  style="padding:5px"></i>
                                 </div>
                             </asp:LinkButton>
                         </div>
-                        <div class="col-1" style="background-color:white">
+                        <div class="col-1" style="background-color: white">
                             <a class="btn btn-link" onclick="goBack()">
-                                <i class="fas fa-fw  fa-arrow-alt-circle-left" style="background-color:white"></i>
+                                <i class="fas fa-fw  fa-arrow-alt-circle-left" style="background-color: white"></i>
                                 <span>Atrás</span>
                             </a>
                         </div>
@@ -83,7 +83,7 @@
                             <asp:TextBox ID="txtSearchKey" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="col-2">
-                            <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">                                
+                            <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
                                 <asp:ListItem Text="Código de barras" Value="DATO"></asp:ListItem>
                                 <asp:ListItem Text="Artículo" Value="ARTICULO"></asp:ListItem>
                             </asp:DropDownList>
@@ -135,6 +135,7 @@
                 runat="server"
                 DataSourceID="CodigoBarraDS"
                 DataKeyNames="IdCodigoBarra"
+                OnItemDataBound="CodigoBarraListView_ItemDataBound"
                 OnItemCommand="ListView_ItemCommand">
                 <LayoutTemplate>
                     <div class="table table-responsive">

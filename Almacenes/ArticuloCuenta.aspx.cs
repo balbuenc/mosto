@@ -18,6 +18,17 @@ namespace Almacenes
             {
                 ArticuloCuentaListViewDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
             }
+
+            //Authorize User Role
+            if (Session["SecureMatrix"] == null)
+            {
+                string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                string LoginPageUrl = "/Login.aspx";
+                HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+            }
+
+            Utils.Authorization("vAsiganciondecuentas");
+            AddRegistroBtn.Visible = Utils.WRITE;
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)
@@ -182,6 +193,16 @@ namespace Almacenes
             FadeOut(ErrorLabel.ClientID, 5000);
             ArticuloCuentaListView.DataBind();
 
+        }
+
+        protected void ArticuloCuentaListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+
+            LinkButton EditArticuloCuentaBtn = (LinkButton)e.Item.FindControl("EditArticuloCuentaBtn");
+            LinkButton DeleteArticuloCuentaBtn = (LinkButton)e.Item.FindControl("DeleteArticuloCuentaBtn");
+
+            EditArticuloCuentaBtn.Enabled = Utils.UPDATE;
+            DeleteArticuloCuentaBtn.Enabled = Utils.DELETE;
         }
     }
 }

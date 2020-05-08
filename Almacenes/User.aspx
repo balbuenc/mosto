@@ -84,6 +84,7 @@
                 runat="server"
                 DataSourceID="UserDS"
                 DataKeyNames="IdUser"
+                OnItemDataBound="UserListView_ItemDataBound"
                 OnItemCommand="ListView_ItemCommand">
                 <LayoutTemplate>
                     <div class="table table-responsive">

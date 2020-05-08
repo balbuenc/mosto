@@ -18,6 +18,17 @@ namespace Almacenes
             {
                 PlanCuentaListViewDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
             }
+
+            //Authorize User Role
+            if (Session["SecureMatrix"] == null)
+            {
+                string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                string LoginPageUrl = "/Login.aspx";
+                HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+            }
+
+            Utils.Authorization("vPlandeCuentas");
+            AddRegistroBtn.Visible = Utils.WRITE;
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)
@@ -178,6 +189,15 @@ namespace Almacenes
             FadeOut(ErrorLabel.ClientID, 5000);
             PlanCuentaListView.DataBind();
 
+        }
+
+        protected void PlanCuentaListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            LinkButton EditPlanCuentaBtn = (LinkButton)e.Item.FindControl("EditPlanCuentaBtn");
+            LinkButton DeletePlanCuentaBtn = (LinkButton)e.Item.FindControl("DeletePlanCuentaBtn");
+
+            EditPlanCuentaBtn.Enabled = Utils.UPDATE;
+            DeletePlanCuentaBtn.Enabled = Utils.DELETE;
         }
     }
 }

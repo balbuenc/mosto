@@ -21,6 +21,18 @@ namespace Almacenes
             {
                 CodigoBarraListViewDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
             }
+
+            //Authorize User Role
+            if (Session["SecureMatrix"] == null)
+            {
+                string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                string LoginPageUrl = "/Login.aspx";
+                HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+            }
+
+            Utils.Authorization("vCodigosdeBarra");
+            AddRegistroBtn.Visible = Utils.WRITE;
+
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)
@@ -284,6 +296,15 @@ namespace Almacenes
                 ErrorLabel.Visible = true;
                 FadeOut(ErrorLabel.ClientID, 5000);
             }
+        }
+
+        protected void CodigoBarraListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            LinkButton EditCodigoBarraBtn = (LinkButton)e.Item.FindControl("EditCodigoBarraBtn");
+            LinkButton DeleteCodigoBarraBtn = (LinkButton)e.Item.FindControl("DeleteCodigoBarraBtn");
+
+            EditCodigoBarraBtn.Enabled = Utils.UPDATE;
+            DeleteCodigoBarraBtn.Enabled = Utils.DELETE;
         }
     }
 }

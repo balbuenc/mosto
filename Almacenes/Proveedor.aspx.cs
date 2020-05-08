@@ -18,6 +18,17 @@ namespace Almacenes.Management
             {
                 ProveedorDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
             }
+
+            //Authorize User Role
+            if (Session["SecureMatrix"] == null)
+            {
+                string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                string LoginPageUrl = "/Login.aspx";
+                HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+            }
+
+            Utils.Authorization("vProveedores");
+            AddRegistroBtn.Visible = Utils.WRITE;
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)
@@ -184,6 +195,15 @@ namespace Almacenes.Management
             FadeOut(ErrorLabel.ClientID, 5000);
             ProveedorListView.DataBind();
 
+        }
+
+        protected void ProveedorListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            LinkButton EditProveedorBtn = (LinkButton)e.Item.FindControl("EditProveedorBtn");
+            LinkButton DeleteProveedorBtn = (LinkButton)e.Item.FindControl("DeleteProveedorBtn");
+
+            EditProveedorBtn.Enabled = Utils.UPDATE;
+            DeleteProveedorBtn.Enabled = Utils.DELETE;
         }
     }
 }

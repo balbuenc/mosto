@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="Libro diario" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="Diario.aspx.cs" Inherits="Almacenes.Diario" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="fondo">
+    <div class="fondo">
         <div class="page-header  encabezado">
             <div class="container-fluid">
                 <asp:Panel runat="server" DefaultButton="SearchBtn">
@@ -17,7 +18,7 @@
                             Desde
                         </div>
                         <div class="col-2 font-weight-bold">
-                           Hasta
+                            Hasta
                         </div>
                     </div>
                     <div class="row">
@@ -30,10 +31,10 @@
                                 <asp:ListItem Text="Lote" Value="LOTE"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
-                        <div class="col-2" style="font-size:small">
+                        <div class="col-2" style="font-size: small">
                             <asp:TextBox ID="txtFechaInicio" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                         </div>
-                        <div class="col-2" style="font-size:small">
+                        <div class="col-2" style="font-size: small">
                             <asp:TextBox ID="txtFechaFin" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="col-2">
@@ -45,7 +46,7 @@
                               </div>
                                 </asp:LinkButton>
 
-                               
+
                                 <div class="btn-group" role="group">
                                     <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle btn-border" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         #
@@ -84,6 +85,7 @@
                 runat="server"
                 DataSourceID="DiarioDS"
                 DataKeyNames="IdDiario"
+                OnItemDataBound="DiarioListView_ItemDataBound"
                 OnItemCommand="ListView_ItemCommand">
                 <LayoutTemplate>
                     <div class="table table-responsive">
@@ -111,10 +113,10 @@
                             <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("Descripcion") %>' /></td>
                         <td>
                             <asp:Label ID="lblFecha" runat="server" Text='<%# DateTime.Parse( Eval("Fecha").ToString()).ToShortDateString() %>' /></td>
-                       
+
                         <td>
                             <asp:Label ID="lblLote" runat="server" Text='<%# Eval("IdLote") %>' /></td>
-                        
+
 
                         <td>
                             <asp:LinkButton runat="server" ID="EditDiarioBtn" CommandName="Edit" CommandArgument='<%# Eval("IdDiario")%>' ToolTip="Editar">
@@ -128,7 +130,7 @@
                             </asp:LinkButton>
                         </td>
 
-                      
+
 
                     </tr>
 
@@ -138,15 +140,15 @@
                         <td>
                             <asp:Label ID="lblIdDiario" runat="server" Text='<%# Eval("IdDiario") %>' /></td>
                         <td>
-                            <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>'  CssClass="form-control"/></td>
+                            <asp:TextBox ID="txtDescripcion" runat="server" Text='<%# Bind("Descripcion") %>' CssClass="form-control" /></td>
                         <td>
-                            <asp:label ID="lblFecha" runat="server" Text='<%# DateTime.Parse( Eval("Fecha").ToString()).ToShortDateString() %>' />
-                            
+                            <asp:Label ID="lblFecha" runat="server" Text='<%# DateTime.Parse( Eval("Fecha").ToString()).ToShortDateString() %>' />
+
                         </td>
                         <td>
                             <asp:Label ID="lblLote" runat="server" Text='<%# Eval("IdLote")  %>' />
                         </td>
-                        
+
 
 
                         <td>
@@ -180,9 +182,9 @@
                 </InsertParameters>
                 <UpdateParameters>
                     <asp:Parameter Name="IdDiario" DbType="Int32" />
-                   
+
                     <asp:Parameter Name="Descripcion" DbType="String" />
-                    
+
                 </UpdateParameters>
                 <SelectParameters>
                     <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
@@ -192,7 +194,7 @@
                 </SelectParameters>
             </asp:SqlDataSource>
 
-           
+
 
             <!-- #endregion -->
 

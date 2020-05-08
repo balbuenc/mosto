@@ -18,6 +18,18 @@ namespace Almacenes
             {
                 ContratoDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
             }
+
+            //Authorize User Role
+            if (Session["SecureMatrix"] == null)
+            {
+                string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                string LoginPageUrl = "/Login.aspx";
+                HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+            }
+
+            Utils.Authorization("vContratos");
+            AddRegistroBtn.Visible = Utils.WRITE;
+
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)
@@ -84,6 +96,10 @@ namespace Almacenes
             Label lblEstado = (Label)e.Item.FindControl("lblEstado");
             LinkButton DeleteContratoBtn = (LinkButton)e.Item.FindControl("DeleteContratoBtn");
             LinkButton EditContratoBtn = (LinkButton)e.Item.FindControl("EditContratoBtn");
+
+            EditContratoBtn.Enabled = Utils.UPDATE;
+            DeleteContratoBtn.Enabled = Utils.DELETE;
+
             try
             {
 

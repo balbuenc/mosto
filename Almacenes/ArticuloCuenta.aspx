@@ -37,7 +37,7 @@
                               </div>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddLicitacionBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar asignación">
+                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar asignación">
                                 <div class="form-row">
                                 <asp:Label  Text="Agregar asigación" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
                                 <i class="fas fa-plus fa-sm"  style="padding:5px"></i>
@@ -79,6 +79,7 @@
                 runat="server"
                 DataSourceID="ArticuloCuentaDS"
                 DataKeyNames="IdArticuloCuenta"
+                OnItemDataBound="ArticuloCuentaListView_ItemDataBound"
                 OnItemCommand="ListView_ItemCommand">
                 <LayoutTemplate>
                     <div class="table table-responsive">
@@ -106,7 +107,7 @@
                             <asp:Label ID="lblIdArticuloMaestro" runat="server" Text='<%# Eval("Articulo") %>' /></td>
                         <td>
                             <asp:Label ID="lblIdCuenta" runat="server" Text='<%# Eval("Cuenta") %>' /></td>
-                          <td>
+                        <td>
                             <asp:Label ID="lblConceptoContable" runat="server" Text='<%# Eval("Concepto") %>' /></td>
 
                         <td>
@@ -275,7 +276,7 @@
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>
-                                                 <div class="row">
+                                                <div class="row">
                                                     <div class="col-3"><b>Conc. contable</b></div>
                                                     <div class="col-9">
                                                         <asp:DropDownList ID="ConceptoContableDDL"
@@ -330,7 +331,7 @@
                 <DeleteParameters>
                 </DeleteParameters>
                 <InsertParameters>
-                    
+
                     <asp:Parameter Name="IdCuenta" Type="Int32" />
                     <asp:Parameter Name="IdArticuloMaestro" Type="Int32" />
                     <asp:Parameter Name="IdConceptoContable" Type="Int32" />
@@ -351,13 +352,13 @@
 
             <asp:SqlDataSource ID="ArticuloInsertDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
                 SelectCommand="select IdArticuloMaestro, Articulo from warehouse.ArticuloMaestro  order by ltrim(rtrim(Articulo)) " SelectCommandType="Text"></asp:SqlDataSource>
-            
+
             <asp:SqlDataSource ID="ConceptoContableDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
                 SelectCommand="select IdConceptoContable, Concepto from [accounting].[ConceptoContable] order by 2" SelectCommandType="Text"></asp:SqlDataSource>
-            
+
             <!-- #endregion -->
 
-            
+
 
 
         </div>

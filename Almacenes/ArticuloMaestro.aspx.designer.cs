@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Almacenes {
-    
-    
-    public partial class ArticuloMaestro {
-        
+namespace Almacenes
+{
+
+
+    public partial class ArticuloMaestro
+    {
+
         /// <summary>
         /// txtSearchKey control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearchKey;
-        
+
         /// <summary>
         /// searchParameterDDL control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList searchParameterDDL;
-        
+
         /// <summary>
         /// SearchBtn control.
         /// </summary>
@@ -38,16 +40,16 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton SearchBtn;
-        
+
         /// <summary>
-        /// AddLicitacionBtn control.
+        /// AddRegistroBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AddLicitacionBtn;
-        
+        protected global::System.Web.UI.WebControls.LinkButton AddRegistroBtn;
+
         /// <summary>
         /// ErrorLabel control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
-        
+
         /// <summary>
         /// ArticuloMaestroListViewDataPager control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataPager ArticuloMaestroListViewDataPager;
-        
+
         /// <summary>
         /// ArticuloMaestroListView control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView ArticuloMaestroListView;
-        
+
         /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+
         /// <summary>
         /// InsertFormView control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FormView InsertFormView;
-        
+
         /// <summary>
         /// UpdatePanel2 control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-        
+
         /// <summary>
         /// EditFormView control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FormView EditFormView;
-        
+
         /// <summary>
         /// CodigoBarraUP control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel CodigoBarraUP;
-        
+
         /// <summary>
         /// CodigoBarraModalLabel control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl CodigoBarraModalLabel;
-        
+
         /// <summary>
         /// IdArticuloMaestroHF control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField IdArticuloMaestroHF;
-        
+
         /// <summary>
         /// CodigoBarraListView control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView CodigoBarraListView;
-        
+
         /// <summary>
         /// bar control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl bar;
-        
+
         /// <summary>
         /// AceptarBtn control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button AceptarBtn;
-        
+
         /// <summary>
         /// ArticuloMaestroDS control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource ArticuloMaestroDS;
-        
+
         /// <summary>
         /// UnidadMedidaDS control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace Almacenes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource UnidadMedidaDS;
-        
+
         /// <summary>
         /// CodigoBarraDS control.
         /// </summary>

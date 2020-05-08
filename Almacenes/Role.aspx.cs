@@ -18,6 +18,18 @@ namespace Almacenes
             {
                 RoleDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
             }
+
+            //Authorize User Role
+            if (Session["SecureMatrix"] == null)
+            {
+                string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                string LoginPageUrl = "/Login.aspx";
+                HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+            }
+
+            Utils.Authorization("vRoles");
+            AddRegistroBtn.Visible = Utils.WRITE;
+
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)
@@ -174,6 +186,15 @@ namespace Almacenes
             FadeOut(ErrorLabel.ClientID, 5000);
             RoleListView.DataBind();
 
+        }
+
+        protected void RoleListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            LinkButton EditRoleBtn = (LinkButton)e.Item.FindControl("EditRoleBtn");
+            LinkButton DeleteRoleBtn = (LinkButton)e.Item.FindControl("DeleteRoleBtn");
+
+            EditRoleBtn.Enabled = Utils.UPDATE;
+            DeleteRoleBtn.Enabled = Utils.DELETE;
         }
     }
 }

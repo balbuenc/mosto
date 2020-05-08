@@ -83,6 +83,7 @@
                 runat="server"
                 DataSourceID="LicitacionDS"
                 DataKeyNames="IdTipoLicitacion"
+                OnItemDataBound="LicitacionListView_ItemDataBound"
                 OnItemCommand="LicitacionListView_ItemCommand">
                 <LayoutTemplate>
                     <div class="table table-responsive">

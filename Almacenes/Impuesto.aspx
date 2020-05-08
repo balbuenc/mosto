@@ -79,6 +79,7 @@
                 runat="server"
                 DataSourceID="ImpuestoDS"
                 DataKeyNames="IdImpuesto"
+                 OnItemDataBound="ImpuestoListView_ItemDataBound"
                 OnItemCommand="ListView_ItemCommand">
                 <LayoutTemplate>
                     <div class="table table-responsive">

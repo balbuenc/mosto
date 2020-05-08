@@ -29,6 +29,17 @@ namespace Almacenes
 
             ErrorLabel.Text = "";
             ErrorLabel.Visible = false;
+
+            //Authorize User Role
+            if (Session["SecureMatrix"] == null)
+            {
+                string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                string LoginPageUrl = "/Login.aspx";
+                HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+            }
+
+            Utils.Authorization("vInventario");
+            AddRegistroBtn.Visible = Utils.WRITE;
         }
 
         private void ObtenerDatosInventario(string IdInventario)
@@ -248,6 +259,7 @@ namespace Almacenes
 
             LinkButton DeleteInventarioDetalleBtn = (LinkButton)e.Item.FindControl("DeleteInventarioDetalleBtn");
 
+            DeleteInventarioDetalleBtn.Enabled = Utils.DELETE;
 
             if (txtEstado == "Abierto")
             {

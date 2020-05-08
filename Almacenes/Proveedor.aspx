@@ -81,6 +81,7 @@
                 runat="server"
                 DataSourceID="ProveedorDS"
                 DataKeyNames="IdProveedor"
+                OnItemDataBound="ProveedorListView_ItemDataBound"
                 OnItemCommand="ListView_ItemCommand">
                 <LayoutTemplate>
                     <div class="table table-responsive">
@@ -120,7 +121,7 @@
                             <asp:Label ID="lblFechaRegistro" runat="server" Text='<%# String.Format("{0:dd/MM/yyyy}",Eval( "FechaRegistro") ) %>' /></td>
                         <td>
                             <asp:Label ID="lblNroDocumento" runat="server" Text='<%# Eval("NroDocumento") %>' /></td>
-                         <td>
+                        <td>
                             <asp:Label ID="lblNroCuenta" runat="server" Text='<%# Eval("NroCuenta") %>' /></td>
 
                         <td>

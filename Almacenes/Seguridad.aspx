@@ -48,7 +48,7 @@
                     </div>
                     <div class="row">
                         <div class="col-10"></div>
-                        <div class="col-2" style="text-align:right">
+                        <div class="col-2" style="text-align: right">
                             <div class="btn-group btn-shadow">
                                 <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddPrivilegeBtn" ToolTip="Agregar permiso" OnClick="AddPrivilegeBtn_Click">
                                 <div class="form-row">
@@ -82,7 +82,8 @@
                 runat="server"
                 DataSourceID="AsignacionesDS"
                 DataKeyNames="IdSecurable"
-                 OnItemDeleted="AsignacionesListView_ItemDeleted">
+                OnItemDataBound="AsignacionesListView_ItemDataBound"
+                OnItemDeleted="AsignacionesListView_ItemDeleted">
                 <LayoutTemplate>
                     <div class="table table-responsive">
                         <table class="table table-striped table-condensed">

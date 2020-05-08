@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class="container-fluid" >
+        <div class="container-fluid">
             <div class="row pie" style="padding-left: 15px">
                 <asp:DataPager ID="TipoContactoDataPager" runat="server" PagedControlID="TipoContactoListView" PageSize="10">
                     <Fields>
@@ -78,7 +78,8 @@
                 runat="server"
                 DataSourceID="TipoContactoDS"
                 DataKeyNames="IdTipoContacto"
-                OnItemCommand="ListView_ItemCommand">
+                OnItemCommand="ListView_ItemCommand"
+                OnItemDataBound="TipoContactoListView_ItemDataBound">
                 <LayoutTemplate>
                     <div class="table table-responsive">
                         <table class="table table-striped table-condensed">

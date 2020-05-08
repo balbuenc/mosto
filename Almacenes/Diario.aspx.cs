@@ -24,6 +24,17 @@ namespace Almacenes
                 txtFechaInicio.Text = DateTime.Today.ToString("dd/MM/yyyy");
                 txtFechaFin.Text = DateTime.Today.ToString("dd/MM/yyyy");
             }
+
+            //Authorize User Role
+            if (Session["SecureMatrix"] == null)
+            {
+                string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                string LoginPageUrl = "/Login.aspx";
+                HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+            }
+
+            Utils.Authorization("vLibrodiario");
+            //AddRegistroBtn.Visible = Utils.WRITE;
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)
@@ -46,6 +57,14 @@ namespace Almacenes
             ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "script", "window.setTimeout(function() { document.getElementById('" + ClientID + "').style.display = 'none' }," + Time.ToString() + ");", true);
         }
 
+        protected void DiarioListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            LinkButton EditDiarioBtn = (LinkButton)e.Item.FindControl("EditDiarioBtn");
+            LinkButton DetailsDiarioBtn = (LinkButton)e.Item.FindControl("DetailsDiarioBtn");
 
+            EditDiarioBtn.Enabled = Utils.UPDATE;
+            DetailsDiarioBtn.Enabled = Utils.UPDATE;
+
+        }
     }
 }

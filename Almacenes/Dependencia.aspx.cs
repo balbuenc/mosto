@@ -19,7 +19,16 @@ namespace Almacenes
                 DependenciaDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
             }
 
+            //Authorize User Role
+            if (Session["SecureMatrix"] == null)
+            {
+                string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                string LoginPageUrl = "/Login.aspx";
+                HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+            }
 
+            Utils.Authorization("vDependencias");
+            AddRegistroBtn.Visible = Utils.WRITE;
         }
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)
@@ -180,6 +189,15 @@ namespace Almacenes
             FadeOut(ErrorLabel.ClientID, 5000);
             DependenciaListView.DataBind();
 
+        }
+
+        protected void DependenciaListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            LinkButton EditDependenciaBtn = (LinkButton)e.Item.FindControl("EditDependenciaBtn");
+            LinkButton DeleteDependenciaBtn = (LinkButton)e.Item.FindControl("DeleteDependenciaBtn");
+
+            EditDependenciaBtn.Enabled = Utils.UPDATE;
+            DeleteDependenciaBtn.Enabled = Utils.DELETE;
         }
     }
 }

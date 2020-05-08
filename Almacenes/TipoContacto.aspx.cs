@@ -7,10 +7,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace Almacenes
 {
     public partial class TipoTipoContacto : System.Web.UI.Page
     {
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             ((Label)this.Master.FindControl("lblActualPage")).Text = "TIPOS DE CONTACTO";
@@ -18,7 +21,20 @@ namespace Almacenes
             {
                 TipoContactoDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
             }
+
+            //Authorize User Role
+            if (Session["SecureMatrix"] == null)
+            {
+                string OriginalUrl = HttpContext.Current.Request.RawUrl;
+                string LoginPageUrl = "/Login.aspx";
+                HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", LoginPageUrl, OriginalUrl));
+            }
+
+            Utils.Authorization("vTipodeContacto");
+            AddRegistroBtn.Visible = Utils.WRITE;
         }
+
+        
 
         protected void SearchBtn_ServerClick(object sender, EventArgs e)
         {
@@ -124,7 +140,7 @@ namespace Almacenes
             SqlCommand cmd = new SqlCommand();
             DataKey key = EditFormView.DataKey;
 
-        
+
 
             try
             {
@@ -175,6 +191,16 @@ namespace Almacenes
             FadeOut(ErrorLabel.ClientID, 5000);
             TipoContactoListView.DataBind();
 
+        }
+
+        protected void TipoContactoListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+
+            LinkButton EditTipoContactoBtn = (LinkButton)e.Item.FindControl("EditTipoContactoBtn");
+            LinkButton DeleteTipoContactoBtn = (LinkButton)e.Item.FindControl("DeleteTipoContactoBtn");
+
+            EditTipoContactoBtn.Enabled = Utils.UPDATE;
+            DeleteTipoContactoBtn.Enabled = Utils.DELETE;
         }
     }
 }

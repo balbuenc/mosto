@@ -78,11 +78,12 @@
                     </Fields>
                 </asp:DataPager>
             </div>
-            
+
             <asp:ListView ID="DepositoListView"
                 runat="server"
                 DataSourceID="DepositoDS"
                 DataKeyNames="IdDeposito"
+                OnItemDataBound="DepositoListView_ItemDataBound"
                 OnItemCommand="ListView_ItemCommand">
                 <LayoutTemplate>
                     <div class="table table-responsive">

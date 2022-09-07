@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-    <title><%: Page.Title %> | Almacenes</title>
+    <title><%: Page.Title %> | Mosto</title>
 
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -108,15 +108,15 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                                 <h6 class="dropdown-header">Administración:</h6>
-                                <a class="dropdown-item" href="/TipoLicitaciones.aspx" runat="server" id="TipodeLicitacionesMenu">Tipo Licitaciones</a>
+                                <a class="dropdown-item" href="/TipoLicitaciones.aspx" runat="server" id="TipodeLicitacionesMenu">Tipo DE</a>
                                 <a class="dropdown-item" href="/TipoContacto.aspx"  runat="server" id="TipodeContactoMenu">Tipo de Contacto</a>
 
 
 
                                 <a class="dropdown-item" href="/Impuesto.aspx" runat="server" id="ImpuestosMenu">Impuestos</a>
                                 <a class="dropdown-item" href="/UnidadMedida.aspx"  runat="server" id="UnidaddeMedidaMenu">Unidad de Medida</a>
-                                <a class="dropdown-item" href="/Dependencia.aspx"  runat="server" id="DependenciasMenu">Dependencias</a>
-                                <a class="dropdown-item" href="/Deposito.aspx"  runat="server" id="DepositosMenu">Depósitos</a>
+                                <%--<a class="dropdown-item" href="/Dependencia.aspx"  runat="server" id="DependenciasMenu">Dependencias</a>
+                                <a class="dropdown-item" href="/Deposito.aspx"  runat="server" id="DepositosMenu">Depósitos</a>--%>
 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/User.aspx"   runat="server" id="UsuariosMenu">Usuarios</a>
@@ -127,24 +127,24 @@
                         <li class="nav-item dropdown"  runat="server" id="ComprasMenu">
                             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownLicitaciones" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-file-invoice-dollar"></i>
-                                <span>Compras</span>
+                                <span>Operaciones</span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                                <h6 class="dropdown-header">Compras:</h6>
+                                <h6 class="dropdown-header">Operaciones:</h6>
 
-                                <a class="dropdown-item" href="/Licitaciones.aspx"   runat="server" id="LicitacionesMenu">Licítaciones</a>
+                                <a class="dropdown-item" href="/Licitaciones.aspx"   runat="server" id="LicitacionesMenu">Puntos de Emisión</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/Proveedor.aspx"   runat="server" id="ProveedoresMenu">Proveedores</a>
-                                <a class="dropdown-item" href="/Contacto.aspx"   runat="server" id="ContactosMenu">Contactos</a>
+                                <a class="dropdown-item" href="/Proveedor.aspx"   runat="server" id="ProveedoresMenu">Cliente</a>
+                              <%--  <a class="dropdown-item" href="/Contacto.aspx"   runat="server" id="ContactosMenu">Contactos</a>--%>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/Contrato.aspx"   runat="server" id="ContratosMenu">Contratos</a>
+                                <a class="dropdown-item" href="/Contrato.aspx"   runat="server" id="ContratosMenu">Factura electrónica</a>
                                 <a class="dropdown-item" href="/ArticuloMaestro.aspx"    runat="server" id="ArticulosMenu">Artículos</a>
                                 <a class="dropdown-item" href="/CodigoBarra.aspx"    runat="server" id="CodigosdeBarraMenu">Código de barras</a>
 
                             </div>
                         </li>
 
-                        <li class="nav-item dropdown" runat="server" id="ProcesosMenu">
+                        <%--<li class="nav-item dropdown" runat="server" id="ProcesosMenu">
                             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownProcesos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-code-branch"></i>
                                 <span>Procesos</span>
@@ -160,8 +160,8 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/Inventario.aspx"  runat="server" id="InventarioMenu">Inventario</a>
                             </div>
-                        </li>
-                        <li class="nav-item dropdown" runat="server" id="ContabilidadMenu">
+                        </li>--%>
+                        <%--<li class="nav-item dropdown" runat="server" id="ContabilidadMenu">
                             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownContabilidad" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-calculator"></i>
                                 <span>Contabilidad</span>
@@ -175,7 +175,7 @@
                                 <a class="dropdown-item" href="/Diario.aspx" runat="server" id="LibrodiarioMenu">Libro diario</a>
 
                             </div>
-                        </li>
+                        </li>--%>
 
                         <li class="nav-item dropdown" runat="server" id="ReportesMenu">
                             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdownAlmacenes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -184,8 +184,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="pagesDropdownAlmacenes">
                                 <h6 class="dropdown-header">Reportes:</h6>
-                                <a class="dropdown-item" href="/rptExistencia.aspx"  runat="server" id="ExistenciapordespositosMenu">Existencia por depósito</a>
-                                <a class="dropdown-item" href="/rptExistenciaDependencia.aspx"  runat="server" id="ExistenciapordependenciaMenu">Existencia por dependencia</a>
+                                <a class="dropdown-item" href="/rptExistencia.aspx"  runat="server" id="ExistenciapordespositosMenu">Facturas emitidas</a>
+                               <%-- <a class="dropdown-item" href="/rptExistenciaDependencia.aspx"  runat="server" id="ExistenciapordependenciaMenu">Existencia por dependencia</a>
                                 <a class="dropdown-item" href="/rptExistenciaGlobal.aspx"  runat="server" id="ExistenciaglobalMenu">Existencia global</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/rptEntradaGlobal.aspx"  runat="server" id="EntradasMenu">Entradas</a>
@@ -193,7 +193,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/rptMovimientoDependencias.aspx"  runat="server" id="MovimientodependenciasMenu">Movimiento dependencias</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/rptLibroDiario.aspx"  runat="server" id="LibroMenu">Libro diario</a>
+                                <a class="dropdown-item" href="/rptLibroDiario.aspx"  runat="server" id="LibroMenu">Libro diario</a>--%>
                             </div>
                         </li>
 

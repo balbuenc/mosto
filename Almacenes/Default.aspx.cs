@@ -11,7 +11,7 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ((Label)this.Master.FindControl("lblActualPage")).Text = "ALMACENES";
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "FACTURACIÓN ELECTRÓNICA";
         }
     }
 }

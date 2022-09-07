@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Proveedores" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="Proveedor.aspx.cs" Inherits="Almacenes.Management.Proveedores" %>
+﻿<%@ Page Title="Clientes" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="Proveedor.aspx.cs" Inherits="Almacenes.Management.Proveedores" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-2">
                             <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
-                                <asp:ListItem Text="Proveedor" Value="PROVEEDOR"></asp:ListItem>
+                                <asp:ListItem Text="CLIENTE" Value="Proveedor"></asp:ListItem>
                                 <asp:ListItem Text="RUC" Value="RUC"></asp:ListItem>
                                 <asp:ListItem Text="Nro. Documento" Value="DOCUMENTO"></asp:ListItem>
                             </asp:DropDownList>
@@ -38,9 +38,9 @@
                               </div>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar proveedor">
+                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar cliente">
                                 <div class="form-row">
-                                <asp:Label  Text="Agregar proveedor" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
+                                <asp:Label  Text="Agregar cliente" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
                                 <i class="fas fa-plus fa-sm"  style="padding:5px"></i>
                                 </div>
                                 </asp:LinkButton>
@@ -154,7 +154,7 @@
                         <ContentTemplate>
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <b id="addModalLabel">Agregar nuevo Proveedor.</b>
+                                    <b id="addModalLabel">Agregar nuevo Cliente.</b>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
                                 <div class="modal-body">
@@ -250,7 +250,7 @@
                         <ContentTemplate>
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <b id="editModalLabel">Modificar Proveedor.</b>
+                                    <b id="editModalLabel">Modificar Cliente.</b>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
                                 <div class="modal-body">

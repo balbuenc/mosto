@@ -14,7 +14,7 @@ namespace Almacenes.Management
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ((Label)this.Master.FindControl("lblActualPage")).Text = "LICITACIONES";
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "PUNTOS DE EMISIÓN";
             if (Request.QueryString["PageSize"] != null)
             {
                 LicitacionDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
@@ -145,8 +145,7 @@ namespace Almacenes.Management
                 DropDownList IdLicitacionDDL = (DropDownList)EditFormView.FindControl("IdLicitacionDDL");
                 TextBox txtNroLicitacion = (TextBox)EditFormView.FindControl("txtNroLicitacion");
                 TextBox txtFechaLicitacion = (TextBox)EditFormView.FindControl("txtFechaLicitacion");
-                TextBox txtUOCReferancia = (TextBox)EditFormView.FindControl("txtUOCReferancia");
-                TextBox txtUOCIdLicitacion = (TextBox)EditFormView.FindControl("txtUOCIdLicitacion");
+                
                 DropDownList ActivoDDL = (DropDownList)EditFormView.FindControl("ActivoDDL");
                 TextBox txtLlamado = (TextBox)EditFormView.FindControl("txtLlamado");
 
@@ -162,8 +161,8 @@ namespace Almacenes.Management
                 cmd.Parameters.AddWithValue("@IdTipoLicitacion", IdLicitacionDDL.SelectedValue.ToString());
                 cmd.Parameters.AddWithValue("@NroLicitacion", txtNroLicitacion.Text);
                 cmd.Parameters.AddWithValue("@FechaLicitacion", txtFechaLicitacion.Text);
-                cmd.Parameters.AddWithValue("@UOCReferancia", txtUOCReferancia.Text);
-                cmd.Parameters.AddWithValue("@UOCIdLicitacion", txtUOCIdLicitacion.Text);
+                cmd.Parameters.AddWithValue("@UOCReferancia", "");
+                cmd.Parameters.AddWithValue("@UOCIdLicitacion", "");
                 cmd.Parameters.AddWithValue("@Activo", ActivoDDL.SelectedValue.ToString());
                 cmd.Parameters.AddWithValue("@Llamado", txtLlamado.Text);
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Licitaciones" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="Licitaciones.aspx.cs" Inherits="Almacenes.Management.Licitaciones" %>
+﻿<%@ Page Title="Puntos de emisión" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="Licitaciones.aspx.cs" Inherits="Almacenes.Management.Licitaciones" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -40,9 +40,9 @@
                               </div>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar licitación">
+                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar punto de Emisión">
                                 <div class="form-row">
-                                <asp:Label  Text="Agregar licitación" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
+                                <asp:Label  Text="Agregar punto" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
                                 <i class="fas fa-plus fa-sm"  style="padding:5px"></i>
                                 </div>
                                 </asp:LinkButton>
@@ -91,13 +91,13 @@
                             <thead>
                                 <th>ID</th>
                                 <th>Número</th>
-                                <th>Llamado</th>
+                                <th>Punto</th>
                                 <th>Fecha</th>
                                 <th>Tipo</th>
-                                <th style="text-align: center">Ref. UOC</th>
-                                <th>Id (UOC)</th>
+                             
+                                
                                 <th>Activo</th>
-                                <th>Desactivación</th>
+                               
                                 <th>...</th>
                                 <th>...</th>
                             </thead>
@@ -125,18 +125,11 @@
                         <td>
                             <asp:Label ID="lblIdTipoLicitacion" runat="server" Text='<%# Eval("TipoLicitacion") %>' />
                         </td>
-                        <td>
-                            <asp:Label ID="lblUOCReferancia" runat="server" Text='<%# Eval("UOCReferancia") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="lblUOCIdLicitacion" runat="server" Text='<%# Eval("UOCIdLicitacion") %>' />
-                        </td>
+                        
                         <td>
                             <asp:Label ID="lblActivo" runat="server" Text='<%# Eval("Activo") %>' />
                         </td>
-                        <td>
-                            <asp:Label ID="lblFechaDesactivacion" runat="server" Text='<%# Eval("FechaDesactivacion") %>' />
-                        </td>
+                       
 
                         <td>
                             <asp:LinkButton runat="server" ID="EditLicitacionBtn" CommandName="Editar" CommandArgument='<%# Eval("IdLicitacion")%>' ToolTip="Editar">
@@ -168,7 +161,7 @@
                         <ContentTemplate>
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <b id="addModalLabel">Agregar Licitación.</b>
+                                    <b id="addModalLabel">Agregar punto.</b>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
                                 <div class="modal-body">
@@ -197,13 +190,13 @@
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="col-3"><b>Nro. Licitacion</b></div>
+                                                    <div class="col-3"><b>Nro. punto</b></div>
                                                     <div class="col-6">
                                                         <asp:TextBox ID="txtNroLicitacion" runat="server" Text='<%# Bind("NroLicitacion") %>' CssClass="form-control" />
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-3"><b>Llamado</b></div>
+                                                    <div class="col-3"><b>Punto</b></div>
                                                     <div class="col-9">
                                                         <asp:TextBox ID="txtLlamado" runat="server" Text='<%# Bind("Llamado") %>' CssClass="form-control" />
                                                     </div>
@@ -215,18 +208,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="row">
-                                                    <div class="col-3"><b>Referencia (UOC)</b></div>
-                                                    <div class="col-9">
-                                                        <asp:TextBox ID="txtUOCReferancia" runat="server" Text='<%# Bind("UOCReferancia") %>' CssClass="form-control" />
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-3"><b>ID (UOC)</b></div>
-                                                    <div class="col-9">
-                                                        <asp:TextBox ID="txtUOCIdLicitacion" runat="server" Text='<%# Bind("UOCIdLicitacion") %>' CssClass="form-control" />
-                                                    </div>
-                                                </div>
+                                               
                                                 <div class="row">
                                                     <div class="col-3"><b>Activo</b></div>
                                                     <div class="col-9">
@@ -272,7 +254,7 @@
                         <ContentTemplate>
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <b id="editModalLabel">Modificar licitación.</b>
+                                    <b id="editModalLabel">Modificar punto.</b>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
                                 <div class="modal-body">
@@ -303,13 +285,13 @@
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="col-3"><b>Nro. Licitacion</b></div>
+                                                    <div class="col-3"><b>Nro. punto</b></div>
                                                     <div class="col-9">
                                                         <asp:TextBox ID="txtNroLicitacion" runat="server" Text='<%# Bind("NroLicitacion") %>' CssClass="form-control" />
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-3"><b>Llamado</b></div>
+                                                    <div class="col-3"><b>Punto</b></div>
                                                     <div class="col-9">
                                                         <asp:TextBox ID="txtLlamado" runat="server" Text='<%# Bind("Llamado") %>' CssClass="form-control" />
                                                     </div>
@@ -321,18 +303,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="row">
-                                                    <div class="col-3"><b>Referencia (UOC)</b></div>
-                                                    <div class="col-9">
-                                                        <asp:TextBox ID="txtUOCReferancia" runat="server" Text='<%# Bind("UOCReferancia") %>' CssClass="form-control" />
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-3"><b>ID (UOC)</b></div>
-                                                    <div class="col-9">
-                                                        <asp:TextBox ID="txtUOCIdLicitacion" runat="server" Text='<%# Bind("UOCIdLicitacion") %>' CssClass="form-control" />
-                                                    </div>
-                                                </div>
+                                              
                                                 <div class="row">
                                                     <div class="col-3"><b>Activo</b></div>
                                                     <div class="col-9">

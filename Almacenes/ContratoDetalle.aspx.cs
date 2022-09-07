@@ -16,7 +16,7 @@ namespace Almacenes
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            ((Label)this.Master.FindControl("lblActualPage")).Text = "CONTRATO";
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "FACTURA ELECTRÓNICA";
             if (Request.QueryString["IdContrato"] != null)
             {
                 if (!IsPostBack)
@@ -99,14 +99,14 @@ namespace Almacenes
                 if (Estado == "Finalizado")
                 {
                     ArticuloPanel.Enabled = false;
-                    CerrarDetalleBtn.Text = "Contrato finalizado";
-                    CerrarDetalleBtn.Enabled = false;
+                    CerrarDetalleBtn.Text = "Factura emitida";
+                    CerrarDetalleBtn.Enabled = true;
                     ArticuloContratoListView.Enabled = false;
                 }
                 else
                 {
                     ArticuloPanel.Enabled = true;
-                    CerrarDetalleBtn.Text = "Finalizar Contrato";
+                    CerrarDetalleBtn.Text = "Facturar";
                     CerrarDetalleBtn.Enabled = true;
                     ArticuloContratoListView.Enabled = true;
                 }
@@ -211,7 +211,7 @@ namespace Almacenes
 
             if (txtNroContrato.Text == "")
             {
-                ShowPopUpMsg("Favor ingresar un número de contrato");
+                ShowPopUpMsg("Favor ingresar un número de factura");
                 return;
             }
 
@@ -309,7 +309,9 @@ namespace Almacenes
 
                 conn.Close();
 
-                Response.Redirect("Contrato.aspx");
+                PrintInvoice();
+
+                //Response.Redirect("Contrato.aspx");
 
 
             }
@@ -335,6 +337,16 @@ namespace Almacenes
                 CerrarDetalleBtn.Visible = true;
             else
                 CerrarDetalleBtn.Visible = false;
+        }
+
+
+        protected void PrintInvoice()
+        {
+            string url;
+
+            url = "rptKuDE.aspx?Id=" + Request.QueryString.Get("IdContrato");
+
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('" + url + "','_blank')", true);
         }
     }
 

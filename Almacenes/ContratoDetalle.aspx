@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Contrato Detalle" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="ContratoDetalle.aspx.cs" Inherits="Almacenes.ContratoDetalle" %>
+﻿<%@ Page Title="Detalle Factura" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="ContratoDetalle.aspx.cs" Inherits="Almacenes.ContratoDetalle" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <%--<link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />--%>
@@ -87,14 +87,14 @@
 
             <div class="form-row">
                 <div class="col-12">
-                    <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold"><b>Datos del Contrato</b></div>
+                    <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold"><b>Datos de la factura</b></div>
                 </div>
 
             </div>
             <br />
             <div class="form-row">
                 <div class="col-2">
-                    <div class="col-form-label"><b>Nro. Contrato</b></div>
+                    <div class="col-form-label"><b>Nro. factura</b></div>
                 </div>
                 <div class="col-2">
                     <asp:TextBox ID="txtNroContrato" runat="server" Text="" CssClass="form-control form-control-sm" />
@@ -106,29 +106,29 @@
                     <asp:DropDownList ID="TipoDDL"
                         runat="server"
                         CssClass="form-control form-control-sm">
-                        <asp:ListItem Value="N" Text="Normal"></asp:ListItem>
-                        <asp:ListItem Value="R" Text="Requerimiento"></asp:ListItem>
+                        <asp:ListItem Value="N" Text="Contado"></asp:ListItem>
+                        <asp:ListItem Value="R" Text="Crédito"></asp:ListItem>
 
                     </asp:DropDownList>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-4">
-                    <div class="col-form-label"><b>Proveedor</b></div>
+                    <div class="col-form-label"><b>Cliente</b></div>
                 </div>
                 <div class="col">
-                    <div class="col-form-label"><b>Inicio</b></div>
+                    <div class="col-form-label"><b>Emisión</b></div>
                 </div>
                 <div class="col">
-                    <div class="col-form-label"><b>Fin</b></div>
+                    <div class="col-form-label"><b>Vencimiento</b></div>
                 </div>
                 <div class="col-4">
-                    <div class="col-form-label"><b>Licitación</b></div>
+                    <div class="col-form-label"><b>Punto</b></div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-4">
-                    <input id="txtSearchProveedor" class="form-control form-control-sm" runat="server" placeholder="Proveedor" />
+                    <input id="txtSearchProveedor" class="form-control form-control-sm" runat="server" placeholder="Cliente" />
                 </div>
                 <div class="col-2">
                     <asp:TextBox ID="txtFechaInicioContrato" runat="server" Text="" CssClass="form-control form-control-sm" />
@@ -194,7 +194,7 @@
 
             <div class="form-row">
                 <div class="col-12">
-                    <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold">Artículos del contrato</div>
+                    <div class="col-form-label" style="border-bottom: 1px solid; font-weight: bold">Artículos de la factura</div>
                 </div>
 
             </div>
@@ -209,7 +209,7 @@
                     </asp:DataPager>
                 </div>
                 <div class="col-2">
-                    <asp:Button runat="server" ID="CerrarDetalleBtn" CssClass="btn btn-danger btn-sm" Text="Finalizar contrato" OnClick="CerrarDetalleBtn_Click" />
+                    <asp:Button runat="server" ID="CerrarDetalleBtn" CssClass="btn btn-danger btn-sm" Text="Emitir factura" OnClick="CerrarDetalleBtn_Click" />
                 </div>
             </div>
             <div class="form-row">

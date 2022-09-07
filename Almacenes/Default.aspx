@@ -7,7 +7,7 @@
 
         <div class="row">
             <div class="col-12">
-                <h2 class="titulo">Sistema de Almacenes</h2>
+                <h2 class="titulo">MOSTO | Facturación electrónica.</h2>
             </div>
         </div>
 
@@ -15,7 +15,7 @@
             <div class="col-2"></div>
             <div class="col-8">
                 <div >
-                    <img src="image/LogoDinac.png" style="width: 100%; vertical-align: central" />
+                    <img src="" style="width: 100%; vertical-align: central" />
                 </div>
             </div>
 
@@ -26,9 +26,9 @@
         <hr />
          <div class="row">
             <div class="col-12">
-                <h4 class="titulo">SUBDIRECCION DE ADMINISTRACION Y FINANZAS</h4>
-                 <h5 class="titulo">GERENCIA ADMINISTRATIVA</h5>
-                 <h6 class="titulo">DEPARTAMENTO DE ALMACENES</h6>
+             
+                 <h5 class="titulo"><b>Mosto</b> | Fintech Solutions EAS </h5>
+                 <h6 class="titulo">Sistema de facturación electrónica en linea.</h6>
             </div>
         </div>
 

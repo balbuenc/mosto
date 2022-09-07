@@ -13,7 +13,7 @@ namespace Almacenes.Management
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ((Label)this.Master.FindControl("lblActualPage")).Text = "PROVEEDORES";
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "CLIENTES";
             if (Request.QueryString["PageSize"] != null)
             {
                 ProveedorDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);

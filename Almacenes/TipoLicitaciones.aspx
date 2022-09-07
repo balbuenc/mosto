@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Tipo de Licitaciones" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="TipoLicitaciones.aspx.cs" Inherits="Almacenes.TipoLicitaciones" %>
+﻿<%@ Page Title="Tipo de DE" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="TipoLicitaciones.aspx.cs" Inherits="Almacenes.TipoLicitaciones" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -38,9 +38,9 @@
                               </div>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar tipo licitación">
+                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar tipo DE">
                                 <div class="form-row">
-                                <asp:Label  Text="Agregar tipo licitación" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
+                                <asp:Label  Text="Agregar tipo DE" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
                                 <i class="fas fa-plus fa-sm"  style="padding:5px"></i>
                                 </div>
                                 </asp:LinkButton>
@@ -87,7 +87,7 @@
                         <table class="table table-striped table-condensed">
                             <thead>
                                 <th>ID</th>
-                                <th>Tipo Licitación</th>
+                                <th>Tipo DE</th>
                                 <th>Descripción</th>
                                 <th>Activo</th>
                                 <th>Código</th>
@@ -145,7 +145,7 @@
                         <ContentTemplate>
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <b id="addModalLabel">Agregar Tipo de Licitación.</b>
+                                    <b id="addModalLabel">Agregar Tipo DE.</b>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
                                 <div class="modal-body">
@@ -166,7 +166,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-3"><b>Tipo Licitación</b></div>
+                                                    <div class="col-3"><b>Tipo DE</b></div>
                                                     <div class="col-9">
                                                         <asp:TextBox ID="txtTipoLicitacion" runat="server" Text='<%# Bind("TipoLicitacion") %>' CssClass="form-control" />
                                                     </div>
@@ -230,7 +230,7 @@
                         <ContentTemplate>
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <b id="editModalLabel">Modificar Tipo de Licitación.</b>
+                                    <b id="editModalLabel">Modificar Tipo de DE.</b>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
                                 <div class="modal-body">
@@ -247,7 +247,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-3"><b>Tipo Licitación</b></div>
+                                                    <div class="col-3"><b>Tipo DE</b></div>
                                                     <div class="col-9">
                                                         <asp:TextBox ID="txtTipoLicitacion" runat="server" Text='<%# Bind("TipoLicitacion") %>' CssClass="form-control" />
                                                     </div>

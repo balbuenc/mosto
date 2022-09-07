@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Contrato" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="Contrato.aspx.cs" Inherits="Almacenes.Contrato" %>
+﻿<%@ Page Title="Facturas" Language="C#" MasterPageFile="~/Boot.Master" AutoEventWireup="true" CodeBehind="Contrato.aspx.cs" Inherits="Almacenes.Contrato" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-2">
                             <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control">
-                                <asp:ListItem Text="Proveedor" Value="PROVEEDOR"></asp:ListItem>
+                                <asp:ListItem Text="Cliente" Value="PROVEEDOR"></asp:ListItem>
                                 <asp:ListItem Text="Número" Value="NUMERO"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
@@ -37,9 +37,9 @@
                               </div>
                                 </asp:LinkButton>
 
-                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" ToolTip="Agregar contrato" OnClick="AddLicitacionBtn_ServerClick">
+                                <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" ToolTip="Crear factura" OnClick="AddLicitacionBtn_ServerClick">
                                 <div class="form-row">
-                                <asp:Label  Text="Agregar contrato" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
+                                <asp:Label  Text="Crear factura" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server"></asp:Label> 
                                 <i class="fas fa-plus fa-sm"  style="padding:5px"></i>
                                 </div>
                                 </asp:LinkButton>
@@ -88,11 +88,11 @@
                         <table class="table table-striped table-condensed">
                             <thead>
                                 <th>ID</th>
-                                <th>Proveedor</th>
-                                <th>Inicio</th>
-                                <th>Fin</th>
+                                <th>Cliente</th>
+                                <th>Emisión</th>
+                                <th>Vencimiento</th>
                                 <th>#</th>
-                                <th>Liticación</th>
+                                <th>Punto</th>
                                 <th>Estado</th>
                                 <th>Tipo</th>
                                 <th>...</th>
@@ -192,8 +192,8 @@
                                 runat="server"
                                 CssClass="form-control form-control-sm"
                                 SelectedValue='<%# Bind("Tipo") %>'>
-                                <asp:ListItem Value="N" Text="Normal"></asp:ListItem>
-                                <asp:ListItem Value="R" Text="Requerimiento"></asp:ListItem>
+                                <asp:ListItem Value="CON" Text="Contado"></asp:ListItem>
+                                <asp:ListItem Value="CRE" Text="Crédito"></asp:ListItem>
 
                             </asp:DropDownList>
                         </td>

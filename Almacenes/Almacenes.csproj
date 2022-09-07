@@ -128,7 +128,7 @@
       <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -263,9 +263,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="image\Backgraund.png" />
-    <Content Include="image\iconDinac.jpg" />
-    <Content Include="image\LogoDinac.png" />
     <Content Include="Impuesto.aspx" />
     <Content Include="Inventario.aspx" />
     <Content Include="InventarioDetalle.aspx" />
@@ -283,6 +280,7 @@
     <Content Include="PrintBarCode.aspx" />
     <Content Include="Proveedor.aspx" />
     <Content Include="rptCodigoBarra.aspx" />
+    <Content Include="rptKuDE.aspx" />
     <Content Include="rptEntrada.aspx" />
     <Content Include="rptEntradaGlobal.aspx" />
     <Content Include="rptExistencia.aspx" />
@@ -327,6 +325,7 @@
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.0.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -2364,6 +2363,13 @@
     <Compile Include="rptCodigoBarra.aspx.designer.cs">
       <DependentUpon>rptCodigoBarra.aspx</DependentUpon>
     </Compile>
+    <Compile Include="rptKuDE.aspx.cs">
+      <DependentUpon>rptKuDE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rptKuDE.aspx.designer.cs">
+      <DependentUpon>rptKuDE.aspx</DependentUpon>
+    </Compile>
     <Compile Include="rptEntrada.aspx.cs">
       <DependentUpon>rptEntrada.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2535,6 +2541,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="image\" />
     <Folder Include="Management\" />
   </ItemGroup>
   <ItemGroup>

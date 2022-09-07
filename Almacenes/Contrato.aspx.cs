@@ -13,7 +13,7 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ((Label)this.Master.FindControl("lblActualPage")).Text = "CONTRATOS";
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "FACTURAS";
             if (Request.QueryString["PageSize"] != null)
             {
                 ContratoDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
@@ -97,12 +97,12 @@ namespace Almacenes
             LinkButton DeleteContratoBtn = (LinkButton)e.Item.FindControl("DeleteContratoBtn");
             LinkButton EditContratoBtn = (LinkButton)e.Item.FindControl("EditContratoBtn");
 
-            EditContratoBtn.Enabled = Utils.UPDATE;
-            DeleteContratoBtn.Enabled = Utils.DELETE;
+           
 
             try
             {
-
+                EditContratoBtn.Enabled = Utils.UPDATE;
+                DeleteContratoBtn.Enabled = Utils.DELETE;
 
                 if (lblEstado.Text == "Finalizado")
                 {

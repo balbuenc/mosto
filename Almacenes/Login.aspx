@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Login - Almacenes</title>
+    <title>Login - Mosto</title>
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
 
@@ -15,7 +15,7 @@
     <form id="form1" runat="server">
         <div class="container">
             <div class="card card-login mx-auto mt-5">
-                <div class="card-header">Almacenes | Login</div>
+                <div class="card-header">Mosto | Login</div>
                 <div class="card-body">
 
                     <div class="form-group">

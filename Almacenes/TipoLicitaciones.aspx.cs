@@ -13,7 +13,7 @@ namespace Almacenes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ((Label)this.Master.FindControl("lblActualPage")).Text = "TIPO DE LICITACIONES";
+            ((Label)this.Master.FindControl("lblActualPage")).Text = "TIPO DE";
             if (Request.QueryString["PageSize"] != null)
             {
                 TipoLicitacionDataPager.PageSize = Convert.ToInt16(Request.QueryString["PageSize"]);
